@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CampusController;
+use App\Http\Controllers\TypeMaterielController;
+use App\Models\TypeMateriel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +25,5 @@ Route::get("api/", function(){
     return "Bonjour !";
 });
 
+Route::resource("campus",CampusController::class);
+Route::resource('typesmateriels',TypeMaterielController::class);

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TypeMateriel;
 use App\Http\Requests\StoreTypeMaterielRequest;
 use App\Http\Requests\UpdateTypeMaterielRequest;
+use Exception;
+use Illuminate\Http\Request;
 
 class TypeMaterielController extends Controller
 {
@@ -13,7 +15,13 @@ class TypeMaterielController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            // Lister les types de materiel
+            $typemat = TypeMateriel::all();
+            return response()->json($typemat);
+        } catch (Exception $e) {
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
@@ -27,9 +35,21 @@ class TypeMaterielController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTypeMaterielRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Creation d'un nouveau type de materiel
+        $request->validate([]);
+        try {
+            // enregistrez un nouveau type de materiel
+            $typemat = new TypeMateriel();
+            $typemat->libelle = $request->libelle;
+            $typemat->etat = 1;
+            $typemat->save();
+            
+            return response()->json($typemat);
+        } catch (Exception $e) {
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
@@ -37,7 +57,14 @@ class TypeMaterielController extends Controller
      */
     public function show(TypeMateriel $typeMateriel)
     {
-        //
+        // Afficher le type de materiel
+        try {
+            // afficher le type de materiel
+            $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+            return response()->json($typemat);
+        } catch (Exception $e) {
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
@@ -51,9 +78,33 @@ class TypeMaterielController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeMaterielRequest $request, TypeMateriel $typeMateriel)
+    public function update(Request $request, TypeMateriel $typeMateriel)
     {
-        //
+        $request->validate([
+            'libelle' => 'required'|'string'
+        ]);
+        // Modifier un type de materiel
+        try {
+            $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+            
+                // $typemat->libelle = $request->libelle;
+                // $typemat->telephone = $request->telephone;
+                // $typemat->adresse = $request->adresse;
+                // $typemat->idUser = $request->idUser;
+                // $typemat->etat = 1;
+                // $typemat->update();
+
+                $typemat->update([
+                    'libelle' => $request->libelle,
+                    'telephone' => $request->telephone,
+                    'adresse' => $request->adresse,
+                    'idUser' => $request->idUser,
+                    'etat' => 1
+                ]);
+            return response()->json($typemat);
+        } catch (Exception $e) {
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
@@ -61,6 +112,16 @@ class TypeMaterielController extends Controller
      */
     public function destroy(TypeMateriel $typeMateriel)
     {
-        //
+        // Supprimer un type de materiel
+       try {
+        $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+        if ($typemat!=null) {
+            $typemat->etat = 0;
+            $typemat->update();
+        }
+        return response()->json("Type de materiel supprimer avec success");
+    } catch (Exception $e) {
+        return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+    }
     }
 }
