@@ -55,12 +55,23 @@ class TypeMaterielController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TypeMateriel $typeMateriel)
+    // public function show(TypeMateriel $typeMateriel)
+    // {
+    //     // Afficher le type de materiel
+    //     try {
+    //         // afficher le type de materiel
+    //         $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+    //         return response()->json($typemat);
+    //     } catch (Exception $e) {
+    //         return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+    //     }
+    // }
+    public function show(string $id)
     {
         // Afficher le type de materiel
         try {
             // afficher le type de materiel
-            $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+            $typemat = TypeMateriel::findOrFail($id);
             return response()->json($typemat);
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
@@ -78,14 +89,14 @@ class TypeMaterielController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TypeMateriel $typeMateriel)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'libelle' => 'required'|'string'
+            'libelle' => 'required|string'
         ]);
         // Modifier un type de materiel
         try {
-            $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+            $typemat = TypeMateriel::findOrFail($id);
             
                 // $typemat->libelle = $request->libelle;
                 // $typemat->telephone = $request->telephone;
@@ -95,10 +106,7 @@ class TypeMaterielController extends Controller
                 // $typemat->update();
 
                 $typemat->update([
-                    'libelle' => $request->libelle,
-                    'telephone' => $request->telephone,
-                    'adresse' => $request->adresse,
-                    'idUser' => $request->idUser,
+                    'libelle' => $request->libelle, 
                     'etat' => 1
                 ]);
             return response()->json($typemat);

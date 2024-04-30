@@ -58,12 +58,12 @@ class CampusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Campus $campus)
+    public function show($campus)
     {
         // Afficher le campus
         try {
             // afficher le campus
-            $leCampus = Campus::findOrFail($campus->id);
+            $leCampus = Campus::findOrFail($campus);
             return response()->json($leCampus);
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
