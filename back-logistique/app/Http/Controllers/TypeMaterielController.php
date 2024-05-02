@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateTypeMaterielRequest;
 use Exception;
 use Illuminate\Http\Request;
 
-class TypeMaterielController extends Controller
+class  TypeMaterielController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +45,7 @@ class TypeMaterielController extends Controller
             $typemat->libelle = $request->libelle;
             $typemat->etat = 1;
             $typemat->save();
-            
+
             return response()->json($typemat);
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
@@ -97,7 +97,7 @@ class TypeMaterielController extends Controller
         // Modifier un type de materiel
         try {
             $typemat = TypeMateriel::findOrFail($id);
-            
+
                 // $typemat->libelle = $request->libelle;
                 // $typemat->telephone = $request->telephone;
                 // $typemat->adresse = $request->adresse;
@@ -106,7 +106,7 @@ class TypeMaterielController extends Controller
                 // $typemat->update();
 
                 $typemat->update([
-                    'libelle' => $request->libelle, 
+                    'libelle' => $request->libelle,
                     'etat' => 1
                 ]);
             return response()->json($typemat);
