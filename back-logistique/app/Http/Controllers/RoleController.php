@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PHPUnit\Exception;
 
@@ -15,7 +16,13 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $role=Role::all();
+            return response()->json(['message'=>"all role  ", 'RoleData'=>$user,"statusCode"=>200]);
+        }catch (Exception $e){
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
+
     }
 
     /**
@@ -38,7 +45,7 @@ class RoleController extends Controller
             $role->save();
             return response()->json(['message'=>"Role Added", 'roleData'=>$role,"statusCode"=>200]);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 
@@ -47,8 +54,13 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        $role=Role::findOrFail($id);
-        return response()->json(['message'=>"Role ", 'roleData'=>$role,"statusCode"=>200]);
+        try {
+            $role=Role::findOrFail($id);
+            return response()->json(['message'=>"Role ", 'roleData'=>$role,"statusCode"=>200]);
+        }catch(Exception $e){
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
+
     }
 
     /**
@@ -65,13 +77,13 @@ class RoleController extends Controller
     public function update(Request $request, string $id)
     {
         try{
-        $role = Role::find($id);
-        $role->libelle = $request->libelle;
-        $role->etat=$request->etat;
-        $role->update();
-        return response()->json(['message'=>"Role Update", 'roleData'=>$role,"statusCode"=>200]);
+            $role = Role::find($id);
+            $role->libelle = $request->libelle;
+            $role->etat=$request->etat;
+            $role->update();
+            return response()->json(['message'=>"Role Update", 'roleData'=>$role,"statusCode"=>200]);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 
@@ -85,7 +97,7 @@ class RoleController extends Controller
             $role->delate();
             return response()->json(['message'=>"Role delate","statusCode"=>200]);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 }

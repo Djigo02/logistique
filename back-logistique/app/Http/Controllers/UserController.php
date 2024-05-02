@@ -38,7 +38,7 @@ class UserController extends Controller
             $user->update();
             return response()->json(['message'=>"User Update", 'UserData'=>$user,"statusCode"=>200]);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ class UserController extends Controller
             $user->delete();
             return response()->json(['message'=>"User delete","statusCode"=>200]);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 }

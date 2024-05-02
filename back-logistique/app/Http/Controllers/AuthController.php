@@ -30,7 +30,7 @@ class AuthController extends Controller
             return response()->json(['message'=>"User Added", 'userData'=>$user,"statusCode"=>200]);
 
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
     /*
@@ -50,7 +50,7 @@ class AuthController extends Controller
             }
             return $this->respondWithToken($token);
         }catch(Exception $e){
-            return response()->json(['message'=>"Erreur"]);
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 
