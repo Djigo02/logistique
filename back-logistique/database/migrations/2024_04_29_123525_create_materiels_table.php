@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('materiels', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            $table->string("sku");
-            $table->string("codeMateriel");
-            $table->string("marque");
-            $table->string("description");
+            $table->string("libelle",100)->unique();
+            $table->string("sku",20);
+            $table->string("codeMateriel",15);
+            $table->string("marque",50);
+            $table->string("description",250);
             $table->integer("prix");
             $table->integer("quantite");
             $table->integer("seuil");
