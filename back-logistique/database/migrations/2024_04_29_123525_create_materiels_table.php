@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer("quantite");
             $table->integer("seuil");
             $table->date("amortissement");
-            $table->integer("etat");
+            $table->string("etat");
             $table->integer("archive");
             $table->string("image");
             $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");

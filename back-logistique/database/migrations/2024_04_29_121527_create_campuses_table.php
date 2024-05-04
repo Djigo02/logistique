@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('telephone',20);
             $table->string('adresse',100);
             $table->foreignId("idUser")->references("id")->on("users");
-            $table->string("etat");
+            $table->integer("etat");
             $table->timestamps();
         });
     }
