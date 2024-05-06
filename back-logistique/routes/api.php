@@ -41,5 +41,3 @@ Route::post('role/AddRole',[RoleController::class,'store']);
 Route::post('role/updateRole/{id}',[RoleController::class,'update']);
 Route::get('role/showRole/{id}',[RoleController::class,'show']);
 Route::get('role/destroy/{id}',[RoleController::class,'destroy']);
-
-
