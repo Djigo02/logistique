@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('type_materiels', function (Blueprint $table) {
             $table->id();
             $table->string("libelle",50);
-            $table->integer("etat");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

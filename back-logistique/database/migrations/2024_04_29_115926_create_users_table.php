@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string('nom',20);
             $table->string('email',50)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',250);
+            $table->string('password',255);
             $table->string('telephone',20);
             $table->string('adresse',100);
+            $table->string('photo',250);
             $table->foreignId("idRole")->references("id")->on("roles");
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

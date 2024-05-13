@@ -13,20 +13,18 @@ return new class extends Migration
     {
         Schema::create('materiels', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle",100)->unique();
-            $table->string("sku",20);
-            $table->string("codeMateriel",15);
-            $table->string("marque",50);
-            $table->string("description",250);
+            $table->string("description",255);
+            $table->string("reference",50);
+            $table->string("codeMateriel",25);
             $table->integer("prix");
             $table->integer("quantite");
             $table->integer("seuil");
             $table->date("amortissement");
-            $table->integer("etat");
-            $table->integer("archive");
+            $table->string("etat");
             $table->string("image");
             $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
