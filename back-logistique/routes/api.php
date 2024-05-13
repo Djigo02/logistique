@@ -36,6 +36,7 @@ Route::get("api/", function(){
 Route::post('signup',[AuthController::class,'signup']);
 Route::post('login',[AuthController::class,'login']);
 
+
 Route::resource("users",UserController::class);
 Route::resource("roles",RoleController::class);
 Route::resource("logs",LogController::class);
@@ -43,3 +44,5 @@ Route::resource("campus",CampusController::class);
 Route::resource('typesmateriels',TypeMaterielController::class);
 Route::resource('salles',SalleController::class);
 Route::resource('materiels',MaterielController::class);
+
+
