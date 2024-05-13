@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\CampusController;
+use App\Http\Controllers\LogController;
+use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\SalleController;
+use App\Http\Controllers\TypeMaterielController;
+use App\Models\TypeMateriel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -20,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::get("api/", function(){
     return "Bonjour !";
 });
@@ -30,15 +35,11 @@ Route::get("api/", function(){
 */
 Route::post('signup',[AuthController::class,'signup']);
 Route::post('login',[AuthController::class,'login']);
-Route::get('user/index',[UserController::class,'index']);
-Route::post('user/update/{id}',[UserController::class,'update']);
-Route::get('user/show/{id}',[UserController::class,'show']);
-Route::post('user/destroy/{id}',[UserController::class,'destroy']);
 
-
-Route::post('show',[AuthController::class,'show']);
-Route::post('role/AddRole',[RoleController::class,'store']);
-Route::post('role/updateRole/{id}',[RoleController::class,'update']);
-Route::get('role/showRole/{id}',[RoleController::class,'show']);
-Route::get('role/destroy/{id}',[RoleController::class,'destroy']);
-
+Route::resource("users",UserController::class);
+Route::resource("roles",RoleController::class);
+Route::resource("logs",LogController::class);
+Route::resource("campus",CampusController::class);
+Route::resource('typesmateriels',TypeMaterielController::class);
+Route::resource('salles',SalleController::class);
+Route::resource('materiels',MaterielController::class);
