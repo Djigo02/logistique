@@ -43,7 +43,6 @@ class  TypeMaterielController extends Controller
             // enregistrez un nouveau type de materiel
             $typemat = new TypeMateriel();
             $typemat->libelle = $request->libelle;
-            $typemat->etat = 1;
             $typemat->save();
 
             return response()->json($typemat);
@@ -107,7 +106,6 @@ class  TypeMaterielController extends Controller
 
                 $typemat->update([
                     'libelle' => $request->libelle,
-                    'etat' => 1
                 ]);
             return response()->json($typemat);
         } catch (Exception $e) {

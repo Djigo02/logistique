@@ -34,12 +34,12 @@ class SalleController extends Controller
         try {
             // Enregistrer une nouvelle salle
             $salle = new Salle();
-            $salle->libelle = $request->libelle;
+            $salle->nomSalle = $request->nomSalle;
             $salle->capacite = $request->capacite;
             $salle->idCampus = $request->idCampus;
-            $salle->etat = 1;
+            $salle->etat = "RAS";
             $salle->save();
-            
+
             return response()->json($salle);
         } catch (Exception $e) {
             return response()->json("Une erreur inattendue s'est produite : ".$e->getMessage());
@@ -72,12 +72,12 @@ class SalleController extends Controller
         // Modifier une salle
         try {
             $salle = Salle::findOrFail($id);
-            
+
             $salle->update([
-                'libelle' => $request->libelle, 
+                'nomSalle' => $request->nomSalle,
                 'capacite' => $request->capacite,
                 'idCampus' => $request->idCampus,
-                'etat' => 1
+                'etat' => $request->etat,
             ]);
             return response()->json($salle);
         } catch (Exception $e) {
@@ -93,13 +93,10 @@ class SalleController extends Controller
         // Supprimer une salle
        try {
             $salle = Salle::findOrFail($id);
-            if ($salle != null) {
-                $salle->etat = 0;
-                $salle->save();
-            }
+            $salle->delete();
             return response()->json("Salle supprimée avec succès");
-        } catch (Exception $e) {
+       } catch (Exception $e) {
             return response()->json("Une erreur inattendue s'est produite : ".$e->getMessage());
-        }
+       }
     }
 }

@@ -42,13 +42,14 @@ class CampusController extends Controller
         try {
             // enregistrez un nouveau campus
             $campus = new Campus();
-            $campus->libelle = $request->libelle;
+            $campus->nomCampus = $request->nomCampus;
             $campus->telephone = $request->telephone;
             $campus->adresse = $request->adresse;
+            $campus->region = $request->region;
+            $campus->departement = $request->departement;
             $campus->idUser = $request->idUser;
-            $campus->etat = 1;
+            $campus->etat = "RAS";
             $campus->save();
-            
             return response()->json($campus);
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
@@ -89,7 +90,7 @@ class CampusController extends Controller
         // Modifier un campus
         try {
             $leCampus = Campus::findOrFail($campus->id);
-            
+
                 // $leCampus->libelle = $request->libelle;
                 // $leCampus->telephone = $request->telephone;
                 // $leCampus->adresse = $request->adresse;
@@ -102,7 +103,11 @@ class CampusController extends Controller
                     'telephone' => $request->telephone,
                     'adresse' => $request->adresse,
                     'idUser' => $request->idUser,
-                    'etat' => 1
+                    'etat' => $request->etat,
+                   'region' => $request->region,
+                   'departement' => $request->departement,
+                    'idUser' => $request->idUser,
+
                 ]);
             return response()->json($leCampus);
         } catch (Exception $e) {
@@ -118,10 +123,7 @@ class CampusController extends Controller
        // Supprimer un campus
        try {
             $leCampus = Campus::findOrFail($campus->id);
-            if ($leCampus!=null) {
-                $leCampus->etat = 0;
-                $leCampus->update();
-            }
+           $leCampus->delete();
             return response()->json("Campus supprimer avec success");
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());

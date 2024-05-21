@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password',255);
             $table->string('telephone',20);
             $table->string('adresse',100);
-            $table->string('photo',250);
+            $table->string('photo',250)->nullable();
             $table->foreignId("idRole")->references("id")->on("roles");
             $table->softDeletes();
             $table->rememberToken();

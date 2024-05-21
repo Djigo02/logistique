@@ -45,21 +45,18 @@ class MaterielController extends Controller
         try {
             // Enregistrer un nouveau matériel
             $materiel = new Materiel();
-            $materiel->libelle = $request->libelle;
-            $materiel->sku = $request->sku;
+            $materiel->reference = $request->reference;
             $materiel->codeMateriel = $request->codeMateriel;
-            $materiel->marque = $request->marque;
             $materiel->description = $request->description;
             $materiel->prix = $request->prix;
             $materiel->quantite = $request->quantite;
             $materiel->seuil = $request->seuil;
             $materiel->amortissement = $request->amortissement;
             $materiel->etat = $request->etat;
-            $materiel->archive = $request->archive;
             $materiel->image = $request->image;
             $materiel->idTypeMateriel = $request->idTypeMateriel;
             $materiel->save();
-            
+
             return response()->json($materiel);
         } catch (Exception $e) {
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
@@ -77,7 +74,7 @@ class MaterielController extends Controller
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -86,10 +83,7 @@ class MaterielController extends Controller
         // Supprimer un type de materiel
        try {
         $materiel = Materiel::findOrFail($materiel);
-        if ($materiel!=null) {
-            $materiel->etat = 0;
-            $materiel->update();
-        }
+           $materiel->delete();
         return response()->json("Materiel supprimer avec success");
     } catch (Exception $e) {
         return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());

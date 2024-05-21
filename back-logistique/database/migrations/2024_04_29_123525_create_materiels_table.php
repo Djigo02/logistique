@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer("seuil");
             $table->date("amortissement");
             $table->string("etat");
-            $table->string("image");
+            $table->string("image")->nullable();
             $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");
             $table->timestamps();
             $table->softDeletes();

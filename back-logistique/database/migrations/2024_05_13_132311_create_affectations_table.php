@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affectations', function (Blueprint $table) {
-            $table->id();
             $table->integer("assigned_at");
             $table->integer("idMateriel");
             $table->softDeletes();

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Fournisseur;
 use App\Http\Requests\StoreFournisseurRequest;
 use App\Http\Requests\UpdateFournisseurRequest;
+use Exception;
+use Illuminate\Http\Request;
 
 class FournisseurController extends Controller
 {
@@ -13,31 +15,58 @@ class FournisseurController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            // Lister les fournisseurs
+            $fournisseurs = Fournisseur::all();
+            return response()->json($fournisseurs);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Inserer un nouveau fournisseur
      */
-    public function store(StoreFournisseurRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Creation d'un fournisseur
+        $request->validate([]);
+        try {
+            // enregistrez un nouveau fournisseur
+            $fournisseur = new Fournisseur();
+            $fournisseur->nom = $request->nom;
+            $fournisseur->email = $request->email;
+            $fournisseur->telephone = $request->telephone;
+            $fournisseur->adresse = $request->adresse;
+            // Ajoutez d'autres attributs ici
+            $fournisseur->save();
+            return response()->json($fournisseur);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Fournisseur $fournisseur)
+    public function show(int $fournisseur)
     {
-        //
+        // Afficher le fournisseur
+        try {
+            // afficher le fournisseur
+            $leFournisseur = Fournisseur::findOrFail($fournisseur);
+            return response()->json($leFournisseur);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }
     }
 
     /**
@@ -51,16 +80,39 @@ class FournisseurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFournisseurRequest $request, Fournisseur $fournisseur)
+    public function update(Request $request, int $fournisseur)
     {
-        //
+        $request->validate([
+            'libelle' => 'required'|'string'
+        ]);
+        // Modifier un fournisseur
+        try {
+            $leFournisseur = Fournisseur::findOrFail($fournisseur);
+            $leFournisseur->update([
+                'nom' => $request->nom,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+                'adresse' => $request->adresse,
+                // Ajoutez d'autres attributs ici
+            ]);
+            return response()->json($leFournisseur);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fournisseur $fournisseur)
+    public function destroy(int $fournisseur)
     {
-        //
+        // Supprimer un fournisseur
+        try {
+            $leFournisseur = Fournisseur::findOrFail($fournisseur);
+            $leFournisseur->delete();
+            return response()->json("Fournisseur supprimé avec succès");
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }
     }
 }
