@@ -116,11 +116,11 @@ class  TypeMaterielController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TypeMateriel $typeMateriel)
+    public function destroy(string $id)
     {
         // Supprimer un type de materiel
        try {
-        $typemat = TypeMateriel::findOrFail($typeMateriel->id);
+        $typemat = TypeMateriel::findOrFail($id);
         if ($typemat!=null) {
             $typemat->etat = 0;
             $typemat->update();

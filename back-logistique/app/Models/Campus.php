@@ -10,7 +10,7 @@ class Campus extends Model
 {
     protected $table = "campuses";
     protected $guarded = [];
-    // protected $fillable = ['libelle','telephone','adresse', 'idUser','etat'];
+    protected $fillable = ['libelle','telephone','adresse', 'idUser','etat'];
     use HasFactory;
     public function users(): BelongsTo{
         return $this->belongsTo(User::class);

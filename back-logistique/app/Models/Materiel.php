@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Materiel extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'reference',
+        'codeMateriel',
+        'description',
+        'prix',
+        'quantite',
+        'seuil',
+        'amortissement',
+        'dateEnregistrement',
+        'etat',
+        'image',
+        'idTypeMateriel'
+    ];
 }

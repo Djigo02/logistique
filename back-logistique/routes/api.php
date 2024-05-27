@@ -44,5 +44,6 @@ Route::resource("campus",CampusController::class);
 Route::resource('typesmateriels',TypeMaterielController::class);
 Route::resource('salles',SalleController::class);
 Route::resource('materiels',MaterielController::class);
-
+Route::resource('fournisseurs',\App\Http\Controllers\FournisseurController::class);
+Route::resource('affectations',\App\Http\Controllers\AffectationController::class);
 

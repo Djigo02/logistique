@@ -13,12 +13,10 @@ class LogController extends Controller
      */
     public function index()
     {
-        //
-<<<<<<< HEAD
+
         $logs= Log::all();
         return response()->json($logs);
-=======
->>>>>>> fb82c66763f79e6510ab9e83048d90ef1bfc4120
+
     }
 
     /**

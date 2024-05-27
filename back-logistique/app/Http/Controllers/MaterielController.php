@@ -38,6 +38,7 @@ class MaterielController extends Controller
             'quantite' => 'required|integer',
             'seuil' => 'required|integer',
             'amortissement' => 'required',
+            'dateEnregistrement' => 'required',
             'image' => 'nullable|string',
             'idTypeMateriel' => 'required'
         ]);
@@ -52,6 +53,7 @@ class MaterielController extends Controller
             $materiel->quantite = $request->quantite;
             $materiel->seuil = $request->seuil;
             $materiel->amortissement = $request->amortissement;
+            $materiel->dateEnregistrement = $request->dateEnregistrement;
             $materiel->etat = $request->etat;
             $materiel->image = $request->image;
             $materiel->idTypeMateriel = $request->idTypeMateriel;
