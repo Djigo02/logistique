@@ -1,4 +1,5 @@
 export class Campus {
+  id!:number;
   libelle !:string;
   telephone !:string;
   adresse !:string;

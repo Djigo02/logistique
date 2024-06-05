@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { TypeMateriel } from '../model/type-materiel';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TypeMaterielService {
-
+//Normal
   constructor(private httpClient: HttpClient) { }
+
+  apiUrl:string = 'http://localhost:8080/api/typesmateriels/';
 
   httpOptions = {
     headers : new HttpHeaders({
@@ -15,20 +19,23 @@ export class TypeMaterielService {
   };
 
   getTypeMateriel(){
-    return this.httpClient.get('http://localhost:8080/api/typesmateriels/');
+    return this.httpClient.get(this.apiUrl);
   }
 
-  insertTypeMateriel(typeMateriel : any){
-    return this.httpClient.post('http://localhost:8080/api/typesmateriels/',typeMateriel);
+  getAllTypeMateriels(): Observable<TypeMateriel[]> {
+    return this.httpClient.get<TypeMateriel[]>(this.apiUrl);
   }
 
-  deleteTypeMateriel(id : any){
-    return this.httpClient.delete('http://localhost:8080/api/typesmateriels/'+id);
+  insertTypeMateriel(typeMateriel : TypeMateriel){
+    return this.httpClient.post(this.apiUrl,typeMateriel);
   }
-  updateTypeMateriel(typeMateriel : any,id : any){
-    return this.httpClient.put('http://localhost:8080/api/typesmateriels/'+id,JSON.stringify(typeMateriel),this.httpOptions);
+  deleteTypeMateriel(id : number){
+    return this.httpClient.delete(this.apiUrl+id);
   }
-  getTypeMaterielById(id:any){
-    return this.httpClient.get('http://localhost:8080/api/typesmateriels/'+id)
+  updateTypeMateriel(typeMateriel : TypeMateriel,id : number){
+    return this.httpClient.put(this.apiUrl+id,JSON.stringify(typeMateriel),this.httpOptions);
+  }
+  getTypeMaterielById(id:number){
+    return this.httpClient.get(this.apiUrl+id)
   }
 }
