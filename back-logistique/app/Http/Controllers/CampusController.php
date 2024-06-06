@@ -106,8 +106,6 @@ class CampusController extends Controller
                     'etat' => $request->etat,
                    'region' => $request->region,
                    'departement' => $request->departement,
-                    'idUser' => $request->idUser,
-
                 ]);
             return response()->json($leCampus);
         } catch (Exception $e) {
