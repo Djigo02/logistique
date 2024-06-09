@@ -1,0 +1,377 @@
+<div class="sticky">
+  <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+  <div class="app-sidebar">
+    <!-- ! LOGO APP -->
+    <div class="side-header">
+      <a class="header-brand1" routerLink="/admin/dashboard">
+        <!-- <img src="assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo"> -->
+        <img
+          style="width: 80px"
+          src="../assets/logo/groupeisi.png"
+          class="header-brand-img desktop-logo"
+          alt="logo"
+        />
+        <img
+          style="width: 80px"
+          src="../assets/logo/groupeisi.png"
+          class="header-brand-img toggle-logo"
+          alt="logo"
+        />
+        <img
+          style="width: 80px"
+          src="../assets/logo/groupeisi.png"
+          class="header-brand-img light-logo"
+          alt="logo"
+        />
+        <img
+          style="width: 80px"
+          src="../assets/logo/groupeisi.png"
+          class="header-brand-img light-logo1"
+          alt="logo"
+        />
+      </a>
+      <!-- LOGO -->
+    </div>
+    <!-- ! END LOGO APP -->
+
+    <div class="main-sidemenu pt-5">
+      <div class="slide-left disabled" id="slide-left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#7b8191"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
+          />
+        </svg>
+      </div>
+      <ul class="side-menu">
+        <!-- ! Module principal -->
+        <li class="sub-category">
+          <h3>Principal</h3>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item has-link"
+            data-bs-toggle="slide"
+            routerLink="/admin/dashboard"
+            ><i class="side-menu__icon fe fe-home"></i
+            ><span class="side-menu__label">Tableau de bord</span></a
+          >
+        </li>
+        <!-- ! END MODULE PRINCIPAL -->
+        <!-- ? Gestion campus et salle  -->
+        <li class="sub-category">
+          <h3>Gestion campus et salle</h3>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item"
+            data-bs-toggle="slide"
+            href="javascript:void(0)"
+            ><i class="side-menu__icon fe fe-slack"></i
+            ><span class="side-menu__label">Campus</span
+            ><i class="angle fe fe-chevron-right"></i>
+          </a>
+          <ul class="slide-menu">
+            <li class="panel sidetab-menu">
+              <div class="tab-menu-heading p-0 pb-2 border-0">
+                <div class="tabs-menu">
+                  <!-- Tabs -->
+                  <ul class="nav panel-tabs">
+                    <li>
+                      <a
+                        href="#side1"
+                        class="d-flex active"
+                        data-bs-toggle="tab"
+                        ><i class="fe fe-monitor me-2"></i>
+                        <p>Home</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#side2" data-bs-toggle="tab" class="d-flex"
+                        ><i class="fe fe-message-square me-2"></i>
+                        <p>Chat</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body tabs-menu-body p-0 border-0">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="side1">
+                    <ul class="sidemenu-list">
+                      <li class="side-menu-label1">
+                        <a href="javascript:void(0)">Campus et salles</a>
+                      </li>
+                      <li>
+                        <a routerLink="/admin/listescampus" class="slide-item"
+                          >Listes campus</a
+                        >
+                      </li>
+                      <li>
+                        <a routerLink="/admin/campus" class="slide-item">
+                          Ajouter un campus</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!-- ! END Gestion campus et salle -->
+        <li>
+          <a routerLink="/admin/salle"
+            ><i class="side-menu__icon fe fe-zap"></i
+            ><span class="side-menu__label">Ajouter une salle</span></a
+          >
+        </li>
+        <!-- ? END MODULE 1 -->
+
+        <!-- ? Gestion materiel et type materiel  -->
+        <li class="sub-category">
+          <h3>Gestion materiel et type materiel</h3>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item"
+            data-bs-toggle="slide"
+            href="javascript:void(0)"
+            ><i class="side-menu__icon fe fe-slack"></i
+            ><span class="side-menu__label">Materiel</span
+            ><i class="angle fe fe-chevron-right"></i>
+          </a>
+          <ul class="slide-menu">
+            <li class="panel sidetab-menu">
+              <div class="tab-menu-heading p-0 pb-2 border-0">
+                <div class="tabs-menu">
+                  <!-- Tabs -->
+                  <ul class="nav panel-tabs">
+                    <li>
+                      <a
+                        href="#side1"
+                        class="d-flex active"
+                        data-bs-toggle="tab"
+                        ><i class="fe fe-monitor me-2"></i>
+                        <p>Home</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#side2" data-bs-toggle="tab" class="d-flex"
+                        ><i class="fe fe-message-square me-2"></i>
+                        <p>Chat</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body tabs-menu-body p-0 border-0">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="side1">
+                    <ul class="sidemenu-list">
+                      <li class="side-menu-label1">
+                        <a href="javascript:void(0)"
+                          ><Main></Main>Materiel et type materiel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          routerLink="/admin/listesmateriels"
+                          class="slide-item"
+                          >Listes materiels</a
+                        >
+                      </li>
+                      <li>
+                        <a routerLink="/admin/materiel" class="slide-item">
+                          Ajouter un materiel</a
+                        >
+                      </li>
+                      <li>
+                        <a href="" class="slide-item">Listes types materiels</a>
+                      </li>
+                      <li>
+                        <a routerLink="/admin/typeMateriel" class="slide-item">
+                          Ajouter un type materiel</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!-- ! END Gestion materiel et type materiel -->
+        <!-- ? END MODULE 2 -->
+
+        <!-- ? Affectation  -->
+        <li class="sub-category">
+          <h3>Affectation</h3>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item"
+            data-bs-toggle="slide"
+            href="javascript:void(0)"
+            ><i class="side-menu__icon fe fe-slack"></i
+            ><span class="side-menu__label">Affectation de materiel</span
+            ><i class="angle fe fe-chevron-right"></i>
+          </a>
+          <ul class="slide-menu">
+            <li class="panel sidetab-menu">
+              <div class="tab-menu-heading p-0 pb-2 border-0">
+                <div class="tabs-menu">
+                  <!-- Tabs -->
+                  <ul class="nav panel-tabs">
+                    <li>
+                      <a
+                        href="#side1"
+                        class="d-flex active"
+                        data-bs-toggle="tab"
+                        ><i class="fe fe-monitor me-2"></i>
+                        <p>LOGISTIQUE</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#side2" data-bs-toggle="tab" class="d-flex"
+                        ><i class="fe fe-message-square me-2"></i>
+                        <p>Affectation</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body tabs-menu-body p-0 border-0">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="side1">
+                    <ul class="sidemenu-list">
+                      <li class="side-menu-label1">
+                        <a href="javascript:void(0)"><Main></Main></a>
+                      </li>
+                      <li>
+                        <a href="crypto-currencies.html" class="slide-item"
+                          >Salle</a
+                        >
+                      </li>
+                      <li>
+                        <a href="widgets.html" class="slide-item">Campus</a>
+                      </li>
+                      <li>
+                        <a href="crypto-currencies.html" class="slide-item"
+                          >Personnel</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!-- ! END Affectation -->
+        <!-- ? END MODULE 3 -->
+
+        <!-- ! Gestion des utilisateurs -->
+        <li class="sub-category">
+          <h3>Gestion des utilisateurs</h3>
+        </li>
+
+        <li class="slide">
+          <a
+            class="side-menu__item"
+            data-bs-toggle="slide"
+            href="javascript:void(0)"
+            ><i class="side-menu__icon fe fe-slack"></i
+            ><span class="side-menu__label">Utilisateur</span
+            ><i class="angle fe fe-chevron-right"></i>
+          </a>
+          <ul class="slide-menu">
+            <li class="panel sidetab-menu">
+              <div class="tab-menu-heading p-0 pb-2 border-0">
+                <div class="tabs-menu">
+                  <!-- Tabs -->
+                  <ul class="nav panel-tabs">
+                    <li>
+                      <a
+                        href="#side1"
+                        class="d-flex active"
+                        data-bs-toggle="tab"
+                        ><i class="fe fe-monitor me-2"></i>
+                        <p>Lister Utilisateurs</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#side2" data-bs-toggle="tab" class="d-flex"
+                        ><i class="fe fe-message-square me-2"></i>
+                        <p>Ajouter Utilisateurs</p></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#side1"
+                        class="d-flex active"
+                        data-bs-toggle="tab"
+                        ><i class="fe fe-monitor me-2"></i>
+                        <p>Lister Utilisateurs</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body tabs-menu-body p-0 border-0">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="side1">
+                    <ul class="sidemenu-list">
+                      <li class="side-menu-label1">
+                        <a href="javascript:void(0)"><Main></Main></a>
+                      </li>
+                      <li>
+                        <a
+                          routerLink="/admin/listesutilisateurs"
+                          class="slide-item"
+                          >Lister Utilisateur</a
+                        >
+                      </li>
+
+                      <li>
+                        <a routerLink="/admin/utilisateur" class="slide-item"
+                          >Ajouter Utilisateur</a
+                        >
+                      </li>
+                      <li>
+                        <a routerLink="/admin/role" class="slide-item"
+                          >Ajouter Role</a
+                        >
+                      </li>
+                      <li>
+                        <a class="slide-item">Lister Role</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="slide-right" id="slide-right">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#7b8191"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

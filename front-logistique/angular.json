@@ -16,18 +16,60 @@
             "outputPath": "dist/front-logistique",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/css/style.css",
+              "src/assets/css/plugins.css",
+              "src/assets/css/icons.css",
+              "src/assets/switcher/css/switcher.css",
+              "src/assets/switcher/demo.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/dropify/dist/js/dropify.js",
+              "src/assets/js/jquery.min.js",
+              "src/assets/plugins/bootstrap/js/popper.min.js",
+              "src/assets/plugins/bootstrap/js/bootstrap.min.js",
+              "src/assets/js/jquery.sparkline.min.js",
+              "src/assets/js/sticky.js",
+              "src/assets/js/circle-progress.min.js",
+              "src/assets/plugins/peitychart/jquery.peity.min.js",
+              "src/assets/plugins/peitychart/peitychart.init.js",
+              "src/assets/plugins/sidebar/sidebar.js",
+              "src/assets/plugins/date-picker/date-picker.js",
+              "src/assets/plugins/date-picker/jquery-ui.js",
+              "src/assets/plugins/input-mask/jquery.maskedinput.js",
+              "src/assets/plugins/p-scroll/perfect-scrollbar.js",
+              "src/assets/plugins/p-scroll/pscroll.js",
+              "src/assets/plugins/p-scroll/pscroll-1.js",
+              "src/assets/plugins/chart/Chart.bundle.js",
+              "src/assets/plugins/chart/utils.js",
+              "src/assets/plugins/select2/select2.full.min.js",
+              "src/assets/plugins/datatable/js/jquery.dataTables.min.js",
+              "src/assets/plugins/datatable/js/dataTables.bootstrap5.js",
+              "src/assets/plugins/datatable/dataTables.responsive.min.js",
+              "src/assets/js/apexcharts.js",
+              "src/assets/plugins/apexchart/irregular-data-series.js",
+              "src/assets/plugins/flot/jquery.flot.js",
+              "src/assets/plugins/flot/jquery.flot.fillbetween.js",
+              "src/assets/plugins/flot/chart.flot.sampledata.js",
+              "src/assets/plugins/flot/dashboard.sampledata.js",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
+              "src/assets/plugins/sidemenu/sidemenu.js",
+              "src/assets/plugins/bootstrap5-typehead/autocomplete.js",
+              "src/assets/js/typehead.js",
+              "src/assets/js/index1.js",
+              "src/assets/js/themeColors.js",
+              "src/assets/js/custom-swicher.js",
+              "src/assets/switcher/js/switcher.js",
+              "src/assets/plugins/fileuploads/js/fileupload.js",
+              "src/assets/plugins/fileuploads/js/file-upload.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -77,18 +119,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }

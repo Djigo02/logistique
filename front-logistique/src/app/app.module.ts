@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BaseComponent} from "./component/base/base.component";
+import { BaseComponent } from './component/base/base.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CampusComponent } from './component/campus/campus.component';
 import { UtilisateurComponent } from './component/utilisateur/utilisateur.component';
@@ -15,6 +15,12 @@ import { ListerCampusComponent } from './component/campus/lister-campus/lister-c
 import { ListerUtilisateurComponent } from './component/utilisateur/lister-utilisateur/lister-utilisateur.component';
 import { ListerMaterielComponent } from './component/materiel/lister-materiel/lister-materiel.component';
 import { TypeMaterielService } from 'src/app/service/type-materiel.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NavbarAdminComponent } from './pages/navbar-admin/navbar-admin.component';
+import { SidebarAdminComponent } from './pages/sidebar-admin/sidebar-admin.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,13 @@ import { TypeMaterielService } from 'src/app/service/type-materiel.service';
     ListerCampusComponent,
     ListerUtilisateurComponent,
     ListerMaterielComponent,
+    LoginComponent,
+    NotFoundComponent,
+    NavbarAdminComponent,
+    SidebarAdminComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    TypeMaterielService,
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [TypeMaterielService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

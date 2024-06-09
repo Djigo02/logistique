@@ -1,6 +1,7 @@
 export class Salle {
-  nomSalle! : string;
-  capacite ! : string;
-  idCampus ! : string;
-  etat ! : string;
+  id!: number;
+  nomSalle!: string;
+  capacite!: string;
+  idCampus!: string;
+  etat!: string;
 }
