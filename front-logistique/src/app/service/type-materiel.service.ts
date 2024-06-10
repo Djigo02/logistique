@@ -10,7 +10,7 @@ export class TypeMaterielService {
   //Normal
   constructor(private httpClient: HttpClient) {}
 
-  apiUrl: string = 'http://localhost:8080/api/typesmateriels/';
+  apiUrl: string = 'http://127.0.0.1:8000/api/typesmateriels';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -27,7 +27,7 @@ export class TypeMaterielService {
   }
 
   insertTypeMateriel(typeMateriel: TypeMateriel) {
-    return this.httpClient.post(this.apiUrl, typeMateriel);
+    return this.httpClient.post(this.apiUrl, typeMateriel, this.httpOptions)
   }
 
   deleteTypeMateriel(id: number) {

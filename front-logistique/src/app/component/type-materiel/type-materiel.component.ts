@@ -10,6 +10,7 @@ import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 })
 export class TypeMaterielComponent implements OnInit {
   typeMateriel!: TypeMateriel;
+  typeMateriels!: any;
   constructor(private typeMaterielService: TypeMaterielService, private router:Router) {}
 
   ngOnInit(): void {
@@ -18,7 +19,14 @@ export class TypeMaterielComponent implements OnInit {
 
 
   insertTypeMateriel() {
+    this.typeMaterielService.insertTypeMateriel(this.typeMateriel);
+    this.getTypeMateriels();  
+    console.table(this.typeMateriels);
     alert(`Type materiel ajoutee : ${this.typeMateriel.libelle}`);
     this.router.navigate(['/admin/campus']);
+  }
+
+  getTypeMateriels(){
+    this.typeMateriels = this.typeMaterielService.getTypeMateriel();
   }
 }
