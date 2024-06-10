@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
         try {
             $role=Role::all();
-            return response()->json(['message'=>"all role  ", 'RoleData'=>$user,"statusCode"=>200]);
+            return response()->json(['message'=>"all role  ", 'RoleData'=>$role,"statusCode"=>200]);
         }catch (Exception $e){
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }

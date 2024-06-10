@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TypeMaterielServiceService } from 'src/app/serv/type-materiel-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TypeMateriel } from 'src/app/model/type-materiel';
+import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 
 @Component({
   selector: 'app-type-materiel',
@@ -9,24 +10,15 @@ import { TypeMateriel } from 'src/app/model/type-materiel';
 })
 export class TypeMaterielComponent implements OnInit {
   typeMateriel!: TypeMateriel;
-  typeMateriels!: TypeMateriel[];
-  constructor(private typeMaterielService: TypeMaterielServiceService) {}
+  constructor(private typeMaterielService: TypeMaterielService, private router:Router) {}
 
   ngOnInit(): void {
-    this.getTypeMateriel();
+    this.typeMateriel = new TypeMateriel();
   }
 
-  getTypeMateriel() {
-    this.typeMaterielService.getAllTypeMateriels().subscribe((res) => {
-      this.typeMateriels = res;
-    });
-  }
 
   insertTypeMateriel() {
-    this.typeMaterielService
-      .insertTypeMateriel(this.typeMateriel)
-      .subscribe((res) => {
-        this.getTypeMateriel();
-      });
+    alert(`Type materiel ajoutee : ${this.typeMateriel.libelle}`);
+    this.router.navigate(['/admin/campus']);
   }
 }
