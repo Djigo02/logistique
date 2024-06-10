@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("etat");
             $table->string("image")->nullable();
             $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");
+            $table->foreignId("idFournisseur")->references("id")->on("fournisseurs");
             $table->timestamps();
             $table->softDeletes();
         });

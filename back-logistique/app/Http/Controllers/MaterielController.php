@@ -21,7 +21,6 @@ class MaterielController extends Controller
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
         }
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -42,7 +41,6 @@ class MaterielController extends Controller
             'image' => 'nullable|string',
             'idTypeMateriel' => 'required'
         ]);
-
         try {
             // Enregistrer un nouveau matériel
             $materiel = new Materiel();
@@ -57,8 +55,8 @@ class MaterielController extends Controller
             $materiel->etat = $request->etat;
             $materiel->image = $request->image;
             $materiel->idTypeMateriel = $request->idTypeMateriel;
+            $materiel->idFournisseur = $request->idFournisseur;
             $materiel->save();
-
             return response()->json($materiel);
         } catch (Exception $e) {
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
