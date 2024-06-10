@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { Materiel } from '../model/materiel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaterielService {
-
+  apiUrl:string = 'http://127.0.0.1:8000/api/materiels';
   constructor(private httpClient : HttpClient) {}
 
   httpOptions = {
@@ -15,20 +17,20 @@ export class MaterielService {
   };
 
   getTypeMateriel(){
-    return this.httpClient.get('http://localhost:8080/api/materiels/');
+    return this.httpClient.get(this.apiUrl);
   }
 
   insertMateriel(materiel : any){
-    return this.httpClient.post('http://localhost:8080/api/materiels/',materiel);
+    return this.httpClient.post(this.apiUrl,materiel,this.httpOptions);
   }
 
   deleteTypeMateriel(id : any){
-    return this.httpClient.delete('http://localhost:8080/api/materiels/'+id);
+    return this.httpClient.delete(this.apiUrl+id);
   }
   updateTypeMateriel(materiel : any,id : any){
-    return this.httpClient.put('http://localhost:8080/api/materiels'+id,JSON.stringify(materiel),this.httpOptions);
+    return this.httpClient.put(this.apiUrl+id,JSON.stringify(materiel),this.httpOptions);
   }
   getTypeMaterielById(id:any){
-    return this.httpClient.get('http://localhost:8080/api/materiels/'+id)
+    return this.httpClient.get(this.apiUrl+id)
   }
 }

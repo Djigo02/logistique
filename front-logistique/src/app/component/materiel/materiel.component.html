@@ -6,134 +6,133 @@
         <!-- ! Gauche -->
         <div class="col-md-12 col-xl-6">
           <!-- ! Ajout materiel  -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Ajouter un nouveau materiel</h3>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Code <span class="text-red">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Code de materiel"
-                    />
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Reference <span class="text-red">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Reference"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Description <span class="text-red">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Description"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Quantite <span class="text-red">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Quantite"
-                      autocomplete="username"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Seuil <span class="text-red">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Seuil"
-                      autocomplete="username"
-                    />
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="input-group">
-                    <div class="input-group-text">
-                      <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+           <form (ngSubmit)="insertMateriel()">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Ajouter un nouveau materiel</h3>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Code <span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Code de materiel" name="codeMateriel" ([ngModel])="materiel.codeMateriel"
+                      />
                     </div>
-                    <input class="form-control fc-datepicker" type="date" />
                   </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Fournisseur <span class="text-red">*</span></label
-                    >
-                    <select
-                      class="form-control form-select select2"
-                      data-bs-placeholder="Select"
-                    >
-                      <option>Veuillez choisir le fournisseur</option>
-                      <option value="1">JUMIA</option>
-                      <option value="2">EXPAT</option>
-                    </select>
+                  <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Reference <span class="text-red">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Reference" name="reference" ([ngModel])="materiel.reference"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-label"
-                      >Etat <span class="text-red">*</span></label
-                    >
-                    <select
-                      class="form-control form-select select2"
-                      data-bs-placeholder="Select"
-                    >
-                      <option>Veuillez choisir l'etat du materiel</option>
-                      <option value="1">Disponible</option>
-                      <option value="2">En voie d'amortissement</option>
-                      <option value="2">Hors Service</option>
-                    </select>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Description <span class="text-red">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Description" name="description" ([ngModel])="materiel.description"
+                      />
+                    </div>
                   </div>
-                </div>
-
-                <!-- ! -->
-                <div class="row mb-3">
-                  <div class="col-lg-6 col-sm-12 mb-4 mb-lg-0">
-                    <input
-                      type="file"
-                      class="dropify"
-                      data-default-file="../assets/images/media/1.jpg"
-                      data-bs-height="180"
-                    />
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Quantite <span class="text-red">*</span></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Quantite"
+                        autocomplete="username" name="quantite" ([ngModel])="materiel.quantite"
+                      />
+                    </div>
                   </div>
-                </div>
-                <!-- ! -->
-                <div class="form-footer mt-2">
-                  <a href="javascript:void(0)" class="btn btn-primary"
-                    >Ajouter un materiel</a
-                  >
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Seuil <span class="text-red">*</span></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Seuil"
+                        autocomplete="username" name="seuil" ([ngModel])="materiel.seuil"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+                      </div>
+                      <input class="form-control fc-datepicker" type="date" name="data" ([ngModel])="materiel.dateEnregistrement" />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Fournisseur <span class="text-red">*</span></label>
+                      <select
+                        class="form-control form-select select2"
+                        data-bs-placeholder="Select" name="idFournisseur" ([ngModel])="materiel.idFournisseur">
+                        <option>Veuillez choisir le fournisseur</option>
+                        <option value="1">JUMIA</option>
+                        <option value="2">EXPAT</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label"
+                        >Etat <span class="text-red">*</span></label
+                      >
+                      <select
+                        class="form-control form-select select2"
+                        data-bs-placeholder="Select"  name="etat" ([ngModel])="materiel.etat"
+                      >
+                        <option>Veuillez choisir l'etat du materiel</option>
+                        <option value="1">Disponible</option>
+                        <option value="2">En voie d'amortissement</option>
+                        <option value="2">Hors Service</option>
+                      </select>
+                    </div>
+                  </div>
+  
+                  <!-- ! -->
+                  <div class="row mb-3">
+                    <div class="col-lg-6 col-sm-12 mb-4 mb-lg-0">
+                      <input
+                        type="file"
+                        class="dropify"
+                        data-default-file="../assets/images/media/1.jpg"
+                        data-bs-height="180" name="image" ([ngModel])="materiel.image"
+                      />
+                    </div>
+                  </div>
+                  <!-- ! -->
+                  <div class="form-footer mt-2">
+                    <button href="javascript:void(0)" type="submit" class="btn btn-primary"
+                      >Ajouter un materiel</button
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+           </form>
           <!-- ! END Ajout materiel -->
         </div>
       </div>
