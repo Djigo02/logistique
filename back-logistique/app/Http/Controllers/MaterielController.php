@@ -28,18 +28,19 @@ class MaterielController extends Controller
     {
         // Création d'un nouveau matériel
         $request->validate([
-            'libelle' => 'required|string',
-            'sku' => 'required|string',
-            'codeMateriel' => 'required|string',
-            'marque' => 'required|string',
-            'description' => 'nullable|string',
-            'prix' => 'required|numeric',
+            'reference' => 'required',
+            'codeMateriel' => 'required',
+            'description' => 'string',
+            'prix' => 'required|integer',
             'quantite' => 'required|integer',
             'seuil' => 'required|integer',
             'amortissement' => 'required',
             'dateEnregistrement' => 'required',
-            'image' => 'nullable|string',
-            'idTypeMateriel' => 'required'
+            'image' => 'file|mimes:jpeg,jpg,png,gif,svg|max:2048',
+            'idTypeMateriel' => 'required|integer',
+            'idFournisseur' => 'required|integer',
+            'etat' => 'required',
+
         ]);
         try {
             // Enregistrer un nouveau matériel
@@ -50,10 +51,13 @@ class MaterielController extends Controller
             $materiel->prix = $request->prix;
             $materiel->quantite = $request->quantite;
             $materiel->seuil = $request->seuil;
-            $materiel->amortissement = $request->amortissement;
             $materiel->dateEnregistrement = $request->dateEnregistrement;
+            $materiel->amortissement = $request->amortissement ;
             $materiel->etat = $request->etat;
-            $materiel->image = $request->image;
+            if ($request->file('image')) {
+                $imagePath = $request->file('image')->store('images','public');
+            }
+            $materiel->image = $imagePath ?? null;
             $materiel->idTypeMateriel = $request->idTypeMateriel;
             $materiel->idFournisseur = $request->idFournisseur;
             $materiel->save();
