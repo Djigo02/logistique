@@ -20,7 +20,24 @@ export class MaterielService {
     return this.httpClient.get(this.apiUrl);
   }
 
-  insertMateriel(materiel : any){
+  insertMateriel(materiel : Materiel){
+    /**
+     * verifier si l'0bjet materiel.amortissement est une instance de date avec instanceof
+     * toLocaleDateString() renvoyer une représentation de la date sous forme de chaîne de caractères, puis split pour diviser la chaine 
+     * en tableau avec comme indicateur le / et enfin recontruire la chaine en changant le format  
+     */
+    if (materiel.amortissement instanceof Date) {
+      const amortissementDate = materiel.amortissement.toLocaleDateString().split('/');
+      const amortissement = `${amortissementDate[2]}-${amortissementDate[1]}-${amortissementDate[0]}`;
+      materiel.amortissement = new Date(amortissement);
+    }
+    if (materiel.dateEnregistrement instanceof Date) {
+     // Convertir la date d'amortissement au format requis
+     const dateEnregistrement = materiel.dateEnregistrement.toLocaleDateString().split('/');
+     const dateEnregistrementF = `${dateEnregistrement[2]}-${dateEnregistrement[1]}-${dateEnregistrement[0]}`;
+     // Assigner la nouvelle valeur à materiel.amortissement
+     materiel.dateEnregistrement = new Date(dateEnregistrementF);
+    }
     return this.httpClient.post(this.apiUrl,materiel,this.httpOptions);
   }
 

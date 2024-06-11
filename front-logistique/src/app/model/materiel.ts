@@ -11,5 +11,5 @@ export class Materiel {
   etat!: string;
   image!: string;
   idTypeMateriel!: number;
-  idFournisseur!:number;
+  idFournisseur!:number; 
 }
