@@ -14,7 +14,7 @@ class UserController extends Controller
 
         try{
             $user=User::findOrFail($id);
-            return response()->json(['message'=>"all User  ", 'UserData'=>$user,"statusCode"=>200]);
+            return response()->json($user);
         }catch(Exception $e){
             $log =new Log();
             $log->class = "User";
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function index()
     {
         $user=User::all();
-        return response()->json(['message'=>"all User  ", 'UserData'=>$user,"statusCode"=>200]);
+        return response()->json($user);
     }
 
     public function refresh()
@@ -41,6 +41,42 @@ class UserController extends Controller
             $log->methode = "refresh";
             $log->message = $e->getMessage();
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // Création d'un nouveau utilisateur
+        $request->validate([
+            'prenom' => 'required|string',
+            'nom' => 'required|string',
+            'email' => 'required|string|email',
+            'telephone' => 'required|string|max:9',
+            'adresse' => 'required|string',
+            'idRole' => 'required'
+        ]);
+        try {
+            // Enregistrer un nouveau utilisateur
+            $user = new User();
+            $user->prenom = $request->prenom;
+            $user->nom = $request->nom;
+            $user->email = $request->email;
+            $user->telephone = $request->telephone;
+            $user->adresse = $request->adresse;
+            $user->password = "passer@123";
+            $user->idRole = $request->idRole;
+            $user->save();
+            return response()->json($user);
+        } catch (Exception $e) {
+            $log =new Log();
+            $log->class = "User";
+            $log->controller = "UserController";
+            $log->methode = "store";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
         }
     }
 
