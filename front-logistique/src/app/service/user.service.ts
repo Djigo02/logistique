@@ -1,33 +1,41 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   httpOptions = {
-    headers : new HttpHeaders({
-      'Content-Type' : 'application/json',
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
     }),
   };
 
-  getUser(){
-    return this.httpClient.get('http://localhost:8080/api/users/');
+  apiUrl: string = 'http://127.0.0.1:8000/api/users';
+
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.apiUrl);
   }
 
-  insertUser(user : any){
-    return this.httpClient.post('http://localhost:8080/api/users/',user);
+  insertUser(user: User) {
+    return this.httpClient.post(this.apiUrl, user, this.httpOptions);
   }
 
-  deleteUser(id : any){
-    return this.httpClient.delete('http://localhost:8080/api/users/'+id);
+  deleteUser(id: any) {
+    return this.httpClient.delete(this.apiUrl + id);
   }
-  updateUser(user : any,id : any){
-    return this.httpClient.put('http://localhost:8080/api/users/'+id,JSON.stringify(user),this.httpOptions);
+  updateUser(user: any, id: any) {
+    return this.httpClient.put(
+      this.apiUrl + id,
+      JSON.stringify(user),
+      this.httpOptions
+    );
   }
-  getUserById(id:any){
-    return this.httpClient.get('http://localhost:8080/api/users/'+id)
+  getUserById(id: any) {
+    return this.httpClient.get(this.apiUrl + id);
   }
 }
