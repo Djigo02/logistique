@@ -44,7 +44,6 @@ class  TypeMaterielController extends Controller
             $typemat = new TypeMateriel();
             $typemat->libelle = $request->libelle;
             $typemat->save();
-
             return response()->json($typemat);
         } catch (Exception $e) {
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());

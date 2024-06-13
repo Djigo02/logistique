@@ -21,6 +21,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NavbarAdminComponent } from './pages/navbar-admin/navbar-admin.component';
 import { SidebarAdminComponent } from './pages/sidebar-admin/sidebar-admin.component';
+import { MaterielFormComponent } from './component/materiel-form/materiel-form.component';
+import { MaterielEditComponent } from './component/materiel/materiel-edit/materiel-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { SidebarAdminComponent } from './pages/sidebar-admin/sidebar-admin.compo
     NotFoundComponent,
     NavbarAdminComponent,
     SidebarAdminComponent,
+    MaterielFormComponent,
+    MaterielEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TypeMaterielService],

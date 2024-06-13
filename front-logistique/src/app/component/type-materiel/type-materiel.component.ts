@@ -19,11 +19,15 @@ export class TypeMaterielComponent implements OnInit {
 
 
   insertTypeMateriel() {
-    this.typeMaterielService.insertTypeMateriel(this.typeMateriel);
-    this.getTypeMateriels();  
-    console.table(this.typeMateriels);
-    alert(`Type materiel ajoutee : ${this.typeMateriel.libelle}`);
-    this.router.navigate(['/admin/campus']);
+    this.typeMaterielService.insertTypeMateriel(this.typeMateriel).subscribe(
+      res =>{
+        this.getTypeMateriels();
+        console.table(this.typeMateriels);
+        alert(`Type materiel ajoutee : ${this.typeMateriel.libelle}`);
+        this.router.navigate(['/admin/campus']);
+      }
+    );
+
   }
 
   getTypeMateriels(){

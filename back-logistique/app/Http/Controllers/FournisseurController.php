@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fournisseur;
 use App\Http\Requests\StoreFournisseurRequest;
 use App\Http\Requests\UpdateFournisseurRequest;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,11 @@ class FournisseurController extends Controller
      */
     public function index()
     {
-        try {
-            // Lister les fournisseurs
+        try{
             $fournisseurs = Fournisseur::all();
             return response()->json($fournisseurs);
-        } catch (Exception $e) {
-            return response()->json("Une erreur inattendue s'est produite ".$e->getMessage());
+        }catch (\PHPUnit\Exception $e){
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
 

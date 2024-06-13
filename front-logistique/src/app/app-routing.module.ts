@@ -13,6 +13,7 @@ import { ListerUtilisateurComponent } from './component/utilisateur/lister-utili
 import { ListerMaterielComponent } from './component/materiel/lister-materiel/lister-materiel.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import {MaterielEditComponent} from "./component/materiel/materiel-edit/materiel-edit.component";
 
 const routes: Routes = [
   // Route de base
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'role', component: RoleComponent },
       { path: 'typeMateriel', component: TypeMaterielComponent },
       { path: 'materiel', component: MaterielComponent },
+      { path: 'materielEdit/:id', component: MaterielEditComponent },
       { path: 'listescampus', component: ListerCampusComponent },
       { path: 'listesutilisateurs', component: ListerUtilisateurComponent },
       { path: 'listesmateriels', component: ListerMaterielComponent },

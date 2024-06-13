@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {TypeMateriel} from "../model/type-materiel";
+import {Fournisseur} from "../model/fournisseur";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FournisseurService {
 
+   apiUrl : string = 'http://localhost:8000/api/fournisseurs';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -15,21 +19,22 @@ export class FournisseurService {
     }),
   };
 
-  getFournisseur(){
-    return this.httpClient.get('http://localhost:8080/api/fournisseurs/');
+  getAllFournisseur(): Observable<Fournisseur[]> {
+    return this.httpClient.get<Fournisseur[]>(this.apiUrl);
   }
 
+
   insertFournisseur(fournisseur : any){
-    return this.httpClient.post('http://localhost:8080/api/fournisseurs/',fournisseur);
+    return this.httpClient.post(this.apiUrl,fournisseur);
   }
 
   deleteFournisseur(id : any){
-    return this.httpClient.delete('http://localhost:8080/api/fournisseurs/'+id);
+    return this.httpClient.delete(this.apiUrl+id);
   }
   updateFournisseur(fournisseur : any,id : any){
-    return this.httpClient.put('http://localhost:8080/api/fournisseurs/'+id,JSON.stringify(fournisseur),this.httpOptions);
+    return this.httpClient.put(this.apiUrl+id,JSON.stringify(fournisseur),this.httpOptions);
   }
   getFournisseurById(id:any){
-    return this.httpClient.get('http://localhost:8080/api/fournisseurs/'+id)
+    return this.httpClient.get(this.apiUrl+id)
   }
 }

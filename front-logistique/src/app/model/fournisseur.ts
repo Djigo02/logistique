@@ -4,4 +4,6 @@ export class Fournisseur {
   email !:string;
   telephone !:string;
   adresse !:string;
+  ninea!:string;
+  registreDeCommerce!:string;
 }

@@ -25,6 +25,10 @@ export class UserService {
     return this.httpClient.post(this.apiUrl, user, this.httpOptions);
   }
 
+  getFournisseur():Observable<User[]>{
+    return this.httpClient.get<User[]>(this.apiUrl);
+  }
+
   deleteUser(id: any) {
     return this.httpClient.delete(this.apiUrl + id);
   }

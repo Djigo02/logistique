@@ -24,11 +24,13 @@ class UserController extends Controller
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
     }
+
     public function index()
     {
         $user=User::all();
         return response()->json($user);
     }
+
 
     public function refresh()
     {

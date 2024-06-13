@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
 import { Materiel } from '../model/materiel';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,15 @@ export class MaterielService {
     }),
   };
 
-  getTypeMateriel(){
-    return this.httpClient.get(this.apiUrl);
+  getMateriel():Observable<Materiel[]>{
+    return this.httpClient.get<Materiel[]>(this.apiUrl);
   }
 
   insertMateriel(materiel : Materiel){
     /**
      * verifier si l'0bjet materiel.amortissement est une instance de date avec instanceof
-     * toLocaleDateString() renvoyer une représentation de la date sous forme de chaîne de caractères, puis split pour diviser la chaine 
-     * en tableau avec comme indicateur le / et enfin recontruire la chaine en changant le format  
+     * toLocaleDateString() renvoyer une représentation de la date sous forme de chaîne de caractères, puis split pour diviser la chaine
+     * en tableau avec comme indicateur le / et enfin recontruire la chaine en changant le format
      */
     if (materiel.amortissement instanceof Date) {
       const amortissementDate = materiel.amortissement.toLocaleDateString().split('/');
@@ -47,7 +48,7 @@ export class MaterielService {
   updateTypeMateriel(materiel : any,id : any){
     return this.httpClient.put(this.apiUrl+id,JSON.stringify(materiel),this.httpOptions);
   }
-  getTypeMaterielById(id:any){
-    return this.httpClient.get(this.apiUrl+id)
+  getTypeMaterielById(id:any):Observable<Materiel>{
+    return this.httpClient.get<Materiel>(`${this.apiUrl}/`+id);
   }
 }
