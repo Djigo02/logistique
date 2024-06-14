@@ -21,6 +21,32 @@ class MaterielController extends Controller
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
         }
     }
+
+    public function update(Request $request, string $id)
+    {
+        try{
+            $materiel = Materiel::find($id);
+            $materiel->reference = $request->reference;
+            $materiel->codeMateriel = $request->codeMateriel;
+            $materiel->description = $request->description;
+            $materiel->prix = $request->prix;
+            $materiel->quantite = $request->quantite;
+            $materiel->seuil = $request->seuil;
+            $materiel->dateEnregistrement = $request->dateEnregistrement;
+            $materiel->amortissement = $request->amortissement ;
+            $materiel->etat = $request->etat;
+            $materiel->update();
+            return response()->json(['message'=>"materiel Update", 'materiel'=>$materiel,"statusCode"=>200]);
+        }catch(Exception $e){
+            $log =new Log();
+            $log->class = "Materiel";
+            $log->controller = "MaterielController";
+            $log->methode = "update";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */

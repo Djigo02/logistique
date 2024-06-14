@@ -15,9 +15,19 @@ export class ListerMaterielComponent implements OnInit{
   }
 
   redirectTo(id : number){
-    this.router.navigate(['/admin/materielEdit',id]);
+    this.router.navigate(['/admin/matEdit',id]);
   }
-
+  delete(id:number){
+    this.materielSerice.deleteMateriel(id).subscribe(res =>{
+      alert('materiel supprimer avec succces');
+        this.getMaterielData();
+    },
+      error => {
+        console.error('Erreur lors de la modifiacation du matériel:', error);
+        alert('Une erreur est survenue lors de modifiacation du matériel.');
+      }
+      );
+  }
   getMaterielData() {
     this.materielSerice.getMateriel().subscribe(res => {
       this.materiels = res;

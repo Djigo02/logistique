@@ -42,11 +42,23 @@ export class MaterielService {
     return this.httpClient.post(this.apiUrl,materiel,this.httpOptions);
   }
 
-  deleteTypeMateriel(id : any){
-    return this.httpClient.delete(this.apiUrl+id);
+  deleteMateriel(id : any){
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
   updateTypeMateriel(materiel : any,id : any){
-    return this.httpClient.put(this.apiUrl+id,JSON.stringify(materiel),this.httpOptions);
+    if (materiel.amortissement instanceof Date) {
+      const amortissementDate = materiel.amortissement.toLocaleDateString().split('/');
+      const amortissement = `${amortissementDate[2]}-${amortissementDate[1]}-${amortissementDate[0]}`;
+      materiel.amortissement = new Date(amortissement);
+    }
+    if (materiel.dateEnregistrement instanceof Date) {
+      // Convertir la date d'amortissement au format requis
+      const dateEnregistrement = materiel.dateEnregistrement.toLocaleDateString().split('/');
+      const dateEnregistrementF = `${dateEnregistrement[2]}-${dateEnregistrement[1]}-${dateEnregistrement[0]}`;
+      // Assigner la nouvelle valeur à materiel.amortissement
+      materiel.dateEnregistrement = new Date(dateEnregistrementF);
+    }
+    return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(materiel),this.httpOptions);
   }
   getTypeMaterielById(id:any):Observable<Materiel>{
     return this.httpClient.get<Materiel>(`${this.apiUrl}/`+id);

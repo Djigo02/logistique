@@ -20,7 +20,9 @@ export class MaterielFormComponent {
   selectedFile:File | null=null;
   TypeMateriels : TypeMateriel[] =[];
   fournisseurs : Fournisseur[] =[];
-  constructor(private materielService : MaterielService,private router : Router,private fournisseurService : FournisseurService,private typeMatServ:TypeMaterielService){}
+  isAddForm!:boolean;
+  fournisseur!:any;
+  constructor(private materielService : MaterielService ,private router : Router,private fournisseurService : FournisseurService,private typeMatServ:TypeMaterielService){}
 
   /**
    * la fonction est lier a un evenment de change dans leninout file qui recupere l;image il vas recuperer le premier file et le stocker dans
@@ -39,11 +41,41 @@ export class MaterielFormComponent {
       // Rafraîchir les données du matériel
       this.getMaterielData();
       // Rediriger vers la page d'administration du campus
-      this.router.navigate(['admin/campus']);
+      this.router.navigate(['admin/listesmateriels']);
     }, error => {
       console.error('Erreur lors de l\'enregistrement du matériel:', error);
       alert('Une erreur est survenue lors de l\'enregistrement du matériel.');
     });
+  }
+
+  insertFournisseur(){
+    this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(res =>{
+      alert('fournisseur ajouter avec succes');
+
+    }, error => {
+      console.error('Erreur lors de l\'enregistrement du fournisseur:', error);
+      alert('Une erreur est survenue lors de l\'enregistrement du fournisseur.');
+    })
+  }
+
+  updateMateriel(){
+    this.materielService.updateTypeMateriel(this.materiel,this.materiel.id).subscribe(res =>
+    {
+      this.getMaterielData();
+      this.router.navigate(['admin/listesmateriels']);
+    },error => {
+        console.error('Erreur lors de la modifiacation du matériel:', error);
+        alert('Une erreur est survenue lors de modifiacation du matériel.');
+      }
+      );
+  }
+
+  onSubmit(){
+      if(this.isAddForm){
+        this.insertMateriel();
+      }else{
+        this.updateMateriel();
+      }
   }
 
   getMaterielData() {
@@ -71,9 +103,10 @@ export class MaterielFormComponent {
 
   ngOnInit(): void {
     this.materiel = new Materiel();
-
+    this.fournisseur = new Fournisseur();
     this.loadTypeMate();
     this.loadFounisseurs();
+    this.isAddForm = this.router.url.includes('materiel');
 
     // @ts-ignore
     $('.dropify').dropify({

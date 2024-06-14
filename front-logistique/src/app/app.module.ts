@@ -23,6 +23,7 @@ import { NavbarAdminComponent } from './pages/navbar-admin/navbar-admin.componen
 import { SidebarAdminComponent } from './pages/sidebar-admin/sidebar-admin.component';
 import { MaterielFormComponent } from './component/materiel-form/materiel-form.component';
 import { MaterielEditComponent } from './component/materiel/materiel-edit/materiel-edit.component';
+import { FournisseurComponent } from './component/fournisseur/fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MaterielEditComponent } from './component/materiel/materiel-edit/materi
     SidebarAdminComponent,
     MaterielFormComponent,
     MaterielEditComponent,
+    FournisseurComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TypeMaterielService],
