@@ -10,6 +10,7 @@
   <div class="card-header">
     <h3 class="card-title">Ajouter une salle</h3>
   </div>
+  <form method="post" (submit)="onSubmit()">
   <div class="card-body">
     <div class="form-row">
       <div class="form-group col-md-6 mb-0">
@@ -19,6 +20,8 @@
             class="form-control"
             id="nomsalle"
             placeholder="Nom salle"
+            name="nomSalle"
+            [(ngModel)]="salle.nomSalle"
           />
         </div>
       </div>
@@ -29,6 +32,8 @@
             class="form-control"
             id="capacite"
             placeholder="Capacite"
+            name="capacite"
+            [(ngModel)]="salle.capacite"
           />
         </div>
       </div>
@@ -42,21 +47,21 @@
         <select
           class="form-control form-select select2"
           data-bs-placeholder="Select"
+          name="idCampus"
+          [(ngModel)]="salle.idCampus"
         >
-          <option>Choisissez le campus</option>
-          <option value="1">FASS</option>
-          <option value="2">DAKAR</option>
-          <option value="3">KEUR MASSAR</option>
-          <option value="4">SUPTECH</option>
+          <option selected>Choisissez le campus</option>
+          <option *ngFor="let campus of campusList" value="{{campus.id}}">{{campus.nomCampus}}</option>
         </select>
       </div>
     </div>
     <div class="form-footer mt-2">
-      <a href="javascript:void(0)" class="btn btn-primary"
-      >Ajouter une salle</a
+      <button type="submit" class="btn btn-primary"
+      >Enregistrer la salle</button
       >
     </div>
   </div>
+  </form>
 </div>
 <!-- ! END Ajout salle -->
         </div>
