@@ -1,16 +1,4 @@
-<div class="main-content app-content col-md-12 mb-3 pt-5">
-  <div class="side-app">
-    <!-- CONTAINER -->
-    <div class="main-container container-fluid">
-      <div class="row">
-        <!-- ! Gauche -->
-        <div class="col-md-12 col-xl-6">
 
-<!-- ! AJOUT TYPE MATERIEL -->
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Ajouter un type de materiel</h3>
-  </div>
   <form (ngSubmit)="insertTypeMateriel()">
     <div class="card-body">
       <div class="form-group">
@@ -19,9 +7,9 @@
           class="form-control"
           [(ngModel)]="typeMateriel.libelle"
           placeholder="Type de materiel" name="libelle">
-         
+
       </div>
-      
+
       <div class="form-footer mt-2">
         <button type="submit" class="btn btn-primary"
         >Ajouter un type de materiel</button
@@ -29,10 +17,4 @@
       </div>
     </div>
 </form>
-</div>
-<!-- ! END TYPE MATERIEL -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
