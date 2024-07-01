@@ -25,7 +25,8 @@ export class MaterielComponent implements OnInit {
     this.fournisseur= new Fournisseur();
   }
   insertFournisseur(){
-    this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(res =>{
+    this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(
+      res =>{
       alert('fournisseur ajouter avec succes');
       console.log(res);
       this.fournisseur.nom="";

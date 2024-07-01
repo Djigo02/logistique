@@ -12,7 +12,7 @@
     <h3 class="card-title">Ajouter un campus</h3>
   </div>
   <div class="card-body">
-    <form >
+    <form method="post" (submit)="onSubmit()">
       <div class="form-row">
         <div class="form-group col-md-6 mb-0">
           <div class="form-group">
@@ -20,7 +20,9 @@
               type="text"
               class="form-control"
               id="nomcampus"
+              name="nomCampus"
               placeholder="Nom campus"
+              [(ngModel)]="campus.nomCampus"
             />
           </div>
         </div>
@@ -31,6 +33,8 @@
               class="form-control"
               id="adresse"
               placeholder="Adresse"
+              name="adresse"
+              [(ngModel)]="campus.adresse"
             />
           </div>
         </div>
@@ -42,7 +46,9 @@
               type="text"
               class="form-control"
               id="region"
+              name="region"
               placeholder="Region"
+              [(ngModel)]="campus.region"
             />
           </div>
         </div>
@@ -53,6 +59,8 @@
               class="form-control"
               id="departement"
               placeholder="Departement"
+              name="departement"
+              [(ngModel)]="campus.departement"
             />
           </div>
         </div>
@@ -63,6 +71,9 @@
           class="form-control"
           id="telephone"
           placeholder="Telephone"
+          name="telephone"
+          placeholder="Telephone"
+          [(ngModel)]="campus.telephone"
         />
       </div>
 
@@ -74,11 +85,11 @@
           <select
             class="form-control form-select select2"
             data-bs-placeholder="Select"
+            [(ngModel)]="campus.idUser"
+            name="idUser"
           >
-            <option>Choisissez le responsable du campus</option>
-            <option value="1">Samba Souare</option>
-            <option value="2">Madjiguene</option>
-            <option value="3">Kara Samb</option>
+            <option selected>Choisissez le responsable du campus</option>
+            <option *ngFor="let responsable of responsables" value="{{responsable.id}}">{{responsable.prenom}} {{responsable.nom}}</option>
           </select>
         </div>
       </div>

@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Campus} from "../model/campus"
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampusService {
   constructor(private httpClient: HttpClient) { }
-  apiUrl  : string =  'http://localhost:8080/api/campus/';
+  apiUrl  : string =  'http://localhost:8000/api/campus/';
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
     }),
   };
 
-  getCampus(){
-    return this.httpClient.get(this.apiUrl);
+  getCampus():Observable<Campus[]>{
+    return this.httpClient.get<Campus[]>(this.apiUrl);
   }
 
   insertCampus(campus : Campus){
-    return this.httpClient.post(this.apiUrl,campus);
+    return this.httpClient.post(this.apiUrl,campus,this.httpOptions);
   }
 
-  deleteUser(id : any){
+  deleteCampus(id : any){
     return this.httpClient.delete(this.apiUrl+id);
   }
-  updateCampus(campus : any,id : any){
+  updateCampus(campus : Campus,id : any){
     return this.httpClient.put(this.apiUrl+id,JSON.stringify(campus),this.httpOptions);
   }
   getCampusById(id:any){
