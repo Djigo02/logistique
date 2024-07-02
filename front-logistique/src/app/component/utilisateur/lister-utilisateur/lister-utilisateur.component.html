@@ -7,7 +7,7 @@
 </div>
 <!-- ! Row Tables -->
 <div class="row">
-  <div class="col-xl-6">
+  <div class="col-xl-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Liste des fournisseurs</h3>
@@ -19,40 +19,43 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Position</th>
-              <th>Salary</th>
+              <th>Email</th>
+              <th>telephone</th>
+              <th>adresse</th>
+              <th>Ninea</th>
+              <th>Registre de Commerce</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Joan Powell</td>
-              <td>Associate Developer</td>
-              <td>$450,870</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Gavin Gibson</td>
-              <td>Account manager</td>
-              <td>$230,540</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Julian Kerr</td>
-              <td>Senior Javascript Developer</td>
-              <td>$55,300</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Cedric Kelly</td>
-              <td>Accountant</td>
-              <td>$234,100</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Samantha May</td>
-              <td>Junior Technical Author</td>
-              <td>$43,198</td>
+            <tr *ngFor="let fournisseur of fournisseurs" >
+              <td>{{fournisseur.id}}</td>
+              <td>{{fournisseur.nom}}</td>
+              <td>{{fournisseur.email}}</td>
+              <td>{{fournisseur.telephone}}</td>
+              <td>{{fournisseur.adresse}}</td>
+              <td>{{fournisseur.ninea}}</td>
+              <td>{{fournisseur.registreDeCommerce}}</td>
+              <td>
+                <div class="g-2">
+                  <a
+                    (click)="redirectToF(fournisseur.id)"
+                    class="btn text-primary btn-sm"
+                    data-bs-toggle="tooltip"
+                    data-bs-original-title="Edit"
+                  ><span class="fe fe-edit fs-14"></span
+                  ></a>
+                  <a
+                    (click)="deleteF(fournisseur.id)"
+                    class="btn text-danger btn-sm"
+                    data-bs-toggle="tooltip"
+                    data-bs-original-title="Delete"
+                  ><span
+                    class="fe fe-trash-2 fs-14"
+                  ></span
+                  ></a>
+                </div>
+              </td>
             </tr>
             </tbody>
           </table>
@@ -60,7 +63,9 @@
       </div>
     </div>
   </div>
-  <div class="col-xl-6">
+</div>
+<div class="row">
+  <div class="col-xl-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Liste des personnels</h3>
@@ -71,41 +76,44 @@
             <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Salary</th>
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Adresse</th>
+              <th>Role</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Joan Powell</td>
-              <td>Associate Developer</td>
-              <td>$450,870</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Gavin Gibson</td>
-              <td>Account manager</td>
-              <td>$230,540</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Julian Kerr</td>
-              <td>Senior Javascript Developer</td>
-              <td>$55,300</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Cedric Kelly</td>
-              <td>Accountant</td>
-              <td>$234,100</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Samantha May</td>
-              <td>Junior Technical Author</td>
-              <td>$43,198</td>
+            <tr *ngFor="let user of utilisateurs">
+              <td>{{user.id}}</td>
+              <td>{{user.prenom}}</td>
+              <td>{{ user.nom }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.telephone }}</td>
+              <td>{{user.adresse}}</td>
+              <td>{{user.idRole}}</td>
+              <td>
+                <div class="g-2">
+                  <a
+                    (click)="redirectTo(user.id)"
+                    class="btn text-primary btn-sm"
+                    data-bs-toggle="tooltip"
+                    data-bs-original-title="Edit"
+                  ><span class="fe fe-edit fs-14"></span
+                  ></a>
+                  <a
+                    (click)="delete(user.id)"
+                    class="btn text-danger btn-sm"
+                    data-bs-toggle="tooltip"
+                    data-bs-original-title="Delete"
+                  ><span
+                    class="fe fe-trash-2 fs-14"
+                  ></span
+                  ></a>
+                </div>
+              </td>
             </tr>
             </tbody>
           </table>

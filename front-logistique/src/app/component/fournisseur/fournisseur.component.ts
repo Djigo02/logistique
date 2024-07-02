@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FournisseurService} from "../../service/fournisseur.service";
 import {Fournisseur} from "../../model/fournisseur";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fournisseur',
@@ -9,19 +10,38 @@ import {Fournisseur} from "../../model/fournisseur";
 })
 export class FournisseurComponent implements OnInit{
 
-  founisseur!:any;
-  constructor(private fournisseurService:FournisseurService) {
+  fournisseur!:any;
+  founisseurs:Fournisseur[]=[];
+  constructor(private fournisseurService:FournisseurService,private router:Router) {
+    this.fournisseur=new Fournisseur();
   }
 
   ngOnInit() {
-    this.founisseur = new Fournisseur();
+    this.fournisseur = new Fournisseur();
   }
 
+  insertFournisseur(){
+    this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(
+      res =>{
+        alert('fournisseur ajouter avec succes');
+        console.log(res);
+        this.fournisseur.nom="";
+        this.fournisseur.telephone="";
+        this.fournisseur.adresse="";
+        this.fournisseur.email="";
+        this.fournisseur.ninea="";
+        this.fournisseur.registreDeCommerce="";
+        this.router.navigate(['admin/materiel']);
 
+      }, error => {
+        console.error('Erreur lors de l\'enregistrement du fournisseur:', error);
+        alert('Une erreur est survenue lors de l\'enregistrement du fournisseur.');
+      })
+  }
 
   getFournisseur(){
     this.fournisseurService.getAllFournisseur().subscribe(res => {
-      this.founisseur=res;
+      this.founisseurs=res;
     })
   }
 }

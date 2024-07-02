@@ -16,7 +16,7 @@ export class MaterielEditComponent implements OnInit{
   }
 
   getMaterielById(){
-    this.materielService.getTypeMaterielById(this.route.snapshot.params['id']).subscribe(res =>{
+    this.materielService.getMaterielById(this.route.snapshot.params['id']).subscribe(res =>{
       this.materiel=res;
     })
   }

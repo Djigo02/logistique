@@ -1,0 +1,94 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Nom <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Prenom"
+          [(ngModel)]="fournisseur.nom"
+          name="prenom"
+        />
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Email <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nom"
+          [(ngModel)]="fournisseur.email"
+          name="nom"
+        />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Telephone <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Telephone"
+          [(ngModel)]="fournisseur.telephone"
+          name="telephone"
+        />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Addresse <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Addresse"
+          [(ngModel)]="fournisseur.adresse"
+          name="adresse"
+        />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Ninea <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Addresse"
+          [(ngModel)]="fournisseur.ninea"
+          name="adresse"
+        />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Registre de commerce <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Addresse"
+          [(ngModel)]="fournisseur.registreDeCommerce"
+          name="adresse"
+        />
+      </div>
+    </div>
+    <div class="form-footer mt-2">
+      <button type="submit" class="btn btn-primary">
+        Ajouter un fournisseur
+      </button>
+    </div>
+  </div>
+</form>
+

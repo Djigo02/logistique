@@ -24,6 +24,13 @@ import { SidebarAdminComponent } from './pages/sidebar-admin/sidebar-admin.compo
 import { MaterielFormComponent } from './component/materiel-form/materiel-form.component';
 import { MaterielEditComponent } from './component/materiel/materiel-edit/materiel-edit.component';
 import { FournisseurComponent } from './component/fournisseur/fournisseur.component';
+import { UtilisateurEditComponent } from './component/utilisateur/utilisateur-edit/utilisateur-edit.component';
+import { UtilisateurFormComponent } from './component/utilisateur-form/utilisateur-form.component';
+import { ListeTypematerielComponent } from './component/type-materiel/liste-typemateriel/liste-typemateriel.component';
+import { TypeMaterielFormComponent } from './component/type-materiel-form/type-materiel-form.component';
+import { EdittypeMaterielComponent } from './component/type-materiel/edittype-materiel/edittype-materiel.component';
+import { EditFournisseurComponent } from './component/fournisseur/edit-fournisseur/edit-fournisseur.component';
+import { FournisseurFormComponent } from './component/fournisseur-form/fournisseur-form.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +53,13 @@ import { FournisseurComponent } from './component/fournisseur/fournisseur.compon
     MaterielFormComponent,
     MaterielEditComponent,
     FournisseurComponent,
+    UtilisateurEditComponent,
+    UtilisateurFormComponent,
+    ListeTypematerielComponent,
+    TypeMaterielFormComponent,
+    EdittypeMaterielComponent,
+    EditFournisseurComponent,
+    FournisseurFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TypeMaterielService],

@@ -20,21 +20,21 @@ export class FournisseurService {
   };
 
   getAllFournisseur(): Observable<Fournisseur[]> {
-    return this.httpClient.get<Fournisseur[]>(this.apiUrl);
+    return this.httpClient.get<Fournisseur[]>(`${this.apiUrl}`);
   }
 
 
   insertFournisseur(fournisseur : any){
-    return this.httpClient.post(this.apiUrl,fournisseur);
+    return this.httpClient.post(`${this.apiUrl}`,fournisseur);
   }
 
   deleteFournisseur(id : any){
-    return this.httpClient.delete(this.apiUrl+id);
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
   updateFournisseur(fournisseur : any,id : any){
-    return this.httpClient.put(this.apiUrl+id,JSON.stringify(fournisseur),this.httpOptions);
+    return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(fournisseur),this.httpOptions);
   }
   getFournisseurById(id:any){
-    return this.httpClient.get(this.apiUrl+id)
+    return this.httpClient.get(`${this.apiUrl}/`+id)
   }
 }

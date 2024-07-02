@@ -60,7 +60,7 @@ export class MaterielService {
     }
     return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(materiel),this.httpOptions);
   }
-  getTypeMaterielById(id:any):Observable<Materiel>{
+  getMaterielById(id:any):Observable<Materiel>{
     return this.httpClient.get<Materiel>(`${this.apiUrl}/`+id);
   }
 }

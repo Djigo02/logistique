@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TypeMateriel } from '../model/type-materiel';
 import { Observable } from 'rxjs';
+import {Materiel} from "../model/materiel";
 
 @Injectable({
   providedIn: 'root',
@@ -18,29 +19,29 @@ export class TypeMaterielService {
     }),
   };
 
-  getTypeMateriel() {
-    return this.httpClient.get(this.apiUrl);
+  getTypeMateriel():Observable<TypeMateriel[]> {
+    return this.httpClient.get<TypeMateriel[]>(`${this.apiUrl}`);
   }
 
   getAllTypeMateriels(): Observable<TypeMateriel[]> {
-    return this.httpClient.get<TypeMateriel[]>(this.apiUrl);
+    return this.httpClient.get<TypeMateriel[]>(`${this.apiUrl}`);
   }
 
   insertTypeMateriel(typeMateriel: TypeMateriel) {
-    return this.httpClient.post(this.apiUrl, typeMateriel, this.httpOptions)
+    return this.httpClient.post(`${this.apiUrl}`, typeMateriel, this.httpOptions)
   }
 
-  deleteTypeMateriel(id: number) {
-    return this.httpClient.delete(this.apiUrl + id);
+  deleteTypeMateriel(id: any) {
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
   updateTypeMateriel(typeMateriel: TypeMateriel, id: number) {
     return this.httpClient.put(
-      this.apiUrl + id,
+      `${this.apiUrl}/` + id,
       JSON.stringify(typeMateriel),
       this.httpOptions
     );
   }
-  getTypeMaterielById(id: number) {
-    return this.httpClient.get(this.apiUrl + id);
+  getTypeMaterielById(id: number):Observable<TypeMateriel> {
+    return this.httpClient.get<TypeMateriel>(`${this.apiUrl}/`+id);
   }
 }

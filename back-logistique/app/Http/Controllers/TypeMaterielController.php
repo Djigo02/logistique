@@ -121,8 +121,7 @@ class  TypeMaterielController extends Controller
        try {
         $typemat = TypeMateriel::findOrFail($id);
         if ($typemat!=null) {
-            $typemat->etat = 0;
-            $typemat->update();
+            $typemat->delete();
         }
         return response()->json("Type de materiel supprimer avec success");
     } catch (Exception $e) {

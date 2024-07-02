@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import {Materiel} from "../model/materiel";
 
 @Injectable({
   providedIn: 'root',
@@ -30,16 +31,17 @@ export class UserService {
   }
 
   deleteUser(id: any) {
-    return this.httpClient.delete(this.apiUrl + id);
+    return this.httpClient.delete(`${this.apiUrl}/`+ id);
   }
   updateUser(user: any, id: any) {
     return this.httpClient.put(
-      this.apiUrl + id,
+      `${this.apiUrl}/` + id,
       JSON.stringify(user),
       this.httpOptions
     );
   }
-  getUserById(id: any) {
-    return this.httpClient.get(this.apiUrl + id);
+  getUserById(id: any):Observable<User> {
+    return this.httpClient.get<User>(`${this.apiUrl}/` + id);
   }
+
 }

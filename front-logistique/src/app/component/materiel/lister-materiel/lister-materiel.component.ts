@@ -21,10 +21,9 @@ export class ListerMaterielComponent implements OnInit{
     this.materielSerice.deleteMateriel(id).subscribe(res =>{
       alert('materiel supprimer avec succces');
         this.getMaterielData();
-    },
-      error => {
-        console.error('Erreur lors de la modifiacation du matériel:', error);
-        alert('Une erreur est survenue lors de modifiacation du matériel.');
+    }, error => {
+        console.error('Erreur lors de la supression du matériel:', error);
+        alert('Erreur lors de la supression du matériel:');
       }
       );
   }
@@ -37,4 +36,5 @@ export class ListerMaterielComponent implements OnInit{
   ngOnInit() {
     this.getMaterielData();
   }
+
 }

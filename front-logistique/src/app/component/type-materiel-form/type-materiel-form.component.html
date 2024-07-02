@@ -1,0 +1,25 @@
+
+<form (ngSubmit)="onsubmit()">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Type materiel</h3>
+    </div>
+    <div class="card-body">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="typeMateriel.libelle"
+        placeholder="Type de materiel" name="libelle">
+
+    </div>
+
+    <div class="form-footer mt-2">
+      <button type="submit" class="btn btn-primary"
+      >Ajouter un type de materiel</button
+      >
+    </div>
+  </div>
+  </div>
+</form>
+
