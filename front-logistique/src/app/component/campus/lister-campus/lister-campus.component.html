@@ -7,48 +7,18 @@
       <div class="row">
         <div class="col-md-12 col-lg-12">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
               <h3 class="card-title">Listes des campus</h3>
+              <a
+                (click)="goToCampusForm()"
+                class="btn btn-primary"
+                role="button"
+              >Ajouter un campus</a>
             </div>
             <div class="card-body">
               <div class="">
-                <div class="row">
-                  <div class="col-md-12 col-xl-4">
-                    <div class="thumbnail">
-                      <a href="javascript:void(0)">
-                        <img
-                          src="../assets/images/media/19.jpg"
-                          alt="thumb1"
-                          class="thumbimg"
-                        />
-                      </a>
-                      <div class="caption">
-                        <h4><strong>Campus FASS</strong></h4>
-                        <p>
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.
-                        </p>
-                        <p class="d-flex justify-content-around">
-                          <a
-                            href="javascript:void(0)"
-                            class="btn btn-primary"
-                            role="button"
-                            >Voir materiels</a
-                          >
-                          <a
-                            href="javascript:void(0)"
-                            class="btn btn-secondary"
-                            role="button"
-                            >Voir salles</a
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- COL-END -->
-                  <div class="col-md-12 col-xl-4">
+                <div class="row" *ngIf="campusList">
+                  <div class="col-md-12 col-xl-4" *ngFor="let campus of campusList">
                     <div class="thumbnail">
                       <a href="javascript:void(0)">
                         <img
@@ -58,53 +28,18 @@
                         />
                       </a>
                       <div class="caption">
-                        <h4><strong>Campus DAKAR</strong></h4>
+                        <h4><strong>{{campus.nomCampus}}</strong></h4>
                         <p>
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.
+                          DEPARTEMENT : {{campus.departement}}, <br>
+                          TELEPHONE : {{campus.telephone}} <br>
+                          ADRESSE : {{campus.adresse}} <br>
                         </p>
                         <p class="d-flex justify-content-around">
                           <a
                             href="javascript:void(0)"
                             class="btn btn-primary"
                             role="button"
-                            >Voir materiels</a
-                          >
-                          <a
-                            href="javascript:void(0)"
-                            class="btn btn-secondary"
-                            role="button"
-                            >Voir salles</a
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- COL-END -->
-                  <div class="col-md-12 col-xl-4">
-                    <div class="thumbnail">
-                      <a href="javascript:void(0)">
-                        <img
-                          src="../assets/images/media/20.jpg"
-                          alt="thumb1"
-                          class="thumbimg"
-                        />
-                      </a>
-                      <div class="caption">
-                        <h4><strong>Campus Keur Massar</strong></h4>
-                        <p>
-                          sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.
-                        </p>
-                        <p class="d-flex justify-content-around">
-                          <a
-                            href="javascript:void(0)"
-                            class="btn btn-primary"
-                            role="button"
+                            data-bs-placement="top" data-bs-toggle="tooltip" title="Voir materiels"
                             >Voir materiels</a
                           >
                           <a
@@ -119,6 +54,11 @@
                   </div>
                   <!-- COL-END -->
                 </div>
+                <!--  NO CAMPUS AVAILABLE -->
+                <div class="row" *ngIf="!campusList">
+                  <div class="col-md-12 col-xl-12">
+                    <p>Aucun campus disponible.</p>
+                  </div>
               </div>
             </div>
           </div>
