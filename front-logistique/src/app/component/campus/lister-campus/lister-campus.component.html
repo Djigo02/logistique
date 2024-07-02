@@ -18,41 +18,41 @@
             <div class="card-body">
               <div class="">
                 <div class="row" *ngIf="campusList">
-                  <div class="col-md-12 col-xl-4" *ngFor="let campus of campusList">
-                    <div class="thumbnail">
-                      <a href="javascript:void(0)">
-                        <img
-                          src="../assets/images/media/20.jpg"
-                          alt="thumb1"
-                          class="thumbimg"
-                        />
-                      </a>
-                      <div class="caption">
-                        <h4><strong>{{campus.nomCampus}}</strong></h4>
-                        <p>
-                          DEPARTEMENT : {{campus.departement}}, <br>
-                          TELEPHONE : {{campus.telephone}} <br>
-                          ADRESSE : {{campus.adresse}} <br>
-                        </p>
-                        <p class="d-flex justify-content-around">
+                  <div class="col-xl-4 col-sm-6 col-md-6" *ngFor="let campus of campusList">
+                    <div class="card border p-0">
+                      <div class="card-header">
+                        <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
+                        <div class="card-options">
+                          <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                      </div>
+                      <div class="card-body text-center">
+                        <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg" style="background: url(&quot;../assets/images/users/15.jpg&quot;) center center;"></span>
+
+                        <p class="card-text">DEPARTEMENT : {{campus.departement}}</p>
+                        <p class="card-text">TELEPHONE : {{campus.telephone}}</p>
+                        <p class="card-text">ADRESSE : {{campus.adresse}}</p>
+                      </div>
+                      <div class="card-footer text-center">
+                        <div class="d-flex justify-content-around">
                           <a
                             href="javascript:void(0)"
                             class="btn btn-primary"
                             role="button"
                             data-bs-placement="top" data-bs-toggle="tooltip" title="Voir materiels"
-                            >Voir materiels</a
+                          >Voir materiels</a
                           >
                           <a
                             href="javascript:void(0)"
                             class="btn btn-secondary"
                             role="button"
-                            >Voir salles</a
+                          >Voir salles</a
                           >
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <!-- COL-END -->
+
                 </div>
                 <!--  NO CAMPUS AVAILABLE -->
                 <div class="row" *ngIf="!campusList">

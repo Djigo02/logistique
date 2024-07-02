@@ -29,4 +29,5 @@ export class SalleService {
   getSalleById(id:any): Observable<Salle>{
     return this.httpClient.get<Salle>(this.apiUrl+id,this.httpOptions);
   }
+
 }

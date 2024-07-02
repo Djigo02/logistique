@@ -99,4 +99,15 @@ class SalleController extends Controller
             return response()->json("Une erreur inattendue s'est produite : ".$e->getMessage());
        }
     }
+    /*
+     * Recuperer les salles d'un campus
+     */
+    public function getSallesByCampus($idCampus){
+        try {
+            $salles = Salle::where('idCampus', $idCampus)->get();
+            return response()->json($salles);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : ".$e->getMessage());
+        }
+    }
 }

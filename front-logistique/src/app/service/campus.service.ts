@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Campus} from "../model/campus"
 import {Observable} from "rxjs";
+import {Salle} from "../model/salle";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class CampusService {
   }
   getCampusById(id:any){
     return this.httpClient.get(this.apiUrl+id)
+  }
+
+  getSallesByCampusId(id:any):Observable<Salle[]>{
+    return this.httpClient.get<Salle[]>(`http://localhost:8000/api/sallesin/${id}`,this.httpOptions);
   }
 }
