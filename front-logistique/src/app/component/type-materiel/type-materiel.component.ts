@@ -33,4 +33,6 @@ export class TypeMaterielComponent implements OnInit {
   getTypeMateriels(){
     this.typeMateriels = this.typeMaterielService.getTypeMateriel();
   }
+
+  protected readonly onsubmit = onsubmit;
 }

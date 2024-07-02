@@ -14,6 +14,11 @@ import { ListerMaterielComponent } from './component/materiel/lister-materiel/li
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {MaterielEditComponent} from "./component/materiel/materiel-edit/materiel-edit.component";
+import {UtilisateurEditComponent} from "./component/utilisateur/utilisateur-edit/utilisateur-edit.component";
+import {ListeTypematerielComponent} from "./component/type-materiel/liste-typemateriel/liste-typemateriel.component";
+import {EdittypeMaterielComponent} from "./component/type-materiel/edittype-materiel/edittype-materiel.component";
+import {EditFournisseurComponent} from "./component/fournisseur/edit-fournisseur/edit-fournisseur.component";
+import {FournisseurComponent} from "./component/fournisseur/fournisseur.component";
 
 const routes: Routes = [
   // Route de base
@@ -36,7 +41,12 @@ const routes: Routes = [
       { path: 'matEdit/:id', component: MaterielEditComponent },
       { path: 'listescampus', component: ListerCampusComponent },
       { path: 'listesutilisateurs', component: ListerUtilisateurComponent },
+      { path: 'userEdit/:id', component: UtilisateurEditComponent },
       { path: 'listesmateriels', component: ListerMaterielComponent },
+      { path: 'listesTypemateriels', component: ListeTypematerielComponent },
+      { path: 'editTypemateriels/:id', component: EdittypeMaterielComponent },
+      { path: 'editFournisseur/:id', component: EditFournisseurComponent },
+      { path: 'fournisseur', component: FournisseurComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

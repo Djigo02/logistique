@@ -13,5 +13,7 @@ class Fournisseur extends Model
         'email',
         'telephone',
         'adresse',
+        'ninea',
+        'registreDeCommerce'
     ];
 }
