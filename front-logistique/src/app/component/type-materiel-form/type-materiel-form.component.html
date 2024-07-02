@@ -1,15 +1,16 @@
 
+<!--  <div class="card">-->
+<!--    <div class="card-header">-->
+<!--      <h3 class="card-title">Type materiel</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
 <form (ngSubmit)="onsubmit()">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Type materiel</h3>
-    </div>
-    <div class="card-body">
     <div class="form-group">
       <input
         type="text"
         class="form-control"
         [(ngModel)]="typeMateriel.libelle"
+        required
         placeholder="Type de materiel" name="libelle">
 
     </div>
@@ -19,7 +20,7 @@
       >Ajouter un type de materiel</button
       >
     </div>
-  </div>
-  </div>
 </form>
+<!--  </div>-->
+<!--  </div>-->
 
