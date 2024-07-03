@@ -29,4 +29,8 @@ export class ListerCampusComponent implements OnInit{
   goToCampusForm(){
     this.router.navigate(['/admin/campus']);
   }
+
+  goToSalles(id: any){
+    this.router.navigate(['/admin/sallesin',id]);
+  }
 }
