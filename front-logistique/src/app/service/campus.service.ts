@@ -30,8 +30,8 @@ export class CampusService {
   updateCampus(campus : Campus,id : any){
     return this.httpClient.put(this.apiUrl+id,JSON.stringify(campus),this.httpOptions);
   }
-  getCampusById(id:any){
-    return this.httpClient.get(this.apiUrl+id)
+  getCampusById(id:any):Observable<Campus>{
+    return this.httpClient.get<Campus>(this.apiUrl+id)
   }
 
   getSallesByCampusId(id:any):Observable<Salle[]>{
