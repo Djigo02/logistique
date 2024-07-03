@@ -23,15 +23,15 @@
                       <div class="card-header">
                         <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
                         <div class="card-options">
-                          <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                          <a href="javascript:void(0)" class="card-options-remove"><i class="fe fe-edit"></i></a>
+                          <a href="javascript:void(0)" class="card-options-remove"><i class="fe fe-x"></i></a>
                         </div>
                       </div>
                       <div class="card-body text-center">
-                        <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg" style="background: url(&quot;../assets/images/users/15.jpg&quot;) center center;"></span>
-
-                        <p class="card-text">DEPARTEMENT : {{campus.departement}}</p>
-                        <p class="card-text">TELEPHONE : {{campus.telephone}}</p>
-                        <p class="card-text">ADRESSE : {{campus.adresse}}</p>
+<!--                        <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg"></span>-->
+                        <p class="card-text">DEPARTEMENT : <strong>{{campus.departement}}</strong> </p>
+                        <p class="card-text">TELEPHONE : <strong>{{campus.telephone}}</strong> </p>
+                        <p class="card-text">ADRESSE : <strong>{{campus.adresse}}</strong> </p>
                       </div>
                       <div class="card-footer text-center">
                         <div class="d-flex justify-content-around">
@@ -68,4 +68,5 @@
       <!-- ! END Liste campus CLOSED -->
     </div>
   </div>
+</div>
 </div>

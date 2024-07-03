@@ -34,7 +34,8 @@ export class TypeMaterielService {
   deleteTypeMateriel(id: any) {
     return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
-  updateTypeMateriel(typeMateriel: TypeMateriel, id: number) {
+
+  updateTypeMateriel(typeMateriel: Object, id: number) {
     return this.httpClient.put(
       `${this.apiUrl}/` + id,
       JSON.stringify(typeMateriel),

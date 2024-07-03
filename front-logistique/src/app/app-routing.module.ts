@@ -19,6 +19,7 @@ import {ListeTypematerielComponent} from "./component/type-materiel/liste-typema
 import {EdittypeMaterielComponent} from "./component/type-materiel/edittype-materiel/edittype-materiel.component";
 import {EditFournisseurComponent} from "./component/fournisseur/edit-fournisseur/edit-fournisseur.component";
 import {FournisseurComponent} from "./component/fournisseur/fournisseur.component";
+import {SallesincampusComponent} from "./component/campus/sallesincampus/sallesincampus.component";
 
 const routes: Routes = [
   // Route de base
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'editTypemateriels/:id', component: EdittypeMaterielComponent },
       { path: 'editFournisseur/:id', component: EditFournisseurComponent },
       { path: 'fournisseur', component: FournisseurComponent },
+      {path: 'sallesin/:id', component: SallesincampusComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

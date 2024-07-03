@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {FournisseurService} from "../../service/fournisseur.service";
 import {TypeMaterielService} from "../../service/type-materiel.service";
 import {Fournisseur} from "../../model/fournisseur";
+import {TypeMateriel} from "../../model/type-materiel";
 
 
 @Component({
@@ -18,11 +19,13 @@ export class MaterielComponent implements OnInit {
 
   materiel! : any;
   fournisseur!:any;
+  typeMateriel!: TypeMateriel;
   constructor(private router : Router,private fournisseurService : FournisseurService){}
 
   ngOnInit(): void {
     this.materiel = new Materiel();
     this.fournisseur= new Fournisseur();
+    this.typeMateriel = new TypeMateriel();
   }
   insertFournisseur(){
     this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(
