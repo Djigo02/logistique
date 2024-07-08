@@ -34,7 +34,7 @@ export class SalleComponent implements OnInit {
         alert('Campus ajouté avec succès'+this.salle.nomSalle);
         this.salle.nomSalle = "";
         this.salle.capacite = "";
-        this.router.navigate(['/admin/campus']);
+        this.router.navigate(['/admin/sallesin',this.salle.idCampus]);
       },
       error => {
         console.log(this.salle);
