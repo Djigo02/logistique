@@ -33,4 +33,13 @@ export class ListerCampusComponent implements OnInit{
   goToSalles(id: any){
     this.router.navigate(['/admin/sallesin',id]);
   }
+
+  deleteCampus(id:any){
+    this.campusService.deleteCampus(id).subscribe(
+      () => {
+        console.log("Supprimer");
+        this.getCampus();
+      }
+    );
+  }
 }

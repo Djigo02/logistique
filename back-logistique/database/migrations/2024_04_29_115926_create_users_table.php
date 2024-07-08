@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('telephone',20);
             $table->string('adresse',100);
             $table->string('photo',250)->nullable();
-            $table->foreignId("idRole")->references("id")->on("roles");
+            $table->unsignedBigInteger('idRole')->nullable();
+            $table->foreign("idRole")->references("id")->on("roles")->onDelete("cascade");
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

@@ -30,4 +30,8 @@ export class SalleService {
     return this.httpClient.get<Salle>(this.apiUrl+id,this.httpOptions);
   }
 
+  deleteSalle(id:any){
+    return this.httpClient.delete(this.apiUrl+id);
+  }
+
 }

@@ -23,8 +23,10 @@ return new class extends Migration
             $table->date("dateEnregistrement");
             $table->string("etat");
             $table->string("image")->nullable();
-            $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");
-            $table->foreignId("idFournisseur")->references("id")->on("fournisseurs");
+            $table->unsignedBigInteger("idTypeMateriel")->nullable();
+            $table->unsignedBigInteger("idFournisseur")->nullable();
+            $table->foreign("idTypeMateriel")->references("id")->on("type_materiels")->onDelete("set null");
+            $table->foreign("idFournisseur")->references("id")->on("fournisseurs")->onDelete("set null");
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,4 +39,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('materiels');
     }
+
 };

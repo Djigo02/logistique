@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nomSalle', 100);
             $table->integer('capacite');
-            $table->foreignId("idCampus")->references("id")->on("campuses");
+            $table->unsignedBigInteger("idCampus")->nullable();
+            $table->foreign("idCampus")->references("id")->on("campuses")->cascadeOnDelete();
             $table->string("etat");
             $table->softDeletes();
             $table->timestamps();

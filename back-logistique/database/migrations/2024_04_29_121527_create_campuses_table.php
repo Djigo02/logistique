@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string("etat");
             $table->string("departement");
             $table->string("region");
-            $table->foreignId("idUser")->references("id")->on("users");
+            $table->unsignedBigInteger('idUser')->nullable();
+            $table->foreign("idUser")->references("id")->on("users")->onDelete("cascade");
             $table->softDeletes();
             $table->timestamps();
         });
