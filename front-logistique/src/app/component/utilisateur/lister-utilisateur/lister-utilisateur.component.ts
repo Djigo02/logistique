@@ -59,5 +59,8 @@ export class ListerUtilisateurComponent implements OnInit{
     });
   }
 
+  goToUserForm(){
+    this.router.navigate(['/admin/utilisateur']);
+  }
 
 }
