@@ -37,4 +37,8 @@ export class ListerMaterielComponent implements OnInit{
     this.getMaterielData();
   }
 
+  goToAdd(){
+    this.router.navigate(['/admin/materiel']);
+  }
+
 }
