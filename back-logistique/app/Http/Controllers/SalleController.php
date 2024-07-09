@@ -64,26 +64,29 @@ class SalleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Salle $salle)
     {
         $request->validate([
-            'libelle' => 'required|string'
+            'nomSalle' => 'required|string|max:255',
+            'capacite' => 'required|integer',
+            'idCampus' => 'required|integer|exists:campuses,id',
+            'etat' => 'required|string|max:255',
         ]);
-        // Modifier une salle
-        try {
-            $salle = Salle::findOrFail($id);
 
+        try {
             $salle->update([
                 'nomSalle' => $request->nomSalle,
                 'capacite' => $request->capacite,
                 'idCampus' => $request->idCampus,
                 'etat' => $request->etat,
             ]);
+
             return response()->json($salle);
-        } catch (Exception $e) {
-            return response()->json("Une erreur inattendue s'est produite : ".$e->getMessage());
+        } catch (\Exception $e) {
+            return response()->json(["error" => "Une erreur inattendue s'est produite : " . $e->getMessage()], 500);
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

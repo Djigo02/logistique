@@ -34,6 +34,8 @@ import { FournisseurFormComponent } from './component/fournisseur-form/fournisse
 import { SallesincampusComponent } from './component/campus/sallesincampus/sallesincampus.component';
 import { FormCampusComponent } from './component/campus/form-campus/form-campus.component';
 import { UpdateCampusComponent } from './component/campus/update-campus/update-campus.component';
+import { UpdateSalleComponent } from './component/salle/update-salle/update-salle.component';
+import { FormSalleComponent } from './component/salle/form-salle/form-salle.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { UpdateCampusComponent } from './component/campus/update-campus/update-c
     SallesincampusComponent,
     FormCampusComponent,
     UpdateCampusComponent,
+    UpdateSalleComponent,
+    FormSalleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TypeMaterielService],

@@ -34,4 +34,7 @@ export class SalleService {
     return this.httpClient.delete(this.apiUrl+id);
   }
 
+  updateSalle(salle : Salle){
+    return this.httpClient.put(this.apiUrl+salle.id,JSON.stringify(salle),this.httpOptions);
+  }
 }

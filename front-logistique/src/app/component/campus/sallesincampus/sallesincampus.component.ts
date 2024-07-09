@@ -44,4 +44,8 @@ export class SallesincampusComponent implements OnInit {
       alert('salle supprimé avec succès');
     })
   }
+
+  goToSalleUpdate(id:any){
+    this.router.navigate(['/admin/salles', id]);
+  }
 }
