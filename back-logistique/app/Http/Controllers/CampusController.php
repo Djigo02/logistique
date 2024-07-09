@@ -99,7 +99,7 @@ class CampusController extends Controller
                 // $leCampus->update();
 
                 $leCampus->update([
-                    'libelle' => $request->libelle,
+                    'nomCampus' => $request->nomCampus,
                     'telephone' => $request->telephone,
                     'adresse' => $request->adresse,
                     'idUser' => $request->idUser,

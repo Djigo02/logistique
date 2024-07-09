@@ -27,14 +27,15 @@ export class CampusService {
   deleteCampus(id : any){
     return this.httpClient.delete(this.apiUrl+id);
   }
-  updateCampus(campus : Campus,id : any){
-    return this.httpClient.put(this.apiUrl+id,JSON.stringify(campus),this.httpOptions);
-  }
   getCampusById(id:any):Observable<Campus>{
     return this.httpClient.get<Campus>(this.apiUrl+id)
   }
 
   getSallesByCampusId(id:any):Observable<Salle[]>{
     return this.httpClient.get<Salle[]>(`http://localhost:8000/api/sallesin/${id}`,this.httpOptions);
+  }
+
+  updateCampus(campus:Campus){
+    return this.httpClient.put(this.apiUrl+campus.id, JSON.stringify(campus), this.httpOptions);
   }
 }

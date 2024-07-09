@@ -42,4 +42,8 @@ export class ListerCampusComponent implements OnInit{
       }
     );
   }
+
+  goToUpdateCampus(id:any){
+    this.router.navigate(['/admin/update-campus',id]);
+  }
 }

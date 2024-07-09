@@ -10,8 +10,8 @@ import {Salle} from "../../model/salle";
   templateUrl: './salle.component.html',
   styleUrls: ['./salle.component.css']
 })
-export class SalleComponent implements OnInit {
 
+export class SalleComponent implements OnInit {
   campusList!:Campus[];
   salle!:Salle;
   ngOnInit(): void {

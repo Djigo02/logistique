@@ -32,6 +32,8 @@ import { EdittypeMaterielComponent } from './component/type-materiel/edittype-ma
 import { EditFournisseurComponent } from './component/fournisseur/edit-fournisseur/edit-fournisseur.component';
 import { FournisseurFormComponent } from './component/fournisseur-form/fournisseur-form.component';
 import { SallesincampusComponent } from './component/campus/sallesincampus/sallesincampus.component';
+import { FormCampusComponent } from './component/campus/form-campus/form-campus.component';
+import { UpdateCampusComponent } from './component/campus/update-campus/update-campus.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { SallesincampusComponent } from './component/campus/sallesincampus/salle
     EditFournisseurComponent,
     FournisseurFormComponent,
     SallesincampusComponent,
+    FormCampusComponent,
+    UpdateCampusComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TypeMaterielService],

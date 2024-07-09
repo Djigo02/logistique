@@ -23,7 +23,7 @@
                       <div class="card-header">
                         <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
                         <div class="card-options">
-                          <a href="javascript:void(0)" class="card-options-remove"><i class="fe fe-edit"></i></a>
+                          <a (click)="goToUpdateCampus(campus.id)" class="card-options-remove"><i class="fe fe-edit"></i></a>
                           <a (click)="deleteCampus(campus.id)" class="card-options-remove"><i class="fe fe-x"></i></a>
                         </div>
                       </div>
