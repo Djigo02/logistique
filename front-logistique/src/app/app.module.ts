@@ -36,6 +36,8 @@ import { FormCampusComponent } from './component/campus/form-campus/form-campus.
 import { UpdateCampusComponent } from './component/campus/update-campus/update-campus.component';
 import { UpdateSalleComponent } from './component/salle/update-salle/update-salle.component';
 import { FormSalleComponent } from './component/salle/form-salle/form-salle.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -71,7 +73,14 @@ import { FormSalleComponent } from './component/salle/form-salle/form-salle.comp
     UpdateSalleComponent,
     FormSalleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
+  ],
   providers: [TypeMaterielService],
   bootstrap: [AppComponent],
 })

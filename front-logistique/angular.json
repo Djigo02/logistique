@@ -26,7 +26,8 @@
               "src/assets/css/plugins.css",
               "src/assets/css/icons.css",
               "src/assets/switcher/css/switcher.css",
-              "src/assets/switcher/demo.css"
+              "src/assets/switcher/demo.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
