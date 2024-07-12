@@ -12875,7 +12875,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .irs-bar,
 .irs-bar-edge,
 .irs-slider {
-    background: url(../plugins/ion.rangeSlider/img/sprite-skin-simple.png) repeat-x;
+
+  background : url(../plugins/ion-rangeslider/img/sprite-skin-simple.png) repeat-x;
 }
 
 .irs {

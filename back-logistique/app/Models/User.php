@@ -26,6 +26,10 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public function affectations()
+    {
+        return $this->morphMany(Affectation::class, 'concerner');
+    }
     /**
      * The attributes that are mass assignable.
      *

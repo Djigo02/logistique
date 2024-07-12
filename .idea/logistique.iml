@@ -5,10 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/back-logistique/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/back-logistique/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/back-logistique/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/bacon/bacon-qr-code" />
@@ -96,9 +96,11 @@
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/spatie/backtrace" />
+      <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/spatie/error-solutions" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/spatie/flare-client-php" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/spatie/ignition" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/spatie/laravel-ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/stella-maris/clock" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/symfony/css-selector" />
       <excludeFolder url="file://$MODULE_DIR$/back-logistique/vendor/symfony/deprecation-contracts" />

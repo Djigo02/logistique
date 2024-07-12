@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Affectation extends Model
 {
     use HasFactory;
-    protected $fillable = ['assigned_at','idMateriel'];
 }

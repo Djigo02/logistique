@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Affectation;
 use App\Http\Requests\StoreAffectationRequest;
 use App\Http\Requests\UpdateAffectationRequest;
-use Exception;
 use Illuminate\Http\Request;
 
 class AffectationController extends Controller
@@ -15,55 +14,51 @@ class AffectationController extends Controller
      */
     public function index()
     {
-        try {
-            // Lister les affectations
-            $affectations = Affectation::all();
-            return response()->json($affectations);
-        } catch (Exception $e) {
-            return response()->json("Une erreur innattendue s'est produite ".$e->getMessage());
-        }
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         //
     }
 
     /**
-     * Inserer une nouvelle affectation.
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // Création d'une affectation
-        $request->validate([]);
+
+        $request->validate([
+            'concerne_id' => 'nullable|integer',
+            'nomTable' => 'nullable|string',
+            'quantite' => 'required|integer',
+            'idMateriel' => 'nullable|integer|exists:materiels,id',
+        ]);
+
         try {
-            // Enregistrez une nouvelle affectation
+            // Créer une nouvelle affectation
             $affectation = new Affectation();
-            $affectation->assigned_at = $request->assigned_at;
+            $affectation->concerne_id = $request->concerne_id;
+            $affectation->nomTable = $request->nomTable;
+            $affectation->quantite = $request->quantite;
             $affectation->idMateriel = $request->idMateriel;
             $affectation->save();
-            return response()->json($affectation);
+
+            return response()->json($affectation, 201);
         } catch (Exception $e) {
-            return response()->json("Une erreur innattendue s'est produite ".$e->getMessage());
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage(), 500);
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(int $affectation)
+    public function show(Affectation $affectation)
     {
-        // Afficher l'affectation
-        try {
-            // afficher l'affectation
-            $laAffectation = Affectation::findOrFail($affectation);
-            return response()->json($laAffectation);
-        } catch (Exception $e) {
-            return response()->json("Une erreur innattendue s'est produite ".$e->getMessage());
-        }
+        //
     }
 
     /**
@@ -77,37 +72,16 @@ class AffectationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $affectation)
+    public function update(UpdateAffectationRequest $request, Affectation $affectation)
     {
-        $request->validate([
-            'assigned_at' => 'required|integer',
-            'idMateriel' => 'required|integer'
-        ]);
-        // Modifier une affectation
-        try {
-            $laAffectation = Affectation::findOrFail($affectation);
-            $laAffectation->update([
-                'assigned_at' => $request->assigned_at,
-                'idMateriel' => $request->idMateriel
-            ]);
-            return response()->json($laAffectation);
-        } catch (Exception $e) {
-            return response()->json("Une erreur innattendue s'est produite ".$e->getMessage());
-        }
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $affectation)
+    public function destroy(Affectation $affectation)
     {
-        // Supprimer une affectation
-        try {
-            $laAffectation = Affectation::findOrFail($affectation);
-            $laAffectation->delete();
-            return response()->json("Affectation supprimée avec succès");
-        } catch (Exception $e) {
-            return response()->json("Une erreur innattendue s'est produite ".$e->getMessage());
-        }
+        //
     }
 }

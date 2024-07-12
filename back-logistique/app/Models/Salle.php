@@ -14,4 +14,8 @@ class Salle extends Model
     public function campus(): BelongsTo{
         return $this->belongsTo(Campus::class);
     }
+    public function affectations()
+    {
+        return $this->morphMany(Affectation::class, 'concerne');
+    }
 }
