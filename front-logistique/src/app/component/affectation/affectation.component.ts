@@ -12,6 +12,7 @@ import {Salle} from "../../model/salle";
 import {User} from "../../model/user";
 import {UserService} from "../../service/user.service";
 import {Affectation} from "../../model/affectation";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-affectation',
@@ -28,18 +29,55 @@ export class AffectationComponent implements OnInit{
   affectation!: Affectation;
   affectations :Affectation[] = [];
 
-  constructor(private  affectationService:AffectationService,private userService:UserService,private salleService: SalleService ,private typeMatService : TypeMaterielService,private campusService:CampusService,private materielService : MaterielService ,private  router:Router) {
+  constructor(private notification: ToastrService,private  affectationService:AffectationService,private userService:UserService,private salleService: SalleService ,private typeMatService : TypeMaterielService,private campusService:CampusService,private materielService : MaterielService ,private  router:Router) {
   }
 
 
 
-  onsubmit(){
-    this.affectationService.insertAffectation(this.affectation).subscribe(res =>{
-      this.getAllAffectation();
-      console.table(this.typeMateriels);
-      alert(`Type materiel ajoutee : ${this.affectation.nomTable}`);
-    });
+  onSubmitForCampus(){
+    // this.affectationService.insertAffectation(this.affectation).subscribe(res =>{
+    //   this.getAllAffectation();
+    //   console.table(this.typeMateriels);
+    //   alert(`Type materiel ajoutee : ${this.affectation.nomTable}`);
+    // });
+    this.affectation.nomTable = "campuses";
+    this.affectationService.insertAffectation(this.affectation).subscribe(
+      next =>{
+        this.notification.success(`L'affectation a ete effectuer avec succes`,"Operation reussie")
+      },
+      error => {
+        this.notification.error("Erreur lors de l'affection veuillez reessayer ulterieurement !","Echec de l'operation")
+      }
+    );
+    // Reinitialiser le formulaire
+    this.resetForm();
+  }
 
+  onSubmitForSalle(){
+    this.affectation.nomTable = "salles";
+    this.affectationService.insertAffectation(this.affectation).subscribe(
+      next =>{
+        this.notification.success(`L'affectation a ete effectuer avec succes`,"Operation reussie")
+      },
+      error => {
+        this.notification.error("Erreur lors de l'affection veuillez reessayer ulterieurement !","Echec de l'operation")
+      }
+    );
+    // Reinitialiser le formulaire
+    this.resetForm();
+  }
+  onSubmitForPersonnel(){
+    this.affectation.nomTable = "users";
+    this.affectationService.insertAffectation(this.affectation).subscribe(
+      next =>{
+        this.notification.success(`L'affectation a ete effectuer avec succes`,"Operation reussie")
+      },
+      error => {
+        this.notification.error("Erreur lors de l'affection veuillez reessayer ulterieurement !","Echec de l'operation")
+      }
+    );
+    // Reinitialiser le formulaire
+    this.resetForm();
   }
   getAllAffectation(){
     this.affectationService.getAffectation().subscribe(res =>{
@@ -101,5 +139,12 @@ export class AffectationComponent implements OnInit{
     this.getSalles(this.onCampusChange(event));
     this.getUser();
     this.affectation = new Affectation();
+  }
+
+  resetForm(){
+    this.affectation.nomTable = "";
+    this.affectation.quantite = 0;
+    this.affectation.idMateriel = 0;
+    this.affectation.concerne_id = 0;
   }
 }
