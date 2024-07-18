@@ -15,8 +15,5 @@ class Campus extends Model
     public function users(): BelongsTo{
         return $this->belongsTo(User::class);
     }
-    public function affectations()
-    {
-        return $this->morphMany(Affectation::class, 'concerne');
-    }
+
 }

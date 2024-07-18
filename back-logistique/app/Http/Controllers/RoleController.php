@@ -42,7 +42,6 @@ class RoleController extends Controller
         try {
             $role=new Role();
             $role->libelle = $request->libelle;
-            $role->etat=1;
             $role->save();
             return response()->json(['message'=>"Role Added", 'roleData'=>$role,"statusCode"=>200]);
         }catch(Exception $e){
@@ -90,7 +89,6 @@ class RoleController extends Controller
         try{
             $role = Role::find($id);
             $role->libelle = $request->libelle;
-            $role->etat=$request->etat;
             $role->update();
             return response()->json(['message'=>"Role Update", 'roleData'=>$role,"statusCode"=>200]);
         }catch(Exception $e){

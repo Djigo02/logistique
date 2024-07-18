@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {TypeMateriel} from "../model/type-materiel";
+import {Affectation} from "../model/affectation";
 
 @Injectable({
   providedIn: 'root'
@@ -8,27 +11,30 @@ export class AffectationService {
 
   constructor(private httpClient: HttpClient) { }
 
+   apiUrl:string = "http://127.0.0.1:8000/api/affectations"
+
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
     }),
   };
 
-  getAffectation(){
-    return this.httpClient.get('http://localhost:8080/api/affectations/');
+  getAffectation():Observable<Affectation[]>{
+    return this.httpClient.get<Affectation[]>(`${this.apiUrl}`);
   }
 
   insertAffectation(affectation : any){
-    return this.httpClient.post('http://localhost:8080/api/affectations/',affectation);
+    return this.httpClient.post(`${this.apiUrl}`,affectation,this.httpOptions);
   }
 
   deleteAffectation(id : any){
-    return this.httpClient.delete('http://localhost:8080/api/affectations/'+id);
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
   updateAffectation(affectation : any,id : any){
-    return this.httpClient.put('http://localhost:8080/api/affectations/'+id,JSON.stringify(affectation),this.httpOptions);
+    return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(affectation),this.httpOptions);
   }
-  getAffectationById(id:any){
-    return this.httpClient.get('http://localhost:8080/api/affectations/'+id)
+  getAffectationById(id:any):Observable<Affectation>{
+    return this.httpClient.get<Affectation>(`${this.apiUrl}/`+id)
   }
+
 }

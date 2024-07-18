@@ -22,6 +22,17 @@ class MaterielController extends Controller
         }
     }
 
+    public function getmatbytypemat(string $id)
+    {
+        try {
+            // Lister les matériels
+            $materiels = Materiel::where('idTypeMateriel',$id)->get();
+            return response()->json($materiels);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
+        }
+    }
+
     public function update(Request $request, string $id)
     {
         try{

@@ -40,5 +40,7 @@ export class ListeTypematerielComponent implements OnInit{
   redirectTo(id : number){
     this.router.navigate(['/admin/editTypemateriels',id]);
   }
-
+  goToTMForm(){
+    this.router.navigate(['/admin/typeMateriel'])
+  }
 }

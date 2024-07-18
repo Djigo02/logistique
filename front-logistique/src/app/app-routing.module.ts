@@ -22,6 +22,7 @@ import {FournisseurComponent} from "./component/fournisseur/fournisseur.componen
 import {SallesincampusComponent} from "./component/campus/sallesincampus/sallesincampus.component";
 import {UpdateCampusComponent} from "./component/campus/update-campus/update-campus.component";
 import {UpdateSalleComponent} from "./component/salle/update-salle/update-salle.component";
+import {AffectationComponent} from "./component/affectation/affectation.component";
 
 const routes: Routes = [
   // Route de base
@@ -51,8 +52,9 @@ const routes: Routes = [
       { path: 'editFournisseur/:id', component: EditFournisseurComponent },
       { path: 'fournisseur', component: FournisseurComponent },
       {path: 'sallesin/:id', component: SallesincampusComponent },
-      {path: 'salles/:id', component: UpdateSalleComponent },
+      {path: 'editSalle/:id', component: UpdateSalleComponent },
       {path: 'update-campus/:id', component: UpdateCampusComponent },
+      {path: 'affectation',component:AffectationComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

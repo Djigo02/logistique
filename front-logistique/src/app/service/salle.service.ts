@@ -22,6 +22,10 @@ export class SalleService {
     return this.httpClient.get<Salle[]>(this.apiUrl);
   }
 
+  getSalleByCampus(id : number):Observable<Salle[]>{
+    return this.httpClient.get<Salle[]>(`http://127.0.0.1:8000/api/sallesin/`+id);
+  }
+
   insertSalle(salle : Salle){
     return this.httpClient.post(this.apiUrl,salle,this.httpOptions);
   }

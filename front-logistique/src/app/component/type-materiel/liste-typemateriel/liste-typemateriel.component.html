@@ -3,7 +3,7 @@
     <!-- CONTAINER -->
     <div class="main-container container-fluid">
       <div class="row">
-        <h3>User</h3>
+        <h3>Type Materiel</h3>
       </div>
       <!-- ! Row Tables -->
       <div class="row">
@@ -11,6 +11,11 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Liste des type materiel</h3>
+              <a
+                (click)="goToTMForm()"
+                class="btn btn-primary left"
+                role="button"
+              >Ajouter un campus</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

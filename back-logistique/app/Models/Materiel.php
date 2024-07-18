@@ -21,4 +21,8 @@ class Materiel extends Model
         'image',
         'idTypeMateriel'
     ];
+    public function typeMateriel()
+    {
+        return $this->belongsTo(TypeMateriel::class, 'idTypeMateriel');
+    }
 }

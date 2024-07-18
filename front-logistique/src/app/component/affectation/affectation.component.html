@@ -1,0 +1,203 @@
+<div class="main-content app-content mt-5 pt-9">
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <div class="row">
+        <h3>Affectation</h3>
+      </div>
+      <!-- ! Row Tables -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Affectation</h3>
+            </div>
+            <div class="card-body">
+              <div class="card-pay">
+                <ul class="tabs-menu nav">
+                  <li class=""><a href="#tab20" class="active" data-bs-toggle="tab"><i class="fa university"></i> Campus</a></li>
+                  <li><a href="#tab21" data-bs-toggle="tab" class=""><i class="fas fa-chalkboard"></i>  Salle </a></li>
+                  <li><a href="#tab22" data-bs-toggle="tab" class=""><i class="fa fa-user-plus"></i> Personnel</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active show" id="tab20">
+                    <div class="bg-danger-transparent-2 text-danger py-2 mb-4" role="alert">Please Enter Valid Details</div>
+                    <form (ngSubmit)="onsubmit()">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Affecter un  materiel a un campus</h3>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <!-- Concerne -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Campus <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2"  required [(ngModel)]="affectation.concerne_id" name="concerne_id"  >
+                                  <option selected>Veuillez choisir le campus</option>
+                                  <option *ngFor="let camp of campus" value="{{camp.id}}" > {{camp.nomCampus}}  </option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- Reference -->
+                            <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Quantite <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="Reference" required  name="quantite"  />
+
+                              </div>
+                            </div>
+                            <!-- Type materiel -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Type Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2"  (change)="onTypeMaterielChange($event)" name="typeMateriel" >
+                                  <option selected>Veuillez choisir le Type Materiel</option>
+                                  <option *ngFor="let tm of typeMateriels " value="{{tm.id}}">{{tm.libelle}}</option>
+
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label"> Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="idMateriel" >
+                                  <option selected>Veuillez choisir le Materiel</option>
+                                  <option *ngFor="let mat of materiel"  value="{{mat.id}}" >{{mat.description}}</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <!-- Bouton Ajouter -->
+                            <div class="form-footer mt-2">
+                              <button href="javascript:void(0)" type="submit" class="btn btn-primary">Enregistrer  materiel</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="tab21">
+                    <form>
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Affecter un  materiel a une salle</h3>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <!-- Concerne -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Campus <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="campus" (change)="onCampusChange($event)"  >
+                                  <option selected>Veuillez choisir le campus</option>
+                                  <option *ngFor="let camp of campus" value="{{camp.id}}"> {{camp.nomCampus}}</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Salle <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="concerne_id" >
+                                  <option selected>Veuillez choisir la salle</option>
+                                  <option *ngFor="let sal of salle" value="{{sal.id}}">{{sal.nomSalle}} </option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- Reference -->
+                            <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Quantite <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="Reference" name="quantite"/>
+                              </div>
+                            </div>
+                            <!-- Type materiel -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Type Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" (change)="onTypeMaterielChange($event)"  name="typeMateriel" >
+                                  <option selected>Veuillez choisir le Type Materiel</option>
+                                  <option *ngFor="let tm of typeMateriels " value="{{tm.id}}">{{tm.libelle}}</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label"> Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="idMateriel" >
+                                  <option selected>Veuillez choisir le Materiel</option>
+                                  <option *ngFor="let mat of materiel" value="{{mat.id}}" >{{mat.description}}</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <!-- Bouton Ajouter -->
+                            <div class="form-footer mt-2">
+                              <button href="javascript:void(0)" type="submit" class="btn btn-primary">Enregistrer  materiel</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form></div>
+                  <div class="tab-pane" id="tab22">
+                    <form>
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Affecter un  materiel a un campus</h3>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <!-- Concerne -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Utilisateur <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="concerne_id" id="" >
+                                  <option selected>Veuillez choisir l'utilisateur </option>
+                                  <option  *ngFor="let us of user" value="{{us.id}}">{{us.prenom}} {{us.nom}} </option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- Reference -->
+                            <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Quantite <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="Reference" name="quantite"/>
+                              </div>
+                            </div>
+                            <!-- Type materiel -->
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label">Type Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" (change)="onTypeMaterielChange($event)" name="typeMateriel" >
+                                  <option selected>Veuillez choisir le Type Materiel</option>
+                                  <option *ngFor="let tm of typeMateriels " value="{{tm.id}}">{{tm.libelle}}</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="form-label"> Materiel <span class="text-red">*</span></label>
+                                <select class="form-control form-select select2" name="idMateriel" >
+                                  <option selected>Veuillez choisir le Materiel</option>
+                                  <option *ngFor="let mat of materiel" value="{{mat.id}}" >{{mat.description}}</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <!-- Bouton Ajouter -->
+                            <div class="form-footer mt-2">
+                              <button href="javascript:void(0)" type="submit" class="btn btn-primary">Enregistrer  materiel</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

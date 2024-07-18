@@ -38,6 +38,7 @@ import { UpdateSalleComponent } from './component/salle/update-salle/update-sall
 import { FormSalleComponent } from './component/salle/form-salle/form-salle.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { AffectationComponent } from './component/affectation/affectation.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {ToastrModule} from "ngx-toastr";
     UpdateCampusComponent,
     UpdateSalleComponent,
     FormSalleComponent,
+    AffectationComponent,
   ],
   imports: [
     BrowserModule,

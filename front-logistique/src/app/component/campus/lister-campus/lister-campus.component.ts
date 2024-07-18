@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {CampusService} from "../../../service/campus.service";
 import {Campus} from "../../../model/campus";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lister-campus',
@@ -37,7 +38,13 @@ export class ListerCampusComponent implements OnInit{
   deleteCampus(id:any){
     this.campusService.deleteCampus(id).subscribe(
       () => {
-        console.log("Supprimer");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Campus supprimer  avec succès",
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.getCampus();
       }
     );

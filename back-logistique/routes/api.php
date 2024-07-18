@@ -49,3 +49,5 @@ Route::resource('affectations',\App\Http\Controllers\AffectationController::clas
 
 //Route pour recuperer les salles d'un campus
 Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
+Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
+

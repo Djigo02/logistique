@@ -3,7 +3,7 @@ import {Campus} from "../../../model/campus";
 import {Salle} from "../../../model/salle";
 import {CampusService} from "../../../service/campus.service";
 import {SalleService} from "../../../service/salle.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-salle',
@@ -15,6 +15,7 @@ export class FormSalleComponent implements OnInit {
   campusList!:Campus[];
   @Input() salle!:Salle;
   ngOnInit(): void {
+    this.isAddSalle =  this.router.url.includes('salle');
     this.salle = new Salle();
     this.campusService.getCampus().subscribe(data => {
       this.campusList = data;
@@ -25,7 +26,7 @@ export class FormSalleComponent implements OnInit {
   constructor(
     private campusService: CampusService,
     private salleService: SalleService,
-    private router: Router,
+    private router: Router,private  actRouter:ActivatedRoute
   ) { }
 
   onSubmit(){

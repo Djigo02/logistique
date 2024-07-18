@@ -11,11 +11,17 @@ export class MaterielService {
   apiUrl:string = 'http://127.0.0.1:8000/api/materiels';
   constructor(private httpClient : HttpClient) {}
 
+  getMatByTypeMat(id: any): Observable<Materiel[]> {
+    return this.httpClient.get<Materiel[]>(`http://127.0.0.1:8000/api/getmatbytypemat/`+id);
+  }
+
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
     }),
   };
+
+
 
   getMateriel():Observable<Materiel[]>{
     return this.httpClient.get<Materiel[]>(this.apiUrl);
