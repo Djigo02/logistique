@@ -143,8 +143,8 @@ export class AffectationComponent implements OnInit{
 
   resetForm(){
     this.affectation.nomTable = "";
-    this.affectation.quantite = 0;
-    this.affectation.idMateriel = 0;
-    this.affectation.concerne_id = 0;
+    this.affectation.quantite = null
+    this.affectation.idMateriel = null;
+    this.affectation.concerne_id = null;
   }
 }
