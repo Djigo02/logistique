@@ -25,4 +25,5 @@ class Materiel extends Model
     {
         return $this->belongsTo(TypeMateriel::class, 'idTypeMateriel');
     }
+
 }

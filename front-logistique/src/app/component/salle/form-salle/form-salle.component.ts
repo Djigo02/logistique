@@ -4,6 +4,7 @@ import {Salle} from "../../../model/salle";
 import {CampusService} from "../../../service/campus.service";
 import {SalleService} from "../../../service/salle.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-form-salle',
@@ -26,29 +27,27 @@ export class FormSalleComponent implements OnInit {
   constructor(
     private campusService: CampusService,
     private salleService: SalleService,
-    private router: Router,private  actRouter:ActivatedRoute
+    private router: Router,private  actRouter:ActivatedRoute,private notification: ToastrService
   ) { }
 
   onSubmit(){
     if (this.isAddSalle){
       this.salleService.insertSalle(this.salle).subscribe(
         response => {
-          alert('Campus ajouté avec succès'+this.salle.nomSalle);
+          this.notification.success(`Salle  a ete ajoute avec succes`,"Operation reussie");
           this.salle.nomSalle = "";
           this.salle.capacite = "";
           this.router.navigate(['/admin/sallesin',this.salle.idCampus]);
         },
         error => {
-          console.log(this.salle);
-          console.log(error);
+          this.notification.success(`Erreur lors de l'ajout de la salle`,"Operation echoue");
         }
       );
     }else{
       this.salleService.updateSalle(this.salle).subscribe(res =>{
           this.router.navigate(['admin/sallesin',this.salle.idCampus]);
         },error => {
-          console.error('Erreur lors de la modifiacation de la salle:', error);
-          alert('Une erreur est survenue lors de modifiacation de la salle.');
+        this.notification.success(`Erreur lors de l'ajout de la salle`,"Operation echoue");
         }
       );
     }

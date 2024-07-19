@@ -15,5 +15,8 @@ class Campus extends Model
     public function users(): BelongsTo{
         return $this->belongsTo(User::class);
     }
-
+    public function salles()
+    {
+        return $this->hasMany(Salle::class, 'idCampus'); // Assurez-vous que 'id_candidat' est le nom correct de la clé étrangère
+    }
 }

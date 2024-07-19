@@ -10,4 +10,9 @@ class TypeMateriel extends Model
     use HasFactory;
     protected $table = 'type_materiels';
     protected $fillable = ['libelle','etat'];
+
+    public function materiels()
+    {
+        return $this->hasMany(Materiel::class,'idTypeMateriel');
+    }
 }

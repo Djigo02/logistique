@@ -4,6 +4,7 @@ import {UserService} from 'src/app/service/user.service';
 import {Router} from "@angular/router";
 import {Fournisseur} from "../../../model/fournisseur";
 import {FournisseurService} from "../../../service/fournisseur.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-lister-utilisateur',
@@ -14,7 +15,7 @@ export class ListerUtilisateurComponent implements OnInit{
 
   utilisateurs : User[] = [];
   fournisseurs : Fournisseur[] = [];
-  constructor(private userService:UserService,private router:Router,private fournisseurService : FournisseurService) {
+  constructor(private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
   }
   ngOnInit() {
     this.getUserData();
@@ -28,21 +29,19 @@ export class ListerUtilisateurComponent implements OnInit{
   }
   delete(id:number){
     this.userService.deleteUser(id).subscribe(res =>{
-      alert('materiel supprimer avec succces');
+        this.notification.success("materiel supprimer avec succcess","Operation reussie");
       this.getUserData();
     }, error => {
-        console.error('Erreur lors de la suppression du matériel:', error);
-        alert('Une erreur est survenue lors de suppression du matériel.');
+      this.notification.success("Une erreur est survenue lors de suppression du matériel.","Operation echouee");
       }
     );
   }
   deleteF(id:number){
     this.fournisseurService.deleteFournisseur(id).subscribe(res =>{
-      alert('materiel supprimer avec succces');
+        this.notification.success("fournisseur  supprimer avec succcess","Operation reussie");
       this.getFournisseurData();
     }, error => {
-        console.error('Erreur lors de la suppression du matériel:', error);
-        alert('Une erreur est survenue lors de suppression du matériel.');
+      this.notification.success("Une erreur est survenue lors de suppression du fournisseur.","Operation echouee");
       }
     );
   }

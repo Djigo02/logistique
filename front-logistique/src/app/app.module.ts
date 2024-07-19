@@ -39,6 +39,7 @@ import { FormSalleComponent } from './component/salle/form-salle/form-salle.comp
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { AffectationComponent } from './component/affectation/affectation.component';
+import { ListAffectationComponent } from './component/affectation/list-affectation/list-affectation.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { AffectationComponent } from './component/affectation/affectation.compon
     UpdateSalleComponent,
     FormSalleComponent,
     AffectationComponent,
+    ListAffectationComponent,
   ],
   imports: [
     BrowserModule,

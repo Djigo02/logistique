@@ -4,6 +4,7 @@ import {Role} from "../../model/role";
 import {RoleService} from "../../service/role.service";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-utilisateur-form',
@@ -20,7 +21,8 @@ export class UtilisateurFormComponent implements OnInit{
   constructor(
     private roleService: RoleService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private notification : ToastrService,
   ) {}
 
   ngOnInit() {
@@ -59,8 +61,7 @@ export class UtilisateurFormComponent implements OnInit{
         console.log(res);
       },
     });
-    alert(`Utilisateur ajoutee : ${this.user.email}`);
-    this.router.navigate(['admin/listesutilisateurs']);
+    this.notification.success("Utilisateur ajoutee avec succcess","Operation reussie");
   }
   updateUser(){
     this.userService.updateUser(this.user,this.user.id).subscribe(res =>{
@@ -68,8 +69,8 @@ export class UtilisateurFormComponent implements OnInit{
       this.router.navigate(['admin/listesutilisateurs']);
 
     },error => {
-      console.error('Erreur lors de la modifiacation du matériel:', error);
-      alert('Une erreur est survenue lors de modifiacation du matériel.');
+      this.notification.success("Erreur lors de la modifiacation de l'utilisateur","Operation echouee");
+
     }
   );
   }

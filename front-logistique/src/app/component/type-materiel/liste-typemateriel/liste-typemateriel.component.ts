@@ -3,6 +3,7 @@ import {TypeMateriel} from "../../../model/type-materiel";
 import {TypeMaterielService} from "../../../service/type-materiel.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-liste-typemateriel',
@@ -14,7 +15,7 @@ export class ListeTypematerielComponent implements OnInit{
   typemateriels:TypeMateriel[]=[];
   typeMateriel!:TypeMateriel;
 
-  constructor(private typematerielService:TypeMaterielService,private router:Router) {
+  constructor(private typematerielService:TypeMaterielService,private router:Router,private notification:ToastrService) {
   }
   ngOnInit() {
     this.getDataTypeMateriel();
@@ -29,23 +30,11 @@ export class ListeTypematerielComponent implements OnInit{
   }
   delete(id:any){
     this.typematerielService.deleteTypeMateriel(id).subscribe(res =>{
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: " Type materiel supprimer avec success ",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        this.notification.success(`type materiel ajoute avec success`,"Operation success");
       this.getDataTypeMateriel();
     },
       error => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: " probleme lors de la suppression ",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        this.notification.success(`erreur lors de l'ajout du  fournisseur `,"Operation echouee");
       }
       );
   }

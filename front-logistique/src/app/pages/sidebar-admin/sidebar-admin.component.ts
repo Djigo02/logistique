@@ -54,8 +54,8 @@ export class SidebarAdminComponent {
   goToUsers(){
     this.router.navigate(['/admin/utilisateur']);
   }
-  goToAddAffectation(){
-    this.router.navigate(['/admin/affectation'])
+  goToAffectation(){
+    this.router.navigate(['/admin/listAffectation'])
   }
 
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Affectation extends Model
 {
     use HasFactory;
+    protected $fillable =['concerne_id','nomTable','quantite','idMateriel','created_at'];
+
+
 }

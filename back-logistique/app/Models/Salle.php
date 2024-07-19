@@ -11,8 +11,10 @@ class Salle extends Model
     use HasFactory;
 
     protected $fillable = ['nomSalle','capacite','idCampus','etat'];
-    public function campus(): BelongsTo{
-        return $this->belongsTo(Campus::class);
+
+    public function campuses()
+    {
+        return $this->belongsTo(Campus::class, 'idCampus'); // Assurez-vous que 'id_candidat' est le nom correct de la clé étrangère
     }
 
 }

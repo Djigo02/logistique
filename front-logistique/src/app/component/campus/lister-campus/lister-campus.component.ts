@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {CampusService} from "../../../service/campus.service";
 import {Campus} from "../../../model/campus";
 import Swal from "sweetalert2";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-lister-campus',
@@ -17,7 +18,7 @@ export class ListerCampusComponent implements OnInit{
     this.getCampus();
   }
 
-  constructor(private router:Router, private campusService:CampusService) {
+  constructor(private router:Router, private campusService:CampusService,private notification: ToastrService) {
   }
 
   getCampus(){
@@ -38,13 +39,7 @@ export class ListerCampusComponent implements OnInit{
   deleteCampus(id:any){
     this.campusService.deleteCampus(id).subscribe(
       () => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Campus supprimer  avec succès",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        this.notification.success(`Campus  a ete supprime avec succes`,"Operation reussie")
         this.getCampus();
       }
     );

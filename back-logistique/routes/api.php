@@ -46,8 +46,8 @@ Route::resource('salles',SalleController::class);
 Route::resource('materiels',MaterielController::class);
 Route::resource('fournisseurs',\App\Http\Controllers\FournisseurController::class);
 Route::resource('affectations',\App\Http\Controllers\AffectationController::class);
-
 //Route pour recuperer les salles d'un campus
 Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
 Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
+Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\AffectationController::class, 'getAllAffectationForNT']);
 

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Fournisseur} from "../../model/fournisseur";
 import {FournisseurService} from "../../service/fournisseur.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-fournisseur-form',
@@ -13,7 +14,7 @@ export class FournisseurFormComponent implements OnInit{
   @Input()fournisseur!:Fournisseur;
   founisseurs : Fournisseur[]=[];
   isAddForm!:boolean;
-  constructor(private founisseurService:FournisseurService,private  router:Router) {
+  constructor(private founisseurService:FournisseurService,private  router:Router,private notification :ToastrService) {
   }
   onSubmit(){
     if(this.isAddForm){
@@ -28,7 +29,7 @@ export class FournisseurFormComponent implements OnInit{
         console.log(res);
       },
     });
-    alert(`Fournisseur ajoutee : ${this.fournisseur.nom}`);
+    this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
     this.router.navigate(['admin/listesutilisateurs']);
   }
   updateFournisseur(){

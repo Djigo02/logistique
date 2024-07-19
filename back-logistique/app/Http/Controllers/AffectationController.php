@@ -32,6 +32,11 @@ class AffectationController extends Controller
         }
     }
 
+    public function getAllAffectationForNT($nomtabl){
+        $affectation = Affectation::where('nomTable',$nomtabl)->get();
+        return response()->json($affectation);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -23,6 +23,7 @@ import {SallesincampusComponent} from "./component/campus/sallesincampus/sallesi
 import {UpdateCampusComponent} from "./component/campus/update-campus/update-campus.component";
 import {UpdateSalleComponent} from "./component/salle/update-salle/update-salle.component";
 import {AffectationComponent} from "./component/affectation/affectation.component";
+import {ListAffectationComponent} from "./component/affectation/list-affectation/list-affectation.component";
 
 const routes: Routes = [
   // Route de base
@@ -55,6 +56,7 @@ const routes: Routes = [
       {path: 'editSalle/:id', component: UpdateSalleComponent },
       {path: 'update-campus/:id', component: UpdateCampusComponent },
       {path: 'affectation',component:AffectationComponent},
+      {path: 'listAffectation',component:ListAffectationComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

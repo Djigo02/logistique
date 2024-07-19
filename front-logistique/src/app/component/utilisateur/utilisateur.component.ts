@@ -4,6 +4,7 @@ import { Role } from 'src/app/model/role';
 import { User } from 'src/app/model/user';
 import { RoleService } from 'src/app/service/role.service';
 import { UserService } from 'src/app/service/user.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-utilisateur',
@@ -17,7 +18,8 @@ export class UtilisateurComponent implements OnInit {
   constructor(
     private roleService: RoleService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private notification:ToastrService,
   ) {}
 
   ngOnInit() {
@@ -37,10 +39,10 @@ export class UtilisateurComponent implements OnInit {
   handleSubmit() {
     this.userService.insertUser(this.user).subscribe({
       next: (res) => {
-        console.log(res);
+
       },
     });
-    alert(`Utilisateur ajoutee : ${this.user.email}`);
+    this.notification.success("user  a ete ajoute avec succes","Operation reussie");
     this.router.navigate(['/admin/listesutilisateurs']);
   }
 }

@@ -26,10 +26,11 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    public function affectations()
+    public function roles()
     {
-        return $this->morphMany(Affectation::class, 'concerner');
+        $this->belongsTo(Role::class,'idRole');
     }
+
     /**
      * The attributes that are mass assignable.
      *

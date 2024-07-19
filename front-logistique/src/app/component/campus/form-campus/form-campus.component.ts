@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CampusService} from "../../../service/campus.service";
 import {UserService} from "../../../service/user.service";
 import Swal from 'sweetalert2';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-form-campus',
@@ -17,30 +18,7 @@ export class FormCampusComponent {
   responsables!: User[];
   isAddForm !: boolean;
 
-  validateForm(): boolean {
-    const { nomCampus, adresse, region, departement, telephone, idUser } = this.campus;
 
-    const messages = [];
-
-    if (!nomCampus) messages.push(' "Nom campus"  obligatoire.');
-    if (!adresse) messages.push('"Adresse"  obligatoire.');
-    if (!region) messages.push(' "Région"  obligatoire.');
-    if (!departement) messages.push('  "Département"  obligatoire.');
-    if (!telephone) messages.push(' "Téléphone"  obligatoire.');
-    if (!idUser) messages.push(' "Responsable"  obligatoire.');
-
-    if (messages.length > 0) {
-      Swal.fire({
-        title: 'Erreur',
-        html: messages.join('<br>'),
-        icon: 'error',
-        confirmButtonColor: '#2f1514',
-      });
-      return false;
-    }
-
-    return true;
-  }
 
   ngOnInit(){
     this.campus = new Campus();
@@ -56,21 +34,15 @@ export class FormCampusComponent {
     private url:ActivatedRoute,
     private router: Router,
     private campusService: CampusService,
-    private userService: UserService
+    private userService: UserService,
+    private notification: ToastrService
   ) {}
 
   onSubmit(){
-    if(this.validateForm()){
       if(this.isAddForm){
         this.campusService.insertCampus(this.campus).subscribe(
           response => {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Campus ajouté avec succès",
-              showConfirmButton: false,
-              timer: 1500
-            });
+            this.notification.success(`Campus  a ete ajoute avec succes`,"Operation reussie");
             this.router.navigate(['/admin/campus']);
              this.campus.nomCampus = "";
              this.campus.telephone = "";
@@ -82,29 +54,22 @@ export class FormCampusComponent {
              this.campus.id = 0;
           },
           error => {
-            console.log(this.campus);
-            console.log(error);
-          }
-        );
-      }else{
-        this.campusService.updateCampus(this.campus).subscribe(
-          response => {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Campus modifié avec succès",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            this.router.navigate(['/admin/listescampus']);
-          },
-          error => {
-            console.log(this.campus);
-            console.log(error);
+            this.notification.success(`Ajout du  campus à ehoue`,"Operation echoue")
           }
         );
       }
-    }
+      else{
+        this.campusService.updateCampus(this.campus).subscribe(
+          response => {
+            this.notification.success(`Campus  a ete modifie avec succes`,"Operation reussie")
+            this.router.navigate(['/admin/listescampus']);
+          },
+          error => {
+            this.notification.success(` erreur lors de la modification du Campus  a ete modifie avec succes`,"Operation echoue")
+          }
+        );
+      }
+
 
   }
 }

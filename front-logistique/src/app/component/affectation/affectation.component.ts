@@ -79,11 +79,7 @@ export class AffectationComponent implements OnInit{
     // Reinitialiser le formulaire
     this.resetForm();
   }
-  getAllAffectation(){
-    this.affectationService.getAffectation().subscribe(res =>{
-      this.affectations = res;
-    })
-  }
+
   getTypeMateriels(){
     this.typeMatService.getAllTypeMateriels().subscribe(res => {
       this.typeMateriels = res ;
