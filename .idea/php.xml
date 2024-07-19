@@ -29,7 +29,6 @@
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/laravel/sail" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/back-logistique/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/nette/utils" />
@@ -142,6 +141,7 @@
       <path value="$PROJECT_DIR$/back-logistique/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/spatie/backtrace" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/back-logistique/vendor/laravel/framework" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

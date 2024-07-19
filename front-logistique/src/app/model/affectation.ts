@@ -1,6 +1,6 @@
 export class Affectation {
-  concerne_id!:number;
+  concerne_id!:number|null;
   nomTable!:string;
-  quantite!:number;
-  idMateriel!:number;
+  quantite!:number|null;
+  idMateriel!:number|null;
 }
