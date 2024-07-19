@@ -62,5 +62,8 @@ export class ListerUtilisateurComponent implements OnInit{
   goToUserForm(){
     this.router.navigate(['/admin/utilisateur']);
   }
+  goToFournisseurForm(){
+    this.router.navigate(['/admin/fournisseur']);
+  }
 
 }

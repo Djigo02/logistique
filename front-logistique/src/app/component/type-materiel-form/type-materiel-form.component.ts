@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TypeMateriel} from "../../model/type-materiel";
 import {TypeMaterielService} from "../../service/type-materiel.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-type-materiel-form',
@@ -36,8 +37,23 @@ export class TypeMaterielFormComponent implements OnInit{
       res =>{
         this.getTypeMateriels();
         console.table(this.typeMateriels);
-        alert(`Type materiel ajoutee : ${this.typeMateriel.libelle}`);
-        this.router.navigate(['/admin/campus']);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Type materiel ajouté avec succès",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.router.navigate(['/admin/listesTypemateriels']);
+
+      },error => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: " probleme lors de l'ajout ",
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     );
 
@@ -46,8 +62,23 @@ export class TypeMaterielFormComponent implements OnInit{
   update(){
     this.typeMaterielService.updateTypeMateriel(this.typeMateriel,this.typeMateriel.id).subscribe(res  => {
       this.typeMateriel=res;
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: " Type materiel modifier avec success ",
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.getTypeMateriels();
       this.router.navigate(['/admin/listesTypemateriels']);
+    },error => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: " probleme lors de la modification du Type materiel",
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
   }
 

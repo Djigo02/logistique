@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TypeMateriel} from "../../../model/type-materiel";
 import {TypeMaterielService} from "../../../service/type-materiel.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-liste-typemateriel',
@@ -28,12 +29,23 @@ export class ListeTypematerielComponent implements OnInit{
   }
   delete(id:any){
     this.typematerielService.deleteTypeMateriel(id).subscribe(res =>{
-      alert('materiel supprimer avec succces');
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: " Type materiel supprimer avec success ",
+          showConfirmButton: false,
+          timer: 1500
+        });
       this.getDataTypeMateriel();
     },
       error => {
-        console.error('Erreur lors de la suppression du matériel:', error);
-        alert('Une erreur est survenue lors de suppression du matériel.');
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: " probleme lors de la suppression ",
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
       );
   }

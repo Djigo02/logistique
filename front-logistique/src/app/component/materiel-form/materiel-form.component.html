@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" #matForm="ngForm">
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">Ajouter un nouveau materiel</h3>
@@ -9,42 +9,73 @@
         <div class="col-sm-6 col-md-6">
           <div class="form-group">
             <label class="form-label">Code <span class="text-red">*</span></label>
-            <input type="text" class="form-control" placeholder="Code de materiel" name="codeMateriel" [(ngModel)]="materiel.codeMateriel" />
+            <input type="text" class="form-control" placeholder="Code de materiel" name="codeMateriel" [(ngModel)]="materiel.codeMateriel"
+                   required
+                   pattern="^[a-zA-Z0-9àéèç]{1,25}$" #code="ngModel"
+            />
+            <div [hidden]="code.valid || code.pristine"  class="card-panel text-danger red accent-1">
+              le code est requis
+            </div>
           </div>
         </div>
         <!-- Reference -->
         <div class="col-sm-6 col-md-6">
           <div class="form-group">
             <label class="form-label">Reference <span class="text-red">*</span></label>
-            <input type="text" class="form-control" placeholder="Reference" name="reference" [(ngModel)]="materiel.reference" />
+            <input type="text" class="form-control" placeholder="Reference" name="reference" [(ngModel)]="materiel.reference"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #reference="ngModel"
+            />
+            <div [hidden]="reference.valid || reference.pristine"  class="card-panel text-danger red accent-1">
+              le reference est requis
+            </div>
           </div>
         </div>
         <!-- Description -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Description <span class="text-red">*</span></label>
-            <input type="text" class="form-control" placeholder="Description" name="description" [(ngModel)]="materiel.description" />
+            <input type="text" class="form-control" placeholder="Description" name="description" [(ngModel)]="materiel.description"
+                   required pattern="^[a-zA-Z0-9àéèç ]{1,25}$" #descript="ngModel"
+            />
+            <div [hidden]="descript.valid || descript.pristine"  class="card-panel text-danger red accent-1">
+              la description est requis
+            </div>
           </div>
         </div>
         <!-- Quantite -->
         <div class="col-md-6">
           <div class="form-group">
             <label class="form-label">Quantite <span class="text-red">*</span></label>
-            <input type="number" class="form-control" placeholder="Quantite" name="quantite" [(ngModel)]="materiel.quantite" />
+            <input type="number" class="form-control" placeholder="Quantite" name="quantite" [(ngModel)]="materiel.quantite"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #qt="ngModel"
+            />
+            <div [hidden]="qt.valid || qt.pristine"  class="card-panel text-danger red accent-1">
+              la quantite est requise
+            </div>
           </div>
         </div>
         <!-- Prix -->
         <div class="col-md-6">
           <div class="form-group">
             <label class="form-label">Prix <span class="text-red">*</span></label>
-            <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="materiel.prix" />
+            <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="materiel.prix"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #prix="ngModel"
+            />
+            <div [hidden]="prix.valid || prix.pristine"  class="card-panel text-danger red accent-1">
+              le prix est requis
+            </div>
           </div>
         </div>
         <!-- Seuil -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Seuil <span class="text-red">*</span></label>
-            <input type="number" class="form-control" placeholder="Seuil" name="seuil" [(ngModel)]="materiel.seuil" />
+            <input type="number" class="form-control" placeholder="Seuil" name="seuil" [(ngModel)]="materiel.seuil"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #seuil="ngModel"
+            />
+            <div [hidden]="seuil.valid || seuil.pristine"  class="card-panel text-danger red accent-1">
+              le seuil est requis
+            </div>
           </div>
         </div>
         <!-- Date d' Enregistrement -->
@@ -54,7 +85,12 @@
             <div class="input-group-text">
               <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
             </div>
-            <input class="form-control fc-datepicker" type="date" name="dateEnregistrement" [(ngModel)]="materiel.dateEnregistrement" />
+            <input class="form-control fc-datepicker" type="date" name="dateEnregistrement" [(ngModel)]="materiel.dateEnregistrement"
+                   required  #dateEnregistrement="ngModel"
+            />
+            <div [hidden]="dateEnregistrement.valid || dateEnregistrement.pristine"  class="card-panel text-danger red accent-1">
+              la dateEnregistrement est requise
+            </div>
           </div>
         </div>
         <!-- Date d'amortissement -->
@@ -64,39 +100,54 @@
             <div class="input-group-text">
               <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
             </div>
-            <input class="form-control fc-datepicker" type="date" name="amortissement" [(ngModel)]="materiel.amortissement" />
+            <input class="form-control fc-datepicker" type="date" name="amortissement" [(ngModel)]="materiel.amortissement"
+                   required  #amortissement="ngModel"
+            />
+            <div [hidden]="amortissement.valid || amortissement.pristine"  class="card-panel text-danger red accent-1">
+              l' amortissement est requise
+            </div>
           </div>
         </div>
         <!-- Fournisseur -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Fournisseur <span class="text-red">*</span></label>
-            <select class="form-control form-select select2" name="idFournisseur" id="" [(ngModel)]="materiel.idFournisseur">
+            <select class="form-control form-select select2" name="idFournisseur" id="" [(ngModel)]="materiel.idFournisseur" required #idFournisseur="ngModel">
               <option selected>Veuillez choisir le fournisseur</option>
-              <option *ngFor="let fourn of fournisseurs" [value]="fourn.id">{{ fourn.nom }} </option>                      </select>
+              <option *ngFor="let fourn of fournisseurs" [value]="fourn.id">{{ fourn.nom }} </option>
+            </select>
+            <div [hidden]="idFournisseur.valid || idFournisseur.pristine"  class="card-panel text-danger red accent-1">
+              le fournisseur est requis
+            </div>
           </div>
         </div>
         <!-- Type materiel -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Type materiel <span class="text-red">*</span></label>
-            <select class="form-control form-select select2" name="idTypeMateriel" [(ngModel)]="materiel.idTypeMateriel">
+            <select class="form-control form-select select2" name="idTypeMateriel" [(ngModel)]="materiel.idTypeMateriel" required #idTypeMateriel="ngModel">
               <option selected>Veuillez choisir le Type Materiel</option>
               <option *ngFor="let tm of TypeMateriels" [value]="tm.id" >{{tm.libelle}}</option>
 
             </select>
+            <div [hidden]="idTypeMateriel.valid || idTypeMateriel.pristine"  class="card-panel text-danger red accent-1">
+              le type materiel est requis
+            </div>
           </div>
         </div>
         <!-- Etat -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Etat <span class="text-red">*</span></label>
-            <select class="form-control form-select select2" name="etat" [(ngModel)]="materiel.etat">
+            <select class="form-control form-select select2" name="etat" [(ngModel)]="materiel.etat" required #etat="ngModel">
               <option>Veuillez choisir l'etat du materiel</option>
               <option value="Disponible">Disponible</option>
               <option value="amortissement">En voie d'amortissement</option>
               <option value="hService">Hors Service</option>
             </select>
+            <div [hidden]="etat.valid || etat.pristine"  class="card-panel text-danger red accent-1">
+              l'etat  est requis
+            </div>
           </div>
         </div>
         <!-- Image -->
@@ -108,7 +159,7 @@
         </div>
         <!-- Bouton Ajouter -->
         <div class="form-footer mt-2">
-          <button href="javascript:void(0)" type="submit" class="btn btn-primary">Enregistrer  materiel</button>
+          <button href="javascript:void(0)" type="submit" class="btn btn-primary" [disabled]="!matForm.valid"  >Enregistrer  materiel</button>
         </div>
       </div>
     </div>

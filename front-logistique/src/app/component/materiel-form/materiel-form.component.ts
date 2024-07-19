@@ -8,6 +8,7 @@ import { TypeMateriel } from 'src/app/model/type-materiel';
 import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 import {Fournisseur} from "../../model/fournisseur";
 import {FournisseurService} from "../../service/fournisseur.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-materiel-form',
@@ -33,39 +34,73 @@ export class MaterielFormComponent {
   }
 
   insertMateriel() {
-    // Log toutes les valeurs du matériel dans la console
-    console.log('Materiel data:', this.materiel);
-
     // Insérer le matériel en utilisant le service
     this.materielService.insertMateriel(this.materiel).subscribe(res => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "  materiel ajoute avec success ",
+        showConfirmButton: false,
+        timer: 1500
+      });
       // Rafraîchir les données du matériel
       this.getMaterielData();
       // Rediriger vers la page d'administration du campus
       this.router.navigate(['admin/listesmateriels']);
     }, error => {
-      console.error('Erreur lors de l\'enregistrement du matériel:', error);
-      alert('Une erreur est survenue lors de l\'enregistrement du matériel.');
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "  Une erreur est survenue lors de l\'enregistrement du matériel. ",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
     });
   }
 
   insertFournisseur(){
     this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(res =>{
-      alert('fournisseur ajouter avec succes');
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: " fournisseur ajouter avec succes",
+        showConfirmButton: false,
+        timer: 1500
+      });
 
     }, error => {
-      console.error('Erreur lors de l\'enregistrement du fournisseur:', error);
-      alert('Une erreur est survenue lors de l\'enregistrement du fournisseur.');
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "  Une erreur est survenue lors de l\'enregistrement du fournisseur.",
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 
   updateMateriel(){
     this.materielService.updateTypeMateriel(this.materiel,this.materiel.id).subscribe(res =>
     {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: " fournisseur modifie  avec succes",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       this.getMaterielData();
       this.router.navigate(['admin/listesmateriels']);
     },error => {
-        console.error('Erreur lors de la modifiacation du matériel:', error);
-        alert('Une erreur est survenue lors de modifiacation du matériel.');
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "  Une erreur est survenue lors de la modifiacation du fournisseur.",
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
       );
   }

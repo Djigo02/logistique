@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MaterielService } from 'src/app/service/materiel.service';
 import {Materiel} from "../../../model/materiel";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lister-materiel',
@@ -19,11 +20,23 @@ export class ListerMaterielComponent implements OnInit{
   }
   delete(id:number){
     this.materielSerice.deleteMateriel(id).subscribe(res =>{
-      alert('materiel supprimer avec succces');
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: " materiel supprimer avec succces ",
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.getMaterielData();
     }, error => {
-        console.error('Erreur lors de la supression du matériel:', error);
-        alert('Erreur lors de la supression du matériel:');
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: " Erreur lors de la supression du matériel: ",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
       }
       );
   }
