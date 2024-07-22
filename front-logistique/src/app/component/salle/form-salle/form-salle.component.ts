@@ -30,6 +30,17 @@ export class FormSalleComponent implements OnInit {
     private router: Router,private  actRouter:ActivatedRoute,private notification: ToastrService
   ) { }
 
+  isCampusInvalid = false;
+
+  validateCampusSelection() {
+    if (this.salle.idCampus === null || this.salle.idCampus === '') {
+      this.isCampusInvalid = true;
+    } else {
+      this.isCampusInvalid = false;
+    }
+  }
+
+
   onSubmit(){
     if (this.isAddSalle){
       this.salleService.insertSalle(this.salle).subscribe(

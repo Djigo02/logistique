@@ -35,10 +35,13 @@ export class FournisseurFormComponent implements OnInit{
   updateFournisseur(){
     this.founisseurService.updateFournisseur(this.fournisseur,this.fournisseur.id).subscribe(res =>{
         this.getFournisseurData();
+        this.notification.success(`Fournisseur modifier avec success`,"Operation success");
         this.router.navigate(['admin/listesutilisateurs']);
       },error => {
         console.error('Erreur lors de la modifiacation du fournisseur:', error);
+        this.notification.error(`Erreur lors de la modification`,"Operation echouer");
         alert('Une erreur est survenue lors de modifiacation du fournisseur.');
+
       }
     );
   }

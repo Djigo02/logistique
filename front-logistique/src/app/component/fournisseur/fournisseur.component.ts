@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FournisseurService} from "../../service/fournisseur.service";
 import {Fournisseur} from "../../model/fournisseur";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-fournisseur',
@@ -12,7 +13,7 @@ export class FournisseurComponent implements OnInit{
 
   fournisseur!:any;
   founisseurs:Fournisseur[]=[];
-  constructor(private fournisseurService:FournisseurService,private router:Router) {
+  constructor(private fournisseurService:FournisseurService,private router:Router, private notification :ToastrService) {
     this.fournisseur=new Fournisseur();
   }
 
@@ -31,11 +32,12 @@ export class FournisseurComponent implements OnInit{
         this.fournisseur.email="";
         this.fournisseur.ninea="";
         this.fournisseur.registreDeCommerce="";
-        this.router.navigate(['admin/materiel']);
+        this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
+        this.router.navigate(['admin/listesutilisateurs']);
 
       }, error => {
         console.error('Erreur lors de l\'enregistrement du fournisseur:', error);
-        alert('Une erreur est survenue lors de l\'enregistrement du fournisseur.');
+        this.notification.error(`Une erreur est survenue lors de l\'enregistrement du fournisseur.`,"Operation echouer");
       })
   }
 

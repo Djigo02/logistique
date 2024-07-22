@@ -35,7 +35,7 @@
           <div class="form-group">
             <label class="form-label">Description <span class="text-red">*</span></label>
             <input type="text" class="form-control" placeholder="Description" name="description" [(ngModel)]="materiel.description"
-                   required pattern="^[a-zA-Z0-9àéèç ]{1,25}$" #descript="ngModel"
+                   required pattern="^[a-zA-Z0-9àéèç ]{1,255}$" #descript="ngModel"
             />
             <div [hidden]="descript.valid || descript.pristine"  class="card-panel text-danger red accent-1">
               la description est requis

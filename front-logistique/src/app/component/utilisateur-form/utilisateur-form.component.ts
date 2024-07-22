@@ -59,18 +59,25 @@ export class UtilisateurFormComponent implements OnInit{
     this.userService.insertUser(this.user).subscribe({
       next: (res) => {
         console.log(res);
+        this.notification.success("Utilisateur ajoutee avec succcess","Operation reussie");
+        this.router.navigate(['admin/listesutilisateurs']);
+        this.user = new User();
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'ajout de l\'utilisateur :', err);
+        this.notification.error("Erreur lors de l'ajout de l'utilisateur","Operation echouee");
       },
     });
-    this.notification.success("Utilisateur ajoutee avec succcess","Operation reussie");
+
   }
   updateUser(){
     this.userService.updateUser(this.user,this.user.id).subscribe(res =>{
       this.getUserData();
+      this.notification.success("Utilisateur modifiee avec succcess","Operation reussie");
       this.router.navigate(['admin/listesutilisateurs']);
 
     },error => {
-      this.notification.success("Erreur lors de la modifiacation de l'utilisateur","Operation echouee");
-
+      this.notification.error("Erreur lors de la modification de l'utilisateur","Operation echouee");
     }
   );
   }

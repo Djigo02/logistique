@@ -20,7 +20,6 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./affectation.component.css']
 })
 export class AffectationComponent implements OnInit{
-
   typeMateriels : TypeMateriel[] = [];
   materiel : Materiel[] =[];
   campus : Campus[] =[];
@@ -32,14 +31,7 @@ export class AffectationComponent implements OnInit{
   constructor(private notification: ToastrService,private  affectationService:AffectationService,private userService:UserService,private salleService: SalleService ,private typeMatService : TypeMaterielService,private campusService:CampusService,private materielService : MaterielService ,private  router:Router) {
   }
 
-
-
   onSubmitForCampus(){
-    // this.affectationService.insertAffectation(this.affectation).subscribe(res =>{
-    //   this.getAllAffectation();
-    //   console.table(this.typeMateriels);
-    //   alert(`Type materiel ajoutee : ${this.affectation.nomTable}`);
-    // });
     this.affectation.nomTable = "campuses";
     this.affectationService.insertAffectation(this.affectation).subscribe(
       next =>{

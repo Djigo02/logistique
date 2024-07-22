@@ -56,7 +56,7 @@ class UserController extends Controller
             'prenom' => 'required|string',
             'nom' => 'required|string',
             'email' => 'required|string|email',
-            'telephone' => 'required|string|max:9',
+            'telephone' => 'required|string|max:15',
             'adresse' => 'required|string',
             'idRole' => 'required'
         ]);

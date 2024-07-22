@@ -43,7 +43,7 @@ export class FormCampusComponent {
         this.campusService.insertCampus(this.campus).subscribe(
           response => {
             this.notification.success(`Campus  a ete ajoute avec succes`,"Operation reussie");
-            this.router.navigate(['/admin/campus']);
+            this.router.navigate(['/admin/listescampus']);
              this.campus.nomCampus = "";
              this.campus.telephone = "";
              this.campus.departement = "";
@@ -54,7 +54,7 @@ export class FormCampusComponent {
              this.campus.id = 0;
           },
           error => {
-            this.notification.success(`Ajout du  campus à ehoue`,"Operation echoue")
+            this.notification.error(`Ajout du  campus à ehoue`,"Operation echoue")
           }
         );
       }
