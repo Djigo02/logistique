@@ -162,4 +162,33 @@ class AffectationController extends Controller
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage(), 500);
         }
     }
+
+/*
+ * Lister les materiels affecter aux campus, salles, ou personnels
+ * $nomTable : Nom de la table correspondante ('campuses','salles','users')
+ * $concerne_id : Id de l'entite concerner
+ * return : La liste des materiels affecter a l'entite correspondante
+ * */
+    public function ListeMaterielsPour($nomTable, $concerned_id){
+        try {
+            $affectations = Affectation::where('nomTable', $nomTable)
+                ->where('concerne_id', $concerned_id)
+                ->get();
+            $materiels = [];
+            foreach ($affectations as $affectation){
+                $materiel = Materiel::find($affectation->idMateriel);
+                $materiel->quantite = $affectation->quantite;
+                $materiel->dateEnregistrement = $affectation->created_at;
+                $materiels[] = $materiel;
+            }
+            return response()->json($materiels);
+        }catch (\Exception $e){
+            $log =new Log();
+            $log->class = "Affectation";
+            $log->controller = "AffectationController";
+            $log->methode = "ListeMateriels";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
+        }
+    }
 }

@@ -50,4 +50,5 @@ Route::resource('affectations',\App\Http\Controllers\AffectationController::clas
 Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
 Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
 Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\AffectationController::class, 'getAllAffectationForNT']);
+Route::get('liste-materiel/{nomTable}/{id}', [\App\Http\Controllers\AffectationController::class,'ListeMaterielsPour']);
 
