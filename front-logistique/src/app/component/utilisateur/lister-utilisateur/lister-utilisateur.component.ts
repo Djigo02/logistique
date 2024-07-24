@@ -27,6 +27,11 @@ export class ListerUtilisateurComponent implements OnInit{
   redirectToF(id:number){
     this.router.navigate(['/admin/editFournisseur',id]);
   }
+
+  voirMateriels(nomtable: string, id:any){
+    this.router.navigate(['/admin/voir-materiels',nomtable,id]);
+  }
+
   delete(id:number){
     this.userService.deleteUser(id).subscribe(res =>{
         this.notification.success("materiel supprimer avec succcess","Operation reussie");

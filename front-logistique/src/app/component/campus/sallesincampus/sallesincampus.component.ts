@@ -45,6 +45,9 @@ export class SallesincampusComponent implements OnInit {
     })
   }
 
+  voirMateriels(nomtable: string, id:any){
+    this.router.navigate(['/admin/voir-materiels',nomtable,id]);
+  }
   goToSalleUpdate(id:any){
     this.router.navigate(['/admin/editSalle', id]);
   }

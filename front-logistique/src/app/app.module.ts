@@ -40,6 +40,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { AffectationComponent } from './component/affectation/affectation.component';
 import { ListAffectationComponent } from './component/affectation/list-affectation/list-affectation.component';
+import { VoirListeMaterielComponent } from './component/voir-liste-materiel/voir-liste-materiel.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ListAffectationComponent } from './component/affectation/list-affectati
     FormSalleComponent,
     AffectationComponent,
     ListAffectationComponent,
+    VoirListeMaterielComponent,
   ],
   imports: [
     BrowserModule,

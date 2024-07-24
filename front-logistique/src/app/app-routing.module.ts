@@ -24,6 +24,7 @@ import {UpdateCampusComponent} from "./component/campus/update-campus/update-cam
 import {UpdateSalleComponent} from "./component/salle/update-salle/update-salle.component";
 import {AffectationComponent} from "./component/affectation/affectation.component";
 import {ListAffectationComponent} from "./component/affectation/list-affectation/list-affectation.component";
+import {VoirListeMaterielComponent} from "./component/voir-liste-materiel/voir-liste-materiel.component";
 
 const routes: Routes = [
   // Route de base
@@ -57,6 +58,7 @@ const routes: Routes = [
       {path: 'update-campus/:id', component: UpdateCampusComponent },
       {path: 'affectation',component:AffectationComponent},
       {path: 'listAffectation',component:ListAffectationComponent},
+      {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

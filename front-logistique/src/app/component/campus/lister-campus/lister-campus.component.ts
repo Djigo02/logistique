@@ -45,6 +45,9 @@ export class ListerCampusComponent implements OnInit{
     );
   }
 
+  voirMateriels(nomtable: string, id:any){
+    this.router.navigate(['/admin/voir-materiels',nomtable,id]);
+  }
   goToUpdateCampus(id:any){
     this.router.navigate(['/admin/update-campus',id]);
   }
