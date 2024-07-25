@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Affectation;
 use App\Http\Requests\StoreAffectationRequest;
 use App\Http\Requests\UpdateAffectationRequest;
+use App\Models\Campus;
+use App\Models\Fournisseur;
 use App\Models\Log;
 use App\Models\Materiel;
 use App\Models\Salle;
+use App\Models\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use MongoDB\Driver\Exception\Exception;
@@ -33,8 +36,39 @@ class AffectationController extends Controller
     }
 
     public function getAllAffectationForNT($nomtabl){
-        $affectation = Affectation::where('nomTable',$nomtabl)->get();
-        return response()->json($affectation);
+        try{
+            $affectation = Affectation::where('nomTable',$nomtabl)->get();
+            $liste = [];
+            foreach ($affectation as $element){
+                $materiel = Materiel::find($element->idMateriel);
+                $element->materiel = $materiel;
+
+                switch ($element->nomTable){
+                    case 'campuses':
+                        $campus = Campus::find($element->concerne_id);
+                        $element->concerne = $campus;
+                        break;
+                    case 'salles':
+                        $salle = Salle::find($element->concerne_id);
+                        $element->concerne = $salle;
+                        break;
+                    case 'users':
+                        $user = User::find($element->concerne_id);
+                        $element->concerne = $user;
+                        break;
+                }
+                $liste[] = $element;
+            }
+
+            return response()->json($liste);
+        }catch (Exception $e){
+            $log =new Log();
+            $log->class = "Affectation";
+            $log->controller = "AffectationController";
+            $log->methode = "getAllAffectationForNT";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
+        }
     }
 
     /**
