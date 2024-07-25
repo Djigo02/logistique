@@ -9,10 +9,12 @@ import {Affectation} from "../../../model/affectation";
   styleUrls: ['./list-affectation.component.css']
 })
 export class ListAffectationComponent implements OnInit{
-
-  affectation :Affectation [] = [];
-  affectationS:Affectation [] = [];
-  affectationU :Affectation [] = [];
+  // campus
+  affectation :any = [];
+  // salles
+  affectationS: any= [];
+  // users
+  affectationU :any = [];
   ngOnInit(): void {
     this.getAllAffectationForNT();
   }

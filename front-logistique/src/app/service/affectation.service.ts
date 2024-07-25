@@ -19,8 +19,8 @@ export class AffectationService {
     }),
   };
 
-  getAffectationFNT(nomTable:string):Observable<Affectation[]>{
-    return this.httpClient.get<Affectation[]>(`http://127.0.0.1:8000/api/getAllAffectationForNT/`+nomTable);
+  getAffectationFNT(nomTable:string):Observable<any[]>{
+    return this.httpClient.get<any>(`http://127.0.0.1:8000/api/getAllAffectationForNT/`+nomTable);
   }
 
   insertAffectation(affectation : any){
