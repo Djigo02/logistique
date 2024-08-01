@@ -79,7 +79,7 @@
     <div class="col-md-12">
       <div class="form-group">
         <label class="form-label"
-        >Ninea <span class="text-red">*</span></label
+        >Ninea</label
         >
         <input
           type="text"
@@ -87,33 +87,10 @@
           placeholder="Ninea"
           [(ngModel)]="fournisseur.ninea"
           name="ninea"
-          pattern="^[^\s].{1,250}$"
-          #name="ngModel"
         />
-        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-          Veuillez saisir un NINEA valide.
-        </div>
       </div>
     </div>
-    <div class="col-md-12">
-      <div class="form-group">
-        <label class="form-label"
-        >Registre de commerce <span class="text-red">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Registre de Commerce"
-          [(ngModel)]="fournisseur.registreDeCommerce"
-          name="registreDeCommerce"
-          pattern="^[^\s].{1,250}$"
-          #name="ngModel"
-        />
-        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-          Veuillez saisir un registre de commerce valide.
-        </div>
-      </div>
-    </div>
+
     <div class="form-footer mt-2">
       <button type="submit" [disabled]="!fourn.form.valid" class="btn btn-primary">
         Enregistrer le fournisseur

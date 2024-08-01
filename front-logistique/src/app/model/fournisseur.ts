@@ -5,5 +5,4 @@ export class Fournisseur {
   telephone !:string;
   adresse !:string;
   ninea!:string;
-  registreDeCommerce!:string;
 }

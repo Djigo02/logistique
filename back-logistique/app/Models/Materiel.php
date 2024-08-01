@@ -26,4 +26,12 @@ class Materiel extends Model
         return $this->belongsTo(TypeMateriel::class, 'idTypeMateriel');
     }
 
+    function generateCode(){
+        $ref = "MAT_" . uniqid();
+        while (self::where("codeMateriel",$ref)->exists()) {
+            $ref = "MAT_" . uniqid();
+        }
+        $this->codeMateriel = $ref;
+    }
+
 }

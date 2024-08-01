@@ -9,7 +9,8 @@ export class Materiel {
   amortissement!: Date;
   dateEnregistrement!: Date;
   etat!: string;
+  status!: string;
   image!: string;
   idTypeMateriel!: number;
-  idFournisseur!:number; 
+  idFournisseur!:number;
 }

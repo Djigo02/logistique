@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'role', component: RoleComponent },
       { path: 'typeMateriel', component: TypeMaterielComponent },
       { path: 'materiel', component: MaterielComponent },
-      { path: 'matLEdit/:id', component: MaterielEditComponent },
+      { path: 'matEdit/:id', component: MaterielEditComponent },
       { path: 'listescampus', component: ListerCampusComponent },
       { path: 'listesutilisateurs', component: ListerUtilisateurComponent },
       { path: 'userEdit/:id', component: UtilisateurEditComponent },

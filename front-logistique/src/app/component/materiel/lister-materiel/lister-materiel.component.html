@@ -74,9 +74,6 @@
                                     Code matériel
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
-                                    Référence
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
                                     Description
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
@@ -113,21 +110,6 @@
                                   </td>
                                   <td>
                                     <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
-                                      <div class="ms-3 mt-0 mt-sm-2 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.reference }}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
                                       <div class="mt-0 mt-sm-3 d-block">
                                         <h6 class="mb-0 fs-14 fw-semibold">
                                           {{materiel.description}}
@@ -142,7 +124,7 @@
                                   </td>
                                   <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
-                                      >{{ materiel.amortissement }}</span
+                                      >{{ materiel.amortissement  | date:'dd/MM/yyyy' }}</span
                                     >
                                   </td>
                                   <td>
@@ -156,9 +138,13 @@
                                   </td>
                                   <td>
                                     <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                        >{{ materiel.etat }}</span
+                                      <span *ngIf="materiel.status == 'Disponible'"
+                                            class="badge bg-success-transparent rounded-pill text-dark p-2 px-3"
+                                      >{{ materiel.status }}</span
+                                      >
+                                      <span *ngIf="materiel.status != 'Disponible'"
+                                            class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
+                                      >{{ materiel.status }}</span
                                       >
                                     </div>
                                   </td>
@@ -201,9 +187,6 @@
                                     Code matériel
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
-                                    Référence
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
                                     Description
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
@@ -231,27 +214,12 @@
                               </thead>
                               <tbody>
                               <ng-container *ngFor="let materiel of materiels">
-                                <tr *ngIf="materiel.etat == 'Disponible' "  class="border-bottom">
+                                <tr *ngIf="materiel.status == 'Disponible' "  class="border-bottom">
                                   <td  class="text-center">
                                     <div class="mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
                                         {{materiel.codeMateriel }}
                                       </h6>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
-                                      <div class="ms-3 mt-0 mt-sm-2 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.reference }}
-                                        </h6>
-                                      </div>
                                     </div>
                                   </td>
                                   <td>
@@ -270,7 +238,7 @@
                                   </td>
                                   <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement }}</span
+                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
                                     >
                                   </td>
                                   <td>
@@ -285,8 +253,8 @@
                                   <td>
                                     <div class="mt-sm-1 d-block">
                                       <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      >{{ materiel.etat }}</span
+                                        class="badge bg-success-transparent rounded-pill text-dark p-2 px-3"
+                                      >{{ materiel.status }}</span
                                       >
                                     </div>
                                   </td>
@@ -329,9 +297,6 @@
                                     Code matériel
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
-                                    Référence
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
                                     Description
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
@@ -359,27 +324,12 @@
                               </thead>
                               <tbody>
                                 <ng-container *ngFor="let materiel of materiels">
-                                  <tr *ngIf="materiel.etat == 'amortissement' "  class="border-bottom">
+                                  <tr *ngIf="materiel.status == 'amortissement' "  class="border-bottom">
                                     <td  class="text-center">
                                       <div class="mt-0 mt-sm-2 d-block">
                                         <h6 class="mb-0 fs-14 fw-semibold">
                                           {{materiel.codeMateriel }}
                                         </h6>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
-                                        <div class="ms-3 mt-0 mt-sm-2 d-block">
-                                          <h6 class="mb-0 fs-14 fw-semibold">
-                                            {{materiel.reference }}
-                                          </h6>
-                                        </div>
                                       </div>
                                     </td>
                                     <td>
@@ -398,7 +348,7 @@
                                     </td>
                                     <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement }}</span
+                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
                                     >
                                     </td>
                                     <td>
@@ -413,8 +363,8 @@
                                     <td>
                                       <div class="mt-sm-1 d-block">
                                       <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      >{{ materiel.etat }}</span
+                                        class="badge bg-warning-transparent rounded-pill text-dark p-2 px-3"
+                                      >{{ materiel.status }}</span
                                       >
                                       </div>
                                     </td>
@@ -457,9 +407,6 @@
                                     Code matériel
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
-                                    Référence
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
                                     Description
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
@@ -487,27 +434,12 @@
                               </thead>
                               <tbody>
                               <ng-container *ngFor="let materiel of materiels">
-                                <tr *ngIf="materiel.etat == 'hServices' "  class="border-bottom">
+                                <tr *ngIf="materiel.status == 'hServices' "  class="border-bottom">
                                   <td  class="text-center">
                                     <div class="mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
                                         {{materiel.codeMateriel }}
                                       </h6>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
-                                      <div class="ms-3 mt-0 mt-sm-2 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.reference }}
-                                        </h6>
-                                      </div>
                                     </div>
                                   </td>
                                   <td>
@@ -526,7 +458,7 @@
                                   </td>
                                   <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement }}</span
+                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
                                     >
                                   </td>
                                   <td>
@@ -542,7 +474,7 @@
                                     <div class="mt-sm-1 d-block">
                                       <span
                                         class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      >{{ materiel.etat }}</span
+                                      >{{ materiel.status }}</span
                                       >
                                     </div>
                                   </td>

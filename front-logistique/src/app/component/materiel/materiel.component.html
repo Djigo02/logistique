@@ -3,7 +3,7 @@
     <div class="main-container container-fluid">
       <div class="row">
         <div class="col-md-12 col-xl-8">
-        <app-materiel-form [materiel]="materiel"></app-materiel-form>
+        <app-materiel-form [materiel]="materiel" [fournisseurs]="fournisseursList"></app-materiel-form>
         </div>
         <div class="col-md-12 col-xl-4">
           <!-- ! Ajout Founisseur  -->
@@ -74,35 +74,20 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label class="form-label"
-                      >Ninea <span class="text-red">*</span></label
+                      >Ninea</label
                       >
                       <input
                         type="text"
                         class="form-control"
                         placeholder="Ninea"
-                        autocomplete="username"
                         [(ngModel)]="fournisseur.ninea"
                         name="ninea"
                       />
                     </div>
                   </div>
-                  <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <label class="form-label"
-                      >Registre de commerce <span class="text-red">*</span></label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Registre de commerce"
-                        [(ngModel)]="fournisseur.registreDeCommerce"
-                        name="registreDeCommerce"
-                      />
-                    </div>
-                  </div>
                   <div class="form-footer center mt-2">
                     <button type="submit" class="center btn btn-primary">
-                      Ajouter un utilisateur
+                      Ajouter un fournisseur
                     </button>
                   </div>
                 </div>

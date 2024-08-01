@@ -15,10 +15,9 @@ class Role extends Seeder
     {
         $roles = [
             ['libelle' => 'Responsable campus'],
-            ['libelle' => 'DSI'],
+            ['libelle' => 'Responsable technique'],
             ['libelle' => 'Personnel'],
             ['libelle' => 'Controller'],
-            ['libelle' => 'Fournisseur']
         ];
 
         DB::table('roles')->insert($roles);

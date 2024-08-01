@@ -20,7 +20,7 @@ export class MaterielFormComponent {
   typM! : TypeMateriel;
   selectedFile:File | null=null;
   TypeMateriels : TypeMateriel[] =[];
-  fournisseurs : Fournisseur[] =[];
+  @Input() fournisseurs !: Fournisseur[] ;
   isAddForm!:boolean;
   fournisseur!:any;
   constructor(private materielService : MaterielService ,private router : Router,private fournisseurService : FournisseurService,private typeMatServ:TypeMaterielService){}
@@ -55,7 +55,7 @@ export class MaterielFormComponent {
         showConfirmButton: false,
         timer: 1500
       });
-
+      console.log(error);
     });
   }
 

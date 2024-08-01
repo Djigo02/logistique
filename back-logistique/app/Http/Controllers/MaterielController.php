@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materiel;
+use App\Models\TypeMateriel;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -37,8 +38,6 @@ class MaterielController extends Controller
     {
         try{
             $materiel = Materiel::find($id);
-            $materiel->reference = $request->reference;
-            $materiel->codeMateriel = $request->codeMateriel;
             $materiel->description = $request->description;
             $materiel->prix = $request->prix;
             $materiel->quantite = $request->quantite;
@@ -65,9 +64,7 @@ class MaterielController extends Controller
     {
         // Création d'un nouveau matériel
         $request->validate([
-            'reference' => 'required',
-            'codeMateriel' => 'required',
-            'description' => 'string',
+            'description' => 'required',
             'prix' => 'required|integer',
             'quantite' => 'required|integer',
             'seuil' => 'required|integer',
@@ -82,8 +79,6 @@ class MaterielController extends Controller
         try {
             // Enregistrer un nouveau matériel
             $materiel = new Materiel();
-            $materiel->reference = $request->reference;
-            $materiel->codeMateriel = $request->codeMateriel;
             $materiel->description = $request->description;
             $materiel->prix = $request->prix;
             $materiel->quantite = $request->quantite;
@@ -91,12 +86,14 @@ class MaterielController extends Controller
             $materiel->dateEnregistrement = $request->dateEnregistrement;
             $materiel->amortissement = $request->amortissement ;
             $materiel->etat = $request->etat;
+            $materiel->status = "Disponible";
             if ($request->file('image')) {
                 $imagePath = $request->file('image')->store('images','public');
             }
             $materiel->image = $imagePath ?? null;
             $materiel->idTypeMateriel = $request->idTypeMateriel;
             $materiel->idFournisseur = $request->idFournisseur;
+            $materiel->generateCode();
             $materiel->save();
             return response()->json($materiel);
         } catch (Exception $e) {

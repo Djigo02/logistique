@@ -47,7 +47,6 @@ class FournisseurController extends Controller
             $fournisseur->telephone = $request->telephone;
             $fournisseur->adresse = $request->adresse;
             $fournisseur->ninea = $request->ninea;
-            $fournisseur->registreDeCommerce = $request->registreDeCommerce;
             // Ajoutez d'autres attributs ici
             $fournisseur->save();
             return response()->json($fournisseur);

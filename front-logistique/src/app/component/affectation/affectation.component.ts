@@ -38,7 +38,8 @@ export class AffectationComponent implements OnInit{
         this.notification.success(`L'affectation a ete effectuer avec succes`,"Operation reussie")
       },
       error => {
-        this.notification.error("Erreur lors de l'affection veuillez reessayer ulterieurement !","Echec de l'operation")
+        this.notification.error("Erreur lors de l'affection veuillez reessayer ulterieurement !","Echec de l'operation");
+        console.log(error);
       }
     );
     // Reinitialiser le formulaire

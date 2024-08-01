@@ -24,7 +24,7 @@
                             <a
                               (click)="goToAdd()"
                               class="text-primary"
-                            >Ajouter un materiel</a
+                            >Affecter un materiel</a
                             >
                           </li>
                         </ul>
@@ -60,12 +60,6 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 10%"
-                                >
-                                  Status
-                                </th>
-                                <th
-                                  class="bg-transparent border-bottom-0"
                                   style="width: 5%"
                                 >
                                   Action
@@ -83,12 +77,6 @@
                                 </td>
                                 <td>
                                   <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
                                     <div class="ms-3 mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
                                         {{affect.materiel.codeMateriel}}
@@ -110,16 +98,7 @@
                                     > {{affect.quantite}}</span>
                                 </td>
                                 <td>
-                                    <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at}}</span>
-                                </td>
-
-                                <td>
-                                  <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      ></span
-                                      >
-                                  </div>
+                                    <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at  | date:'dd/MM/yyyy'}}</span>
                                 </td>
                                 <td>
                                   <div class="g-2">
@@ -177,7 +156,7 @@
                             <a
                               (click)="goToAdd()"
                               class="text-primary"
-                            >Ajouter un materiel</a
+                            >Affecter un materiel</a
                             >
                           </li>
                         </ul>
@@ -213,12 +192,6 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 10%"
-                                >
-                                  Status
-                                </th>
-                                <th
-                                  class="bg-transparent border-bottom-0"
                                   style="width: 5%"
                                 >
                                   Action
@@ -236,12 +209,6 @@
                                 </td>
                                 <td>
                                   <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
                                     <div class="ms-3 mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
                                         {{affect.materiel.codeMateriel}}
@@ -263,16 +230,7 @@
                                     > {{affect.quantite}}</span>
                                 </td>
                                 <td>
-                                  <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at}}</span>
-                                </td>
-
-                                <td>
-                                  <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      ></span
-                                      >
-                                  </div>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at  | date:'dd/MM/yyyy'}}</span>
                                 </td>
                                 <td>
                                   <div class="g-2">
@@ -330,7 +288,7 @@
                             <a
                               (click)="goToAdd()"
                               class="text-primary"
-                            >Ajouter un materiel</a
+                            >Affecter un materiel</a
                             >
                           </li>
                         </ul>
@@ -366,12 +324,6 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 10%"
-                                >
-                                  Status
-                                </th>
-                                <th
-                                  class="bg-transparent border-bottom-0"
                                   style="width: 5%"
                                 >
                                   Action
@@ -389,12 +341,6 @@
                                 </td>
                                 <td>
                                   <div class="d-flex">
-                                      <span
-                                        class="avatar bradius"
-                                        style="
-                                          background-image: url(assets/images/orders/12.jpg);
-                                        "
-                                      ></span>
                                     <div class="ms-3 mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
                                         {{affect.materiel.codeMateriel}}
@@ -416,21 +362,11 @@
                                     > {{affect.quantite}}</span>
                                 </td>
                                 <td>
-                                  <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at}}</span>
-                                </td>
-
-                                <td>
-                                  <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      ></span
-                                      >
-                                  </div>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affect.created_at  | date:'dd/MM/yyyy'}}</span>
                                 </td>
                                 <td>
                                   <div class="g-2">
                                     <a
-
                                       class="btn text-primary btn-sm"
                                       data-bs-toggle="tooltip"
                                       data-bs-original-title="Edit"

@@ -20,6 +20,7 @@ export class MaterielComponent implements OnInit {
 
   materiel! : any;
   fournisseur!:any;
+  fournisseursList!:Fournisseur[];
   typeMateriel!: TypeMateriel;
   constructor(private router : Router,private fournisseurService : FournisseurService, private notification :ToastrService){}
 
@@ -27,6 +28,7 @@ export class MaterielComponent implements OnInit {
     this.materiel = new Materiel();
     this.fournisseur= new Fournisseur();
     this.typeMateriel = new TypeMateriel();
+    this.loadFounisseurs();
   }
   insertFournisseur(){
     this.fournisseurService.insertFournisseur(this.fournisseur).subscribe(
@@ -37,12 +39,19 @@ export class MaterielComponent implements OnInit {
       this.fournisseur.adresse="";
       this.fournisseur.email="";
       this.fournisseur.ninea="";
-      this.fournisseur.registreDeCommerce="";
-        this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
-        this.router.navigate(['admin/materiel']);
+      this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
+      this.loadFounisseurs();
+      this.router.navigate(['admin/materiel']);
     }, error => {
       console.error('Erreur lors de l\'enregistrement du fournisseur:', error);
       this.notification.error(`Une erreur est survenue lors de l\'enregistrement du fournisseur.`,"Operation echouer");
+    })
+  }
+  loadFounisseurs(){
+    this.fournisseurService.getAllFournisseur().subscribe(res =>{
+      if(res != null){
+        this.fournisseursList = res;
+      }
     })
   }
 
