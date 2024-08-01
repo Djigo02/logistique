@@ -3,70 +3,9 @@
     <!-- CONTAINER -->
     <div class="main-container container-fluid">
 <div class="row">
-  <h3>User</h3>
+  <h3>Liste du personnel et des fournisseurs</h3>
 </div>
-<!-- ! Row Tables -->
-<div class="row">
-  <div class="col-xl-12">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <h3 class="card-title">Liste des fournisseurs</h3>
-        <a
-          (click)="goToFournisseurForm()"
-          class="btn btn-primary"
-          role="button"
-        >Ajouter un fournisseur</a>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table text-nowrap text-md-nowrap mb-0">
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>telephone</th>
-              <th>adresse</th>
-              <th>Ninea</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let fournisseur of fournisseurs" >
-              <td>{{fournisseur.id}}</td>
-              <td>{{fournisseur.nom}}</td>
-              <td>{{fournisseur.email}}</td>
-              <td>{{fournisseur.telephone}}</td>
-              <td>{{fournisseur.adresse}}</td>
-              <td>{{fournisseur.ninea}}</td>
-              <td>
-                <div class="g-2">
-                  <a
-                    (click)="redirectToF(fournisseur.id)"
-                    class="btn text-primary btn-sm"
-                    data-bs-toggle="tooltip"
-                    data-bs-original-title="Edit"
-                  ><span class="fe fe-edit fs-14"></span
-                  ></a>
-                  <a
-                    (click)="deleteF(fournisseur.id)"
-                    class="btn text-danger btn-sm"
-                    data-bs-toggle="tooltip"
-                    data-bs-original-title="Delete"
-                  ><span
-                    class="fe fe-trash-2 fs-14"
-                  ></span
-                  ></a>
-                </div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div class="row">
   <div class="col-xl-12">
@@ -110,6 +49,7 @@
                     class="btn text-primary btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Edit"
+                    title="Modifier ou voir details"
                   ><span class="fe fe-edit fs-14"></span
                   ></a>
                   <a
@@ -117,6 +57,7 @@
                     class="btn text-danger btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Delete"
+                    title="Supprimer"
                   ><span
                     class="fe fe-trash-2 fs-14"
                   ></span
@@ -126,6 +67,7 @@
                     class="btn text-primary btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Voir liste materiel"
+                    title="Voir la liste des materiels"
                   ><span
                     class="fe fe-eye fs-14"
                   ></span
@@ -140,6 +82,68 @@
     </div>
   </div>
 </div>
+      <!-- ! Row Tables -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h3 class="card-title">Liste des fournisseurs</h3>
+              <a
+                (click)="goToFournisseurForm()"
+                class="btn btn-primary"
+                role="button"
+              >Ajouter un fournisseur</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-nowrap text-md-nowrap mb-0">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>telephone</th>
+                    <th>adresse</th>
+                    <th>Ninea</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let fournisseur of fournisseurs" >
+                    <td>{{fournisseur.id}}</td>
+                    <td>{{fournisseur.nom}}</td>
+                    <td>{{fournisseur.email}}</td>
+                    <td>{{fournisseur.telephone}}</td>
+                    <td>{{fournisseur.adresse}}</td>
+                    <td>{{fournisseur.ninea}}</td>
+                    <td>
+                      <div class="g-2">
+                        <a
+                          (click)="redirectToF(fournisseur.id)"
+                          class="btn text-primary btn-sm"
+                          data-bs-toggle="tooltip"
+                          data-bs-original-title="Edit"
+                        ><span class="fe fe-edit fs-14"></span
+                        ></a>
+                        <a
+                          (click)="deleteF(fournisseur.id)"
+                          class="btn text-danger btn-sm"
+                          data-bs-toggle="tooltip"
+                          data-bs-original-title="Delete"
+                        ><span
+                          class="fe fe-trash-2 fs-14"
+                        ></span
+                        ></a>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 <!-- ! End Row Tables -->
     </div>
   </div>
