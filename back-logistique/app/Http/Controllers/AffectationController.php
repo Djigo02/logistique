@@ -224,35 +224,52 @@ class AffectationController extends Controller
             return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
         }
     }
-
-    /*
-     * Tranfere d'equipement d'un campus a un autres
-     * */
-
-    public function transfererEquipement(Request $request){
+    /**
+     * Transfert d'équipement d'un campus à un autre.
+     *
+     * Cette méthode transfère une quantité spécifiée d'équipement d'une affectation existante vers une nouvelle affectation.
+     * Si la quantité demandée dépasse la quantité disponible ou est inférieure ou égale à zéro, une réponse JSON avec un message d'erreur et un statut de code 400 est renvoyée.
+     * Sinon, une nouvelle affectation est créée et sauvegardée avec la quantité spécifiée, et la quantité de l'affectation initiale est mise à jour ou supprimée si elle atteint zéro.
+     * En cas d'exception, un log est créé et une réponse JSON avec un message d'erreur et un statut de code 500 est renvoyée.
+     *
+     * @param Request $request Les données de la requête contenant l'identifiant de l'affectation ancienne, la quantité à transférer, et l'identifiant de la nouvelle affectation.
+     * @return \Illuminate\Http\JsonResponse Une réponse JSON indiquant le succès ou l'échec de l'opération.
+     */
+    public function transfererEquipement(Request $request) {
         try {
+            // Récupère l'affectation existante en utilisant l'identifiant fourni dans la requête
             $affectation = Affectation::find($request->idAncien);
             $newAffectation = new Affectation();
-            if ($request->quantite>$affectation->quantite || $request->quantite<=0){
-                return response()->json(['message'=>"Quantité indisponible", "statusCode"=>400]);
+
+            // Vérifie si la quantité demandée est valide
+            if ($request->quantite > $affectation->quantite || $request->quantite <= 0) {
+                return response()->json(['message' => "Quantité indisponible", "statusCode" => 400]);
                 // Ajouter une notification pour l'équipement qui n'est plus disponible
-            }else{
+            } else {
+                // Initialise la nouvelle affectation avec les données fournies
                 $newAffectation->concerne_id = $request->concerne_id;
                 $newAffectation->nomTable = $affectation->nomTable;
                 $newAffectation->idMateriel = $affectation->idMateriel;
                 $newAffectation->quantite = $request->quantite;
+
+                // Met à jour la quantité de l'affectation existante
                 $affectation->quantite -= $request->quantite;
                 $affectation->quantite != 0 ? $affectation->update() : $affectation->delete();
+
+                // Sauvegarde la nouvelle affectation
                 $newAffectation->save();
-                return response()->json(['message'=>"Equipement transféré avec succès", "statusCode"=>200]);
+                return response()->json(['message' => "Equipement transféré avec succès", "statusCode" => 200]);
             }
-        }catch(Exception $e){
+        } catch (Exception $e) {
+            // Crée un log en cas d'exception
             $log = new Log();
             $log->class = "Affectation";
             $log->controller = "AffectationController";
             $log->methode = "transfererEquipement";
             $log->message = $e->getMessage();
-            return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
+
+            // Retourne une réponse JSON avec un message d'erreur
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage(), 500);
         }
     }
 
