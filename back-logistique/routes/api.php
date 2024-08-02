@@ -51,4 +51,5 @@ Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
 Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
 Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\AffectationController::class, 'getAllAffectationForNT']);
 Route::get('liste-materiel/{nomTable}/{id}', [\App\Http\Controllers\AffectationController::class,'ListeMaterielsPour']);
+Route::post('transfert-materiel', [\App\Http\Controllers\AffectationController::class,'transfererEquipement']);
 

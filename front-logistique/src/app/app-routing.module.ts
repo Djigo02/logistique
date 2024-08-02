@@ -25,6 +25,9 @@ import {UpdateSalleComponent} from "./component/salle/update-salle/update-salle.
 import {AffectationComponent} from "./component/affectation/affectation.component";
 import {ListAffectationComponent} from "./component/affectation/list-affectation/list-affectation.component";
 import {VoirListeMaterielComponent} from "./component/voir-liste-materiel/voir-liste-materiel.component";
+import {
+  TransfertMaterielUseComponent
+} from "./component/affectation/transfert-materiel-use/transfert-materiel-use.component";
 
 const routes: Routes = [
   // Route de base
@@ -59,6 +62,7 @@ const routes: Routes = [
       {path: 'affectation',component:AffectationComponent},
       {path: 'listAffectation',component:ListAffectationComponent},
       {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
+      {path:'transfert-materiels/:id', component:TransfertMaterielUseComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
     ],
   },

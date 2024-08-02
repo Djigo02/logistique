@@ -37,4 +37,8 @@ export class AffectationService {
     return this.httpClient.get<Affectation>(`${this.apiUrl}/`+id)
   }
 
+  transfererMateriel(affectation : any){
+    return this.httpClient.post(`http://127.0.0.1:8000/api/transfert-materiel`,affectation,this.httpOptions);
+  }
+
 }

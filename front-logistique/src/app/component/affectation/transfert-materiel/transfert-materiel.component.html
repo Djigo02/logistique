@@ -1,0 +1,62 @@
+<div class="main-content app-content col-md-12 mb-3">
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-xl-6">
+              <form (ngSubmit)="transferer()" >
+                <input type="hidden" name="idAncien" [(ngModel)]="affectation.idAncien"/>
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Transferer le materiel dans un autre campus</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <!-- Concerne -->
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-label">Campus <span class="text-red">*</span></label>
+                          <select class="form-control form-select select2"  required [(ngModel)]="affectation.concerne_id" name="concerne_id"  >
+                            <option selected>Veuillez choisir le campus</option>
+                            <option *ngFor="let camp of campus" value="{{camp.id}}" > {{camp.nomCampus}}  </option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- Reference -->
+                      <div class="col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label class="form-label">Quantite <span class="text-red">*</span></label>
+                          <input type="text" class="form-control" min="0" max="{{affectation.quantite}}" [(ngModel)]="affectation.quantite" placeholder="Quantite" required  name="quantite"  />
+
+                        </div>
+                      </div>
+                      <!-- Type materiel -->
+<!--                      <div class="col-md-12">-->
+<!--                        <div class="form-group">-->
+<!--                          <label class="form-label">Type Materiel <span class="text-red">*</span></label>-->
+<!--                          <select class="form-control form-select select2"  (change)="onTypeMaterielChange($event)" name="typeMateriel" >-->
+<!--                            <option selected>Veuillez choisir le Type Materiel</option>-->
+<!--                            <option *ngFor="let tm of typeMateriels " value="{{tm.id}}">{{tm.libelle}}</option>-->
+<!--                          </select>-->
+<!--                        </div>-->
+<!--                      </div>-->
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-label"> Materiel <span class="text-red">*</span></label>
+                          <input type="text" class="form-control" readonly value="{{affectation.idMateriel}}" name="idMateriel" [(ngModel)]="affectation.idMateriel">
+                        </div>
+                      </div>
+
+                      <!-- Bouton Ajouter -->
+                      <div class="form-footer mt-2">
+                        <button type="submit" class="btn btn-primary">Transferer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

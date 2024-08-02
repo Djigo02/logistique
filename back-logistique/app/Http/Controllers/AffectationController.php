@@ -42,7 +42,6 @@ class AffectationController extends Controller
             foreach ($affectation as $element){
                 $materiel = Materiel::find($element->idMateriel);
                 $element->materiel = $materiel;
-
                 switch ($element->nomTable){
                     case 'campuses':
                         $campus = Campus::find($element->concerne_id);
@@ -225,4 +224,36 @@ class AffectationController extends Controller
             return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
         }
     }
+
+    /*
+     * Tranfere d'equipement d'un campus a un autres
+     * */
+
+    public function transfererEquipement(Request $request){
+        try {
+            $affectation = Affectation::find($request->idAncien);
+            $newAffectation = new Affectation();
+            if ($request->quantite>$affectation->quantite || $request->quantite<=0){
+                return response()->json(['message'=>"Quantité indisponible", "statusCode"=>400]);
+                // Ajouter une notification pour l'équipement qui n'est plus disponible
+            }else{
+                $newAffectation->concerne_id = $request->concerne_id;
+                $newAffectation->nomTable = $affectation->nomTable;
+                $newAffectation->idMateriel = $affectation->idMateriel;
+                $newAffectation->quantite = $request->quantite;
+                $affectation->quantite -= $request->quantite;
+                $affectation->quantite != 0 ? $affectation->update() : $affectation->delete();
+                $newAffectation->save();
+                return response()->json(['message'=>"Equipement transféré avec succès", "statusCode"=>200]);
+            }
+        }catch(Exception $e){
+            $log = new Log();
+            $log->class = "Affectation";
+            $log->controller = "AffectationController";
+            $log->methode = "transfererEquipement";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
+        }
+    }
+
 }

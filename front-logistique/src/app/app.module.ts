@@ -41,6 +41,8 @@ import {ToastrModule} from "ngx-toastr";
 import { AffectationComponent } from './component/affectation/affectation.component';
 import { ListAffectationComponent } from './component/affectation/list-affectation/list-affectation.component';
 import { VoirListeMaterielComponent } from './component/voir-liste-materiel/voir-liste-materiel.component';
+import { TransfertMaterielComponent } from './component/affectation/transfert-materiel/transfert-materiel.component';
+import { TransfertMaterielUseComponent } from './component/affectation/transfert-materiel-use/transfert-materiel-use.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { VoirListeMaterielComponent } from './component/voir-liste-materiel/voir
     AffectationComponent,
     ListAffectationComponent,
     VoirListeMaterielComponent,
+    TransfertMaterielComponent,
+    TransfertMaterielUseComponent,
   ],
   imports: [
     BrowserModule,

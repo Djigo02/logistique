@@ -53,4 +53,5 @@ export class VoirListeMaterielComponent implements OnInit {
       console.log(this.materiels);
     });
   }
+
 }

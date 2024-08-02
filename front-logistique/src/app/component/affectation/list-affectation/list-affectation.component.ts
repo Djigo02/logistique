@@ -44,5 +44,9 @@ export class ListAffectationComponent implements OnInit{
 
   }
 
+  goToTransfert(id:any){
+    this.router.navigate(['/admin/transfert-materiels/',id]);
+  }
+
 
 }
