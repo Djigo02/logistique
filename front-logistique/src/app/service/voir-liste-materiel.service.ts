@@ -8,7 +8,7 @@ import {Materiel} from "../model/materiel";
 })
 export class VoirListeMaterielService {
   // params ('nomtable', 'id')
-  apiUrl: string = 'http://127.0.0.1:8000/api/liste-materiel/';
+  apiUrl: string = 'http://logistique.groupeisi.com/api/liste-materiel/';
 
   httpOptions = {
     headers: new HttpHeaders({

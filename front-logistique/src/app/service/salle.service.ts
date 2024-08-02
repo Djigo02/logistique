@@ -16,14 +16,14 @@ export class SalleService {
     }),
   };
 
-  apiUrl  : string =  'http://localhost:8000/api/salles/';
+  apiUrl  : string =  'http://logistique.groupeisi.com/api/salles/';
 
   getSalles():Observable<Salle[]>{
     return this.httpClient.get<Salle[]>(this.apiUrl);
   }
 
   getSalleByCampus(id : number):Observable<Salle[]>{
-    return this.httpClient.get<Salle[]>(`http://127.0.0.1:8000/api/sallesin/`+id);
+    return this.httpClient.get<Salle[]>(`http://logistique.groupeisi.com/api/sallesin/`+id);
   }
 
   insertSalle(salle : Salle){

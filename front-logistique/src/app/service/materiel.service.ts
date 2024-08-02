@@ -8,11 +8,11 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class MaterielService {
-  apiUrl:string = 'http://127.0.0.1:8000/api/materiels';
+  apiUrl:string = 'http://logistique.groupeisi.com/api/materiels';
   constructor(private httpClient : HttpClient) {}
 
   getMatByTypeMat(id: any): Observable<Materiel[]> {
-    return this.httpClient.get<Materiel[]>(`http://127.0.0.1:8000/api/getmatbytypemat/`+id);
+    return this.httpClient.get<Materiel[]>(`http://logistique.groupeisi.com/api/getmatbytypemat/`+id);
   }
 
   httpOptions = {

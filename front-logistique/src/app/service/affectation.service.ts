@@ -11,7 +11,7 @@ export class AffectationService {
 
   constructor(private httpClient: HttpClient) { }
 
-   apiUrl:string = "http://127.0.0.1:8000/api/affectations"
+   apiUrl:string = "http://logistique.groupeisi.com/api/affectations"
 
   httpOptions = {
     headers : new HttpHeaders({
@@ -20,7 +20,7 @@ export class AffectationService {
   };
 
   getAffectationFNT(nomTable:string):Observable<any[]>{
-    return this.httpClient.get<any>(`http://127.0.0.1:8000/api/getAllAffectationForNT/`+nomTable);
+    return this.httpClient.get<any>(`http://logistique.groupeisi.com/api/getAllAffectationForNT/`+nomTable);
   }
 
   insertAffectation(affectation : any){
@@ -38,7 +38,7 @@ export class AffectationService {
   }
 
   transfererMateriel(affectation : any){
-    return this.httpClient.post(`http://127.0.0.1:8000/api/transfert-materiel`,affectation,this.httpOptions);
+    return this.httpClient.post(`http://logistique.groupeisi.com/api/transfert-materiel`,affectation,this.httpOptions);
   }
 
 }

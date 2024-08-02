@@ -9,7 +9,7 @@ import {Salle} from "../model/salle";
 })
 export class CampusService {
   constructor(private httpClient: HttpClient) { }
-  apiUrl  : string =  'http://localhost:8000/api/campus/';
+  apiUrl  : string =  'http://logistique.groupeisi.com/api/campus/';
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -32,7 +32,7 @@ export class CampusService {
   }
 
   getSallesByCampusId(id:any):Observable<Salle[]>{
-    return this.httpClient.get<Salle[]>(`http://localhost:8000/api/sallesin/${id}`,this.httpOptions);
+    return this.httpClient.get<Salle[]>(`http://logistique.groupeisi.com/api/sallesin/${id}`,this.httpOptions);
   }
 
   updateCampus(campus:Campus){

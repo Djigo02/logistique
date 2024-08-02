@@ -9,7 +9,7 @@ import {Fournisseur} from "../model/fournisseur";
 })
 export class FournisseurService {
 
-   apiUrl : string = 'http://localhost:8000/api/fournisseurs';
+   apiUrl : string = 'http://logistique.groupeisi.com/api/fournisseurs';
 
   constructor(private httpClient: HttpClient) { }
 
