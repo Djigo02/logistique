@@ -11,7 +11,7 @@ export class AffectationService {
 
   constructor(private httpClient: HttpClient) { }
 
-   apiUrl:string = "http://logistique.groupeisi.com/api/affectations"
+   apiUrl:string = "https://logistique.groupeisi.com/api/affectations"
 
   httpOptions = {
     headers : new HttpHeaders({
@@ -20,7 +20,7 @@ export class AffectationService {
   };
 
   getAffectationFNT(nomTable:string):Observable<any[]>{
-    return this.httpClient.get<any>(`http://logistique.groupeisi.com/api/getAllAffectationForNT/`+nomTable);
+    return this.httpClient.get<any>(`https://logistique.groupeisi.com/api/getAllAffectationForNT/`+nomTable);
   }
 
   insertAffectation(affectation : any){
@@ -30,15 +30,17 @@ export class AffectationService {
   deleteAffectation(id : any){
     return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
+
   updateAffectation(affectation : any,id : any){
     return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(affectation),this.httpOptions);
   }
+
   getAffectationById(id:any):Observable<Affectation>{
     return this.httpClient.get<Affectation>(`${this.apiUrl}/`+id)
   }
 
   transfererMateriel(affectation : any){
-    return this.httpClient.post(`http://logistique.groupeisi.com/api/transfert-materiel`,affectation,this.httpOptions);
+    return this.httpClient.post(`https://logistique.groupeisi.com/api/transfert-materiel/`,affectation,this.httpOptions);
   }
 
 }

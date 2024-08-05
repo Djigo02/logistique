@@ -16,7 +16,7 @@ export class UserService {
     }),
   };
 
-  apiUrl: string = 'http://logistique.groupeisi.com/api/users';
+  apiUrl: string = 'https://logistique.groupeisi.com/api/users';
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.apiUrl);

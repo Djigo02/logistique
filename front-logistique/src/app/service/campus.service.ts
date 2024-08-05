@@ -9,7 +9,7 @@ import {Salle} from "../model/salle";
 })
 export class CampusService {
   constructor(private httpClient: HttpClient) { }
-  apiUrl  : string =  'http://logistique.groupeisi.com/api/campus/';
+  apiUrl  : string =  'https://logistique.groupeisi.com/api/campus';
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -25,14 +25,14 @@ export class CampusService {
   }
 
   deleteCampus(id : any){
-    return this.httpClient.delete(this.apiUrl+id);
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
   getCampusById(id:any):Observable<Campus>{
-    return this.httpClient.get<Campus>(this.apiUrl+id)
+    return this.httpClient.get<Campus>(`${this.apiUrl}/`+id)
   }
 
   getSallesByCampusId(id:any):Observable<Salle[]>{
-    return this.httpClient.get<Salle[]>(`http://logistique.groupeisi.com/api/sallesin/${id}`,this.httpOptions);
+    return this.httpClient.get<Salle[]>(`https://logistique.groupeisi.com/api/sallesin/${id}`,this.httpOptions);
   }
 
   updateCampus(campus:Campus){

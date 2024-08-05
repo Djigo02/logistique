@@ -11,7 +11,7 @@ export class TypeMaterielService {
   //Normal
   constructor(private httpClient: HttpClient) {}
 
-  apiUrl: string = 'http://logistique.groupeisi.com/api/typesmateriels';
+  apiUrl: string = 'https://logistique.groupeisi.com/api/typesmateriels';
 
   httpOptions = {
     headers: new HttpHeaders({

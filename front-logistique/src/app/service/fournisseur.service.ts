@@ -9,7 +9,7 @@ import {Fournisseur} from "../model/fournisseur";
 })
 export class FournisseurService {
 
-   apiUrl : string = 'http://logistique.groupeisi.com/api/fournisseurs';
+   apiUrl : string = 'https://logistique.groupeisi.com/api/fournisseurs';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,7 +25,7 @@ export class FournisseurService {
 
 
   insertFournisseur(fournisseur : any){
-    return this.httpClient.post(`${this.apiUrl}`,fournisseur);
+    return this.httpClient.post(`${this.apiUrl}/`,fournisseur);
   }
 
   deleteFournisseur(id : any){

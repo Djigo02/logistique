@@ -15,7 +15,7 @@ export class RoleService {
     }),
   };
 
-  apiUrl: string = 'http://logistique.groupeisi.com/api/roles/';
+  apiUrl: string = 'https://logistique.groupeisi.com/api/roles/';
 
   getRole(): Observable<Role[]> {
     return this.httpClient.get<Role[]>(this.apiUrl);

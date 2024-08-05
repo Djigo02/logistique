@@ -16,14 +16,14 @@ export class SalleService {
     }),
   };
 
-  apiUrl  : string =  'http://logistique.groupeisi.com/api/salles/';
+  apiUrl  : string =  'https://logistique.groupeisi.com/api/salles';
 
   getSalles():Observable<Salle[]>{
     return this.httpClient.get<Salle[]>(this.apiUrl);
   }
 
   getSalleByCampus(id : number):Observable<Salle[]>{
-    return this.httpClient.get<Salle[]>(`http://logistique.groupeisi.com/api/sallesin/`+id);
+    return this.httpClient.get<Salle[]>(`https://logistique.groupeisi.com/api/sallesin/`+id);
   }
 
   insertSalle(salle : Salle){
@@ -31,14 +31,14 @@ export class SalleService {
   }
 
   getSalleById(id:any): Observable<Salle>{
-    return this.httpClient.get<Salle>(this.apiUrl+id,this.httpOptions);
+    return this.httpClient.get<Salle>(`${this.apiUrl}/`+id,this.httpOptions);
   }
 
   deleteSalle(id:any){
-    return this.httpClient.delete(this.apiUrl+id);
+    return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
 
   updateSalle(salle : Salle){
-    return this.httpClient.put(this.apiUrl+salle.id,JSON.stringify(salle),this.httpOptions);
+    return this.httpClient.put(`${this.apiUrl}/`+salle.id,JSON.stringify(salle),this.httpOptions);
   }
 }
