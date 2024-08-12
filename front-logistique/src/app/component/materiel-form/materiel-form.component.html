@@ -35,11 +35,9 @@
           <div class="form-group">
             <label class="form-label">Prix <span class="text-red">*</span></label>
             <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="materiel.prix"
-                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #name="ngModel"
+                    #name="ngModel"
             />
-            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-              le prix est requis
-            </div>
+
           </div>
         </div>
         <!-- Seuil -->
@@ -47,11 +45,9 @@
           <div class="form-group">
             <label class="form-label">Seuil <span class="text-red">*</span></label>
             <input type="number" class="form-control" placeholder="Seuil" name="seuil" [(ngModel)]="materiel.seuil"
-                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #name="ngModel"
+                    #name="ngModel"
             />
-            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-              le seuil est requis
-            </div>
+
           </div>
         </div>
         <!-- Date d' Enregistrement -->
@@ -77,24 +73,20 @@
               <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
             </div>
             <input class="form-control fc-datepicker" type="date" name="amortissement" [(ngModel)]="materiel.amortissement"
-                   required  #name="ngModel"
+                     #name="ngModel"
             />
-            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-              l' amortissement est requise
-            </div>
+
           </div>
         </div>
         <!-- Fournisseur -->
         <div class="col-md-12">
           <div class="form-group">
             <label class="form-label">Fournisseur <span class="text-red">*</span></label>
-            <select class="form-control form-select select2" name="idFournisseur" id="" [(ngModel)]="materiel.idFournisseur" required #name="ngModel">
+            <select class="form-control form-select select2" name="idFournisseur" id="" [(ngModel)]="materiel.idFournisseur"  #name="ngModel">
               <option selected>Veuillez choisir le fournisseur</option>
               <option *ngFor="let fourn of fournisseurs" [value]="fourn.id">{{ fourn.nom }} </option>
             </select>
-            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
-              le fournisseur est requis
-            </div>
+
           </div>
         </div>
         <!-- Type materiel -->
