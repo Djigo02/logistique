@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
-            $table->string('telephone');
-            $table->string('adresse');
-            $table->foreignId("idUser")->references("id")->on("users");
+            $table->string('nomCampus',100);
+            $table->string('telephone',20);
+            $table->string('adresse',100);
             $table->string("etat");
+            $table->string("departement");
+            $table->string("region");
+            $table->unsignedBigInteger('idUser')->nullable();
+            $table->foreign("idUser")->references("id")->on("users")->onDelete("cascade");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

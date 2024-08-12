@@ -1,0 +1,128 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Prenom <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Prenom"
+          [(ngModel)]="user.prenom"
+          name="prenom"
+          #name="ngModel"
+          pattern="^[^\s].{1,250}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Le prenom doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Nom <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nom"
+          [(ngModel)]="user.nom"
+          name="nom"
+          #name="ngModel"
+          pattern="^[^\s].{1,250}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Le nom doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Telephone <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Telephone"
+          [(ngModel)]="user.telephone"
+          name="telephone"
+          #name="ngModel"
+          pattern="^[^\s].{1,15}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Le numero de telephone n'est pas valide.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Email <span class="text-red">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          autocomplete="username"
+          [(ngModel)]="user.email"
+          name="email"
+          #name="ngModel"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          L'email n'est pas valide.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Role <span class="text-red">*</span></label
+        >
+        <select
+          [(ngModel)]="user.idRole"
+          class="form-control form-select select2"
+          data-bs-placeholder="Select"
+          name="idRole"
+          required
+        >
+          <option value="">Veuillez choisir le role</option>
+          <option
+            *ngFor="let role of rolesList"
+            value="{{ role.id }}"
+          >
+            {{ role.libelle }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Adresse <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Addresse"
+          [(ngModel)]="user.adresse"
+          name="adresse"
+          required
+          pattern="^[^\s].{1,250}$"
+          #name="ngModel"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Veuillez renseigner une adresse valide
+        </div>
+      </div>
+    </div>
+    <div class="form-footer mt-2">
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-primary">
+        Enregistrer l'utilisateur
+      </button>
+    </div>
+  </div>
+</form>

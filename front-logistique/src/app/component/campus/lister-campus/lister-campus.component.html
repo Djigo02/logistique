@@ -1,0 +1,75 @@
+<!--app-content open-->
+<div class="main-content app-content mt-5 pt-9">
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <!-- ! Liste campus OPEN -->
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h3 class="card-title">Listes des campus</h3>
+              <a
+                (click)="goToCampusForm()"
+                class="btn btn-primary"
+                role="button"
+              >Ajouter un campus</a>
+            </div>
+            <div class="card-body">
+              <div class="">
+                <div class="row" *ngIf="campusList">
+                  <div class="col-xl-4 col-sm-6 col-md-6" *ngFor="let campus of campusList">
+                    <div class="card border p-0">
+                      <div class="card-header">
+                        <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
+                        <div class="card-options">
+                          <a (click)="goToUpdateCampus(campus.id)" class="card-options-remove"><i class="fe fe-edit"></i></a>
+                          <a (click)="deleteCampus(campus.id)" class="card-options-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                      </div>
+                      <div class="card-body text-center">
+<!--                        <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg"></span>-->
+                        <p class="card-text">DEPARTEMENT : <strong>{{campus.departement}}</strong> </p>
+                        <p class="card-text">TELEPHONE : <strong>{{campus.telephone}}</strong> </p>
+                        <p class="card-text">ADRESSE : <strong>{{campus.adresse}}</strong> </p>
+                      </div>
+                      <div class="card-footer text-center">
+                        <div class="d-flex justify-content-around">
+                          <a
+                            (click)="voirMateriels('campus',campus.id)"
+                            class="btn btn-primary"
+                            role="button"
+                            data-bs-placement="top" data-bs-toggle="tooltip" title="Voir materiels"
+                          >Voir materiels</a
+                          >
+                          <a
+                            (click)="goToSalles(campus.id)"
+                            class="btn btn-secondary"
+                            role="button"
+                          >Voir salles</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!--  NO CAMPUS AVAILABLE -->
+                <div class="row" *ngIf="!campusList">
+                  <div class="col-md-12 col-xl-12">
+                    <div class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Aucun campus disponible.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- COL-END -->
+      </div>
+      <!-- ! END Liste campus CLOSED -->
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Type materiel</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onsubmit()" #tmForm="ngForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="typeMateriel.libelle"
+              required
+              pattern="[a-zA-Zàéèç]{1,100}$"
+              placeholder="Type de materiel" name="libelle" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+                le libelle doit contenir entre 1 et 100 caractere(s).
+            </div>
+          </div>
+          <div class="form-footer mt-2">
+            <button type="submit" class="btn btn-primary" [disabled]="!tmForm.form.valid"
+            >Ajouter un type de materiel</button
+            >
+          </div>
+      </form>
+    </div>
+</div>
+

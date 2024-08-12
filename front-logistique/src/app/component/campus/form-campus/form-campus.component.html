@@ -1,0 +1,112 @@
+<form method="post" (submit)="onSubmit()" #campusForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-6 mb-0">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="nomcampus"
+          name="nomCampus"
+          pattern="^[^\s].{1,150}$"
+          #name="ngModel"
+          placeholder="Nom campus"
+          [(ngModel)]="campus.nomCampus"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          le nom du campus doit contenir entre 1 et 150 caractere(s).
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 mb-0">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="adresse"
+          placeholder="Adresse"
+          name="adresse"
+          pattern="^[^\s].{1,250}$"
+          #name="ngModel"
+          [(ngModel)]="campus.adresse"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          L'adresse doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6 mb-0">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="region"
+          name="region"
+          placeholder="Région"
+          #name="ngModel"
+          [(ngModel)]="campus.region"
+          pattern="^[^\s].{1,250}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          La région doit être renseignée et doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 mb-0">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="departement"
+          placeholder="Département"
+          name="departement"
+          [(ngModel)]="campus.departement"
+          #name="ngModel"
+          pattern="^[^\s].{1,250}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Le département doit être renseigné et doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="number"
+      class="form-control"
+      id="telephone"
+      placeholder="Téléphone"
+      name="telephone"
+      [(ngModel)]="campus.telephone"
+      pattern="^[^\s].{1,20}$"
+      #name="ngModel"
+    />
+    <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+      Le téléphone doit être renseigné et doit contenir entre 1 et 20 caractere(s).
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="form-group">
+      <label class="form-label">Responsable <span class="text-red">*</span></label>
+      <select
+        class="form-control form-select select2"
+        data-bs-placeholder="Select"
+        [(ngModel)]="campus.idUser"
+        name="idUser"
+        required
+      >
+        <option selected>Choisissez le responsable du campus</option>
+        <option *ngFor="let responsable of responsables" [value]="responsable.id">
+          {{responsable.prenom}} {{responsable.nom}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-footer mt-2">
+    <button class="btn btn-primary" type="submit" [disabled]="!campusForm.form.valid">
+      Enregistrer un campus
+    </button>
+  </div>
+</form>

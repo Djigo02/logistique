@@ -13,20 +13,23 @@ return new class extends Migration
     {
         Schema::create('materiels', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            $table->string("sku");
-            $table->string("codeMateriel");
-            $table->string("marque");
-            $table->string("description");
+            $table->string("description",255);
+            $table->string("reference",50)->nullable();
+            $table->string("codeMateriel",25);
             $table->integer("prix");
             $table->integer("quantite");
             $table->integer("seuil");
             $table->date("amortissement");
-            $table->integer("etat");
-            $table->integer("archive");
-            $table->string("image");
-            $table->foreignId("idTypeMateriel")->references("id")->on("type_materiels");
+            $table->date("dateEnregistrement");
+            $table->string("etat", 50);//venant ou neuf
+            $table->string("status");// disponible, hors d'usage, en voie d'ammortissement
+            $table->string("image")->nullable();
+            $table->unsignedBigInteger("idTypeMateriel")->nullable();
+            $table->unsignedBigInteger("idFournisseur")->nullable();
+            $table->foreign("idTypeMateriel")->references("id")->on("type_materiels")->onDelete("set null");
+            $table->foreign("idFournisseur")->references("id")->on("fournisseurs")->onDelete("set null");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -37,4 +40,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('materiels');
     }
+
 };

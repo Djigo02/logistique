@@ -1,0 +1,52 @@
+<!--app-content open-->
+<div class="main-content app-content pt-5">
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid ">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-header ">
+              <h3 class="card-title">Liste des materiels affectés {{nomAffichage}}</h3>
+            </div>
+            <div class="card-body">
+              <div class="">
+                <div class="row" *ngIf="materiels">
+                  <div class="col-xl-4 col-sm-6 col-md-6" *ngFor="let materiel of materiels">
+                    <div class="card border p-0">
+                      <div class="card-header">
+                        <h5 class="card-title"><strong>{{materiel.description}}</strong></h5>
+<!--                        <div class="card-options" *ngIf="nomTable=='campuses'">-->
+<!--&lt;!&ndash;                          <a (click)="goToUpdateCampus(campus.id)" class="card-options-remove"><i class="fe fe-edit"></i></a>&ndash;&gt;-->
+<!--                          <a (click)="goToTransfert(entite.id)" class="card-options-remove"><i class="fe fe-fast-forward"></i></a>-->
+<!--                        </div>-->
+                      </div>
+                      <div class="card-body text-center">
+                        <!--                        <span class="avatar avatar-xxl brround cover-image" data-bs-image-src="../assets/images/users/15.jpg"></span>-->
+                        <p class="card-text">Nombre : <strong>{{materiel.quantite}}</strong> </p>
+                        <p class="card-text">Date d'affectation : <strong>{{materiel.dateEnregistrement | date:'dd/MM/yyyy'}}</strong> </p>
+                        <p class="card-text">Etat : <strong>{{materiel.etat}}</strong> </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!--  NO CAMPUS AVAILABLE -->
+                <div class="row" *ngIf="materiels.length===0">
+                  <div class="col-md-12 col-xl-12">
+                    <div class="spinner-grow" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Aucun materiel trouve.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- COL-END -->
+        </div>
+        <!-- ! END Liste campus CLOSED -->
+      </div>
+    </div>
+  </div>
+</div>

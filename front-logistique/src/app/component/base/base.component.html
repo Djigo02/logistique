@@ -1,0 +1,40 @@
+<!-- GLOBAL-LOADER -->
+<div id="global-loader">
+  <img src="images/loader.svg" class="loader-img" alt="Loader" />
+</div>
+<!-- /GLOBAL-LOADER -->
+
+<!-- PAGE -->
+<div class="page">
+  <div class="page-main">
+    <!-- app-Header -->
+    <app-navbar-admin></app-navbar-admin>
+    <!-- /app-Header -->
+
+    <!-- ! APP-SIDEBAR-->
+    <app-sidebar-admin></app-sidebar-admin>
+    <!-- ! End APP-SIDEBAR-->
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+
+<!--! FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="row align-items-center flex-row-reverse">
+      <div class="col-md-12 col-sm-12 text-center">
+        Copyright © <span id="year"></span> <a href="javascript:void(0)"></a>.
+        Réalisé avec <span class="fa fa-heart text-danger"></span> par
+        <a href="javascript:void(0)"> AMOURA INCUBES 2024</a> Tous droits
+        réservés GROUPE ISI.
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+<!-- BACK-TO-TOP -->
+<a style="background-color: rgb(27, 60, 101)" href="#top" id="back-to-top"
+  ><i class="fa fa-angle-up"></i
+></a>

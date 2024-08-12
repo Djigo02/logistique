@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materiel;
-use App\Http\Requests\StoreMaterielRequest;
-use App\Http\Requests\UpdateMaterielRequest;
+use App\Models\TypeMateriel;
+use Illuminate\Http\Request;
+use Exception;
 
 class MaterielController extends Controller
 {
@@ -13,54 +14,117 @@ class MaterielController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            // Lister les matériels
+            $materiels = Materiel::all();
+            return response()->json($materiels);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getmatbytypemat(string $id)
     {
-        //
+        try {
+            // Lister les matériels
+            $materiels = Materiel::where('idTypeMateriel',$id)->get();
+            return response()->json($materiels);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, string $id)
+    {
+        try{
+            $materiel = Materiel::find($id);
+            $materiel->description = $request->description;
+            $materiel->prix = $request->prix;
+            $materiel->quantite = $request->quantite;
+            $materiel->seuil = $request->seuil;
+            $materiel->dateEnregistrement = $request->dateEnregistrement;
+            $materiel->amortissement = $request->amortissement ;
+            $materiel->etat = $request->etat;
+            $materiel->update();
+            return response()->json(['message'=>"materiel Update", 'materiel'=>$materiel,"statusCode"=>200]);
+        }catch(Exception $e){
+            $log =new Log();
+            $log->class = "Materiel";
+            $log->controller = "MaterielController";
+            $log->methode = "update";
+            $log->message = $e->getMessage();
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMaterielRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Création d'un nouveau matériel
+        $request->validate([
+            'description' => 'required',
+            'prix' => 'required|integer',
+            'quantite' => 'required|integer',
+            'seuil' => 'required|integer',
+            'amortissement' => 'required',
+            'dateEnregistrement' => 'required',
+            'image' => 'file|mimes:jpeg,jpg,png,gif,svg|max:2048',
+            'idTypeMateriel' => 'required|integer',
+            'idFournisseur' => 'required|integer',
+            'etat' => 'required',
+
+        ]);
+        try {
+            // Enregistrer un nouveau matériel
+            $materiel = new Materiel();
+            $materiel->description = $request->description;
+            $materiel->prix = $request->prix;
+            $materiel->quantite = $request->quantite;
+            $materiel->seuil = $request->seuil;
+            $materiel->dateEnregistrement = $request->dateEnregistrement;
+            $materiel->amortissement = $request->amortissement ;
+            $materiel->etat = $request->etat;
+            $materiel->status = "Disponible";
+            if ($request->file('image')) {
+                $imagePath = $request->file('image')->store('images','public');
+            }
+            $materiel->image = $imagePath ?? null;
+            $materiel->idTypeMateriel = $request->idTypeMateriel;
+            $materiel->idFournisseur = $request->idFournisseur;
+            $materiel->generateCode();
+            $materiel->save();
+            return response()->json($materiel);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Materiel $materiel)
+    public function show(int $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Materiel $materiel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMaterielRequest $request, Materiel $materiel)
-    {
-        //
+        // Afficher le type de materiel
+        try {
+            // afficher le type de materiel
+            $materiel = Materiel::findOrFail($id);
+            return response()->json($materiel);
+        } catch (Exception $e) {
+            return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materiel $materiel)
+    public function destroy(int $materiel)
     {
-        //
+        // Supprimer un type de materiel
+       try {
+        $materiel = Materiel::findOrFail($materiel);
+           $materiel->delete();
+        return response()->json("Materiel supprimer avec success");
+    } catch (Exception $e) {
+        return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
+    }
     }
 }

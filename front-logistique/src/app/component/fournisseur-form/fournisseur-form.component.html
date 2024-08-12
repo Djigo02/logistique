@@ -1,0 +1,101 @@
+<form (ngSubmit)="onSubmit()" #fourn="ngForm">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Nom <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nom du fournisseur"
+          [(ngModel)]="fournisseur.nom"
+          name="nom"
+          #name="ngModel"
+          pattern="^[^\s].{1,250}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Le nom doit contenir entre 1 et 250 caractere(s).
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="form-group">
+        <label class="form-label"
+        >Email <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          [(ngModel)]="fournisseur.email"
+          name="email"
+          #name="ngModel"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          L'email doit être valide.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Telephone <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Telephone"
+          [(ngModel)]="fournisseur.telephone"
+          name="telephone"
+          pattern="^[^\s].{1,20}$"
+          #name="ngModel"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Veuillez saisir un numéro de téléphone valide.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Addresse <span class="text-red">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Addresse"
+          [(ngModel)]="fournisseur.adresse"
+          name="adresse"
+          pattern="^[^\s].{1,250}$"
+          #name="ngModel"
+        />
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          Veuillez saisir une adresse valide.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
+        >Ninea</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ninea"
+          [(ngModel)]="fournisseur.ninea"
+          name="ninea"
+        />
+      </div>
+    </div>
+
+    <div class="form-footer mt-2">
+      <button type="submit" [disabled]="!fourn.form.valid" class="btn btn-primary">
+        Enregistrer le fournisseur
+      </button>
+    </div>
+  </div>
+</form>
+

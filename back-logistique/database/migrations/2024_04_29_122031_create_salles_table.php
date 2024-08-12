@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('salles', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
+            $table->string('nomSalle', 100);
             $table->integer('capacite');
-            $table->foreignId("idCampus")->references("id")->on("campuses");
-            $table->integer("etat");
+            $table->unsignedBigInteger("idCampus")->nullable();
+            $table->foreign("idCampus")->references("id")->on("campuses")->cascadeOnDelete();
+            $table->string("etat");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

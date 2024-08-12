@@ -1,0 +1,142 @@
+<form (ngSubmit)="onSubmit()" #matForm="ngForm">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Ajouter un nouveau materiel</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <!-- Description -->
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="form-floating">
+              <textarea class="form-control" [(ngModel)]="materiel.description" name="description"
+                        required pattern="^[a-zA-Z0-9àéèç ]{1,255}$" #name="ngModel" id="floatingTextarea2" style="height: 100px"></textarea>
+              <label for="floatingTextarea2">Description  <span class="text-red">*</span></label>
+            </div>
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              la description est requis
+            </div>
+          </div>
+        </div>
+        <!-- Quantite -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">Quantite <span class="text-red">*</span></label>
+            <input type="number" class="form-control" placeholder="Quantite" name="quantite" [(ngModel)]="materiel.quantite"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #name="ngModel"
+            />
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              la quantite est requise
+            </div>
+          </div>
+        </div>
+        <!-- Prix -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-label">Prix <span class="text-red">*</span></label>
+            <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="materiel.prix"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #name="ngModel"
+            />
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              le prix est requis
+            </div>
+          </div>
+        </div>
+        <!-- Seuil -->
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Seuil <span class="text-red">*</span></label>
+            <input type="number" class="form-control" placeholder="Seuil" name="seuil" [(ngModel)]="materiel.seuil"
+                   required pattern="^[a-zA-Z0-9àéèç]{1,25}$" #name="ngModel"
+            />
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              le seuil est requis
+            </div>
+          </div>
+        </div>
+        <!-- Date d' Enregistrement -->
+        <div class="col-md">
+          <label class="form-label">Date d' Enregistrement <span class="text-red">*</span></label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+            </div>
+            <input class="form-control fc-datepicker" type="date" name="dateEnregistrement" [(ngModel)]="materiel.dateEnregistrement"
+                   required  #name="ngModel"
+            />
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              la date d'enregistrement est requise
+            </div>
+          </div>
+        </div>
+        <!-- Date d'amortissement -->
+        <div class="col-md">
+          <label class="form-label">Date d'amortissement <span class="text-red">*</span></label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+            </div>
+            <input class="form-control fc-datepicker" type="date" name="amortissement" [(ngModel)]="materiel.amortissement"
+                   required  #name="ngModel"
+            />
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              l' amortissement est requise
+            </div>
+          </div>
+        </div>
+        <!-- Fournisseur -->
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Fournisseur <span class="text-red">*</span></label>
+            <select class="form-control form-select select2" name="idFournisseur" id="" [(ngModel)]="materiel.idFournisseur" required #name="ngModel">
+              <option selected>Veuillez choisir le fournisseur</option>
+              <option *ngFor="let fourn of fournisseurs" [value]="fourn.id">{{ fourn.nom }} </option>
+            </select>
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              le fournisseur est requis
+            </div>
+          </div>
+        </div>
+        <!-- Type materiel -->
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Type materiel <span class="text-red">*</span></label>
+            <select class="form-control form-select select2" name="idTypeMateriel" [(ngModel)]="materiel.idTypeMateriel" required #name="ngModel">
+              <option selected>Veuillez choisir le Type Materiel</option>
+              <option *ngFor="let tm of TypeMateriels" [value]="tm.id" >{{tm.libelle}}</option>
+
+            </select>
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              le type materiel est requis
+            </div>
+          </div>
+        </div>
+        <!-- Etat -->
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Etat <span class="text-red">*</span></label>
+            <select class="form-control form-select select2" name="status" [(ngModel)]="materiel.etat" required #name="ngModel">
+              <option>Veuillez choisir l'etat du materiel</option>
+              <option value="Neuf">Neuf</option>
+              <option value="Venant">Venant</option>
+            </select>
+            <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+              l'etat  est requis
+            </div>
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="row mb-3">
+          <div class="col-lg-6 col-sm-12 mb-4 mb-lg-0">
+            <label class="form-label">Image <span class="text-red">*</span></label>
+            <input type="file" class="dropify" data-default-file="../assets/images/media/1.jpg" data-bs-height="180" name="image" [(ngModel)]="materiel.image" (change)="onFileSelected($event)" />
+          </div>
+        </div>
+        <!-- Bouton Ajouter -->
+        <div class="form-footer mt-2">
+          <button href="javascript:void(0)" type="submit" class="btn btn-primary" [disabled]="!matForm.valid"  >Enregistrer  materiel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
