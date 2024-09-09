@@ -16,7 +16,7 @@ import { ListerUtilisateurComponent } from './component/utilisateur/lister-utili
 import { ListerMaterielComponent } from './component/materiel/lister-materiel/lister-materiel.component';
 import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NavbarAdminComponent } from './pages/navbar-admin/navbar-admin.component';
@@ -43,7 +43,14 @@ import { ListAffectationComponent } from './component/affectation/list-affectati
 import { VoirListeMaterielComponent } from './component/voir-liste-materiel/voir-liste-materiel.component';
 import { TransfertMaterielComponent } from './component/affectation/transfert-materiel/transfert-materiel.component';
 import { TransfertMaterielUseComponent } from './component/affectation/transfert-materiel-use/transfert-materiel-use.component';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
+
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,9 +96,20 @@ import { TransfertMaterielUseComponent } from './component/affectation/transfert
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot() ,// ToastrModule added
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:8000'], // change to your backend domain
+        disallowedRoutes: ['http://localhost:8000/api/login'], // exclude login route from JWT
+      },
+    }),
   ],
-  providers: [TypeMaterielService],
+  providers: [
+    TypeMaterielService,
+
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

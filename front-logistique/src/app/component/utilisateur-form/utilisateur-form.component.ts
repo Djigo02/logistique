@@ -17,6 +17,7 @@ export class UtilisateurFormComponent implements OnInit{
   rolesList!: Role[];
   isAddForm !: boolean;
   utilisateurs :User[]=[];
+  role!:Role;
 
   constructor(
     private roleService: RoleService,
@@ -54,6 +55,8 @@ export class UtilisateurFormComponent implements OnInit{
       console.log(res);
     });
   }
+
+
 
   handleSubmit() {
     this.userService.insertUser(this.user).subscribe({

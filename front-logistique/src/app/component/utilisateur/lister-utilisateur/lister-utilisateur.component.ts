@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {Fournisseur} from "../../../model/fournisseur";
 import {FournisseurService} from "../../../service/fournisseur.service";
 import {ToastrService} from "ngx-toastr";
+import {RoleService} from "../../../service/role.service";
+import {Role} from "../../../model/role";
 
 @Component({
   selector: 'app-lister-utilisateur',
@@ -15,7 +17,8 @@ export class ListerUtilisateurComponent implements OnInit{
 
   utilisateurs : User[] = [];
   fournisseurs : Fournisseur[] = [];
-  constructor(private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
+  role!:string;
+  constructor(private rolseService:RoleService,private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
   }
   ngOnInit() {
     this.getUserData();
@@ -32,6 +35,12 @@ export class ListerUtilisateurComponent implements OnInit{
     this.router.navigate(['/admin/voir-materiels',nomtable,id]);
   }
 
+  getRole(idRole: number, user: User) {
+    this.rolseService.getRoleByIdRole(idRole).subscribe(res => {
+      user.roleName = res.libelle;  // Ajoutez directement le nom du rôle à l'utilisateur
+      console.log('Nom du rôle pour l\'utilisateur:', user.roleName);
+    });
+  }
   delete(id:number){
     this.userService.deleteUser(id).subscribe(res =>{
         this.notification.success("materiel supprimer avec succcess","Operation reussie");
@@ -51,11 +60,16 @@ export class ListerUtilisateurComponent implements OnInit{
     );
   }
   getUserData(){
-    this.userService.getUsers().subscribe(res =>{
-      this.utilisateurs = res;
-      console.log(res);
+    this.userService.getUsers().subscribe(utilisateurs => {
+      this.utilisateurs = utilisateurs;
+      // Pour chaque utilisateur, récupérez son rôle
+      this.utilisateurs.forEach(user => {
+        this.getRole(user.idRole, user);  // Passez l'utilisateur pour lier le rôle
+      });
+      console.log(utilisateurs);
     });
   }
+
   getFournisseurData(){
     this.fournisseurService.getAllFournisseur().subscribe(res =>{
       this.fournisseurs=res;

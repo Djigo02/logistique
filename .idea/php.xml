@@ -5,6 +5,16 @@
       <LaravelPintConfiguration tool_path="$PROJECT_DIR$/back-logistique/vendor/bin/pint" />
     </laravel_pint_settings>
   </component>
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/php-code-coverage" />

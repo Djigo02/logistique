@@ -28,6 +28,7 @@ import {VoirListeMaterielComponent} from "./component/voir-liste-materiel/voir-l
 import {
   TransfertMaterielUseComponent
 } from "./component/affectation/transfert-materiel-use/transfert-materiel-use.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   // Route de base
@@ -38,8 +39,8 @@ const routes: Routes = [
   // Route admin
   {
     path: 'admin',
-    component: BaseComponent,
-    children: [
+    component: BaseComponent, canActivate:[AuthGuard],
+      children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'campus', component: CampusComponent },
       { path: 'utilisateur', component: UtilisateurComponent },
@@ -63,7 +64,7 @@ const routes: Routes = [
       {path: 'listAffectation',component:ListAffectationComponent},
       {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
       {path:'transfert-materiels/:id', component:TransfertMaterielUseComponent},
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirection par défaut
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full'}, // Redirection par défaut
     ],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
