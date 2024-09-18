@@ -4,6 +4,8 @@ import {TypeMaterielService} from "../../../service/type-materiel.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {ToastrService} from "ngx-toastr";
+import {User} from "../../../model/user";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-liste-typemateriel',
@@ -14,12 +16,21 @@ export class ListeTypematerielComponent implements OnInit{
 
   typemateriels:TypeMateriel[]=[];
   typeMateriel!:TypeMateriel;
+  user: User | null = null;
 
-  constructor(private typematerielService:TypeMaterielService,private router:Router,private notification:ToastrService) {
+  constructor(private authService:AuthService,private typematerielService:TypeMaterielService,private router:Router,private notification:ToastrService) {
   }
   ngOnInit() {
     this.getDataTypeMateriel();
     this.typeMateriel= new TypeMateriel();
+    this.authService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+
+      }
+    });
   }
 
   getDataTypeMateriel(){

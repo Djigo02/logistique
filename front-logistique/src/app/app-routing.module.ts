@@ -29,6 +29,10 @@ import {
   TransfertMaterielUseComponent
 } from "./component/affectation/transfert-materiel-use/transfert-materiel-use.component";
 import {AuthGuard} from "./auth.guard";
+import {DemandeComponent} from "./component/demande/demande.component";
+import {DemandeFormComponent} from "./component/demande/demande-form/demande-form.component";
+import {UserAffectationComponent} from "./component/user-affectation/user-affectation.component";
+import {AllDemandeComponent} from "./component/all-demande/all-demande.component";
 
 const routes: Routes = [
   // Route de base
@@ -42,6 +46,8 @@ const routes: Routes = [
     component: BaseComponent, canActivate:[AuthGuard],
       children: [
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'demande', component: DemandeComponent },
+      { path: 'alldemande', component: AllDemandeComponent },
       { path: 'campus', component: CampusComponent },
       { path: 'utilisateur', component: UtilisateurComponent },
       { path: 'salle', component: SalleComponent },
@@ -51,6 +57,7 @@ const routes: Routes = [
       { path: 'matEdit/:id', component: MaterielEditComponent },
       { path: 'listescampus', component: ListerCampusComponent },
       { path: 'listesutilisateurs', component: ListerUtilisateurComponent },
+      { path: 'demandeForm', component: DemandeFormComponent },
       { path: 'userEdit/:id', component: UtilisateurEditComponent },
       { path: 'listesmateriels', component: ListerMaterielComponent },
       { path: 'listesTypemateriels', component: ListeTypematerielComponent },
@@ -62,6 +69,7 @@ const routes: Routes = [
       {path: 'update-campus/:id', component: UpdateCampusComponent },
       {path: 'affectation',component:AffectationComponent},
       {path: 'listAffectation',component:ListAffectationComponent},
+      {path: 'listMyAffectation',component:UserAffectationComponent},
       {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
       {path:'transfert-materiels/:id', component:TransfertMaterielUseComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'}, // Redirection par défaut

@@ -9,7 +9,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <h3 class="card-title">Listes des campus</h3>
-              <a *ngIf=""
+              <a *ngIf="user?.idRole ==1 "
                 (click)="goToCampusForm()"
                 class="btn btn-primary"
                 role="button"
@@ -23,8 +23,8 @@
                       <div class="card-header">
                         <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
                         <div class="card-options">
-                          <a (click)="goToUpdateCampus(campus.id)" class="card-options-remove"><i class="fe fe-edit"></i></a>
-                          <a (click)="deleteCampus(campus.id)" class="card-options-remove"><i class="fe fe-x"></i></a>
+                          <a *ngIf="user?.idRole ==1 " (click)="goToUpdateCampus(campus.id)" class="card-options-remove"><i class="fe fe-edit"></i></a>
+                          <a *ngIf="user?.idRole ==1 " (click)="deleteCampus(campus.id)" class="card-options-remove"><i class="fe fe-x"></i></a>
                         </div>
                       </div>
                       <div class="card-body text-center">

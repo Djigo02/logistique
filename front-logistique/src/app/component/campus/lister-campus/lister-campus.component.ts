@@ -4,6 +4,8 @@ import {CampusService} from "../../../service/campus.service";
 import {Campus} from "../../../model/campus";
 import Swal from "sweetalert2";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../../service/auth.service";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'app-lister-campus',
@@ -13,12 +15,25 @@ import {ToastrService} from "ngx-toastr";
 export class ListerCampusComponent implements OnInit{
 
   campusList!: Campus[];
+  userprenom!:string;
+  usernom!:string;
+  useremail!:string;
+  useridRole!:number;
+  user: User | null = null;
 
   ngOnInit() {
     this.getCampus();
+    this.authService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+
+      }
+    });
   }
 
-  constructor(private router:Router, private campusService:CampusService,private notification: ToastrService) {
+  constructor(private authService:AuthService,private router:Router, private campusService:CampusService,private notification: ToastrService) {
   }
 
   getCampus(){

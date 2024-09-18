@@ -1,0 +1,85 @@
+<div class="main-content app-content mt-5 pt-9">
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <div class="row">
+        <h3>Faire une demande </h3>
+      </div>
+      <!-- ! Row Tables -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Demande</h3>
+            </div>
+            <div class="card-body">
+              <div class="card-pay">
+
+                <div class="tab-content">
+                  <div class="tab-pane active show" id="tab20">
+                  <form method="post" (submit)="onSubmit()" #demandeForm="ngForm">
+                  <div class="form-row">
+
+
+                  </div>
+   <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-label">Type Demande <span class="text-red">*</span></label>
+          <select
+            class="form-control form-select select2"
+            data-bs-placeholder="Select"
+            [(ngModel)]="demande.typeDemande"
+            name="typeDemande"
+            required
+          >
+            <option selected>Choisissez le type demande</option>
+            <option >
+              immobilier
+            </option>
+            <option >
+              electronique
+            </option>
+            <option >
+              autre
+            </option>
+          </select>
+        </div>
+      </div>
+  <div class="form-group col-md-12 mb-0">
+    <div class="form-group">
+      <label class="form-label">Description de la Demande <span class="text-red">*</span></label>
+        <textarea
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+          pattern="^[^\s].{1,150}$"
+          #name="ngModel"
+          placeholder="Description de la demande"
+          [(ngModel)]="demande.description"
+        >
+        </textarea>
+        <div [hidden]="name.valid || name.pristine"  class="card-panel text-danger red accent-1">
+          le nom du campus doit contenir entre 1 et 150 caractere(s).
+        </div>
+      </div>
+    </div>
+<input [(ngModel)]="demande.idDemandeur"
+       name="idDemandeur" [value]="user?.id" hidden>
+  <div class="form-footer mt-2">
+    <button class="btn btn-primary" type="submit" [disabled]="!demandeForm.form.valid">
+      faire une demande
+    </button>
+  </div>
+</form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

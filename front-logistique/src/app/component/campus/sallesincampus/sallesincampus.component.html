@@ -7,7 +7,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <h3 class="card-title">Liste des Salles de {{focuscampus.nomCampus}}</h3>
-              <a
+              <a *ngIf="user?.idRole ==1 "
                 (click)="goToSalleForm()"
                 class="btn btn-primary"
                 role="button"
@@ -32,14 +32,14 @@
                       <td>{{salle.capacite}}</td>
                       <td>
                         <div class="g-2">
-                          <a
+                          <a *ngIf="user?.idRole ==1 "
                             (click)="goToSalleUpdate(salle.id)"
                             class="btn text-primary btn-sm"
                             data-bs-toggle="tooltip"
                             data-bs-original-title="Edit"
                           ><span class="fe fe-edit fs-14"></span
                           ></a>
-                          <a
+                          <a *ngIf="user?.idRole ==1 "
                             (click)="deleteSalle(salle.id)"
                             class="btn text-danger btn-sm"
                             data-bs-toggle="tooltip"

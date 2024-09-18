@@ -23,6 +23,10 @@ export class AffectationService {
     return this.httpClient.get<any>(`https://logistique.groupeisi.com/api/getAllAffectationForNT/`+nomTable);
   }
 
+  getAffectationByUser(idU: number):Observable<Affectation[]>{
+    return this.httpClient.get<Affectation[]>(`http://127.0.0.1:8000/api/getAffectationByUser/`+idU);
+
+  }
   insertAffectation(affectation : any){
     return this.httpClient.post(`${this.apiUrl}`,affectation,this.httpOptions);
   }

@@ -45,6 +45,10 @@ import { TransfertMaterielComponent } from './component/affectation/transfert-ma
 import { TransfertMaterielUseComponent } from './component/affectation/transfert-materiel-use/transfert-materiel-use.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { DemandeComponent } from './component/demande/demande.component';
+import { DemandeFormComponent } from './component/demande/demande-form/demande-form.component';
+import { UserAffectationComponent } from './component/user-affectation/user-affectation.component';
+import { AllDemandeComponent } from './component/all-demande/all-demande.component';
 
 
 
@@ -89,6 +93,10 @@ export function tokenGetter() {
     VoirListeMaterielComponent,
     TransfertMaterielComponent,
     TransfertMaterielUseComponent,
+    DemandeComponent,
+    DemandeFormComponent,
+    UserAffectationComponent,
+    AllDemandeComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { MaterielService } from 'src/app/service/materiel.service';
 import {Materiel} from "../../../model/materiel";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {AuthService} from "../../../service/auth.service";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'app-lister-materiel',
@@ -11,8 +13,10 @@ import Swal from "sweetalert2";
 })
 export class ListerMaterielComponent implements OnInit{
   materiels :Materiel[] = [];
+  user: User | null = null;
 
-  constructor(private materielSerice: MaterielService,private router:Router) {
+
+  constructor(private authService:AuthService,private materielSerice: MaterielService,private router:Router) {
   }
 
   redirectTo(id : number){
@@ -48,6 +52,14 @@ export class ListerMaterielComponent implements OnInit{
   }
   ngOnInit() {
     this.getMaterielData();
+    this.authService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+
+      }
+    });
   }
 
   goToAdd(){

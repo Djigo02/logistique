@@ -69,6 +69,34 @@ class AffectationController extends Controller
             return response()->json("Une erreur inattendue s'est produite : ". $e->getMessage(), 500);
         }
     }
+    public function getAffectationByUser(int $id)
+    {
+        try {
+            $affectations = Affectation::where('concerne_id',$id)->get();
+            foreach ($affectations as $element){
+                $materiel = Materiel::find($element->idMateriel);
+                $element->materiel = $materiel;
+                switch ($element->nomTable){
+                    case 'campuses':
+                        $campus = Campus::find($element->concerne_id);
+                        $element->concerne = $campus;
+                        break;
+                    case 'salles':
+                        $salle = Salle::find($element->concerne_id);
+                        $element->concerne = $salle;
+                        break;
+                    case 'users':
+                        $user = User::find($element->concerne_id);
+                        $element->concerne = $user;
+                        break;
+                }
+                $liste[] = $element;
+            }
+            return response()->json($liste);
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -173,6 +201,8 @@ class AffectationController extends Controller
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage(), 500);
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.

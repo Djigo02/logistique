@@ -5,23 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-logistique/sonar-project.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-logistique/sonar-project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_08_2024_14_38_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_08_2024_14_38__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_08_2024_14_45_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_08_2024_14_45_[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/AffectationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/AffectationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/sonar-project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/vite.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/base/base.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/base/base.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/sallesincampus/sallesincampus.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/sallesincampus/sallesincampus.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/sallesincampus/sallesincampus.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/sallesincampus/sallesincampus.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/materiel/lister-materiel/lister-materiel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/materiel/lister-materiel/lister-materiel.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/materiel/lister-materiel/lister-materiel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/materiel/lister-materiel/lister-materiel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/salle/salle.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/salle/salle.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/type-materiel/liste-typemateriel/liste-typemateriel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/type-materiel/liste-typemateriel/liste-typemateriel.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/type-materiel/liste-typemateriel/liste-typemateriel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/type-materiel/liste-typemateriel/liste-typemateriel.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,22 +194,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Pc/cinayeBurger",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Pc\\logistique\\back-logistique\\.scannerwork\\.sonartmp\\bridge-bundle\\package\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;amyBranch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pc/cinayeBurger&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Pc\\logistique\\front-logistique\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/back-logistique/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
@@ -246,6 +258,11 @@
       <workItem from="1723473646516" duration="5670000" />
       <workItem from="1724436763279" duration="7675000" />
       <workItem from="1725362976289" duration="4248000" />
+      <workItem from="1725914215985" duration="4429000" />
+      <workItem from="1725968333529" duration="8062000" />
+      <workItem from="1726190798074" duration="116000" />
+      <workItem from="1726215850556" duration="515000" />
+      <workItem from="1726337723220" duration="7767000" />
     </task>
     <servers />
   </component>

@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
+import {User} from "../../model/user";
 
 @Component({
   selector: 'app-sidebar-admin',
   templateUrl: './sidebar-admin.component.html',
   styleUrls: ['./sidebar-admin.component.css']
 })
-export class SidebarAdminComponent {
-  constructor(private router:Router){}
+export class SidebarAdminComponent implements OnInit{
+
+  user:User | null= null;
+  constructor(private router:Router, private authService: AuthService){}
+
 
   // Aller au tableau de bord
   goToDashboard(){
@@ -55,7 +60,23 @@ export class SidebarAdminComponent {
     this.router.navigate(['/admin/utilisateur']);
   }
   goToAffectation(){
-    this.router.navigate(['/admin/listAffectation'])
+    this.router.navigate(['/admin/listAffectation']);
+  }
+  goToMyAffectation(){
+    this.router.navigate(['/admin/listMyAffectation']);
+  }
+  goTODemande(){
+    this.router.navigate(['/admin/demande']);
+  }
+
+  goTOAllDemande(){
+    this.router.navigate(['/admin/alldemande']);
+  }
+  ngOnInit(): void {
+    this.authService.getUser().subscribe(res =>{
+      this.user=res;
+    })
+
   }
 
 }

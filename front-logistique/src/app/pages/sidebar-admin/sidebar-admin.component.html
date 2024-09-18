@@ -82,10 +82,10 @@
         <!-- ? END MODULE 1 -->
 
         <!-- ? Gestion materiel et type materiel  -->
-        <li class="sub-category">
+        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="sub-category">
           <h3>Gestion materiel et type materiel</h3>
         </li>
-        <li class="slide">
+        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -150,10 +150,10 @@
         <!-- ? END MODULE 2 -->
 
         <!-- ? Affectation  -->
-        <li class="sub-category">
+        <li *ngIf="user?.idRole !=4" class="sub-category">
           <h3>Affectation</h3>
         </li>
-        <li class="slide">
+        <li *ngIf="user?.idRole !=4"  class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -166,14 +166,58 @@
 
         </li>
         <!-- ! END Affectation -->
+        <!-- ? Affectation  -->
+        <li class="sub-category">
+          <h3>Affectation</h3>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item"
+            data-bs-toggle="slide"
+            href="javascript:void(0)"
+            (click)="goToMyAffectation()"
+          ><i class="side-menu__icon fe fe-slack"></i
+          ><span class="side-menu__label">Mes Affectations</span
+          >
+          </a>
+
+        </li>
+        <!-- ! END Affectation -->
         <!-- ? END MODULE 3 -->
 
         <!-- ! Gestion des utilisateurs -->
-        <li class="sub-category">
-          <h3>Gestion des utilisateurs</h3>
+        <li  class="sub-category">
+          <h3>Gestion des demande</h3>
         </li>
+        <!--   Aller a la liste des campus     -->
+        <li class="slide" style="cursor: pointer">
+          <a
+            class="side-menu__item has-link"
+            data-bs-toggle="slide"
+            (click)="goTODemande()"
+          ><i class="side-menu__icon fe fe-book"></i
+          ><span class="side-menu__label">Faire une demande</span></a
+          >
+        </li>
+        <!-- ! END Gestion campus et salle -->
 
-        <li class="slide">
+        <li  class="sub-category">
+          <h3>Gestion des demande</h3>
+        </li>
+        <!--   Aller a la liste des campus     -->
+        <li *ngIf="user?.idRole ==1 || user?.idRole ==2 || user?.idRole ==5 " class="slide" style="cursor: pointer">
+          <a
+            class="side-menu__item has-link"
+            data-bs-toggle="slide"
+            (click)="goTOAllDemande()"
+          ><i class="side-menu__icon fe fe-book"></i
+          ><span class="side-menu__label"> Liste des  demande</span></a
+          >
+        </li>
+        <!-- ! END Gestion campus et salle -->
+
+
+        <li *ngIf="user?.idRole ==1" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"

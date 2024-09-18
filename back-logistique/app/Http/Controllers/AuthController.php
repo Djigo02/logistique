@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use PHPUnit\Exception;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -42,16 +44,35 @@ class AuthController extends Controller
     public function login()
     {
         try {
+
             //
             $credentials = request(['email', 'password']);
 
             if (! $token = auth()->attempt($credentials)) {
                 return response()->json(['error' => 'Failed Email or Password not matches!!'], 401);
             }
-            return $this->respondWithToken($token);
+
+            // Récupérer l'utilisateur authentifié
+            $user = auth()->user();
+
+            return $this->respondWithToken($token,$user);
         }catch(Exception $e){
             return response()->json("Une erreur innattendu s'est produite ".$e->getMessage());
         }
+    }
+
+    public function getUserAuth()
+    {
+        try {
+            $user = auth()->user(); // Utilise Auth pour récupérer l'utilisateur connecté
+            return response()->json($user);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Une erreur inattendue s\'est produite: '.$e->getMessage()], 500);
+        }
+    }
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only('getUserAuth');
     }
 
     public function refresh()
@@ -66,12 +87,13 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token,$user)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => $user
         ]);
     }
 

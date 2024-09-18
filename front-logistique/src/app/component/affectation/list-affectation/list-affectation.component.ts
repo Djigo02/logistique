@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AffectationService} from "../../../service/affectation.service";
 import {Affectation} from "../../../model/affectation";
+import {User} from "../../../model/user";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-list-affectation',
@@ -15,11 +17,20 @@ export class ListAffectationComponent implements OnInit{
   affectationS: any= [];
   // users
   affectationU :any = [];
+  user: User | null = null;
   ngOnInit(): void {
     this.getAllAffectationForNT();
+    this.authService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+
+      }
+    });
   }
 
-  constructor(private router: Router,private affectationService:AffectationService) {
+  constructor(private authService:AuthService,private router: Router,private affectationService:AffectationService) {
   }
 
   goToAdd(){

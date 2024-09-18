@@ -36,8 +36,12 @@ Route::get("api/", function(){
 Route::post('signup',[AuthController::class,'signup']);
 Route::post('login',[AuthController::class,'login']);
 
+Route::middleware(['jwt.auth'])->group(function () {
+    // Vos routes protégées ici
+});
 
 Route::resource("users",UserController::class);
+
 Route::resource("roles",RoleController::class);
 Route::resource("logs",LogController::class);
 Route::resource("campus",CampusController::class);
@@ -48,8 +52,18 @@ Route::resource('fournisseurs',\App\Http\Controllers\FournisseurController::clas
 Route::resource('affectations',\App\Http\Controllers\AffectationController::class);
 //Route pour recuperer les salles d'un campus
 Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
+
 Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
 Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\AffectationController::class, 'getAllAffectationForNT']);
 Route::get('liste-materiel/{nomTable}/{id}', [\App\Http\Controllers\AffectationController::class,'ListeMaterielsPour']);
 Route::post('transfert-materiel', [\App\Http\Controllers\AffectationController::class,'transfererEquipement']);
 
+
+
+
+
+Route::get('user', [AuthController::class, 'getUserAuth']);
+
+Route::resource("demandes",\App\Http\Controllers\DemandeController::class);
+Route::get('demandeUser/{id}', [\App\Http\Controllers\DemandeController::class, 'getDemnadeByUser']);
+Route::get('getAffectationByUser/{id}',[\App\Http\Controllers\AffectationController::class,'getAffectationByUser']);

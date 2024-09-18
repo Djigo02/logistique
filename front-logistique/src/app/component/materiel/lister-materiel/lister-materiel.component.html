@@ -48,7 +48,7 @@
                             >
                           </li>
                           <li style="cursor:pointer">
-                            <a
+                            <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                              (click)="goToAdd()"
                               class="text-primary"
                               >Ajouter un materiel</a
@@ -91,7 +91,7 @@
                                   >
                                     Status
                                   </th>
-                                  <th
+                                  <th *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                                     class="bg-transparent border-bottom-0"
                                     style="width: 5%"
                                   >
@@ -150,14 +150,14 @@
                                   </td>
                                   <td>
                                     <div class="g-2">
-                                      <a
+                                      <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                                         (click)="redirectTo(materiel.id)"
                                         class="btn text-primary btn-sm"
                                         data-bs-toggle="tooltip"
                                         data-bs-original-title="Edit"
                                         ><span class="fe fe-edit fs-14"></span
                                       ></a>
-                                      <a
+                                      <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                                         (click)="delete(materiel.id)"
                                         class="btn text-danger btn-sm"
                                         data-bs-toggle="tooltip"

@@ -11,7 +11,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-around">
               <h3 class="card-title">Liste des type materiel</h3>
-              <a
+              <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                 (click)="goToTMForm()"
                 class="btn btn-primary left"
                 role="button"
@@ -24,7 +24,7 @@
                   <tr>
                     <th>ID</th>
                     <th>libelle</th>
-                    <th>Action</th>
+                    <th *ngIf="user?.idRole ==1 || user?.idRole ==6 ">Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -33,14 +33,14 @@
                     <td>{{ typemateriel.libelle }}</td>
                     <td>
                       <div class="g-2">
-                        <a
+                        <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                           (click)="redirectTo(typemateriel.id)"
                           class="btn text-primary btn-sm"
                           data-bs-toggle="tooltip"
                           data-bs-original-title="Edit"
                         ><span class="fe fe-edit fs-14"></span
                         ></a>
-                        <a
+                        <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                           (click)="delete(typemateriel.id)"
                           class="btn text-danger btn-sm"
                           data-bs-toggle="tooltip"

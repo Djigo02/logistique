@@ -40,7 +40,7 @@ export class UserService {
       this.httpOptions
     );
   }
-  getUserById(id: any) {
+  getUserById(id: any):Observable<User> {
     return this.httpClient.get<User>(`${this.apiUrl}/` + id);
   }
 

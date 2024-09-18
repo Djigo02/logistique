@@ -11,6 +11,6 @@ import {Salle} from "../../model/salle";
   styleUrls: ['./salle.component.css']
 })
 
-export class SalleComponent {
+export class SalleComponent  {
   salle!:Salle;
 }

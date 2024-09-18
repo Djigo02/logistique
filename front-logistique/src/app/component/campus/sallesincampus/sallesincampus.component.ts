@@ -4,6 +4,8 @@ import {CampusService} from "../../../service/campus.service";
 import {Campus} from "../../../model/campus";
 import {Salle} from "../../../model/salle";
 import {SalleService} from "../../../service/salle.service";
+import {User} from "../../../model/user";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-sallesincampus',
@@ -14,11 +16,20 @@ export class SallesincampusComponent implements OnInit {
 
   focuscampus!:Campus;
   sallesincampus!: Salle[];
+  user: User | null = null;
 
-  constructor(private router:Router,private url: ActivatedRoute , private campusService:CampusService, private salleService:SalleService) { }
+  constructor(private router:Router,private url: ActivatedRoute , private campusService:CampusService,private authService:AuthService, private salleService:SalleService) { }
   ngOnInit() {
    this.getCampus();
    this.getSalles();
+    this.authService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+
+      }
+    });
   }
 
   getSalles() {
