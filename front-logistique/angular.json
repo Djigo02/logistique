@@ -27,14 +27,10 @@
               "src/assets/css/icons.css",
               "src/assets/switcher/css/switcher.css",
               "src/assets/switcher/demo.css",
-              "node_modules/ngx-toastr/toastr.css",
-              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
-              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css"
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
               "node_modules/jszip/dist/jszip.js",
               "node_modules/pdfmake/build/pdfmake.js",
               "node_modules/pdfmake/build/vfs_fonts.js",
