@@ -16,7 +16,7 @@ import { ListerUtilisateurComponent } from './component/utilisateur/lister-utili
 import { ListerMaterielComponent } from './component/materiel/lister-materiel/lister-materiel.component';
 import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 import { FormsModule } from '@angular/forms';
-
+import { DataTablesModule } from 'angular-datatables';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NavbarAdminComponent } from './pages/navbar-admin/navbar-admin.component';
@@ -102,6 +102,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    DataTablesModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() ,// ToastrModule added

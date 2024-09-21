@@ -138,7 +138,6 @@
                       <li style="cursor: pointer">
                         <a (click)="goToListTypeMateriel()" class="slide-item">Listes types materiels</a>
                       </li>
-
                     </ul>
                   </div>
                 </div>
@@ -211,54 +210,27 @@
             data-bs-toggle="slide"
             (click)="goTOAllDemande()"
           ><i class="side-menu__icon fe fe-book"></i
-          ><span class="side-menu__label"> Liste des  demande</span></a
+          ><span class="side-menu__label"> Liste des  demandes</span></a
           >
         </li>
         <!-- ! END Gestion campus et salle -->
 
-
-        <li *ngIf="user?.idRole ==1" class="slide">
+<!-- !Test       -->
+        <!-- ? Gestion des utilisateurs  -->
+        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="sub-category">
+          <h3>Gestion des Utilisateurs</h3>
+        </li>
+        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
             href="javascript:void(0)"
-            ><i class="side-menu__icon fe fe-slack"></i
-            ><span class="side-menu__label">Utilisateur</span
-            ><i class="angle fe fe-chevron-right"></i>
+          ><i class="side-menu__icon fe fe-slack"></i
+          ><span class="side-menu__label">Utilisateur</span
+          ><i class="angle fe fe-chevron-right"></i>
           </a>
           <ul class="slide-menu">
             <li class="panel sidetab-menu">
-              <div class="tab-menu-heading p-0 pb-2 border-0">
-                <div class="tabs-menu">
-                  <!-- Tabs -->
-                  <ul class="nav panel-tabs">
-                    <li>
-                      <a
-                        href="#side1"
-                        class="d-flex active"
-                        data-bs-toggle="tab"
-                        ><i class="fe fe-monitor me-2"></i>
-                        <p>Lister Utilisateurs</p></a
-                      >
-                    </li>
-                    <li>
-                      <a href="#side2" data-bs-toggle="tab" class="d-flex"
-                        ><i class="fe fe-message-square me-2"></i>
-                        <p>Ajouter Utilisateurs</p></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="#side1"
-                        class="d-flex active"
-                        data-bs-toggle="tab"
-                        ><i class="fe fe-monitor me-2"></i>
-                        <p>Lister Utilisateurs</p></a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div class="panel-body tabs-menu-body p-0 border-0">
                 <div class="tab-content">
                   <div class="tab-pane active" id="side1">
@@ -270,7 +242,7 @@
                         <a
                           (click)="goToListeUsers()"
                           class="slide-item"
-                          >Lister Utilisateur</a
+                        >Lister Utilisateur</a
                         >
                       </li>
                       <li style="cursor: pointer">
@@ -283,7 +255,13 @@
             </li>
           </ul>
         </li>
+        <!-- ! END Gestion materiel et type materiel -->
+<!-- ! Fin test       -->
+
+        
+
       </ul>
+
       <div class="slide-right" id="slide-right">
         <svg
           xmlns="http://www.w3.org/2000/svg"

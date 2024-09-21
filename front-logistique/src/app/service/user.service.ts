@@ -16,7 +16,7 @@ export class UserService {
     }),
   };
 
-  apiUrl: string = 'http://127.0.0.1:8000/api/users';
+  apiUrl: string = 'https://logistique.groupeisi.com/api/users';
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.apiUrl);

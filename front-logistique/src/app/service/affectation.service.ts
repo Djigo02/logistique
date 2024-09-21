@@ -24,7 +24,7 @@ export class AffectationService {
   }
 
   getAffectationByUser(idU: number):Observable<Affectation[]>{
-    return this.httpClient.get<Affectation[]>(`http://127.0.0.1:8000/api/getAffectationByUser/`+idU);
+    return this.httpClient.get<Affectation[]>(`https://logistique.groupeisi.com/api/getAffectationByUser/`+idU);
 
   }
   insertAffectation(affectation : any){
