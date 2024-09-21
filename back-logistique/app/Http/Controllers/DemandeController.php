@@ -16,8 +16,24 @@ class DemandeController extends Controller
     public function index()
     {
         try {
+            return response()->json(Demande::where('statut','acceptee')->get());
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+    }
 
-            return response()->json(Demande::all());
+    public function gedemandeRefuser()
+    {
+        try {
+            return response()->json(Demande::where('statut','refusee')->get());
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+    }
+    public function getdemande()
+    {
+        try {
+            return response()->json(Demande::where('statut','en cours de traitement')->get());
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -30,6 +46,8 @@ class DemandeController extends Controller
     {
         //
     }
+
+
 
     /**
      * Store a newly created resource in storage.

@@ -81,7 +81,9 @@
             "allowedCommonJsDependencies": [
               "sweetalert2",
               "dropify/dist/js/dropify.js",
-              "jquery"
+              "jquery",
+              "jspdf-autotable",
+              "canvg"
             ]
           },
           "configurations": {

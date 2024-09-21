@@ -4,10 +4,9 @@ import {AffectationService} from "../../../service/affectation.service";
 import {Affectation} from "../../../model/affectation";
 import {User} from "../../../model/user";
 import {AuthService} from "../../../service/auth.service";
-import 'datatables.net';
+
 import * as $ from 'jquery';
-import 'datatables.net-buttons';
-import { DataTablesSettings } from 'angular-datatables';
+
 
 @Component({
   selector: 'app-list-affectation',
@@ -24,20 +23,9 @@ export class ListAffectationComponent implements OnInit{
   user: User | null = null;
 
 
+
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
-    };
-    $(document).ready(function() {
-      // Cast to `any` to bypass TypeScript type checking
-      ($('#example') as any).DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-          'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
-    });
+
 
     this.getAllAffectationForNT();
     this.authService.getUser().subscribe({
