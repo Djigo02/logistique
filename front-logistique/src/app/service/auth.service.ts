@@ -14,7 +14,7 @@ export class AuthService {
 
 
   login(email: string, password: string) {
-    return this.http.post<any>('http://127.0.0.1:8000/api/login', { email, password })
+    return this.http.post<any>('https://logistique.groupeisi.com/api/login', { email, password })
       .pipe(map(res => {
         console.log('Réponse complète de l\'API:', res);
         if (res.access_token) {

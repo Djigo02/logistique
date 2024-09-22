@@ -17,6 +17,7 @@ export class LoginComponent  {
   }
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe(res => {
+        alert(this.email + this.password);
         // Stocker le token reçu après connexion
         sessionStorage.setItem('access_token',res.access_token);
         this.authService.setToken(res.access_token);  // Stocke le token dans localStorage ou sessionStorage
