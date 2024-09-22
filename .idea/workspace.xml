@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="" />
+    <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -244,7 +251,8 @@
       <workItem from="1726836342476" duration="19113000" />
       <workItem from="1726872053253" duration="8794000" />
       <workItem from="1726881160839" duration="5687000" />
-      <workItem from="1726891527010" duration="1907000" />
+      <workItem from="1726891527010" duration="2228000" />
+      <workItem from="1726956875034" duration="6710000" />
     </task>
     <servers />
   </component>

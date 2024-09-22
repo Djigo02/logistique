@@ -28,7 +28,7 @@ export class DemandeService {
     return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/getdemande`);
   }
   getDemandeUser(idUser:any):Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/demandeUser/`+idUser);
+    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
   }
 
   getDemande(id:any):Observable<Demande>{
