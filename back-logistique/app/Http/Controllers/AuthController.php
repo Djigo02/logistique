@@ -47,7 +47,6 @@ class AuthController extends Controller
 
             //
             $credentials = request(['email', 'password']);
-
             if (! $token = auth()->attempt($credentials)) {
                 return response()->json(['error' => 'Failed Email or Password not matches!!'], 401);
             }
