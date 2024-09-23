@@ -39,7 +39,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="#7b8191"
-          width="24"
+        n  width="24"
           height="24"
           viewBox="0 0 24 24"
         >
@@ -82,10 +82,10 @@
         <!-- ? END MODULE 1 -->
 
         <!-- ? Gestion materiel et type materiel  -->
-        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="sub-category">
+        <li *ngIf="user?.idRole !=3" class="sub-category">
           <h3>Gestion materiel et type materiel</h3>
         </li>
-        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="slide">
+        <li *ngIf="user?.idRole !=3" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -149,10 +149,10 @@
         <!-- ? END MODULE 2 -->
 
         <!-- ? Affectation  -->
-        <li *ngIf="user?.idRole !=4" class="sub-category">
+        <li *ngIf="user?.idRole !=3" class="sub-category">
           <h3>Affectation</h3>
         </li>
-        <li *ngIf="user?.idRole !=4"  class="slide">
+        <li *ngIf="user?.idRole !=3 || user?.idRole !=5"  class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -200,11 +200,11 @@
         </li>
         <!-- ! END Gestion campus et salle -->
 
-        <li  class="sub-category">
+        <li *ngIf="user?.idRole ==1  || user?.idRole ==4 " class="sub-category">
           <h3>Gestion des demande</h3>
         </li>
         <!--   Aller a la liste des campus     -->
-        <li *ngIf="user?.idRole ==1 || user?.idRole ==2 || user?.idRole ==5 " class="slide" style="cursor: pointer">
+        <li *ngIf="user?.idRole ==1 || user?.idRole ==4 " class="slide" style="cursor: pointer">
           <a
             class="side-menu__item has-link"
             data-bs-toggle="slide"
@@ -217,10 +217,10 @@
 
 <!-- !Test       -->
         <!-- ? Gestion des utilisateurs  -->
-        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="sub-category">
+        <li *ngIf="user?.idRole !=3 " class="sub-category">
           <h3>Gestion des Utilisateurs</h3>
         </li>
-        <li *ngIf="user?.idRole !=4 && user?.idRole !=3" class="slide">
+        <li *ngIf="user?.idRole !=3" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -258,7 +258,7 @@
         <!-- ! END Gestion materiel et type materiel -->
 <!-- ! Fin test       -->
 
-        
+
 
       </ul>
 
