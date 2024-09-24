@@ -4,17 +4,19 @@ import {AffectationService} from "../../../service/affectation.service";
 import {Affectation} from "../../../model/affectation";
 import {User} from "../../../model/user";
 import {AuthService} from "../../../service/auth.service";
-import 'datatables.net';
-import 'datatables.net-buttons';
 import * as $ from 'jquery';
-
+import 'datatables.net'; // DataTables core
+import 'datatables.net-bs5'; // DataTables Bootstrap 5
+// import 'datatables.net-responsive'; // DataTables Responsive extension
+// import 'datatables.net-buttons'; // DataTables buttons extension
+// import 'select2'; // Select2 for custom selects
 
 @Component({
   selector: 'app-list-affectation',
   templateUrl: './list-affectation.component.html',
   styleUrls: ['./list-affectation.component.css']
 })
-export class ListAffectationComponent implements OnInit{
+export class ListAffectationComponent implements OnInit, AfterViewInit {
   // campus
   affectation :any = [];
   // salles
@@ -35,30 +37,100 @@ export class ListAffectationComponent implements OnInit{
     });
   }
 
-  @ViewChild('fileDataTable', { static: false }) table!: ElementRef;
 
+// Use ngAfterViewInit to ensure the DOM is fully loaded
   ngAfterViewInit(): void {
-    // Initialiser DataTable avec boutons d'export
-    const table = $(this.table.nativeElement).DataTable({
-      buttons: [
-        'copy',
-        'excel',
-        'pdf',
-        {
-          extend: 'colvis',
-          text: 'Column visibility'
-        }
-      ],
+    //______Basic Data Table
+    $('#basic-datatable').DataTable({
       language: {
         searchPlaceholder: 'Search...',
-        // @ts-ignore
-        sSearch: '',
-        scrollX: "100%"
+        //@ts-ignore
+        sSearch: ''
       }
     });
-    // @ts-ignore
-    table.buttons().container()
+
+    //______Responsive Data Table
+    $('#responsive-datatable').DataTable({
+      language: {
+        searchPlaceholder: 'Search...',
+        //@ts-ignore
+        scrollX: "100%",
+        sSearch: ''
+      }
+    });
+
+    //______File-Export Data Table with Buttons
+    const fileTable = $('#file-datatable').DataTable({
+      buttons: ['copy', 'excel', 'pdf', 'colvis'],
+      language: {
+        searchPlaceholder: 'Search...',
+        //@ts-ignore
+        scrollX: "100%",
+        sSearch: ''
+      }
+    });
+    //@ts-ignore
+    fileTable.buttons().container()
       .appendTo('#file-datatable_wrapper .col-md-6:eq(0)');
+
+    //______Delete Data Table
+    const deleteTable = $('#delete-datatable').DataTable({
+      language: {
+        searchPlaceholder: 'Search...',
+        //@ts-ignore
+        sSearch: ''
+      }
+    });
+    $('#delete-datatable tbody').on('click', 'tr', function() {
+      if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+      } else {
+        deleteTable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+      }
+    });
+    $('#button').on('click', function() {
+      deleteTable.row('.selected').remove().draw(false);
+    });
+
+    //______Example 3 with Modal
+    // @ts-ignore
+    $('#example3').DataTable({
+      //@ts-ignore
+      responsive: {
+        details: {
+          //@ts-ignore
+          display: $.fn.dataTable.Responsive.display.modal({
+            //@ts-ignore
+            header: function(row) {
+              const data = row.data();
+              return 'Details for ' + data[0] + ' ' + data[1];
+            }
+          }),
+          //@ts-ignore
+          renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+            tableClass: 'table'
+          })
+        }
+      }
+    });
+
+    //______Example 2 Responsive
+    $('#example2').DataTable({
+      responsive: true,
+      language: {
+        searchPlaceholder: 'Search...',
+        //@ts-ignore
+        sSearch: '',
+        lengthMenu: '_MENU_ items/page'
+      }
+    });
+
+    //______Select2 for custom selects
+    //@ts-ignore
+    $('.select2').select2({
+      minimumResultsForSearch: Infinity
+    });
   }
 
   constructor(private authService:AuthService,private router: Router,private affectationService:AffectationService) {
