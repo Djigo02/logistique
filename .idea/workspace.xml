@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +190,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "amyBranch",
+    "git-widget-placeholder": "nightfile",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Pc/logistique/front-logistique/src/app/component/affectation",
     "node.js.detected.package.eslint": "true",

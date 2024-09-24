@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component,AfterViewInit, ViewChild, ElementRef, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AffectationService} from "../../../service/affectation.service";
 import {Affectation} from "../../../model/affectation";
 import {User} from "../../../model/user";
 import {AuthService} from "../../../service/auth.service";
-
+import 'datatables.net';
+import 'datatables.net-buttons';
 import * as $ from 'jquery';
 
 
@@ -22,11 +23,7 @@ export class ListAffectationComponent implements OnInit{
   affectationU :any = [];
   user: User | null = null;
 
-
-
   ngOnInit(): void {
-
-
     this.getAllAffectationForNT();
     this.authService.getUser().subscribe({
       next: (user) => {
@@ -38,8 +35,36 @@ export class ListAffectationComponent implements OnInit{
     });
   }
 
+  @ViewChild('fileDataTable', { static: false }) table!: ElementRef;
+
+  ngAfterViewInit(): void {
+    // Initialiser DataTable avec boutons d'export
+    const table = $(this.table.nativeElement).DataTable({
+      buttons: [
+        'copy',
+        'excel',
+        'pdf',
+        {
+          extend: 'colvis',
+          text: 'Column visibility'
+        }
+      ],
+      language: {
+        searchPlaceholder: 'Search...',
+        // @ts-ignore
+        sSearch: '',
+        scrollX: "100%"
+      }
+    });
+    // @ts-ignore
+    table.buttons().container()
+      .appendTo('#file-datatable_wrapper .col-md-6:eq(0)');
+  }
+
   constructor(private authService:AuthService,private router: Router,private affectationService:AffectationService) {
   }
+
+
 
   goToAdd(){
     this.router.navigate(['/admin/affectation']);
