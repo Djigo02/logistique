@@ -23,6 +23,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
   affectationS: any= [];
   // users
   affectationU :any = [];
+  allAffectation :Affectation[] = [];
   user: User | null = null;
 
   ngOnInit(): void {
@@ -63,7 +64,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
     const fileTable = $('#file-datatable').DataTable({
       buttons: ['copy', 'excel', 'pdf', 'colvis'],
       language: {
-        searchPlaceholder: 'Search...',
+        searchPlaceholder: 'Rechercher...',
         //@ts-ignore
         scrollX: "100%",
         sSearch: ''
@@ -145,18 +146,22 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
      this.affectationService.getAffectationFNT('campuses').subscribe(res =>
     {
       this.affectation= res;
-      console.log(this.affectation);
+
     });
      this.affectationService.getAffectationFNT('salles').subscribe(res =>
     {
       this.affectationS= res;
-      console.log(this.affectationS);
+
     });
      this.affectationService.getAffectationFNT('users').subscribe(res =>
     {
       this.affectationU= res;
-      console.log(this.affectationU);
+
     });
+     this.affectationService.getAllAfectation().subscribe(res =>{
+       this.allAffectation=res;
+       console.log(this.allAffectation);
+     })
 
   }
 

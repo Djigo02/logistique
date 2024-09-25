@@ -43,6 +43,10 @@ export class AffectationService {
     return this.httpClient.get<Affectation>(`${this.apiUrl}/`+id)
   }
 
+  getAllAfectation():Observable<Affectation[]>{
+    return this.httpClient.get<Affectation[]>(`${this.apiUrl}`);
+  }
+
   transfererMateriel(affectation : any){
     return this.httpClient.post(`https://logistique.groupeisi.com/api/transfert-materiel/`,affectation,this.httpOptions);
   }
