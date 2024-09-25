@@ -7,8 +7,8 @@ import {AuthService} from "../../../service/auth.service";
 import * as $ from 'jquery';
 import 'datatables.net'; // DataTables core
 import 'datatables.net-bs5'; // DataTables Bootstrap 5
-// import 'datatables.net-responsive'; // DataTables Responsive extension
-// import 'datatables.net-buttons'; // DataTables buttons extension
+import 'datatables.net-responsive'; // DataTables Responsive extension
+import 'datatables.net-buttons'; // DataTables buttons extension
 // import 'select2'; // Select2 for custom selects
 
 @Component({
