@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,27 +23,15 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mdjigo" />
+        <entry key="$PROJECT_DIR$" value="amyBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Djigo02&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Djigo02/logistique.git&quot;,
-    &quot;accountId&quot;: &quot;643c2918-b78b-49b3-9a56-42cf9db40837&quot;
-  }
-}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/back-logistique/vendor/phpunit/php-file-iterator" />
@@ -178,9 +164,6 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2j3PRfucL49xDL0dx7V4iXmbdhk" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -197,7 +180,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Pro\\Documents\\logistique\\front-logistique\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Pc\\logistique\\front-logistique\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -215,8 +198,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.18034.69" />
-        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.18034.69" />
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
       </set>
     </attachedChunks>
   </component>
@@ -268,6 +250,9 @@
       <workItem from="1726881160839" duration="5687000" />
       <workItem from="1726891527010" duration="2228000" />
       <workItem from="1726956875034" duration="6710000" />
+      <workItem from="1727253992233" duration="676000" />
+      <workItem from="1727301328961" duration="1128000" />
+      <workItem from="1727302525992" duration="649000" />
     </task>
     <servers />
   </component>

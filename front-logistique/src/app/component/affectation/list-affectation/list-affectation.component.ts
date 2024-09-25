@@ -20,7 +20,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
   // campus
   affectation :any = [];
   // salles
-  affectationS: any= [];
+  affectationS :Affectation[] = [];
   // users
   affectationU :any = [];
   allAffectation :Affectation[] = [];
@@ -132,6 +132,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
     $('.select2').select2({
       minimumResultsForSearch: Infinity
     });
+
   }
 
   constructor(private authService:AuthService,private router: Router,private affectationService:AffectationService) {
