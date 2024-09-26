@@ -13,11 +13,11 @@ import autoTable from 'jspdf-autotable';
 })
 export class AllDemandeComponent  implements OnInit {
 
-  demandesu:Demande[]=[];
-  demandeR:Demande[]=[];
-  demandeEC:Demande[]=[];
-  demandeFournie:Demande[]=[];
-  demande!:Demande;
+  demandesu:any[]=[];
+  demandeR:any[]=[];
+  demandeEC:any[]=[];
+  demandeFournie:any[]=[];
+  demande!:any;
   constructor(private demandeService:DemandeService,private route:Router) {
   }
 
@@ -25,6 +25,8 @@ export class AllDemandeComponent  implements OnInit {
     this.demandeService.getDemandes().subscribe(res =>{
       this.demandesu = res;
       console.log(this.demandesu);
+    },error => {
+      console.log("errorrrrrr");
     });
   }
 
@@ -32,6 +34,7 @@ export class AllDemandeComponent  implements OnInit {
     this.getallDemande();
     this.gedemandeRefuser();
     this.getdemande();
+    this.getdemandeAchetee();
   }
 
   getFileDemandeAccep(){
@@ -59,6 +62,11 @@ export class AllDemandeComponent  implements OnInit {
   gedemandeRefuser(){
     this.demandeService.gedemandeRefuser().subscribe(res => {
       this.demandeR= res;
+    });
+  }
+  getdemandeAchetee(){
+    this.demandeService.getdemandeAchetee().subscribe(res => {
+      this.demandeFournie= res;
     });
   }
   getdemande(){

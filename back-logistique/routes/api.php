@@ -59,6 +59,7 @@ Route::get('liste-materiel/{nomTable}/{id}', [\App\Http\Controllers\AffectationC
 Route::post('transfert-materiel', [\App\Http\Controllers\AffectationController::class,'transfererEquipement']);
 Route::get('gedemandeRefuser', [\App\Http\Controllers\DemandeController::class,'gedemandeRefuser']);
 Route::get('getdemande', [\App\Http\Controllers\DemandeController::class,'getdemande']);
+Route::get('getdemandeAchetee', [\App\Http\Controllers\DemandeController::class,'getdemandeAchetee']);
 
 
 Route::get('send_email/{destiEmail}/{idDemande}', [\App\Http\Controllers\DemandeController::class,'sendEmail']);

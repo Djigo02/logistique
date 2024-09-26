@@ -19,7 +19,14 @@ class DemandeController extends Controller
     public function index()
     {
         try {
-            return response()->json(Demande::where('statut','acceptee')->get());
+            $demande = Demande::where('statut','acceptee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -28,15 +35,47 @@ class DemandeController extends Controller
     public function gedemandeRefuser()
     {
         try {
-            return response()->json(Demande::where('statut','refusee')->get());
+            $demande = Demande::where('statut','refusee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
     }
     public function getdemande()
     {
+
         try {
-            return response()->json(Demande::where('statut','en cours de traitement')->get());
+            $demande = Demande::where('statut','en cours de traitement')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+
+    }
+    public function getdemandeAchetee()
+    {
+
+        try {
+            $demande = Demande::where('statut','achetee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
