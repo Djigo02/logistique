@@ -35,6 +35,10 @@ export class AffectationService {
     return this.httpClient.delete(`${this.apiUrl}/`+id);
   }
 
+  getAllAfectation():Observable<Affectation[]>{
+    return this.httpClient.get<Affectation[]>(`${this.apiUrl}`);
+  }
+
   updateAffectation(affectation : any,id : any){
     return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(affectation),this.httpOptions);
   }
