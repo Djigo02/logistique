@@ -13,10 +13,11 @@ import autoTable from 'jspdf-autotable';
 })
 export class AllDemandeComponent  implements OnInit {
 
-  demandesu:Demande[]=[];
-  demandeR:Demande[]=[];
-  demandeEC:Demande[]=[];
-  demande!:Demande;
+  demandesu:any[]=[];
+  demandeR:any[]=[];
+  demandeEC:any[]=[];
+  demandeFournie:any[]=[];
+  demande!:any;
   constructor(private demandeService:DemandeService,private route:Router) {
   }
 
@@ -24,6 +25,8 @@ export class AllDemandeComponent  implements OnInit {
     this.demandeService.getDemandes().subscribe(res =>{
       this.demandesu = res;
       console.log(this.demandesu);
+    },error => {
+      console.log("errorrrrrr");
     });
   }
 
@@ -31,6 +34,7 @@ export class AllDemandeComponent  implements OnInit {
     this.getallDemande();
     this.gedemandeRefuser();
     this.getdemande();
+    this.getdemandeAchetee();
   }
 
   getFileDemandeAccep(){
@@ -60,6 +64,11 @@ export class AllDemandeComponent  implements OnInit {
       this.demandeR= res;
     });
   }
+  getdemandeAchetee(){
+    this.demandeService.getdemandeAchetee().subscribe(res => {
+      this.demandeFournie= res;
+    });
+  }
   getdemande(){
     this.demandeService.getdemande().subscribe(res => {
       this.demandeEC= res;
@@ -70,6 +79,9 @@ export class AllDemandeComponent  implements OnInit {
     this.demandeService.getDemande(id).subscribe(res =>{
       this.demande=res;
       this.demande.statut="acceptee";
+      this.getallDemande();
+      this.gedemandeRefuser();
+      this.getdemande();
       this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
         this.getallDemande();
         Swal.fire({
@@ -80,14 +92,39 @@ export class AllDemandeComponent  implements OnInit {
           timer: 1500
         });
       });
+
     });
   }
+
+  achete(id:number){
+    this.demandeService.getDemande(id).subscribe(res =>{
+      this.demande=res;
+      this.demande.statut="achetee";
+      this.getallDemande();
+      this.gedemandeRefuser();
+      this.getdemande();
+      this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
+        this.getallDemande();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "  demande achetee  avec success ",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      });
+
+    });
+  }
+
   refuse(id:number){
     this.demandeService.getDemande(id).subscribe(res =>{
       this.demande=res;
       this.demande.statut="refusee";
       this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
         this.getallDemande();
+        this.gedemandeRefuser();
+        this.getdemande();
         Swal.fire({
           position: "center",
           icon: "success",

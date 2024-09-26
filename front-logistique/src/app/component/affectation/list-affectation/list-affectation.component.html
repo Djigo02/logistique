@@ -3,84 +3,398 @@
   <div class="side-app">
     <!-- CONTAINER -->
     <div class="main-container container-fluid">
-      <!-- ! Liste campus OPEN -->
+      <!-- ROW-2 -->
       <div class="row">
-        <div class="col-md-12 col-lg-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">File Export</h3>
-      </div>
-<!--      <div class="card-body">-->
-<!--        <div class="table-responsive">-->
-<!--          <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--              <th class="border-bottom-0">Name</th>-->
-<!--              <th class="border-bottom-0">Position</th>-->
-<!--              <th class="border-bottom-0">Office</th>-->
-<!--              <th class="border-bottom-0">Age</th>-->
-<!--              <th class="border-bottom-0">Start date</th>-->
-<!--              <th class="border-bottom-0">Salary</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr *ngFor="let aff of affectation">-->
-<!--              <td>Tiger Nixon</td>-->
-<!--              <td>System Architect</td>-->
-<!--              <td>Edinburgh</td>-->
-<!--              <td>61</td>-->
-<!--              <td>2011/04/25</td>-->
-<!--              <td>$320,800</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <td>Donna Snider</td>-->
-<!--              <td>Customer Support</td>-->
-<!--              <td>New York</td>-->
-<!--              <td>27</td>-->
-<!--              <td>2011/01/25</td>-->
-<!--              <td>$112,000</td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--      </div>-->
-      <div class="card-body">
-        <div class="table-responsive">
-          <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
-            <thead>
-            <tr>
-              <th class="border-bottom-0">Name</th>
-              <th class="border-bottom-0">Position</th>
-              <th class="border-bottom-0">Office</th>
-              <th class="border-bottom-0">Age</th>
-              <th class="border-bottom-0">Start date</th>
-              <th class="border-bottom-0">Salary</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let aff of affectation">
-              <td>{{ aff.nomTable }}</td>
-              <td>{{ aff.nomTable }}</td>
-              <td>{{ aff.nomTable }}</td>
-              <td>{{ aff.nomTable }}</td>
-              <td>{{ aff.nomTable }}</td>
-              <td>{{ aff.nomTable }}</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <div class="col-12 col-sm-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h3 class="card-title">Liste des affectations dans les salles</h3>
+            </div>
+            <div class="card-body pt-4">
+              <div class="grid-margin">
+                <div class="">
+                  <div class="panel panel-primary">
+                    <div class="tab-menu-heading border-0 p-0">
+                      <div class="tabs-menu1">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs product-sale">
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab5">
+                          <div class="table-responsive">
+                            <table
+                              id="data-table"
+                              class="table table-bordered text-nowrap mb-0"
+                            >
+                              <thead class="border-top">
+                              <tr>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Salle
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                 Code Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Date d'affectation
+                                </th>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Action
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr   class="border-bottom"  *ngFor="let affsal of affectationS">
+                                <td  class="text-center">
+                                  <div class="mt-0 mt-sm-2 d-block">
+                                    <h6 class="mb-0 fs-14 fw-semibold">
+                                      {{affsal.concerne.nomSalle}}
+                                    </h6>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
 
-    </div>
-          <!-- COL-END -->
+                                <td>
+                                    <span class="fw-semibold mt-sm-2 d-block"
+                                    >  {{affsal.quantite}}</span
+                                    >
+                                </td>
+                                <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
+                                  <div class="g-2">
+                                    <a (click)="goTomodifierAff(affsal.id)"
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
+                                      (click)="suppAffecation(affsal.id)"
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
+                                  </div>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- ! END Liste campus CLOSED -->
       </div>
+      <!-- ROW-2 END -->
     </div>
+    <!-- CONTAINER END -->
+  </div>
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <!-- ROW-2 -->
+      <div class="row">
+        <div class="col-12 col-sm-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h3 class="card-title">Liste des affectations dans les campus</h3>
+            </div>
+            <div class="card-body pt-4">
+              <div class="grid-margin">
+                <div class="">
+                  <div class="panel panel-primary">
+                    <div class="tab-menu-heading border-0 p-0">
+                      <div class="tabs-menu1">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs product-sale">
+
+
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab51">
+                          <div class="table-responsive">
+                            <table
+                              id="data-table1"
+                              class="table table-bordered text-nowrap mb-0"
+                            >
+                              <thead class="border-top">
+                              <tr>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Salle
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Code Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Date d'affectation
+                                </th>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Action
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr   class="border-bottom"  *ngFor="let affsal of affectation">
+                                <td  class="text-center">
+                                  <div class="mt-0 mt-sm-2 d-block">
+                                    <h6 class="mb-0 fs-14 fw-semibold">
+                                      {{affsal.concerne.nomCampus}}
+                                    </h6>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+
+                                <td>
+                                    <span class="fw-semibold mt-sm-2 d-block"
+                                    >  {{affsal.quantite}}</span
+                                    >
+                                </td>
+                                <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
+                                  <div class="g-2">
+                                    <a
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
+
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
+                                  </div>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ROW-2 END -->
+    </div>
+    <!-- CONTAINER END -->
+  </div>
+  <div class="side-app">
+    <!-- CONTAINER -->
+    <div class="main-container container-fluid">
+      <!-- ROW-2 -->
+      <div class="row">
+        <div class="col-12 col-sm-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h3 class="card-title">Liste des  affectations au personnel</h3>
+            </div>
+            <div class="card-body pt-4">
+              <div class="grid-margin">
+                <div class="">
+                  <div class="panel panel-primary">
+                    <div class="tab-menu-heading border-0 p-0">
+                      <div class="tabs-menu1">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs product-sale">
+
+
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab51">
+                          <div class="table-responsive">
+                            <table
+                              id="data-table1"
+                              class="table table-bordered text-nowrap mb-0"
+                            >
+                              <thead class="border-top">
+                              <tr>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Personnel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                 Code Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  date d'affectation
+                                </th>
+                                <th
+                                  class="bg-transparent border-bottom-0"
+                                  style="width: 5%"
+                                >
+                                  Action
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr   class="border-bottom"  *ngFor="let affsal of affectationU">
+                                <td  class="text-center">
+                                  <div class="mt-0 mt-sm-2 d-block">
+                                    <h6 class="mb-0 fs-14 fw-semibold">
+                                      {{affsal.concerne.prenom}} {{affsal.concerne.nom}}
+                                    </h6>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td><td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+
+                                <td>
+                                    <span class="fw-semibold mt-sm-2 d-block"
+                                    >  {{affsal.quantite}}</span
+                                    >
+                                </td>
+                                <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
+                                  <div class="g-2">
+                                    <a
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
+
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
+                                  </div>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ROW-2 END -->
+    </div>
+    <!-- CONTAINER END -->
   </div>
 </div>
-
-
-<!--!-->
-
-
+<!--app-content close-->

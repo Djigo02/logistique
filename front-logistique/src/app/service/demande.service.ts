@@ -18,18 +18,29 @@ export class DemandeService {
     }),
   };
 
-  getDemandes():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(this.apiUrl);
+  getDemandes():Observable<any[]>{
+    return this.httpClient.get<any[]>(this.apiUrl);
   }
-  gedemandeRefuser():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/gedemandeRefuser`);
+  gedemandeRefuser():Observable<any[]>{
+    return this.httpClient.get<any[]>(`http://127.0.0.1:8000/api/gedemandeRefuser`);
   }
-  getdemande():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/getdemande`);
+
+  getdemandeAchetee():Observable<any[]>{
+    return this.httpClient.get<any[]>(`http://127.0.0.1:8000/api/getdemandeAchetee`);
   }
-  getDemandeUser(idUser:any):Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
+  getdemande():Observable<any[]>{
+    return this.httpClient.get<any[]>(`http://127.0.0.1:8000/api/getdemande`);
   }
+  getDemandeUser(idUser:any):Observable<any[]>{
+    return this.httpClient.get<any[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
+  }
+
+
+  sendMail(destiMail:string,idDemande:number){
+    return this.httpClient.get('http://127.0.0.1:8000/api/send_email/'+destiMail+'/'+idDemande);
+  }
+
+
 
   getDemande(id:any):Observable<Demande>{
     return this.httpClient.get<Demande>(`${this.apiUrl}/`+id)

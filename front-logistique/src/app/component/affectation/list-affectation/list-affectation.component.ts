@@ -7,8 +7,8 @@ import {AuthService} from "../../../service/auth.service";
 import * as $ from 'jquery';
 import 'datatables.net'; // DataTables core
 import 'datatables.net-bs5'; // DataTables Bootstrap 5
-import 'datatables.net-responsive'; // DataTables Responsive extension
-import 'datatables.net-buttons'; // DataTables buttons extension
+// import 'datatables.net-responsive'; // DataTables Responsive extension
+// import 'datatables.net-buttons'; // DataTables buttons extension
 // import 'select2'; // Select2 for custom selects
 
 @Component({
@@ -20,9 +20,10 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
   // campus
   affectation :any = [];
   // salles
-  affectationS: any= [];
+  affectationS :any[] = [];
   // users
   affectationU :any = [];
+  allAffectation :any[] = [];
   user: User | null = null;
 
   ngOnInit(): void {
@@ -36,8 +37,12 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  goTomodifierAff(id:any){
+    this.router.navigate(['/admin/updateAffectation', id]);
+  }
 
-
+  suppAffecation(id:any){
+  }
 // Use ngAfterViewInit to ensure the DOM is fully loaded
   ngAfterViewInit(): void {
     //______Basic Data Table
@@ -63,7 +68,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
     const fileTable = $('#file-datatable').DataTable({
       buttons: ['copy', 'excel', 'pdf', 'colvis'],
       language: {
-        searchPlaceholder: 'Search...',
+        searchPlaceholder: 'Rechercher...',
         //@ts-ignore
         scrollX: "100%",
         sSearch: ''
@@ -131,6 +136,7 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
     $('.select2').select2({
       minimumResultsForSearch: Infinity
     });
+
   }
 
   constructor(private authService:AuthService,private router: Router,private affectationService:AffectationService) {
@@ -145,16 +151,22 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
      this.affectationService.getAffectationFNT('campuses').subscribe(res =>
     {
       this.affectation= res;
+
     });
      this.affectationService.getAffectationFNT('salles').subscribe(res =>
     {
       this.affectationS= res;
+
     });
      this.affectationService.getAffectationFNT('users').subscribe(res =>
     {
       this.affectationU= res;
-      console.log(this.affectationU);
     });
+     this.affectationService.getAllAfectation().subscribe(res =>{
+       this.allAffectation=res;
+       console.log(this.allAffectation);
+     })
+
   }
 
   goToTransfert(id:any){

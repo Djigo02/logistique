@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demande;
+use App\Models\User;
 use Carbon\Carbon;
 use http\Env\Response;
 use mysql_xdevapi\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class DemandeController extends Controller
 {
@@ -16,7 +19,14 @@ class DemandeController extends Controller
     public function index()
     {
         try {
-            return response()->json(Demande::where('statut','acceptee')->get());
+            $demande = Demande::where('statut','acceptee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -25,15 +35,47 @@ class DemandeController extends Controller
     public function gedemandeRefuser()
     {
         try {
-            return response()->json(Demande::where('statut','refusee')->get());
+            $demande = Demande::where('statut','refusee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
     }
     public function getdemande()
     {
+
         try {
-            return response()->json(Demande::where('statut','en cours de traitement')->get());
+            $demande = Demande::where('statut','en cours de traitement')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+
+    }
+    public function getdemandeAchetee()
+    {
+
+        try {
+            $demande = Demande::where('statut','achetee')->get();
+            $liste = [];
+            foreach ($demande as $element){
+                $demandeur = User::find($element->idDemandeur);
+                $element->demandeur = $demandeur ;
+            }
+            $liste[] = $element;
+            return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -45,6 +87,35 @@ class DemandeController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function sendEmail(string $destiEmail, int $idDemande)
+    {
+        // Récupérer la demande
+        $demande = Demande::findOrFail($idDemande);
+
+        // Récupérer le demandeur
+        $userD = User::where('id', $demande->idDemandeur)->first();
+
+        // Vérifier si l'utilisateur existe
+        if (!$userD) {
+            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+        }
+
+        // Détails de la demande pour l'email
+        $orderDetails = [
+            'demandeur' =>  $userD->prenom.' '.$userD->nom,
+            'typedemande' => $demande->typeDemande,
+            'description' => $demande->description,
+            'dateDemande' => $demande->dateDemande,
+        ];
+
+        // Envoyer l'email
+        Mail::to($destiEmail)->send(new \App\Mail\DemandeMail($orderDetails));
+
+        // Retourner une réponse JSON
+        return response()->json(['message' => 'Email envoyé avec succès']);
     }
 
 

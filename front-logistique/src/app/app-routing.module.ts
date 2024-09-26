@@ -33,6 +33,7 @@ import {DemandeComponent} from "./component/demande/demande.component";
 import {DemandeFormComponent} from "./component/demande/demande-form/demande-form.component";
 import {UserAffectationComponent} from "./component/user-affectation/user-affectation.component";
 import {AllDemandeComponent} from "./component/all-demande/all-demande.component";
+import {UpdateAffectationComponent} from "./component/update-affectation/update-affectation.component";
 
 const routes: Routes = [
   // Route de base
@@ -68,6 +69,7 @@ const routes: Routes = [
       {path: 'editSalle/:id', component: UpdateSalleComponent },
       {path: 'update-campus/:id', component: UpdateCampusComponent },
       {path: 'affectation',component:AffectationComponent},
+      {path: 'updateAffectation',component:UpdateAffectationComponent},
       {path: 'listAffectation',component:ListAffectationComponent},
       {path: 'listMyAffectation',component:UserAffectationComponent},
       {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
