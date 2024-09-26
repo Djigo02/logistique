@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back-logistique/app/Mail/DemandeMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-logistique/resources/views/emails/demandeMail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-logistique/src/app/component/update-affectation/update-affectation.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-logistique/src/app/component/update-affectation/update-affectation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-logistique/src/app/component/update-affectation/update-affectation.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-logistique/src/app/component/update-affectation/update-affectation.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/resources/views/emails/team-invitation.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,22 +197,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "amyBranch",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Pc/logistique/front-logistique/src/app/component/affectation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Pro\\Documents\\logistique\\front-logistique\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;amyBranch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pc/logistique/front-logistique/src/app/component/affectation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Pro\\Documents\\logistique\\front-logistique\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pc\logistique\front-logistique\src\app\component\affectation" />
@@ -269,5 +285,8 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

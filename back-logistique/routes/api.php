@@ -61,6 +61,7 @@ Route::get('gedemandeRefuser', [\App\Http\Controllers\DemandeController::class,'
 Route::get('getdemande', [\App\Http\Controllers\DemandeController::class,'getdemande']);
 
 
+Route::get('send_email/{destiEmail}/{idDemande}', [\App\Http\Controllers\DemandeController::class,'sendEmail']);
 
 
 
