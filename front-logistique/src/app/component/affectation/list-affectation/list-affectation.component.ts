@@ -145,19 +145,16 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
      this.affectationService.getAffectationFNT('campuses').subscribe(res =>
     {
       this.affectation= res;
-      console.log(this.affectation);
     });
      this.affectationService.getAffectationFNT('salles').subscribe(res =>
     {
       this.affectationS= res;
-      console.log(this.affectationS);
     });
      this.affectationService.getAffectationFNT('users').subscribe(res =>
     {
       this.affectationU= res;
       console.log(this.affectationU);
     });
-
   }
 
   goToTransfert(id:any){
