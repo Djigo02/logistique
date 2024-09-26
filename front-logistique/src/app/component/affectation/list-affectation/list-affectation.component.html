@@ -18,8 +18,6 @@
                       <div class="tabs-menu1">
                         <!-- Tabs -->
                         <ul class="nav panel-tabs product-sale">
-
-
                         </ul>
                       </div>
                     </div>
@@ -40,10 +38,16 @@
                                   Salle
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
+                                 Code Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
                                   Materiel
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
                                   Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Date d'affectation
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
@@ -58,7 +62,7 @@
                                 <td  class="text-center">
                                   <div class="mt-0 mt-sm-2 d-block">
                                     <h6 class="mb-0 fs-14 fw-semibold">
-                                      {{affsal.concerne_id}}
+                                      {{affsal.concerne.nomSalle}}
                                     </h6>
                                   </div>
                                 </td>
@@ -66,7 +70,16 @@
                                   <div class="d-flex">
                                     <div class="mt-0 mt-sm-3 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{affsal.idMateriel}}
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
                                       </h6>
                                     </div>
                                   </div>
@@ -78,8 +91,25 @@
                                     >
                                 </td>
                                 <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
                                   <div class="g-2">
-
+                                    <a (click)="goTomodifierAff(affsal.id)"
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
+                                      (click)="suppAffecation(affsal.id)"
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
                                   </div>
                                 </td>
                               </tr>
@@ -141,10 +171,16 @@
                                   Salle
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
+                                  Code Materiel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
                                   Materiel
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
                                   Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  Date d'affectation
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
@@ -159,7 +195,7 @@
                                 <td  class="text-center">
                                   <div class="mt-0 mt-sm-2 d-block">
                                     <h6 class="mb-0 fs-14 fw-semibold">
-                                      {{affsal.concerne_id}}
+                                      {{affsal.concerne.nomCampus}}
                                     </h6>
                                   </div>
                                 </td>
@@ -167,7 +203,16 @@
                                   <div class="d-flex">
                                     <div class="mt-0 mt-sm-3 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{affsal.idMateriel}}
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
                                       </h6>
                                     </div>
                                   </div>
@@ -179,8 +224,25 @@
                                     >
                                 </td>
                                 <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
                                   <div class="g-2">
+                                    <a
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
 
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
                                   </div>
                                 </td>
                               </tr>
@@ -239,13 +301,19 @@
                                   class="bg-transparent border-bottom-0"
                                   style="width: 5%"
                                 >
-                                  Salle
+                                  Personnel
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                 Code Materiel
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
                                   Materiel
                                 </th>
                                 <th class="bg-transparent border-bottom-0">
                                   Quantite
+                                </th>
+                                <th class="bg-transparent border-bottom-0">
+                                  date d'affectation
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
@@ -260,7 +328,7 @@
                                 <td  class="text-center">
                                   <div class="mt-0 mt-sm-2 d-block">
                                     <h6 class="mb-0 fs-14 fw-semibold">
-                                      {{affsal.concerne_id}}
+                                      {{affsal.concerne.prenom}} {{affsal.concerne.nom}}
                                     </h6>
                                   </div>
                                 </td>
@@ -268,7 +336,15 @@
                                   <div class="d-flex">
                                     <div class="mt-0 mt-sm-3 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{affsal.idMateriel}}
+                                        {{affsal.materiel.codeMateriel}}
+                                      </h6>
+                                    </div>
+                                  </div>
+                                </td><td>
+                                  <div class="d-flex">
+                                    <div class="mt-0 mt-sm-3 d-block">
+                                      <h6 class="mb-0 fs-14 fw-semibold">
+                                        {{affsal.materiel.description}}
                                       </h6>
                                     </div>
                                   </div>
@@ -280,8 +356,25 @@
                                     >
                                 </td>
                                 <td>
+                                  <span class="fw-semibold mt-sm-2 d-block">{{affsal.created_at  | date:'dd/MM/yyyy'}}</span>
+                                </td>
+                                <td>
                                   <div class="g-2">
+                                    <a
+                                      class="btn text-primary btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Edit"
+                                    ><span class="fe fe-edit fs-14"></span
+                                    ></a>
+                                    <a
 
+                                      class="btn text-danger btn-sm"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-original-title="Delete"
+                                    ><span
+                                      class="fe fe-trash-2 fs-14"
+                                    ></span
+                                    ></a>
                                   </div>
                                 </td>
                               </tr>

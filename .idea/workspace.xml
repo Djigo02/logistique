@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/resources/views/emails/team-invitation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/resources/views/emails/demandeMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/affectation/list-affectation/list-affectation.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +198,10 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+      <option name="pathToComposerJson" value="$PROJECT_DIR$/back-logistique/composer.json" />
+      <method v="2" />
+    </configuration>
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/back-logistique/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
       <method v="2" />
@@ -256,5 +270,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

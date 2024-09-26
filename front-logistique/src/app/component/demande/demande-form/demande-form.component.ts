@@ -20,15 +20,24 @@ export class DemandeFormComponent implements OnInit{
   demande!:Demande;
   user: User | null = null;
   demandeur!:number ;
+  email: string = '';
+  message: string = '';
 
   constructor(private route:Router,private demandeService:DemandeService,private authService: AuthService) {
   }
 
 
 
+
+
   onSubmit(){
       this.demandeService.insertDemande(this.demande).subscribe(res =>{
         console.log("demande affectuer avec succes",this.demande);
+        this.demandeService.sendMail('ndiayeamy1512@gmail.com',res.id).subscribe(res =>{
+          console.log("email envoye a ");
+        },error =>{
+          console.error('Error sending email');
+        });
         Swal.fire({
           position: "center",
           icon: "success",

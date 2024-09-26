@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demande;
+use App\Models\User;
 use Carbon\Carbon;
 use http\Env\Response;
 use mysql_xdevapi\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class DemandeController extends Controller
 {
@@ -45,6 +48,35 @@ class DemandeController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function sendEmail(string $destiEmail, int $idDemande)
+    {
+        // Récupérer la demande
+        $demande = Demande::findOrFail($idDemande);
+
+        // Récupérer le demandeur
+        $userD = User::where('id', $demande->idDemandeur)->first();
+
+        // Vérifier si l'utilisateur existe
+        if (!$userD) {
+            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+        }
+
+        // Détails de la demande pour l'email
+        $orderDetails = [
+            'demandeur' =>  $userD->prenom.' '.$userD->nom,
+            'typedemande' => $demande->typeDemande,
+            'description' => $demande->description,
+            'dateDemande' => $demande->dateDemande,
+        ];
+
+        // Envoyer l'email
+        Mail::to($destiEmail)->send(new \App\Mail\DemandeMail($orderDetails));
+
+        // Retourner une réponse JSON
+        return response()->json(['message' => 'Email envoyé avec succès']);
     }
 
 

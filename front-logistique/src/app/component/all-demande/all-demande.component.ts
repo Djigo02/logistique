@@ -16,6 +16,7 @@ export class AllDemandeComponent  implements OnInit {
   demandesu:Demande[]=[];
   demandeR:Demande[]=[];
   demandeEC:Demande[]=[];
+  demandeFournie:Demande[]=[];
   demande!:Demande;
   constructor(private demandeService:DemandeService,private route:Router) {
   }
@@ -70,6 +71,9 @@ export class AllDemandeComponent  implements OnInit {
     this.demandeService.getDemande(id).subscribe(res =>{
       this.demande=res;
       this.demande.statut="acceptee";
+      this.getallDemande();
+      this.gedemandeRefuser();
+      this.getdemande();
       this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
         this.getallDemande();
         Swal.fire({
@@ -80,14 +84,39 @@ export class AllDemandeComponent  implements OnInit {
           timer: 1500
         });
       });
+
     });
   }
+
+  achete(id:number){
+    this.demandeService.getDemande(id).subscribe(res =>{
+      this.demande=res;
+      this.demande.statut="achetee";
+      this.getallDemande();
+      this.gedemandeRefuser();
+      this.getdemande();
+      this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
+        this.getallDemande();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "  demande achetee  avec success ",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      });
+
+    });
+  }
+
   refuse(id:number){
     this.demandeService.getDemande(id).subscribe(res =>{
       this.demande=res;
       this.demande.statut="refusee";
       this.demandeService.updateDemande(this.demande.id,this.demande).subscribe(re=>{
         this.getallDemande();
+        this.gedemandeRefuser();
+        this.getdemande();
         Swal.fire({
           position: "center",
           icon: "success",

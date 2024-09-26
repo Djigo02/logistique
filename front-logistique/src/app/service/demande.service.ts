@@ -31,6 +31,13 @@ export class DemandeService {
     return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
   }
 
+
+  sendMail(destiMail:string,idDemande:number){
+    return this.httpClient.get('http://127.0.0.1:8000/api/send_email/'+destiMail+'/'+idDemande);
+  }
+
+
+
   getDemande(id:any):Observable<Demande>{
     return this.httpClient.get<Demande>(`${this.apiUrl}/`+id)
   }

@@ -20,10 +20,10 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
   // campus
   affectation :any = [];
   // salles
-  affectationS :Affectation[] = [];
+  affectationS :any[] = [];
   // users
   affectationU :any = [];
-  allAffectation :Affectation[] = [];
+  allAffectation :any[] = [];
   user: User | null = null;
 
   ngOnInit(): void {
@@ -37,8 +37,12 @@ export class ListAffectationComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  goTomodifierAff(id:any){
+    this.router.navigate(['/admin/updateAffectation', id]);
+  }
 
-
+  suppAffecation(id:any){
+  }
 // Use ngAfterViewInit to ensure the DOM is fully loaded
   ngAfterViewInit(): void {
     //______Basic Data Table
