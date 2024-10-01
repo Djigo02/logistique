@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToastrService} from "ngx-toastr";
 import {AffectationService} from "../../service/affectation.service";
 import {MaterielService} from "../../service/materiel.service";
@@ -10,7 +10,7 @@ import {CampusService} from "../../service/campus.service";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   constructor(
     private notif: ToastrService,
     private affectationService:AffectationService,

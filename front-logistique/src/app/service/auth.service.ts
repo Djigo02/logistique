@@ -82,6 +82,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('access_token');
+    localStorage.clear();
   }
 
 
