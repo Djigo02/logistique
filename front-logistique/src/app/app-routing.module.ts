@@ -34,6 +34,7 @@ import {DemandeFormComponent} from "./component/demande/demande-form/demande-for
 import {UserAffectationComponent} from "./component/user-affectation/user-affectation.component";
 import {AllDemandeComponent} from "./component/all-demande/all-demande.component";
 import {UpdateAffectationComponent} from "./component/update-affectation/update-affectation.component";
+import {ProfilComponent} from "./component/profil/profil.component";
 
 const routes: Routes = [
   // Route de base
@@ -71,6 +72,7 @@ const routes: Routes = [
       {path: 'affectation',component:AffectationComponent},
       {path: 'updateAffectation',component:UpdateAffectationComponent},
       {path: 'listAffectation',component:ListAffectationComponent},
+      {path: 'profil',component:ProfilComponent},
       {path: 'listMyAffectation',component:UserAffectationComponent},
       {path:'voir-materiels/:nomtable/:id', component:VoirListeMaterielComponent},
       {path:'transfert-materiels/:id', component:TransfertMaterielUseComponent},

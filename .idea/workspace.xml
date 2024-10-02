@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

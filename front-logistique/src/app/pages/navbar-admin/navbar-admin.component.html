@@ -21,12 +21,6 @@
         />
       </a>
       <!-- LOGO -->
-      <!-- !Search result -->
-      <!-- <div class="main-header-center ms-3 d-none d-lg-block">
-                        <input type="text" class="form-control" id="typehead" placeholder="Search for results...">
-                        <button class="btn px-0 pt-2"><i class="fe fe-search" aria-hidden="true"></i></button>
-                    </div> -->
-      <!--! End Search result  -->
       <div class="d-flex order-lg-2 ms-auto header-right-icons">
         <!-- SEARCH -->
         <!-- ! :bouton responsive -->
@@ -47,16 +41,6 @@
         <div class="navbar navbar-collapse responsive-navbar p-0">
           <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <div class="d-flex order-lg-2">
-              <!-- COUNTRY -->
-              <div class="d-flex">
-                <a
-                  class="nav-link icon theme-layout nav-link-bg layout-setting"
-                >
-                  <span class="dark-layout"><i class="fe fe-moon"></i></span>
-                  <span class="light-layout"><i class="fe fe-sun"></i></span>
-                </a>
-              </div>
-              <!-- Theme-Layout -->
               <div class="dropdown d-flex">
                 <a class="nav-link icon full-screen-link nav-link-bg">
                   <i class="fe fe-minimize fullscreen-button"></i>
@@ -85,12 +69,18 @@
                       <h5 class="text-dark mb-0 fs-14 fw-semibold">
                         {{user.prenom}} {{user.nom}}
                       </h5>
-                      <small class="text-muted">DSI</small>
+                      <small class="text-muted">{{user.roleName}}</small>
                     </div>
                   </div>
                   <div class="dropdown-divider m-0"></div>
-                  <a class="dropdown-item" href="profile.html">
+                  <a class="dropdown-item" (click)="goToProfil()">
                     <i class="dropdown-icon fe fe-user"></i> Mon profil
+                  </a>
+                  <a class="dropdown-item" href="profile.html">
+                    <i class="dropdown-icon fe fe-user"></i> Mes affectations
+                  </a>
+                  <a class="dropdown-item" href="profile.html">
+                    <i class="dropdown-icon fe fe-user"></i> Mes demandes
                   </a>
                   <a class="dropdown-item" (click)="logout()">
                     <i class="dropdown-icon fe fe-alert-circle"></i> Se

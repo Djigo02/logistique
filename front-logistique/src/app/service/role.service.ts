@@ -23,7 +23,7 @@ export class RoleService {
   }
 
   getRoleByIdRole(id:any){
-    return this.httpClient.get<Role>(`${this.apiUrl}/` + id);
+    return this.httpClient.get<any>(`${this.apiUrl}/` + id);
   }
 
 }

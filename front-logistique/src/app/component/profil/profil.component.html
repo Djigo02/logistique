@@ -1,0 +1,41 @@
+<div class="main-content app-content mb-3 pt-5">
+  <div class="side-app">
+    <div class="main-container container-fluid">
+<!--    -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Mon profil</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>Prenom</label>
+                <input type="text" class="form-control" id="exampleInputname" value="{{user.prenom}}">
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group">
+                <label >Nom</label>
+                <input type="text" class="form-control" id="nom" value="{{user.nom}}">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" value="{{user.email}}">
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="number" class="form-control" id="telephone" value="{{user.telephone}}">
+          </div>
+        </div>
+        <div class="card-footer text-end d-flex justify-content-end">
+          <a (click)="goBack()" class="btn btn-danger my-1 text-white">Retour</a>
+          <a href="javascript:void(0)" class="btn btn-primary my-1">Enregistrer</a>
+        </div>
+      </div>
+<!--      -->
+    </div>
+  </div>
+</div>
