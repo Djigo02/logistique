@@ -20,37 +20,13 @@
                         <ul class="nav panel-tabs product-sale">
                           <li>
                             <a href="#tab5" class="active" data-bs-toggle="tab"
-                              >Tous les materiels</a
+                              ></a
                             >
                           </li>
-                          <li>
+
+                          <li *ngIf="user?.idRole ==1 || user?.idRole ==2 " style="cursor:pointer; height: 50px" class="btn btn-sm btn-primary">
                             <a
-                              href="#tab6"
-                              data-bs-toggle="tab"
-                              class="text-dark"
-                              >Disponible</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="#tab7"
-                              data-bs-toggle="tab"
-                              class="text-dark"
-                              >En voie d'ammortissement</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="#tab8"
-                              data-bs-toggle="tab"
-                              class="text-dark"
-                              >Hors d'usage</a
-                            >
-                          </li>
-                          <li style="cursor:pointer">
-                            <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
                              (click)="goToAdd()"
-                              class="text-primary"
                               >Ajouter un materiel</a
                             >
                           </li>
@@ -78,12 +54,6 @@
                                   </th>
                                   <th class="bg-transparent border-bottom-0">
                                     Quantité
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Date d'amortissement
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Seuil
                                   </th>
                                   <th
                                     class="bg-transparent border-bottom-0"
@@ -122,20 +92,7 @@
                                       >{{ materiel.quantite }}</span
                                     >
                                   </td>
-                                  <td>
-                                    <span class="fw-semibold mt-sm-2 d-block"
-                                      >{{ materiel.amortissement  | date:'dd/MM/yyyy' }}</span
-                                    >
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <div class="mt-0 mt-sm-3 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{ materiel.seuil }}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
+
                                   <td>
                                     <div class="mt-sm-1 d-block">
                                       <span *ngIf="materiel.status == 'Disponible'"
@@ -150,14 +107,14 @@
                                   </td>
                                   <td>
                                     <div class="g-2">
-                                      <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
+                                      <a *ngIf="user?.idRole !=4 "
                                         (click)="redirectTo(materiel.id)"
                                         class="btn text-primary btn-sm"
                                         data-bs-toggle="tooltip"
                                         data-bs-original-title="Edit"
                                         ><span class="fe fe-edit fs-14"></span
                                       ></a>
-                                      <a *ngIf="user?.idRole ==1 || user?.idRole ==6 "
+                                      <a *ngIf="user?.idRole ==1 || user?.idRole ==2 "
                                         (click)="delete(materiel.id)"
                                         class="btn text-danger btn-sm"
                                         data-bs-toggle="tooltip"
@@ -173,335 +130,7 @@
                             </table>
                           </div>
                         </div>
-                        <div class="tab-pane" id="tab6">
-                          <div class="table-responsive">
-                            <table
-                              class="table table-bordered text-nowrap mb-0"
-                            >
-                              <thead class="border-top">
-                                <tr>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Code matériel
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Description
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Quantité
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Date d'amortissement
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Seuil
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 10%"
-                                  >
-                                    Status
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Action
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              <ng-container *ngFor="let materiel of materiels">
-                                <tr *ngIf="materiel.status == 'Disponible' "  class="border-bottom">
-                                  <td  class="text-center">
-                                    <div class="mt-0 mt-sm-2 d-block">
-                                      <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{materiel.codeMateriel }}
-                                      </h6>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <div class="mt-0 mt-sm-3 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.description}}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <span class="mt-sm-2 d-block"
-                                    >{{ materiel.quantite }}</span
-                                    >
-                                  </td>
-                                  <td>
-                                    <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
-                                    >
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <div class="mt-0 mt-sm-3 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{ materiel.seuil }}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-success-transparent rounded-pill text-dark p-2 px-3"
-                                      >{{ materiel.status }}</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="g-2">
-                                      <a
-                                        class="btn text-primary btn-sm"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-original-title="Edit"
-                                      ><span class="fe fe-edit fs-14"></span
-                                      ></a>
-                                      <a
-                                        class="btn text-danger btn-sm"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-original-title="Delete"
-                                      ><span
-                                        class="fe fe-trash-2 fs-14"
-                                      ></span
-                                      ></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </ng-container>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
 
-                        <div class="tab-pane" id="tab7">
-                          <div class="table-responsive">
-                            <table
-                              class="table table-bordered text-nowrap mb-0"
-                            >
-                              <thead class="border-top">
-                                <tr>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Code matériel
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Description
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Quantité
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Date d'amortissement
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Seuil
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 10%"
-                                  >
-                                    Status
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Action
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <ng-container *ngFor="let materiel of materiels">
-                                  <tr *ngIf="materiel.status == 'amortissement' "  class="border-bottom">
-                                    <td  class="text-center">
-                                      <div class="mt-0 mt-sm-2 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.codeMateriel }}
-                                        </h6>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex">
-                                        <div class="mt-0 mt-sm-3 d-block">
-                                          <h6 class="mb-0 fs-14 fw-semibold">
-                                            {{materiel.description}}
-                                          </h6>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                    <span class="mt-sm-2 d-block"
-                                    >{{ materiel.quantite }}</span
-                                    >
-                                    </td>
-                                    <td>
-                                    <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
-                                    >
-                                    </td>
-                                    <td>
-                                      <div class="d-flex">
-                                        <div class="mt-0 mt-sm-3 d-block">
-                                          <h6 class="mb-0 fs-14 fw-semibold">
-                                            {{ materiel.seuil }}
-                                          </h6>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-warning-transparent rounded-pill text-dark p-2 px-3"
-                                      >{{ materiel.status }}</span
-                                      >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="g-2">
-                                        <a
-                                          class="btn text-primary btn-sm"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-original-title="Edit"
-                                        ><span class="fe fe-edit fs-14"></span
-                                        ></a>
-                                        <a
-                                          class="btn text-danger btn-sm"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-original-title="Delete"
-                                        ><span
-                                          class="fe fe-trash-2 fs-14"
-                                        ></span
-                                        ></a>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </ng-container>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div class="tab-pane" id="tab8">
-                          <div class="table-responsive">
-                            <table
-                              class="table table-bordered text-nowrap mb-0"
-                            >
-                              <thead class="border-top">
-                                <tr>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Code matériel
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Description
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Quantité
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Date d'amortissement
-                                  </th>
-                                  <th class="bg-transparent border-bottom-0">
-                                    Seuil
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 10%"
-                                  >
-                                    Status
-                                  </th>
-                                  <th
-                                    class="bg-transparent border-bottom-0"
-                                    style="width: 5%"
-                                  >
-                                    Action
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              <ng-container *ngFor="let materiel of materiels">
-                                <tr *ngIf="materiel.status == 'hServices' "  class="border-bottom">
-                                  <td  class="text-center">
-                                    <div class="mt-0 mt-sm-2 d-block">
-                                      <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{materiel.codeMateriel }}
-                                      </h6>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <div class="mt-0 mt-sm-3 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{materiel.description}}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <span class="mt-sm-2 d-block"
-                                    >{{ materiel.quantite }}</span
-                                    >
-                                  </td>
-                                  <td>
-                                    <span class="fw-semibold mt-sm-2 d-block"
-                                    >{{ materiel.amortissement  | date:'dd/MM/yyyy'}}</span
-                                    >
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <div class="mt-0 mt-sm-3 d-block">
-                                        <h6 class="mb-0 fs-14 fw-semibold">
-                                          {{ materiel.seuil }}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="mt-sm-1 d-block">
-                                      <span
-                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                      >{{ materiel.status }}</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="g-2">
-                                      <a
-                                        class="btn text-primary btn-sm"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-original-title="Edit"
-                                      ><span class="fe fe-edit fs-14"></span
-                                      ></a>
-                                      <a
-                                        class="btn text-danger btn-sm"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-original-title="Delete"
-                                      ><span
-                                        class="fe fe-trash-2 fs-14"
-                                      ></span
-                                      ></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </ng-container>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>

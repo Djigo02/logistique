@@ -4,6 +4,7 @@ import {AffectationService} from "../../service/affectation.service";
 import {MaterielService} from "../../service/materiel.service";
 import {SalleService} from "../../service/salle.service";
 import {CampusService} from "../../service/campus.service";
+import {RoleService} from "../../service/role.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +12,30 @@ import {CampusService} from "../../service/campus.service";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
+
+  // Utilisateur authentifier
+  user: any | null = null;
   constructor(
     private notif: ToastrService,
     private affectationService:AffectationService,
     private materielService:MaterielService,
     private salleService:SalleService,
-    private campusService: CampusService
+    private campusService: CampusService,
+    private role: RoleService
   ) {}
 
   tabAffectation!:any[];
   ngOnInit(): void {
     this.materielsAffectes('salles');
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
 
@@ -73,7 +87,6 @@ export class DashboardComponent implements OnInit{
         });
 
         this.tabAffectation = tab;
-        console.log(this.tabAffectation);
       },
       err => {
         this.notif.error('Une erreur s\'est produite', 'Erreur');

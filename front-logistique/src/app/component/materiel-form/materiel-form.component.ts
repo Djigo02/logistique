@@ -9,13 +9,14 @@ import { TypeMaterielService } from 'src/app/service/type-materiel.service';
 import {Fournisseur} from "../../model/fournisseur";
 import {FournisseurService} from "../../service/fournisseur.service";
 import Swal from "sweetalert2";
+import {RoleService} from "../../service/role.service";
 
 @Component({
   selector: 'app-materiel-form',
   templateUrl: './materiel-form.component.html',
   styleUrls: ['./materiel-form.component.css']
 })
-export class MaterielFormComponent {
+export class MaterielFormComponent implements OnInit {
   @Input() materiel! : any;
   typM! : TypeMateriel;
   selectedFile:File | null=null;
@@ -23,7 +24,7 @@ export class MaterielFormComponent {
   @Input() fournisseurs !: Fournisseur[] ;
   isAddForm!:boolean;
   fournisseur!:any;
-  constructor(private materielService : MaterielService ,private router : Router,private fournisseurService : FournisseurService,private typeMatServ:TypeMaterielService){}
+  constructor(private role: RoleService,private materielService : MaterielService ,private router : Router,private fournisseurService : FournisseurService,private typeMatServ:TypeMaterielService){}
 
   /**
    * la fonction est lier a un evenment de change dans leninout file qui recupere l;image il vas recuperer le premier file et le stocker dans
@@ -136,7 +137,20 @@ export class MaterielFormComponent {
     })
   }
 
+  user!:any;
+
   ngOnInit(): void {
+
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
+
     this.materiel = new Materiel();
     this.fournisseur = new Fournisseur();
     this.loadTypeMate();

@@ -68,13 +68,23 @@
           <h3>Gestion campus et salle</h3>
         </li>
         <!--   Aller a la liste des campus     -->
-        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole!=4">
+        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==1">
           <a
             class="side-menu__item has-link"
             data-bs-toggle="slide"
             (click)="goTOListCampus()"
           ><i class="side-menu__icon fe fe-book"></i
           ><span class="side-menu__label">Liste des campus</span></a
+          >
+        </li>
+        <!--   Aller a la liste des campus     -->
+        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==2">
+          <a
+            class="side-menu__item has-link"
+            data-bs-toggle="slide"
+            (click)="goToSalles(user?.campus_id)"
+          ><i class="side-menu__icon fe fe-book"></i
+          ><span class="side-menu__label">Voir les salles de mon campus</span></a
           >
         </li>
         <!-- ! END Gestion campus et salle -->
@@ -149,10 +159,10 @@
         <!-- ? END MODULE 2 -->
 
         <!-- ? Affectation  -->
-        <li *ngIf="user?.idRole !=4" class="sub-category">
+        <li *ngIf="user?.idRole ==1 || user?.idRole ==2" class="sub-category">
           <h3>Affectation</h3>
         </li>
-        <li *ngIf="user?.idRole !=4 || user?.idRole !=5"  class="slide">
+        <li *ngIf="user?.idRole ==1 || user?.idRole ==2"  class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"
@@ -165,24 +175,6 @@
 
         </li>
         <!-- ! END Affectation -->
-        <!-- ? Affectation  -->
-        <li class="sub-category">
-          <h3>Affectation</h3>
-        </li>
-        <li class="slide">
-          <a
-            class="side-menu__item"
-            data-bs-toggle="slide"
-            href="javascript:void(0)"
-            (click)="goToMyAffectation()"
-          ><i class="side-menu__icon fe fe-slack"></i
-          ><span class="side-menu__label">Mes Affectations</span
-          >
-          </a>
-
-        </li>
-        <!-- ! END Affectation -->
-        <!-- ? END MODULE 3 -->
 
         <!-- ! Gestion des utilisateurs -->
         <li  class="sub-category">
@@ -200,11 +192,11 @@
         </li>
         <!-- ! END Gestion campus et salle -->
 
-        <li *ngIf="user?.idRole ==1  || user?.idRole ==4 " class="sub-category">
+        <li *ngIf="user?.idRole ==1  || user?.idRole ==2 " class="sub-category">
           <h3>Gestion des demande</h3>
         </li>
         <!--   Aller a la liste des campus     -->
-        <li *ngIf="user?.idRole ==1 || user?.idRole ==4 " class="slide" style="cursor: pointer">
+        <li *ngIf="user?.idRole ==1 || user?.idRole ==2 " class="slide" style="cursor: pointer">
           <a
             class="side-menu__item has-link"
             data-bs-toggle="slide"
@@ -217,10 +209,10 @@
 
 <!-- !Test       -->
         <!-- ? Gestion des utilisateurs  -->
-        <li *ngIf="user?.idRole !=4 " class="sub-category">
+        <li *ngIf="user?.idRole == 1 " class="sub-category">
           <h3>Gestion des Utilisateurs</h3>
         </li>
-        <li *ngIf="user?.idRole !=4" class="slide">
+        <li *ngIf="user?.idRole ==1" class="slide">
           <a
             class="side-menu__item"
             data-bs-toggle="slide"

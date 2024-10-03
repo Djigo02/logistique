@@ -62,4 +62,8 @@ export class SallesincampusComponent implements OnInit {
   goToSalleUpdate(id:any){
     this.router.navigate(['/admin/editSalle', id]);
   }
+
+  goToDashboard(){
+    this.router.navigate(['/admin/dashboard']);
+  }
 }

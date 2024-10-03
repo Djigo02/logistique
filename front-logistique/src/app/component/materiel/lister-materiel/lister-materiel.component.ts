@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {AuthService} from "../../../service/auth.service";
 import {User} from "../../../model/user";
+import {RoleService} from "../../../service/role.service";
 
 @Component({
   selector: 'app-lister-materiel',
@@ -13,10 +14,10 @@ import {User} from "../../../model/user";
 })
 export class ListerMaterielComponent implements OnInit{
   materiels :Materiel[] = [];
-  user: User | null = null;
+  user: any | null = null;
 
 
-  constructor(private authService:AuthService,private materielSerice: MaterielService,private router:Router) {
+  constructor(private authService:AuthService,private materielSerice: MaterielService,private router:Router, private role: RoleService) {
   }
 
   redirectTo(id : number){
@@ -52,14 +53,15 @@ export class ListerMaterielComponent implements OnInit{
   }
   ngOnInit() {
     this.getMaterielData();
-    this.authService.getUser().subscribe({
-      next: (user) => {
-        this.user = user;
-      },
-      error: (err) => {
-
-      }
-    });
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
   goToAdd(){

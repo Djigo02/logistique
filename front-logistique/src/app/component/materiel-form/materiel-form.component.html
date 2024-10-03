@@ -124,7 +124,7 @@
           </div>
         </div>
         <!-- Bouton Ajouter -->
-        <div class="form-footer mt-2">
+        <div class="form-footer mt-2" *ngIf="user.idRole==1 || user.idRole==2">
           <button href="javascript:void(0)" type="submit" class="btn btn-primary" [disabled]="!matForm.valid"  >Enregistrer  materiel</button>
         </div>
       </div>

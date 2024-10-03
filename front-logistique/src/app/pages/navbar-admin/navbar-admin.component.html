@@ -73,13 +73,13 @@
                     </div>
                   </div>
                   <div class="dropdown-divider m-0"></div>
-                  <a class="dropdown-item" (click)="goToProfil()">
+                  <a class="dropdown-item" style="cursor: pointer" (click)="goToProfil()">
                     <i class="dropdown-icon fe fe-user"></i> Mon profil
                   </a>
-                  <a class="dropdown-item" href="profile.html">
+                  <a class="dropdown-item" style="cursor: pointer" (click)="voirMateriels('personnel',user.id)">
                     <i class="dropdown-icon fe fe-user"></i> Mes affectations
                   </a>
-                  <a class="dropdown-item" href="profile.html">
+                  <a class="dropdown-item" style="cursor: pointer">
                     <i class="dropdown-icon fe fe-user"></i> Mes demandes
                   </a>
                   <a class="dropdown-item" (click)="logout()">

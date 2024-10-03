@@ -303,4 +303,29 @@ class AffectationController extends Controller
         }
     }
 
+
+    /**
+     * Récupère les affectations d'un personnel pour une salle donnée.
+     *
+     * @param Request $request Les données de la requête contenant l'identifiant de la salle.
+     * @return \Illuminate\Http\JsonResponse Une réponse JSON contenant la liste des affectations de l'utilisateur pour la salle.
+     * */
+    public function getAffectationPersonnel(int $id) {
+        $user = User::find($id);
+        if($user == null) {
+            return response()->json(['message' => "Utilisateur introuvable", "statusCode" => 404]);
+        }
+        $affectations = Affectation::where('concerne_id', $user->id)
+            ->where('nomTable', 'users')
+            ->get();
+        $affectationsArray = [];
+        foreach ($affectations as $affectation) {
+            $materiel = Materiel::find($affectation->idMateriel);
+            $materiel->quantite = $affectation->quantite;
+            $materiel->dateEnregistrement = $affectation->created_at;
+            $affectationsArray[] = $materiel;
+        }
+        return response()->json($affectationsArray);
+    }
+
 }

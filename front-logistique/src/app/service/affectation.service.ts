@@ -47,4 +47,8 @@ export class AffectationService {
     return this.httpClient.post(`https://logistique.groupeisi.com/api/transfert-materiel/`,affectation,this.httpOptions);
   }
 
+  getAffectationPersonnel(id:any){
+    return this.httpClient.get<any>(`http://127.0.0.1:8000/api/getAffectationPersonnel/${id}`);
+  }
+
 }

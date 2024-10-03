@@ -9,7 +9,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <h3 class="card-title">Listes des campus</h3>
-              <a *ngIf="user?.idRole ==1 "
+              <a *ngIf="user?.idRole ==1"
                 (click)="goToCampusForm()"
                 class="btn btn-primary"
                 role="button"
@@ -17,8 +17,9 @@
             </div>
             <div class="card-body">
               <div class="">
-                <div class="row" *ngIf="campusList">
-                  <div class="col-xl-4 col-sm-6 col-md-6" *ngFor="let campus of campusList">
+                <div class="row" *ngIf="campusList" >
+                  <ng-container *ngFor="let campus of campusList">
+                    <div class="col-xl-4 col-sm-6 col-md-6" *ngIf="user?.idRole == 1 ||  (user?.idRole == 2 && user?.id == campus.idUser)">
                     <div class="card border p-0">
                       <div class="card-header">
                         <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>
@@ -52,7 +53,7 @@
                       </div>
                     </div>
                   </div>
-
+                  </ng-container>
                 </div>
                 <!--  NO CAMPUS AVAILABLE -->
                 <div class="row" *ngIf="!campusList">

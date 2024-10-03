@@ -70,3 +70,4 @@ Route::get('user', [AuthController::class, 'getUserAuth']);
 Route::resource("demandes",\App\Http\Controllers\DemandeController::class);
 Route::get('demandeUser/{id}', [\App\Http\Controllers\DemandeController::class, 'getDemnadeByUser']);
 Route::get('getAffectationByUser/{id}',[\App\Http\Controllers\AffectationController::class,'getAffectationByUser']);
+Route::get('getAffectationPersonnel/{id}',[\App\Http\Controllers\AffectationController::class,'getAffectationPersonnel']);

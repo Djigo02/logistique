@@ -9,7 +9,8 @@ import {Salle} from "../model/salle";
 })
 export class CampusService {
   constructor(private httpClient: HttpClient) { }
-  apiUrl  : string =  'https://logistique.groupeisi.com/api/campus';
+  // apiUrl  : string =  'https://logistique.groupeisi.com/api/campus';
+  apiUrl  : string =  'http://127.0.0.1:8000/api/campus';
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',

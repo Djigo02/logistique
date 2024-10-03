@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../service/auth.service";
 import {User} from "../../../model/user";
+import {RoleService} from "../../../service/role.service";
 
 @Component({
   selector: 'app-lister-campus',
@@ -19,21 +20,22 @@ export class ListerCampusComponent implements OnInit{
   usernom!:string;
   useremail!:string;
   useridRole!:number;
-  user: User | null = null;
+  user: any | null = null;
 
   ngOnInit() {
     this.getCampus();
-    this.authService.getUser().subscribe({
-      next: (user) => {
-        this.user = user;
-      },
-      error: (err) => {
-
-      }
-    });
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
-  constructor(private authService:AuthService,private router:Router, private campusService:CampusService,private notification: ToastrService) {
+  constructor(private authService:AuthService, private role: RoleService,private router:Router, private campusService:CampusService,private notification: ToastrService) {
   }
 
   getCampus(){

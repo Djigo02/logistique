@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('description');
             $table->Date('dateDemande');
             $table->string('statut');
-            $table->string('typeDemande');
+            $table->string('objet');
             $table->unsignedBigInteger('idDemandeur')->nullable();
             $table->foreign('idDemandeur')->references('id')->on('users')->onDelete("cascade");
             $table->softDeletes();

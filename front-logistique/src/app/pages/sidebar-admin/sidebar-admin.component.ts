@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {User} from "../../model/user";
+import {RoleService} from "../../service/role.service";
 
 @Component({
   selector: 'app-sidebar-admin',
@@ -10,13 +11,17 @@ import {User} from "../../model/user";
 })
 export class SidebarAdminComponent implements OnInit{
 
-  user:User | null= null;
-  constructor(private router:Router, private authService: AuthService){}
+  user:any | null= null;
+  constructor(private router:Router, private authService: AuthService, private role:RoleService){}
 
 
   // Aller au tableau de bord
   goToDashboard(){
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  goToSalles(id: any){
+    this.router.navigate(['/admin/sallesin',id]);
   }
   // Aller à la liste des campus
   goTOListCampus(){
@@ -66,16 +71,22 @@ export class SidebarAdminComponent implements OnInit{
     this.router.navigate(['/admin/listMyAffectation']);
   }
   goTODemande(){
-    this.router.navigate(['/admin/demande']);
+    this.router.navigate(['/admin/demandeForm']);
   }
 
   goTOAllDemande(){
     this.router.navigate(['/admin/alldemande']);
   }
   ngOnInit(): void {
-    this.authService.getUser().subscribe(res =>{
-      this.user=res;
-    })
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
 
   }
 
