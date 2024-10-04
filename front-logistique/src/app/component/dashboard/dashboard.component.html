@@ -19,7 +19,7 @@
       </div>
       <!--! PAGE-HEADER END -->
       <!--      ! BILAN   -->
-      <ng-container *ngIf="user?.idRole ==1 || user?.idRole ==2">
+      <ng-container *ngIf="user?.idRole ==1 || user?.idRole ==3">
         <h2 class="mt-2">Repartitions des affectations <code class="highlighter-rouge">par materiel</code></h2>
 
         <div class="row" *ngFor="let element of tabAffectation">
@@ -57,7 +57,7 @@
       <!--      ! BILAN END -->
 
 <!--      Personel-->
-            <ng-container *ngIf="user?.idRole == 4">
+            <ng-container *ngIf="user?.idRole == 4 || user?.idRole == 2">
               <h2>Bonjour {{user.prenom}} {{user.nom}},</h2>
             </ng-container>
 <!--      Personel-->

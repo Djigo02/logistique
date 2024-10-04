@@ -19,7 +19,7 @@
               <div class="">
                 <div class="row" *ngIf="campusList" >
                   <ng-container *ngFor="let campus of campusList">
-                    <div class="col-xl-4 col-sm-6 col-md-6" *ngIf="user?.idRole == 1 ||  (user?.idRole == 2 && user?.id == campus.idUser)">
+                    <div class="col-xl-4 col-sm-6 col-md-6" *ngIf="user?.idRole == 1 || user?.idRole == 3 ||  (user?.idRole == 2 && user?.id == campus.idUser)">
                     <div class="card border p-0">
                       <div class="card-header">
                         <h3 class="card-title"><strong>{{campus.nomCampus}}</strong></h3>

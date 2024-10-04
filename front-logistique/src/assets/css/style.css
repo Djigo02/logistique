@@ -198,7 +198,7 @@ section {
 body {
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   color: #282f53;
@@ -7113,7 +7113,7 @@ ul.labels-info li {
 
 ul.labels-info li h4 {
   color: #5c5c5e;
-  font-size: 13px;
+  font-size: 12px;
   padding-inline-start: 15px;
   padding-inline-end: 15px;
   padding-block-start: 5px;
@@ -16249,7 +16249,7 @@ ul.inbox-pagination li {
   display: -webkit-box;
   display: flex;
   padding-block-start: 252px;
-  padding-inline-end: 30px;
+  padding-inline-end: 20px;
   padding-block-end: 10px;
   padding-inline-start: 185px;
   border-radius: 5px;
@@ -17675,7 +17675,7 @@ table.table-bordered.dataTable thead tr:first-child td {
   background: #ffffff;
   height: 44px;
   padding-block-start: 0px;
-  padding-inline-end: 30px;
+  padding-inline-end: 20px;
   padding-block-end: 0px;
   padding-inline-start: 20px;
   border-radius: 5px;
@@ -24372,14 +24372,14 @@ ul.timeline > li:before {
     inset-block-start: 2px;
     inset-inline-end: -4px;
     transform: rotate(90deg);
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .horizontal .main-sidemenu .slide.is-expanded i.angle {
     transform: rotate(-90deg);
     position: relative;
     inset-block-start: 0px;
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .horizontal .breadcrumb-header {
@@ -53967,15 +53967,15 @@ body.transparent-mode *:hover::-webkit-scrollbar-thumb {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px 20px;
-  font-size: 15px;
+  padding: 5px 5px;
+  font-size: 12px;
   font-weight: 400;
   -webkit-transition: border-inline-start-color 0.3s ease,
     background-color 0.3s ease;
   -o-transition: border-inline-start-color 0.3s ease, background-color 0.3s ease;
   transition: border-inline-start-color 0.3s ease, background-color 0.3s ease;
   color: #282f53;
-  margin: 2px 0px;
+  /*margin: 2px 0px;*/
   white-space: nowrap;
 }
 
@@ -54355,7 +54355,7 @@ body.transparent-mode *:hover::-webkit-scrollbar-thumb {
   color: #74829c;
   margin-block-end: 0.5rem;
   padding-block-start: 12px;
-  padding-inline-end: 30px;
+  padding-inline-end: 20px;
   padding-block-end: 2px;
   padding-inline-start: 20px;
   margin-block-end: 0;
@@ -55158,7 +55158,7 @@ body.transparent-mode *:hover::-webkit-scrollbar-thumb {
     .side-menu__label {
     display: block !important;
     margin-block-start: 3px;
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .icontext-menu.app.sidebar-mini.sidenav-toggled.sidenav-toggled-open
