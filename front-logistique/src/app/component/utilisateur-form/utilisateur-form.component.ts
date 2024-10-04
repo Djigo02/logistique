@@ -5,6 +5,7 @@ import {RoleService} from "../../service/role.service";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {CampusService} from "../../service/campus.service";
 
 @Component({
   selector: 'app-utilisateur-form',
@@ -13,18 +14,32 @@ import {ToastrService} from "ngx-toastr";
 })
 export class UtilisateurFormComponent implements OnInit{
 
-  @Input() user!: User;
+  @Input() user!: any;
+  utilisateur!: any;
   rolesList!: Role[];
   isAddForm !: boolean;
   utilisateurs :User[]=[];
   role!:Role;
+  campusList!: any;
 
   constructor(
     private roleService: RoleService,
     private userService: UserService,
     private router: Router,
+    private campusService: CampusService,
     private notification : ToastrService,
   ) {}
+
+
+  isCampusInvalid = false;
+
+  validateCampusSelection() {
+    if (this.user.campus_id === null || this.user.campus_id === '') {
+      this.isCampusInvalid = true;
+    } else {
+      this.isCampusInvalid = false;
+    }
+  }
 
   ngOnInit() {
     this.user = new User();
@@ -38,7 +53,18 @@ export class UtilisateurFormComponent implements OnInit{
         console.error('Erreur lors de la récupération des rôles :', err);
       },
     });
+    this.getCampusData();
     this.isAddForm = this.router.url.includes("utilisateur");
+
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.utilisateur = JSON.parse(userData);
+      this.roleService.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
   onSubmit(){
@@ -53,6 +79,12 @@ export class UtilisateurFormComponent implements OnInit{
     this.userService.getUsers().subscribe(res =>{
       this.utilisateurs = res;
       console.log(res);
+    });
+  }
+
+  getCampusData(){
+    this.campusService.getCampus().subscribe(res => {
+      this.campusList = res ;
     });
   }
 

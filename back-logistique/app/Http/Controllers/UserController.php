@@ -70,6 +70,7 @@ class UserController extends Controller
             $user->adresse = $request->adresse;
             $user->password = "passer@123";
             $user->idRole = $request->idRole;
+            $user->campus_id = $request->campus_id;
             $user->save();
             return response()->json($user);
         } catch (Exception $e) {

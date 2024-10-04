@@ -15,7 +15,8 @@ import {Role} from "../../../model/role";
 })
 export class ListerUtilisateurComponent implements OnInit{
 
-  utilisateurs : User[] = [];
+  user!: any;
+  utilisateurs : any[] = [];
   fournisseurs : Fournisseur[] = [];
   role!:string;
   constructor(private rolseService:RoleService,private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
@@ -23,6 +24,15 @@ export class ListerUtilisateurComponent implements OnInit{
   ngOnInit() {
     this.getUserData();
     this.getFournisseurData();
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.rolseService.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
   redirectTo(id:number){
     this.router.navigate(['/admin/userEdit',id]);

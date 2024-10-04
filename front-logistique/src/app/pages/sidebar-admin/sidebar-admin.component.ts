@@ -65,7 +65,7 @@ export class SidebarAdminComponent implements OnInit{
     this.router.navigate(['/admin/utilisateur']);
   }
   goToAffectation(){
-    this.router.navigate(['/admin/listAffectation']);
+    this.router.navigate(['/admin/affectation']);
   }
   goToMyAffectation(){
     this.router.navigate(['/admin/listMyAffectation']);

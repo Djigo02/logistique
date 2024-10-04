@@ -80,6 +80,29 @@
     <div class="col-md-12">
       <div class="form-group">
         <label class="form-label"
+        >Campus <span class="text-red">*</span></label>
+        <select
+          class="form-control form-select select2"
+          data-bs-placeholder="Select"
+          name="campus_id"
+          #name="ngModel"
+          [(ngModel)]="user.campus_id"
+          required
+          (change)="validateCampusSelection()"
+        >
+          <option value="null" selected>Choisissez le campus</option>
+          <ng-container  *ngFor="let campus of campusList">
+            <option [value]="campus.id" *ngIf="utilisateur.idRole==1 || campus.id==utilisateur.campus_id">{{campus.nomCampus}}</option>
+          </ng-container>
+        </select>
+        <div [hidden]="name.valid || name.pristine || !isCampusInvalid" class="card-panel text-danger red accent-1">
+          Vous devez choisir un campus.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="form-label"
         >Role <span class="text-red">*</span></label
         >
         <select
@@ -90,12 +113,15 @@
           required
         >
           <option value="">Veuillez choisir le role</option>
-          <option
-            *ngFor="let role of rolesList"
-            value="{{ role.id }}"
-          >
-            {{ role.libelle }}
-          </option>
+          <ng-container  *ngFor="let role of rolesList">
+            <option
+              *ngIf="(utilisateur.idRole==1) || (utilisateur.idRole==2 && role.id==4)"
+              value="{{ role.id }}"
+            >
+              {{ role.libelle }}
+            </option>
+          </ng-container>
+
         </select>
       </div>
     </div>

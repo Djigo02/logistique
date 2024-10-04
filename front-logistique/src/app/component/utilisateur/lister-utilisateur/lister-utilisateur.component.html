@@ -34,18 +34,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let user of utilisateurs">
-              <td>{{user.id}}</td>
-              <td>{{user.prenom}}</td>
-              <td>{{ user.nom }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.telephone }}</td>
-              <td>{{user.adresse}}</td>
-              <td>{{user.idRole }} </td>
+            <ng-container *ngFor="let utilisateur of utilisateurs">
+            <tr *ngIf="user.campus_id==utilisateur.campus_id || user.idRole==1">
+              <td>{{utilisateur.id}}</td>
+              <td>{{utilisateur.prenom}}</td>
+              <td>{{ utilisateur.nom }}</td>
+              <td>{{ utilisateur.email }}</td>
+              <td>{{ utilisateur.telephone }}</td>
+              <td>{{utilisateur.adresse}}</td>
+              <td>{{utilisateur.idRole }} </td>
               <td>
                 <div class="g-2">
                   <a
-                    (click)="redirectTo(user.id)"
+                    (click)="redirectTo(utilisateur.id)"
                     class="btn text-primary btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Edit"
@@ -53,7 +54,7 @@
                   ><span class="fe fe-edit fs-14"></span
                   ></a>
                   <a
-                    (click)="delete(user.id)"
+                    (click)="delete(utilisateur.id)"
                     class="btn text-danger btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Delete"
@@ -63,7 +64,7 @@
                   ></span
                   ></a>
                   <a
-                    (click)="voirMateriels('personnel',user.id)"
+                    (click)="voirMateriels('personnel',utilisateur.id)"
                     class="btn text-primary btn-sm"
                     data-bs-toggle="tooltip"
                     data-bs-original-title="Voir liste materiel"
@@ -75,6 +76,7 @@
                 </div>
               </td>
             </tr>
+            </ng-container>
             </tbody>
           </table>
         </div>
