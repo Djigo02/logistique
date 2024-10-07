@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/lister-campus/lister-campus.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Mail/DemandeMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Mail/DemandeMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur-form/utilisateur-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur-form/utilisateur-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/assets/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,6 +270,7 @@
       <workItem from="1726881160839" duration="5687000" />
       <workItem from="1726891527010" duration="2228000" />
       <workItem from="1726956875034" duration="6710000" />
+      <workItem from="1728258630089" duration="8097000" />
     </task>
     <servers />
   </component>

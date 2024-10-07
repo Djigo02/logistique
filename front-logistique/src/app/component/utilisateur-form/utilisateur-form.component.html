@@ -92,7 +92,7 @@
         >
           <option value="null" selected>Choisissez le campus</option>
           <ng-container  *ngFor="let campus of campusList">
-            <option [value]="campus.id" *ngIf="utilisateur.idRole==1 || campus.id==utilisateur.campus_id">{{campus.nomCampus}}</option>
+            <option [value]="campus.id" *ngIf="utilisateur.idRole==1 || campus.idUser==utilisateur.id">{{campus.nomCampus}}</option>
           </ng-container>
         </select>
         <div [hidden]="name.valid || name.pristine || !isCampusInvalid" class="card-panel text-danger red accent-1">

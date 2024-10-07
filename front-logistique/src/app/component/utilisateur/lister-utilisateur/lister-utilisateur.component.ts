@@ -7,6 +7,7 @@ import {FournisseurService} from "../../../service/fournisseur.service";
 import {ToastrService} from "ngx-toastr";
 import {RoleService} from "../../../service/role.service";
 import {Role} from "../../../model/role";
+import {CampusService} from "../../../service/campus.service";
 
 @Component({
   selector: 'app-lister-utilisateur',
@@ -19,10 +20,15 @@ export class ListerUtilisateurComponent implements OnInit{
   utilisateurs : any[] = [];
   fournisseurs : Fournisseur[] = [];
   role!:string;
-  constructor(private rolseService:RoleService,private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
+  campuses!:any[];
+  constructor(private campusService: CampusService,private rolseService:RoleService,private userService:UserService,private router:Router,private fournisseurService : FournisseurService,private notification:ToastrService) {
   }
   ngOnInit() {
     this.getUserData();
+    this.campusService.getCampus().subscribe(
+      res => this.campuses = res,
+      error => console.log(error)
+    );
     this.getFournisseurData();
     const userData = localStorage.getItem("user");
     if (userData) {
@@ -31,7 +37,7 @@ export class ListerUtilisateurComponent implements OnInit{
         res=>{this.user.roleName = res.roleData.libelle}
       );
     } else {
-      console.log("Aucun utilisateur trouvé dans le localStorage");
+      console.log("Aucun utilisateur!");
     }
   }
   redirectTo(id:number){
@@ -92,6 +98,13 @@ export class ListerUtilisateurComponent implements OnInit{
   }
   goToFournisseurForm(){
     this.router.navigate(['/admin/fournisseur']);
+  }
+
+  //Verifier si l'utilisateur et le responsable sont dans le même campus
+  // idU etant l'id du campus ou ce trouve le personnel
+  ifSameCampus(idU:any){
+    let dataCampus = this.campuses.find(c => c.id == idU);
+    return dataCampus?.idUser==this.user.id;
   }
 
 }

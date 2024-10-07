@@ -30,7 +30,7 @@ class DemandeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demande Mail',
+            subject: 'Nouvelle demande logistique',
         );
     }
 

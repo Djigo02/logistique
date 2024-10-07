@@ -68,7 +68,7 @@
           <h3>Gestion campus et salle</h3>
         </li>
         <!--   Aller a la liste des campus     -->
-        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==1 || user?.idRole==3">
+        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==1 || user?.idRole==3 || user?.idRole==2">
           <a
             class="side-menu__item has-link"
             data-bs-toggle="slide"
@@ -78,15 +78,15 @@
           >
         </li>
         <!--   Aller a la liste des campus     -->
-        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==2">
-          <a
-            class="side-menu__item has-link"
-            data-bs-toggle="slide"
-            (click)="goToSalles(user?.campus_id)"
-          ><i class="side-menu__icon fe fe-book"></i
-          ><span class="side-menu__label">Voir les salles de mon campus</span></a
-          >
-        </li>
+<!--        <li class="slide" style="cursor: pointer" *ngIf="user?.idRole==2">-->
+<!--          <a-->
+<!--            class="side-menu__item has-link"-->
+<!--            data-bs-toggle="slide"-->
+<!--            (click)="goToSalles(user?.campus_id)"-->
+<!--          ><i class="side-menu__icon fe fe-book"></i-->
+<!--          ><span class="side-menu__label">Voir les salles de mon campus</span></a-->
+<!--          >-->
+<!--        </li>-->
         <!-- ! END Gestion campus et salle -->
 
         <!-- ? END MODULE 1 -->

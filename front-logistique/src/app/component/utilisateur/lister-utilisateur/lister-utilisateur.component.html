@@ -35,7 +35,7 @@
             </thead>
             <tbody>
             <ng-container *ngFor="let utilisateur of utilisateurs">
-            <tr *ngIf="user.campus_id==utilisateur.campus_id || user.idRole==1">
+            <tr *ngIf="ifSameCampus(utilisateur.campus_id) || user.idRole==1">
               <td>{{utilisateur.id}}</td>
               <td>{{utilisateur.prenom}}</td>
               <td>{{ utilisateur.nom }}</td>

@@ -93,8 +93,9 @@ class DemandeController extends Controller
             $demande->description=$request->description;
             $demande->dateDemande=$currentDate;
             $demande->statut='en cours de traitement';
-            $demande->typeDemande=$request->typeDemande;
+            $demande->objet=$request->$request->objet;
             $demande->idDemandeur=$request->idDemandeur;
+
           $demande->save();
             return response()->json($demande);
         }catch (Exception $e){
