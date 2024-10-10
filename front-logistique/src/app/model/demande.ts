@@ -3,6 +3,6 @@ export class Demande {
   description!:string;
   dateDemande!:Date;
   statut!:string;
-  typeDemande!:string;
+  objet!:string;
   idDemandeur!:number | string;
 }

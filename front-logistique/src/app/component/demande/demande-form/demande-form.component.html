@@ -3,43 +3,39 @@
     <!-- CONTAINER -->
     <div class="main-container container-fluid">
       <!-- ! Row Tables -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Faire une demande</h3>
-        </div>
-        <div class="card-body">
-          <form>
+      <form (ngSubmit)="onSubmit()" #demandeForm="ngForm">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Faire une demande</h3>
+          </div>
+          <div class="card-body">
             <div class="form-group">
               <div class="row align-items-center">
                 <label class="col-xl-2 form-label">Objet</label>
                 <div class="col-xl-10">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" name="objet" [(ngModel)]="demande.objet" required>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <div class="row ">
+              <div class="row">
                 <label class="col-xl-2 form-label">Message</label>
                 <div class="col-xl-10">
-                  <textarea rows="10" class="form-control"></textarea>
+                  <textarea required name="description" [(ngModel)]="demande.description" rows="10" class="form-control"></textarea>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div class="card-footer d-sm-flex">
-<!--          <div class="mt-2 mb-2">-->
-<!--            <a href="javascript:void(0)" class="btn btn-icon btn-white btn-svg" data-bs-toggle="tooltip" title="" data-bs-original-title="Attach"><span class="ri-attachment-2"></span></a>-->
-<!--            <a href="javascript:void(0)" class="btn btn-icon btn-white btn-svg" data-bs-toggle="tooltip" title="" data-bs-original-title="Link"><span class="ri-link"></span></a>-->
-<!--            <a href="javascript:void(0)" class="btn btn-icon btn-white btn-svg" data-bs-toggle="tooltip" title="" data-bs-original-title="Photos"><span class="ri-image-line"></span></a>-->
-<!--            <a href="javascript:void(0)" class="btn btn-icon btn-white btn-svg" data-bs-toggle="tooltip" title="" data-bs-original-title="Delete"><span class="ri-delete-bin-line"></span></a>-->
-<!--          </div>-->
-          <div class="btn-list ms-auto my-auto">
-            <button class="btn btn-danger btn-space mb-0" (click)="goBack()">Retour</button>
-            <button class="btn btn-primary btn-space mb-0">Envoyer la demande</button>
+          </div>
+          <div class="card-footer d-sm-flex">
+            <div class="btn-list ms-auto my-auto">
+              <button class="btn btn-danger btn-space mb-0" (click)="goBack()">Retour</button>
+              <button type="submit" class="btn btn-primary btn-space mb-0" [disabled]="!demandeForm.form.valid">
+                Envoyer la demande
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
-
+</div>

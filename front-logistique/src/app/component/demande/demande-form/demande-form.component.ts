@@ -9,6 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 import {AuthService} from "../../../service/auth.service";
 import {User} from "../../../model/user";
 import Swal from "sweetalert2";
+import {RoleService} from "../../../service/role.service";
 
 @Component({
   selector: 'app-demande-form',
@@ -18,12 +19,12 @@ import Swal from "sweetalert2";
 export class DemandeFormComponent implements OnInit{
 
   demande!:Demande;
-  user: User | null = null;
+  user!: any;
   demandeur!:number ;
   email: string = '';
   message: string = '';
 
-  constructor(private route:Router,private demandeService:DemandeService,private authService: AuthService) {
+  constructor(private role: RoleService,private route:Router,private demandeService:DemandeService,private authService: AuthService) {
   }
 
 
@@ -32,47 +33,46 @@ export class DemandeFormComponent implements OnInit{
   }
 
 
-  onSubmit(){
-      this.demandeService.insertDemande(this.demande).subscribe(res =>{
-        console.log("demande affectuer avec succes",this.demande);
-        this.demandeService.sendMail('ndiayeamy1512@gmail.com',res.id).subscribe(res =>{
-          console.log("email envoye a ");
-        },error =>{
-          console.error('Error sending email');
-        });
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "  demande faite   avec success ",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        this.route.navigate(['admin/demande']);
-      },error1 => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "  Une erreur est survenue lors de la demande. ",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      });
+  onSubmit(): void {
+    if (this.demande) {
+      this.demande.idDemandeur = this.user.id; // Associer le demandeur à la demande
+      this.demandeService.insertDemande(this.demande).subscribe(
+        (response) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Demande envoyée avec succès",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.demande = new Demande(); // Réinitialiser la demande après l'envoi
+          this.route.navigate(['admin/demandeForm']);
+        },
+        (error) => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Une erreur est survenue lors de la demande.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.error('Erreur:', error);
+        }
+      );
+    }
   }
-
 
   ngOnInit(): void {
     this.demande=new Demande();
-    this.authService.getUser().subscribe({
-      next: (user) => {
-        this.user = user;
-        this.demande.idDemandeur = this.user?.id ?? '';
-        console.log('Utilisateur connecté :', this.user);
-
-      },
-      error: (err) => {
-
-      }
-    });
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
 }

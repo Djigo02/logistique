@@ -25,7 +25,7 @@ export class FournisseurService {
 
 
   insertFournisseur(fournisseur : any){
-    return this.httpClient.post(`${this.apiUrl}/`,fournisseur);
+    return this.httpClient.post(`${this.apiUrl}`,fournisseur);
   }
 
   deleteFournisseur(id : any){

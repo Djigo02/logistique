@@ -24,7 +24,7 @@ export class FormCampusComponent {
     this.campus = new Campus();
     this.userService.getUsers().subscribe(
       response =>{
-        this.responsables = response.filter(user => user.idRole==1);
+        this.responsables = response.filter(user => user.idRole==2);
       }
     );
     this.isAddForm = this.url.snapshot.params['id'] === undefined;

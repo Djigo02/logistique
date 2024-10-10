@@ -8,10 +8,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-logistique/app/Mail/DemandeMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Mail/DemandeMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur-form/utilisateur-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur-form/utilisateur-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/resources/views/emails/demandeMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/resources/views/emails/demandeMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/all-demande/all-demande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/campus/form-campus/form-campus.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/campus/form-campus/form-campus.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande-form/demande-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/demande/demande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/fournisseur-form/fournisseur-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/fournisseur-form/fournisseur-form.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/utilisateur/lister-utilisateur/lister-utilisateur.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/sidebar-admin/sidebar-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/model/demande.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/model/demande.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/pages/navbar-admin/navbar-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/campus.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/campus.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/demande.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/fournisseur.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/fournisseur.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/role.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +283,8 @@
       <workItem from="1726881160839" duration="5687000" />
       <workItem from="1726891527010" duration="2228000" />
       <workItem from="1726956875034" duration="6710000" />
-      <workItem from="1728258630089" duration="8097000" />
+      <workItem from="1728258630089" duration="23598000" />
+      <workItem from="1728579551314" duration="15395000" />
     </task>
     <servers />
   </component>

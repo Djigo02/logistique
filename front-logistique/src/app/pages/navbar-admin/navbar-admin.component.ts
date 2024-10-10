@@ -24,8 +24,12 @@ export class NavbarAdminComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    sessionStorage.removeItem('access_token');
+    localStorage.clear();
+    this.router.navigate(['/']);
+    setTimeout( () => {
+      window.location.reload();
+    }, 600);
   }
 
   voirMateriels(nomtable: string, id:any){

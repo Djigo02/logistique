@@ -27,10 +27,11 @@ export class FournisseurFormComponent implements OnInit{
     this.founisseurService.insertFournisseur(this.fournisseur).subscribe({
       next: (res) => {
         console.log(res);
+        this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
+        this.router.navigate(['admin/listesutilisateurs']);
       },
     });
-    this.notification.success(`Fournisseur ajoute avec success`,"Operation success");
-    this.router.navigate(['admin/listesutilisateurs']);
+
   }
   updateFournisseur(){
     this.founisseurService.updateFournisseur(this.fournisseur,this.fournisseur.id).subscribe(res =>{

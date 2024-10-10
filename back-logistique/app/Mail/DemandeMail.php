@@ -40,8 +40,9 @@ class DemandeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.demandeMail',
-            with: ['orderDetails' => $this->orderDetails]
+            view: 'emails.demandeMail'
+//            markdown: 'emails.demandeMail',
+//            with: ['orderDetails' => $this->orderDetails]
         );
     }
 

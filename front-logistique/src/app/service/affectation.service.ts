@@ -48,7 +48,7 @@ export class AffectationService {
   }
 
   getAffectationPersonnel(id:any){
-    return this.httpClient.get<any>(`http://127.0.0.1:8000/api/getAffectationPersonnel/${id}`);
+    return this.httpClient.get<any>(`https://logistique.groupeisi.com/api/getAffectationPersonnel/${id}`);
   }
 
 }

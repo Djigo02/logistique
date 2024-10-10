@@ -8,7 +8,7 @@ import {Demande} from "../model/demande";
 })
 export class DemandeService {
 
-  apiUrl:string = 'http://127.0.0.1:8000/api/demandes';
+  apiUrl:string = 'https://logistique.groupeisi.com/api/demandes';
   constructor(private httpClient:HttpClient) { }
 
   httpOptions ={
@@ -22,18 +22,18 @@ export class DemandeService {
     return this.httpClient.get<Demande[]>(this.apiUrl);
   }
   gedemandeRefuser():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/gedemandeRefuser`);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/gedemandeRefuser`);
   }
   getdemande():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/getdemande`);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/getdemande`);
   }
   getDemandeUser(idUser:any):Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/demandeUser/`+idUser);
   }
 
 
   sendMail(destiMail:string,idDemande:number){
-    return this.httpClient.get('http://127.0.0.1:8000/api/send_email/'+destiMail+'/'+idDemande);
+    return this.httpClient.get('https://logistique.groupeisi.com/api/send_email/'+destiMail+'/'+idDemande);
   }
 
 
@@ -42,15 +42,14 @@ export class DemandeService {
     return this.httpClient.get<Demande>(`${this.apiUrl}/`+id)
   }
   insertDemande(demande:Demande): Observable<Demande>{
-    const token = localStorage.getItem('access_token');
+      const token = localStorage.getItem('access_token');
 
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      });
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-
-    return this.httpClient.post<Demande>(this.apiUrl, demande, { headers });
+    return this.httpClient.post<any>(this.apiUrl, demande, { headers });
   }
 
 
