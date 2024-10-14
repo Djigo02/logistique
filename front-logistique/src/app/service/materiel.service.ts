@@ -15,6 +15,11 @@ export class MaterielService {
     return this.httpClient.get<Materiel[]>(`https://logistique.groupeisi.com/api/getmatbytypemat/`+id);
   }
 
+  getMEVA(){
+    return this.httpClient.get(`https://logistique.groupeisi.com/api/getMEVA`);
+  }
+
+
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -65,8 +70,10 @@ export class MaterielService {
       materiel.dateEnregistrement = new Date(dateEnregistrementF);
     }
     return this.httpClient.put(`${this.apiUrl}/`+id,JSON.stringify(materiel),this.httpOptions);
+
   }
   getMaterielById(id:any):Observable<Materiel>{
     return this.httpClient.get<Materiel>(`${this.apiUrl}/`+id);
   }
+
 }

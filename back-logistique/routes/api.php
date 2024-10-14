@@ -64,7 +64,7 @@ Route::get('getdemande', [\App\Http\Controllers\DemandeController::class,'getdem
 Route::get('send_email/{destiEmail}/{idDemande}', [\App\Http\Controllers\DemandeController::class,'sendEmail']);
 
 
-
+Route::get('getMEVA', [MaterielController::class, 'getMEVA']);
 Route::get('user', [AuthController::class, 'getUserAuth']);
 
 Route::resource("demandes",\App\Http\Controllers\DemandeController::class);

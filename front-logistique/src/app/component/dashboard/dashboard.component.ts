@@ -5,6 +5,7 @@ import {MaterielService} from "../../service/materiel.service";
 import {SalleService} from "../../service/salle.service";
 import {CampusService} from "../../service/campus.service";
 import {RoleService} from "../../service/role.service";
+import {DemandeService} from "../../service/demande.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,17 +16,23 @@ export class DashboardComponent implements OnInit{
 
   // Utilisateur authentifier
   user: any | null = null;
+  countMEVA!:Object;
+  count!:number;
+
   constructor(
     private notif: ToastrService,
     private affectationService:AffectationService,
     private materielService:MaterielService,
     private salleService:SalleService,
     private campusService: CampusService,
-    private role: RoleService
+    private role: RoleService,
+    private demandeService: DemandeService
   ) {}
 
   tabAffectation!:any[];
   ngOnInit(): void {
+    this.getMEVA();
+    this.getDENC();
     this.materielsAffectes('salles');
     const userData = localStorage.getItem("user");
     if (userData) {
@@ -38,6 +45,17 @@ export class DashboardComponent implements OnInit{
     }
   }
 
+  getDENC(){
+    this.demandeService.getdemande().subscribe(res =>{
+      this.count= res.length;
+    })
+  }
+
+  getMEVA(){
+    this.materielService.getMEVA().subscribe(res => {
+      this.countMEVA = res;
+    });
+  }
 
 
   /*
