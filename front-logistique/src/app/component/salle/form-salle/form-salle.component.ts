@@ -5,6 +5,7 @@ import {CampusService} from "../../../service/campus.service";
 import {SalleService} from "../../../service/salle.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {RoleService} from "../../../service/role.service";
 
 @Component({
   selector: 'app-form-salle',
@@ -12,6 +13,7 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./form-salle.component.css']
 })
 export class FormSalleComponent implements OnInit {
+  user:any;
   isAddSalle!: boolean
   campusList!:Campus[];
   @Input() salle!:Salle;
@@ -22,11 +24,22 @@ export class FormSalleComponent implements OnInit {
       this.campusList = data;
       console.log(this.campusList);
     });
+
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
   constructor(
     private campusService: CampusService,
     private salleService: SalleService,
+    private role: RoleService,
     private router: Router,private  actRouter:ActivatedRoute,private notification: ToastrService
   ) { }
 
