@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/affectation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/DemandeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/MaterielController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/MaterielController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/materiel.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/materiel.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +187,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Pro\\Documents\\logistique\\front-logistique\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Pc\\logistique\\front-logistique\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

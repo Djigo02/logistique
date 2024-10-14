@@ -24,8 +24,9 @@ class DemandeController extends Controller
             foreach ($demande as $element){
                 $demandeur = User::find($element->idDemandeur);
                 $element->demandeur = $demandeur ;
+                $liste[] = $element;
             }
-            $liste[] = $element;
+
             return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
@@ -56,14 +57,17 @@ class DemandeController extends Controller
             foreach ($demande as $element){
                 $demandeur = User::find($element->idDemandeur);
                 $element->demandeur = $demandeur ;
+                $liste[] = $element;
             }
-            $liste[] = $element;
+
             return response()->json($liste);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
 
     }
+
+
     public function getdemandeAchetee()
     {
 

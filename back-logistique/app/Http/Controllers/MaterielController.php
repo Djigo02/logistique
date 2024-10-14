@@ -6,6 +6,8 @@ use App\Models\Materiel;
 use App\Models\TypeMateriel;
 use Illuminate\Http\Request;
 use Exception;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
@@ -18,6 +20,21 @@ class MaterielController extends Controller
             // Lister les matériels
             $materiels = Materiel::all();
             return response()->json($materiels);
+        } catch (Exception $e) {
+            return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
+        }
+    }
+
+    public function getMEVA()
+    {
+        try {
+            $now = \Carbon\Carbon::now()->toDateString();
+
+            $dateafterTM = \Carbon\Carbon::now()->addMonths(2)->toDateString();
+            // Lister les matériels
+            $materiels = Materiel::whereBetween(DB::raw('DATE(amortissement)'), [$now, $dateafterTM])->get();
+            $count = $materiels->count();
+            return response()->json($count);
         } catch (Exception $e) {
             return response()->json("Une erreur inattendue s'est produite : " . $e->getMessage());
         }

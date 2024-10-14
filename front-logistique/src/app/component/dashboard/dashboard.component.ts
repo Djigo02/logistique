@@ -4,6 +4,7 @@ import {AffectationService} from "../../service/affectation.service";
 import {MaterielService} from "../../service/materiel.service";
 import {SalleService} from "../../service/salle.service";
 import {CampusService} from "../../service/campus.service";
+import {DemandeService} from "../../service/demande.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -16,15 +17,31 @@ export class DashboardComponent {
     private affectationService:AffectationService,
     private materielService:MaterielService,
     private salleService:SalleService,
-    private campusService: CampusService
+    private campusService: CampusService,
+    private demandeService:DemandeService
   ) {}
 
   tabAffectation!:any[];
+  countMEVA!:Object;
+  count!:number;
+
   ngOnInit(): void {
     this.materielsAffectes('salles');
+    this.getMEVA();
+    this.getDENC();
   }
 
+getDENC(){
+    this.demandeService.getdemande().subscribe(res =>{
+      this.count= res.length;
+    })
+}
 
+  getMEVA(){
+    this.materielService.getMEVA().subscribe(res => {
+      this.countMEVA = res;
+    });
+  }
 
   /*
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

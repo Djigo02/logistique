@@ -52,6 +52,7 @@ Route::resource('fournisseurs',\App\Http\Controllers\FournisseurController::clas
 Route::resource('affectations',\App\Http\Controllers\AffectationController::class);
 //Route pour recuperer les salles d'un campus
 Route::get('sallesin/{id}', [SalleController::class, 'getSallesByCampus']);
+Route::get('getMEVA', [MaterielController::class, 'getMEVA']);
 
 Route::get('getmatbytypemat/{id}', [MaterielController::class, 'getmatbytypemat']);
 Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\AffectationController::class, 'getAllAffectationForNT']);
