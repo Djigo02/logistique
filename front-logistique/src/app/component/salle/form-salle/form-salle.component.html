@@ -50,7 +50,9 @@
           (change)="validateCampusSelection()"
         >
           <option value="null" selected>Choisissez le campus</option>
-          <option *ngFor="let campus of campusList" [value]="campus.id">{{campus.nomCampus}}</option>
+          <ng-container *ngFor="let campus of campusList">
+            <option *ngIf="(user.idRole==2 && user.id==campus.idUser) || user.idRole==1"  [value]="campus.id">{{campus.nomCampus}}</option>
+          </ng-container>
         </select>
         <div [hidden]="name.valid || name.pristine || !isCampusInvalid" class="card-panel text-danger red accent-1">
           Vous devez choisir un campus.
