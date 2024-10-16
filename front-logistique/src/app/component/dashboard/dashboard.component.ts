@@ -16,13 +16,13 @@ export class DashboardComponent implements OnInit{
 
   // Utilisateur authentifier
   user: any | null = null;
-<<<<<<< HEAD
+
    tab = [];
-=======
+  tabAffectation!:any[];
   countMEVA!:Object;
   count!:number;
 
->>>>>>> a153aa1ea7fe29dc778bbad67f7dce214e0a08bb
+
   constructor(
     private notif: ToastrService,
     private affectationService:AffectationService,
@@ -30,22 +30,17 @@ export class DashboardComponent implements OnInit{
     private salleService:SalleService,
     private campusService: CampusService,
     private role: RoleService,
-<<<<<<< HEAD
-    private demandeService:DemandeService
-=======
+
     private demandeService: DemandeService
->>>>>>> a153aa1ea7fe29dc778bbad67f7dce214e0a08bb
+
   ) {}
 
-  tabAffectation!:any[];
-  countMEVA!:Object;
-  count!:number;
+
 
   ngOnInit(): void {
-    this.getMEVA();
+    this.getMEVAA();
     this.getDENC();
     this.materielsAffectes('salles');
-    this.getMEVA();
     this.getDENC();
     const userData = localStorage.getItem("user");
     if (userData) {
@@ -64,15 +59,11 @@ export class DashboardComponent implements OnInit{
     })
   }
 
-  getMEVA(){
+  getMEVAA(){
     this.materielService.getMEVA().subscribe(res => {
       this.countMEVA = res;
     });
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> a153aa1ea7fe29dc778bbad67f7dce214e0a08bb
 
 
   /*

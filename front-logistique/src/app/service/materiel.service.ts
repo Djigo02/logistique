@@ -27,9 +27,7 @@ export class MaterielService {
   };
 
 
-  getMEVA(){
-    return this.httpClient.get(`https://logistique.groupeisi.com/api/getMEVA`);
-  }
+
   getMateriel():Observable<Materiel[]>{
     return this.httpClient.get<Materiel[]>(this.apiUrl);
   }
