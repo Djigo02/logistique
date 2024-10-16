@@ -9,8 +9,11 @@
 =======
     <list default="true" id="690392b0-b9f0-4c30-acb1-5a5d0845091a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/salle/form-salle/form-salle.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/salle/form-salle/form-salle.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/salle/form-salle/form-salle.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/salle/form-salle/form-salle.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/MaterielController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/app/Http/Controllers/MaterielController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-logistique/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-logistique/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/component/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-logistique/src/app/service/materiel.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-logistique/src/app/service/materiel.service.ts" afterDir="false" />
     </list>
 >>>>>>> 02d8d6e27fc543834e3aaae681e451604d18b57a
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mdjigo" />
+        <entry key="$PROJECT_DIR$" value="nightfile" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
