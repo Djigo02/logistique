@@ -77,9 +77,9 @@
                     <i class="dropdown-icon fe fe-user"></i> Mon profil
                   </a>
                   <a class="dropdown-item" style="cursor: pointer" (click)="voirMateriels('personnel',user.id)">
-                    <i class="dropdown-icon fe fe-user"></i> Mes affectations
+                    <i class="dropdown-icon fe fe-user" ></i> Mes affectations
                   </a>
-                  <a class="dropdown-item" style="cursor: pointer">
+                  <a class="dropdown-item" style="cursor: pointer" (click)="voirDemande('personnel',user.id)" >
                     <i class="dropdown-icon fe fe-user"></i> Mes demandes
                   </a>
                   <a class="dropdown-item" (click)="logout()">

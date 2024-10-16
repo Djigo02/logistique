@@ -17,11 +17,13 @@ class DemandeController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
         try {
-//            return response()->json(Demande::where('statut','acceptee')->get());
-            return response()->json(Demande::all());
+            $demande = Demande::where('statut','acceptee')->get();
+            return response()->json($demande);
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -31,6 +33,15 @@ class DemandeController extends Controller
     {
         try {
             return response()->json(Demande::where('statut','refusee')->get());
+        }catch (Exception $e){
+            return response()->json("error",$e);
+        }
+    }
+
+    public function getdemandeFournies()
+    {
+        try {
+            return response()->json(Demande::where('statut','achetee')->get());
         }catch (Exception $e){
             return response()->json("error",$e);
         }
@@ -147,6 +158,8 @@ class DemandeController extends Controller
             return response()->json("error",$e);
         }
     }
+
+
     public function update(Request $request,int  $id)
     {
         try {

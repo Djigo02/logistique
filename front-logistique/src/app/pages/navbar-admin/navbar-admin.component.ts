@@ -36,6 +36,11 @@ export class NavbarAdminComponent implements OnInit {
     this.router.navigate(['/admin/voir-materiels',nomtable,id]);
   }
 
+  voirDemande(nomtable: string,id:any){
+    this.router.navigate(['/admin/demande',id]);
+
+  }
+
   // Aller au tableau de bord
   goToDashboard(){
     this.router.navigate(['/admin/dashboard']);

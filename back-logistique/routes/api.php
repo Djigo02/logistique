@@ -58,6 +58,7 @@ Route::get('getAllAffectationForNT/{nomTable}', [\App\Http\Controllers\Affectati
 Route::get('liste-materiel/{nomTable}/{id}', [\App\Http\Controllers\AffectationController::class,'ListeMaterielsPour']);
 Route::post('transfert-materiel', [\App\Http\Controllers\AffectationController::class,'transfererEquipement']);
 Route::get('gedemandeRefuser', [\App\Http\Controllers\DemandeController::class,'gedemandeRefuser']);
+Route::get('getdemandeFournies', [\App\Http\Controllers\DemandeController::class,'getdemandeFournies']);
 Route::get('getdemande', [\App\Http\Controllers\DemandeController::class,'getdemande']);
 
 

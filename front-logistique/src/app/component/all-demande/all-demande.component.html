@@ -13,7 +13,7 @@
                  (click)="getFileDemandeAccep()"
                  class="btn btn-primary"
                  role="button"
-              >Imprimer</a>
+              > Imprimer </a>
             </div>
             <div class="card-body pt-4">
               <div class="grid-margin">
@@ -23,7 +23,6 @@
                       <div class="tabs-menu1">
                         <!-- Tabs -->
                         <ul class="nav panel-tabs product-sale">
-
 
                         </ul>
                       </div>
@@ -61,14 +60,14 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 5%"
+                                  style="width: 5%" *ngIf="user.idRole == 1"
                                 >
                                   Action
                                 </th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr   class="border-bottom"  *ngFor="let dem of demandesu">
+                              <tr   class="border-bottom"  *ngFor="let dem of demandeEC">
                                 <td  class="text-center">
                                   <div class="mt-0 mt-sm-2 d-block">
                                     <h6 class="mb-0 fs-14 fw-semibold">
@@ -108,7 +107,7 @@
                                     >
                                   </div>
                                 </td>
-                                <td>
+                                <td *ngIf="user.idRole == 1" >
                                   <div class="g-2">
                                     <a
                                       (click)="achete(dem.id)"
@@ -156,7 +155,6 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <h3 class="card-title">Liste des demande dejas fournies</h3>
-
             </div>
             <div class="card-body pt-4">
               <div class="grid-margin">
@@ -204,14 +202,14 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 5%"
+                                  style="width: 5%" *ngIf="user.idRole == 1"
                                 >
                                   Action
                                 </th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr   class="border-bottom"  *ngFor="let dem of demandesu">
+                              <tr   class="border-bottom"  *ngFor="let dem of demandeFournie">
                                 <td  class="text-center">
                                   <div class="mt-0 mt-sm-2 d-block">
                                     <h6 class="mb-0 fs-14 fw-semibold">
@@ -251,7 +249,7 @@
                                     >
                                   </div>
                                 </td>
-                                <td>
+                                <td *ngIf="user.idRole == 1" >
                                   <div class="g-2">
                                     <a
                                       (click)="achete(dem.id)"
@@ -346,7 +344,7 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 5%"
+                                  style="width: 5%" *ngIf="user.idRole == 1"
                                 >
                                   Action
                                 </th>
@@ -381,7 +379,7 @@
                                     >{{dem.idDemandeur}}</span
                                     >
                                 </td>
-                                <td>
+                                <td *ngIf="user.idRole == 1" >
                                   <div class="mt-sm-1 d-block">
                                       <span
                                         class="badge bg-success-transparent rounded-pill text-dark p-2 px-3"
@@ -441,8 +439,6 @@
                       <div class="tabs-menu1">
                         <!-- Tabs -->
                         <ul class="nav panel-tabs product-sale">
-
-
                         </ul>
                       </div>
                     </div>
@@ -479,74 +475,77 @@
                                 </th>
                                 <th
                                   class="bg-transparent border-bottom-0"
-                                  style="width: 5%"
+                                  style="width: 5%" *ngIf="user.idRole == 1"
                                 >
                                   Action
                                 </th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr   class="border-bottom"  *ngFor="let dem of demandeEC">
-                                <td  class="text-center">
-                                  <div class="mt-0 mt-sm-2 d-block">
-                                    <h6 class="mb-0 fs-14 fw-semibold">
-                                      {{dem.description}}
-                                    </h6>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="d-flex">
-                                    <div class="mt-0 mt-sm-3 d-block">
+                              <ng-container  *ngFor="let dem of demandesu">
+                                <tr   class="border-bottom"  *ngIf="user." >
+                                  <td  class="text-center">
+                                    <div class="mt-0 mt-sm-2 d-block">
                                       <h6 class="mb-0 fs-14 fw-semibold">
-                                        {{dem.dateDemande}}
+                                        {{dem.description}}
                                       </h6>
                                     </div>
-                                  </div>
-                                </td>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex">
+                                      <div class="mt-0 mt-sm-3 d-block">
+                                        <h6 class="mb-0 fs-14 fw-semibold">
+                                          {{dem.dateDemande}}
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </td>
 
-                                <td>
+                                  <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
                                     >{{dem.objet}}</span
                                     >
-                                </td>
-                                <td>
+                                  </td>
+                                  <td>
                                     <span class="fw-semibold mt-sm-2 d-block"
                                     >{{dem.idDemandeur}}</span
                                     >
-                                </td>
-                                <td>
-                                  <div class="mt-sm-1 d-block">
+                                  </td>
+                                  <td>
+                                    <div class="mt-sm-1 d-block">
                                       <span
                                         class="badge bg-success-transparent rounded-pill text-dark p-2 px-3"
                                       >{{dem.statut}}</span
                                       >
-                                    <span
-                                      class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
-                                    ></span
-                                    >
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="g-2">
-                                    <a
-                                      (click)="accept(dem.id)"
-                                      class="btn text-primary btn-sm"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-original-title="Edit"
-                                    ><span class="fe fe-check fs-14"></span
-                                    ></a>
-                                    <a
-                                      (click)="refuse(dem.id)"
-                                      class="btn text-danger btn-sm"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-original-title="Delete"
-                                    ><span
-                                      class="fe fe-x fs-14"
-                                    ></span
-                                    ></a>
-                                  </div>
-                                </td>
-                              </tr>
+                                      <span
+                                        class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3"
+                                      ></span
+                                      >
+                                    </div>
+                                  </td>
+                                  <td *ngIf="user.idRole == 1" >
+                                    <div class="g-2">
+                                      <a
+                                        (click)="accept(dem.id)"
+                                        class="btn text-primary btn-sm"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-original-title="Edit"
+                                      ><span class="fe fe-check fs-14"></span
+                                      ></a>
+                                      <a
+                                        (click)="refuse(dem.id)"
+                                        class="btn text-danger btn-sm"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-original-title="Delete"
+                                      ><span
+                                        class="fe fe-x fs-14"
+                                      ></span
+                                      ></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </ng-container>
+
                               </tbody>
                             </table>
                           </div>

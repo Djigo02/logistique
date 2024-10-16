@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import {RoleService} from "../../service/role.service";
 
 @Component({
   selector: 'app-all-demande',
@@ -18,13 +19,15 @@ export class AllDemandeComponent  implements OnInit {
   demandeEC:Demande[]=[];
   demandeFournie:Demande[]=[];
   demande!:Demande;
-  constructor(private demandeService:DemandeService,private route:Router) {
+  user!: any;
+
+  constructor(private demandeService:DemandeService,private route:Router,private role: RoleService) {
   }
 
   getallDemande(){
     this.demandeService.getDemandes().subscribe(res =>{
-      this.demandesu = res;
-      console.log(this.demandesu);
+      this.demandeEC = res;
+      console.log(this.demandeEC);
     });
   }
 
@@ -32,6 +35,16 @@ export class AllDemandeComponent  implements OnInit {
     this.getallDemande();
     this.gedemandeRefuser();
     this.getdemande();
+    this.getdemandeFournies();
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.user.idRole).subscribe(
+        res=>{this.user.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
   getFileDemandeAccep(){
@@ -61,9 +74,14 @@ export class AllDemandeComponent  implements OnInit {
       this.demandeR= res;
     });
   }
+  getdemandeFournies(){
+    this.demandeService.getdemandeFournies().subscribe(res => {
+      this.demandeFournie= res;
+    });
+  }
   getdemande(){
     this.demandeService.getdemande().subscribe(res => {
-      this.demandeEC= res;
+      this.demandesu= res;
     });
   }
 
@@ -83,8 +101,24 @@ export class AllDemandeComponent  implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
+      },error => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: " error demande acceptee  avec success ",
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
 
+    }, error => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: " error demande acceptee  avec success ",
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
   }
 

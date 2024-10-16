@@ -22,7 +22,9 @@ export class MaterielService {
   };
 
 
-
+  getMEVA(){
+    return this.httpClient.get(`https://logistique.groupeisi.com/api/getMEVA`);
+  }
   getMateriel():Observable<Materiel[]>{
     return this.httpClient.get<Materiel[]>(this.apiUrl);
   }
@@ -39,11 +41,11 @@ export class MaterielService {
       materiel.amortissement = new Date(amortissement);
     }
     if (materiel.dateEnregistrement instanceof Date) {
-     // Convertir la date d'amortissement au format requis
-     const dateEnregistrement = materiel.dateEnregistrement.toLocaleDateString().split('/');
-     const dateEnregistrementF = `${dateEnregistrement[2]}-${dateEnregistrement[1]}-${dateEnregistrement[0]}`;
-     // Assigner la nouvelle valeur à materiel.amortissement
-     materiel.dateEnregistrement = new Date(dateEnregistrementF);
+      // Convertir la date d'amortissement au format requis
+      const dateEnregistrement = materiel.dateEnregistrement.toLocaleDateString().split('/');
+      const dateEnregistrementF = `${dateEnregistrement[2]}-${dateEnregistrement[1]}-${dateEnregistrement[0]}`;
+      // Assigner la nouvelle valeur à materiel.amortissement
+      materiel.dateEnregistrement = new Date(dateEnregistrementF);
     }
     return this.httpClient.post(this.apiUrl,materiel,this.httpOptions);
   }

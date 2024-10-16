@@ -48,7 +48,7 @@ const routes: Routes = [
     component: BaseComponent, canActivate:[AuthGuard],
       children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'demande', component: DemandeComponent },
+      { path: 'demande/:id', component: DemandeComponent },
       { path: 'alldemande', component: AllDemandeComponent },
       { path: 'campus', component: CampusComponent },
       { path: 'utilisateur', component: UtilisateurComponent },
