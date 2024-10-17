@@ -8,7 +8,7 @@ import {Demande} from "../model/demande";
 })
 export class DemandeService {
 
-  apiUrl:string = 'http://127.0.0.1:8000/api/demandes';
+  apiUrl:string = 'https://logistique.groupeisi.com/api/demandes';
   constructor(private httpClient:HttpClient) { }
 
   httpOptions ={
@@ -23,21 +23,21 @@ export class DemandeService {
   }
 
   gedemandeRefuser():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/gedemandeRefuser`);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/gedemandeRefuser`);
   }
   getdemandeFournies():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/getdemandeFournies`);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/getdemandeFournies`);
   }
   getdemande():Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/getdemande`);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/getdemande`);
   }
   getDemandeUser(idUser:any):Observable<Demande[]>{
-    return this.httpClient.get<Demande[]>(`http://127.0.0.1:8000/api/demandeUser/`+idUser);
+    return this.httpClient.get<Demande[]>(`https://logistique.groupeisi.com/api/demandeUser/`+idUser);
   }
 
 
   sendMail(destiMail:string,idDemande:number){
-    return this.httpClient.get('http://127.0.0.1:8000/api/send_email/'+destiMail+'/'+idDemande);
+    return this.httpClient.get('https://logistique.groupeisi.com/api/send_email/'+destiMail+'/'+idDemande);
   }
 
 

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import {RoleService} from "../../service/role.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-all-demande',
@@ -21,7 +22,7 @@ export class AllDemandeComponent  implements OnInit {
   demande!:Demande;
   user!: any;
 
-  constructor(private demandeService:DemandeService,private route:Router,private role: RoleService) {
+  constructor(private demandeService:DemandeService,private route:Router,private role: RoleService, private userService: UserService) {
   }
 
   getallDemande(){
@@ -160,5 +161,13 @@ export class AllDemandeComponent  implements OnInit {
         });
       });
     });
+  }
+
+  isSameCampus(demande:any): boolean {
+    let demandeur:any;
+    this.userService.getUserById(demande.idDemandeur).subscribe(
+      res => {demandeur = res}
+    );
+    return demandeur.campus_id === this.user.campus_id;
   }
 }
