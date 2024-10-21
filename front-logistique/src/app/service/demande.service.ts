@@ -61,6 +61,6 @@ export class DemandeService {
     return this.httpClient.delete(`${this.apiUrl}/`+id)
   }
   updateDemande(id : number,demande:Demande){
-    return this.httpClient.put(`${this.apiUrl}/`+id ,JSON.stringify(demande), this.httpOptions);
+    return this.httpClient.put(`${this.apiUrl}/`+id ,demande, this.httpOptions);
   }
 }

@@ -24,26 +24,39 @@ export class ListerMaterielComponent implements OnInit{
     this.router.navigate(['/admin/matEdit',id]);
   }
   delete(id:number){
-    this.materielSerice.deleteMateriel(id).subscribe(res =>{
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: " materiel supprimer avec succces ",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        this.getMaterielData();
-    }, error => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: " Erreur lors de la supression du matériel: ",
-          showConfirmButton: false,
-          timer: 1500
-        });
 
+    Swal.fire({
+      title: 'Êtes-vous sûr ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer !',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.materielSerice.deleteMateriel(id).subscribe(res =>{
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: " materiel supprimer avec succces ",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          this.getMaterielData();
+        }, error => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: " Erreur lors de la supression du matériel: ",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
       }
-      );
+    });
   }
   getMaterielData() {
     this.materielSerice.getMateriel().subscribe(res => {

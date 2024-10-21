@@ -54,12 +54,27 @@ export class ListerCampusComponent implements OnInit{
   }
 
   deleteCampus(id:any){
-    this.campusService.deleteCampus(id).subscribe(
-      () => {
-        this.notification.success(`Campus  a ete supprime avec succes`,"Operation reussie")
-        this.getCampus();
+
+    Swal.fire({
+      title: 'Êtes-vous sûr ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer !',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.campusService.deleteCampus(id).subscribe(
+          () => {
+            this.notification.success(`Campus  a ete supprime avec succes`,"Operation reussie")
+            this.getCampus();
+          }
+        );
       }
-    );
+    });
+
   }
 
   voirMateriels(nomtable: string, id:any){

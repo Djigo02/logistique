@@ -44,6 +44,4 @@ export class DemandeComponent implements OnInit {
     this.route.navigate(['/admin/demandeForm']);
   }
 
-
-
 }

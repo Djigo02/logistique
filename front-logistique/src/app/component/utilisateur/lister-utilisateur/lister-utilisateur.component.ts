@@ -8,6 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {RoleService} from "../../../service/role.service";
 import {Role} from "../../../model/role";
 import {CampusService} from "../../../service/campus.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lister-utilisateur',
@@ -58,22 +59,48 @@ export class ListerUtilisateurComponent implements OnInit{
     });
   }
   delete(id:number){
-    this.userService.deleteUser(id).subscribe(res =>{
-        this.notification.success("materiel supprimer avec succcess","Operation reussie");
-      this.getUserData();
-    }, error => {
-      this.notification.success("Une erreur est survenue lors de suppression du matériel.","Operation echouee");
+    Swal.fire({
+      title: 'Êtes-vous sûr ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer !',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(id).subscribe(res =>{
+            this.notification.success("materiel supprimer avec succcess","Operation reussie");
+            this.getUserData();
+          }, error => {
+            this.notification.success("Une erreur est survenue lors de suppression du matériel.","Operation echouee");
+          }
+        );
       }
-    );
+    });
   }
   deleteF(id:number){
-    this.fournisseurService.deleteFournisseur(id).subscribe(res =>{
-        this.notification.success("fournisseur  supprimer avec succcess","Operation reussie");
-      this.getFournisseurData();
-    }, error => {
-      this.notification.success("Une erreur est survenue lors de suppression du fournisseur.","Operation echouee");
+    Swal.fire({
+      title: 'Êtes-vous sûr ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer !',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.fournisseurService.deleteFournisseur(id).subscribe(res =>{
+            this.notification.success("fournisseur  supprimer avec succcess","Operation reussie");
+            this.getFournisseurData();
+          }, error => {
+            this.notification.success("Une erreur est survenue lors de suppression du fournisseur.","Operation echouee");
+          }
+        );
       }
-    );
+    });
   }
   getUserData(){
     this.userService.getUsers().subscribe(utilisateurs => {
