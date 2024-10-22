@@ -4,6 +4,7 @@ import { DemandeService } from '../../service/demande.service';
 import { RoleService } from '../../service/role.service';
 import Swal from 'sweetalert2';
 import {UserService} from "../../service/user.service";
+import {User} from "../../model/user";
 
 @Component({
   selector: 'app-all-demande',
@@ -15,6 +16,7 @@ export class AllDemandeComponent implements OnInit {
   filteredDemandes: Demande[] = [];
   user: any;
   selectedStatus: string = '';
+  demandeurs!: any; // Stocke les utilisateurs demandeurs
 
   constructor(
     private demandeService: DemandeService,
@@ -25,6 +27,7 @@ export class AllDemandeComponent implements OnInit {
   ngOnInit(): void {
     this.loadUserData();
     this.loadAllDemandes();
+    this.preloadAllDemandeurs();
   }
 
   loadAllDemandes(): void {
@@ -121,16 +124,28 @@ export class AllDemandeComponent implements OnInit {
       timer: 1500,
     });
   }
-  isSameCampus(demande: Demande): boolean {
-    let sameCampus = false;
-    this.userService.getUserById(demande.idDemandeur).subscribe(
-      (res) => {
-        sameCampus = res.campus_id === this.user.campus_id;
+  // Charge les informations des utilisateurs demandeurs à l'initialisation
+  preloadAllDemandeurs(): void {
+    this.userService.getUsers().subscribe(
+      (res:User[]) => {
+        // Stocker tous les utilisateurs demandeurs dans un objet pour un accès rapide
+        this.demandeurs = res;
       },
       (error) => {
-        console.error('Erreur lors de la récupération du demandeur', error);
+        console.error('Erreur lors de la récupération des utilisateurs', error);
       }
     );
-    return sameCampus;
+  }
+
+  isSameCampus(demande: Demande): boolean {
+    // Trouve le demandeur correspondant dans la liste
+    const demandeur = this.demandeurs.find((us:User) => us.id === demande.idDemandeur)
+
+    if (!demandeur || !this.user) {
+      return false; // Si le demandeur ou l'utilisateur actuel n'existe pas
+    }
+
+    // Compare les campus
+    return demandeur.campus_id === this.user.campus_id;
   }
 }

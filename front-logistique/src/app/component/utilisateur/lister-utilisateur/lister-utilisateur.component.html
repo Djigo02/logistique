@@ -29,8 +29,6 @@
               <th>Email</th>
               <th>Telephone</th>
               <th>Adresse</th>
-              <th>Role</th>
-              <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -42,10 +40,10 @@
               <td>{{ utilisateur.email }}</td>
               <td>{{ utilisateur.telephone }}</td>
               <td>{{utilisateur.adresse}}</td>
-              <td>{{utilisateur.idRole }}</td>
               <td>
                 <div class="g-2">
                   <a
+                    *ngIf="user.idRole==1"
                     (click)="redirectTo(utilisateur.id)"
                     class="btn text-primary btn-sm"
                     data-bs-toggle="tooltip"
@@ -54,6 +52,7 @@
                   ><span class="fe fe-edit fs-14"></span
                   ></a>
                   <a
+                    *ngIf="user.idRole==1"
                     (click)="delete(utilisateur.id)"
                     class="btn text-danger btn-sm"
                     data-bs-toggle="tooltip"

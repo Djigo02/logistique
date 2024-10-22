@@ -18,8 +18,8 @@ export class UserService {
 
   apiUrl: string = 'https://logistique.groupeisi.com/api/users';
 
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.apiUrl);
+  getUsers(): Observable<any> {
+    return this.httpClient.get<any>(this.apiUrl);
   }
 
   insertUser(user: User) {

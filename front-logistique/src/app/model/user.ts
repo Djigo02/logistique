@@ -8,4 +8,5 @@ export class User {
   adresse!: string;
   idRole!: number;
   roleName?: string;
+  campus_id?: number;
 }
