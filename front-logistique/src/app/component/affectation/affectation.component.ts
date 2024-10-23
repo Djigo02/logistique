@@ -13,6 +13,7 @@ import {User} from "../../model/user";
 import {UserService} from "../../service/user.service";
 import {Affectation} from "../../model/affectation";
 import {ToastrService} from "ngx-toastr";
+import {RoleService} from "../../service/role.service";
 
 @Component({
   selector: 'app-affectation',
@@ -25,10 +26,11 @@ export class AffectationComponent implements OnInit{
   campus : Campus[] =[];
   salle:Salle[]=[];
   user:User[]=[];
+  userConnect!:any;
   affectation!: Affectation;
   affectations :Affectation[] = [];
 
-  constructor(private notification: ToastrService,private  affectationService:AffectationService,private userService:UserService,private salleService: SalleService ,private typeMatService : TypeMaterielService,private campusService:CampusService,private materielService : MaterielService ,private  router:Router) {
+  constructor(private notification: ToastrService,private  affectationService:AffectationService,private userService:UserService,private salleService: SalleService ,private typeMatService : TypeMaterielService,private campusService:CampusService,private materielService : MaterielService, private role:RoleService ,private  router:Router) {
   }
 
   onSubmitForCampus(){
@@ -128,6 +130,15 @@ export class AffectationComponent implements OnInit{
     this.getSalles(this.onCampusChange(event));
     this.getUser();
     this.affectation = new Affectation();
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.userConnect = JSON.parse(userData);
+      this.role.getRoleByIdRole(this.userConnect.idRole).subscribe(
+        res=>{this.userConnect.roleName = res.roleData.libelle}
+      );
+    } else {
+      console.log("Aucun utilisateur trouvé dans le localStorage");
+    }
   }
 
   resetForm(){

@@ -34,7 +34,9 @@
                                 <label class="form-label">Campus <span class="text-red">*</span></label>
                                 <select class="form-control" [(ngModel)]="affectation.concerne_id" name="concerne_id" required>
                                   <option value="">Veuillez choisir le campus</option>
-                                  <option *ngFor="let camp of campus" [value]="camp.id">{{ camp.nomCampus }}</option>
+                                  <ng-container *ngFor="let camp of campus">
+                                  <option *ngIf="userConnect.id==camp.idUser" [value]="camp.id">{{ camp.nomCampus }}</option>
+                                  </ng-container>
                                 </select>
                               </div>
                             </div>
@@ -89,7 +91,10 @@
                                 <label class="form-label">Campus <span class="text-red">*</span></label>
                                 <select class="form-control form-select select2" name="campus" (change)="onCampusChange($event)"  >
                                   <option selected>Veuillez choisir le campus</option>
-                                  <option *ngFor="let camp of campus" value="{{camp.id}}"> {{camp.nomCampus}}</option>
+<!--                                  <option *ngFor="let camp of campus" value="{{camp.id}}"> {{camp.nomCampus}}</option>-->
+                                  <ng-container  *ngFor="let camp of campus">
+                                    <option *ngIf="userConnect.id==camp.idUser" [value]="camp.id">{{ camp.nomCampus }}</option>
+                                  </ng-container>
                                 </select>
                               </div>
                             </div>
